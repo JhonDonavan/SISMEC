@@ -158,6 +158,17 @@
 		<!-- POSTGRESSQL CONECTOR -->
 		<!-- POSTGRESSQL CONECTOR -->
 
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<!-- spring data jpa -->
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.8.0.RELEASE</version>
+		</dependency>
+
+
 	</dependencies>
 
 
