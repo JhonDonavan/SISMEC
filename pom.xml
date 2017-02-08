@@ -70,11 +70,24 @@
 		<!-- PRIMAFACES PRIMEFACES -->
 		<!-- PRIMAFACES PRIMEFACES -->
 		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
+
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
+
+		<!-- <dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency> -->
+
+
 		<!-- PRIMAFACES PRIMEFACES -->
 		<!-- PRIMAFACES PRIMEFACES -->
 
@@ -162,11 +175,15 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
 		<!-- spring data jpa -->
 
-		 <dependency>
+		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.11.0.RELEASE</version>
 		</dependency>
+
+		<!-- <dependency> <groupId>org.jboss.weld.servlet</groupId> <artifactId>weld-servlet-core</artifactId> 
+			<version>2.1.2.Final</version> </dependency> <dependency> <groupId>org.jboss.weld</groupId> 
+			<artifactId>weld-core-impl</artifactId> <version>2.1.2.Final</version> </dependency> -->
 
 
 	</dependencies>
