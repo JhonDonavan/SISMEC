@@ -4,6 +4,8 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>SISMEC</display-name>
+
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -15,10 +17,8 @@
 
 
 	<!-- ADC -->
-	<!-- <context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>home</param-value>
-	</context-param> -->
+	<!-- <context-param> <param-name>primefaces.THEME</param-name> <param-value>home</param-value> 
+		</context-param> -->
 
 
 	<!--ESTAVA CAUSANDO O MESMO PROBLEMA QUE O GUILHERME ESTA ENFRENTANDO -->
