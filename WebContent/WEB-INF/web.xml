@@ -5,7 +5,11 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>SISMEC</display-name>
 
-	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -16,6 +20,19 @@
 	</welcome-file-list>
 
 
+	<!-- trecho abaixo é para spring security -->
+	<!-- <filter>
+		<filter-name>SpringSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SpringSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping> -->
+
+
 	<!-- ADC -->
 	<!-- <context-param> <param-name>primefaces.THEME</param-name> <param-value>home</param-value> 
 		</context-param> -->
@@ -24,8 +41,6 @@
 	<!--ESTAVA CAUSANDO O MESMO PROBLEMA QUE O GUILHERME ESTA ENFRENTANDO -->
 	<!-- <servlet-mapping> <servlet-name>Faces Servlet</servlet-name> <url-pattern>*.xhtml</url-pattern> 
 		</servlet-mapping> -->
-
 	<!-- <servlet-mapping> <servlet-name>Faces Servlet</servlet-name> <url-pattern>*.xhtml</url-pattern> 
 		<url-pattern>/faces/*</url-pattern> </servlet-mapping> -->
-
 </web-app>
