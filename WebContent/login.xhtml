@@ -11,10 +11,10 @@
 </h:head>
 
 <h:body>
-	<!-- <center>
-		<p:panel header="Autenticação SISMEC">
+	<center>
+		<p:panel header="Autenticação SISMEC" style="width:25%; margin-top:100px;" >
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel for="username" value="Username:" />
+				<h:outputLabel  style="width:20%; align:right;" for="username" value="Usuário:" />
 				<p:inputText id="username" value="#{userLoginView.username}"
 					required="true" label="username" />
 
@@ -29,13 +29,13 @@
 				</f:facet>
 			</h:panelGrid>
 		</p:panel>
-	</center> -->
+	</center>
 
-	
-		<p:messages />
+
+	<!-- <p:messages />
 		<h:form>
-			<p:panelGrid  columns="2" 
-				style="  margin-top:10%; margin-left:auto; margin-right:auto">
+			<p:panel  columns="2" 
+				style="margin-top:10%; margin-left:auto; margin-right:auto">
 				<f:facet name="header">Acesso ao Sistema</f:facet>
 				<h:outputLabel value="Digite o seu nome de Usuario:" />
 				<p:inputText id="user" value="#{usuarioBean.user.usuario}"
@@ -48,8 +48,8 @@
 						action="#{usuarioBean.getLogin(usuario, senha)}" />
 					<p:commandButton value="Registrar" />
 				</f:facet>
-			</p:panelGrid>
-		</h:form>
-	
+			</p:panel>
+		</h:form> -->
+	 
 </h:body>
 </html>
