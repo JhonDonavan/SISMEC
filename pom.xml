@@ -8,8 +8,6 @@
 
 
 	<dependencies>
-
-		<!-- JSF JSF -->
 		<!-- JSF JSF -->
 		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
 		<dependency>
@@ -25,9 +23,7 @@
 			<version>2.2.14</version>
 		</dependency>
 		<!-- JSF JSF -->
-		<!-- JSF JSF -->
 
-		<!-- Servlet’s e JSTL -->
 		<!-- Servlet’s e JSTL -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
@@ -56,40 +52,16 @@
 			<artifactId>javax.el-api</artifactId>
 			<version>3.0.1-b04</version>
 		</dependency>
-		<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-web-api</artifactId> 
-			<version>7.0</version> </dependency> -->
-		<!-- Servlet’s e JSTL -->
 		<!-- Servlet’s e JSTL -->
 
-
-
-
-		<!-- https://mvnrepository.com/artifact/javax/javaee-web-api -->
-
-
 		<!-- PRIMAFACES PRIMEFACES -->
-		<!-- PRIMAFACES PRIMEFACES -->
-		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
-
-		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
-		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/home -->
-
-
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.primefaces.themes</groupId> <artifactId>all-themes</artifactId> 
-			<version>1.0.10</version> </dependency> -->
-
-
-		<!-- PRIMAFACES PRIMEFACES -->
 		<!-- PRIMAFACES PRIMEFACES -->
 
-
-		<!-- JARS PARA HIBERNATE -->
 		<!-- JARS PARA HIBERNATE -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
@@ -156,9 +128,7 @@
 			<version>1.0.0.Final</version>
 		</dependency>
 		<!-- JARS PARA HIBERNATE -->
-		<!-- JARS PARA HIBERNATE -->
 
-		<!-- POSTGRESSQL CONECTOR -->
 		<!-- POSTGRESSQL CONECTOR -->
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -166,21 +136,15 @@
 			<version>9.1-901.jdbc4</version>
 		</dependency>
 		<!-- POSTGRESSQL CONECTOR -->
-		<!-- POSTGRESSQL CONECTOR -->
 
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
 		<!-- spring data jpa -->
-
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.11.0.RELEASE</version>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.jboss.weld.servlet</groupId> <artifactId>weld-servlet-core</artifactId> 
-			<version>2.1.2.Final</version> </dependency> <dependency> <groupId>org.jboss.weld</groupId> 
-			<artifactId>weld-core-impl</artifactId> <version>2.1.2.Final</version> </dependency> -->
 
 		<!-- SPRING SECURITY SPRING SECURITY -->
 		<dependency>
@@ -200,11 +164,7 @@
 			<version>4.1.0.RELEASE</version>
 		</dependency>
 		<!-- SPRING SECURITY SPRING SECURITY -->
-
-
 	</dependencies>
-
-
 
 
 	<build>
