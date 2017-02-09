@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="form-curso">
+			<p:growl />
+			<div align="center">
+				<p:panel header="Cadastro de cursos" style="width:60%;">
+					<p:panelGrid columns="2" style="width:90%;">
+
+						<h:outputLabel value="Nome:" />
+						<p:inputText value="#{cursoBean.curso.nome}" required="true"
+							requiredMessage="Voçê deve informar o nome do curso!"
+							validatorMessage="O nome do curso deve ter entre 3 e 15 caracteres!">
+							<f:validateLength minimum="3" maximum="15" />
+						</p:inputText>
+
+						<h:outputLabel value="Descrição:" />
+						<p:inputTextarea value="#{cursoBean.curso.descricao}" cols="40"
+							rows="3" required="true" requiredMessage="Preencha a descrição!" />
+
+						<h:outputLabel value="Duração:" />
+						<p:spinner value="#{cursoBean.curso.ducarao}" min="0.5" max="10"
+							stepFactor="0.5" size="2" required="true"
+							requiredMessage="Preencha a duração do curso!" />
+
+						<h:outputLabel value="Data de criação:" />
+						<p:calendar value="#{cursoBean.curso.dataCriacao}"
+							pattern="dd/MM/yyyy" maxdate="#{cursoBean.dataAtual}" />
+					</p:panelGrid>
+					<br />
+					<p:commandButton value="salvar" action="#{cursoBean.salvar}"
+						update="@form" />
+				</p:panel>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>
