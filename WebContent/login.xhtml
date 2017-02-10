@@ -23,9 +23,10 @@
 					required="true" label="password" />
 
 				<f:facet name="footer">
-					<p:commandButton value="Login"
+					<!-- <p:commandButton value="Login"
 						actionListener="#{userLoginView.login}"
-						oncomplete="handleLoginRequest(xhr, status, args)" />
+						oncomplete="handleLoginRequest(xhr, status, args)" /> -->
+						<h:outputLink value="pages/home/home.xhtml">LOGIN</h:outputLink>
 				</f:facet>
 			</h:panelGrid>
 		</p:panel>
