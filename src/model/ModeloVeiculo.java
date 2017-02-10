@@ -1,5 +1,8 @@
 package model;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class ModeloVeiculo {
 
 	private Integer id;

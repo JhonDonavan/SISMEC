@@ -4,39 +4,34 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <ui:decorate template="../layout/layoutPadrao.xhtml">
+
 	<ui:define name="conteudo">
-		<h:form id="form-curso">
-			<p:growl />
-			<div align="center">
-				<p:panel header="Cadastro de cursos" style="width:60%;">
-					<p:panelGrid columns="2" style="width:90%;">
 
-						<h:outputLabel value="Nome:" />
-						<p:inputText value="#{cursoBean.curso.nome}" required="true"
-							requiredMessage="Voçê deve informar o nome do curso!"
-							validatorMessage="O nome do curso deve ter entre 3 e 15 caracteres!">
-							<f:validateLength minimum="3" maximum="15" />
-						</p:inputText>
+		<div id="form" style="text-align:left; width:100%; text-align: right;" >
+			<h:form id="cadastrarVeiculo">
+				<p:growl/>
+				<p:panel header="Cadastro de veiculos" style="text-align:left; width:99%;">
+					<h:panelGrid columns="2">
+						<p:outputLabel  value="Placa do veiculo:" />
+						<p:inputText value="#{veiculoController.veiculo.placa}" />
+						
+						<p:outputLabel  value="UF:" />
+						<p:inputText value="#{veiculoController.veiculo.uf}" />
+						
+						<p:outputLabel  value="Cidade:" />
+						<p:inputText value="#{veiculoController.veiculo.cidade}" />
+						
+						<p:outputLabel  value="Cor:" />
+						<p:inputText value="#{veiculoController.veiculo.cor}" />
+						
+						<p:commandButton value="Salvar" action="#{veiculoController.salvar}"/>
 
-						<h:outputLabel value="Descrição:" />
-						<p:inputTextarea value="#{cursoBean.curso.descricao}" cols="40"
-							rows="3" required="true" requiredMessage="Preencha a descrição!" />
+					</h:panelGrid>
 
-						<h:outputLabel value="Duração:" />
-						<p:spinner value="#{cursoBean.curso.ducarao}" min="0.5" max="10"
-							stepFactor="0.5" size="2" required="true"
-							requiredMessage="Preencha a duração do curso!" />
-
-						<h:outputLabel value="Data de criação:" />
-						<p:calendar value="#{cursoBean.curso.dataCriacao}"
-							pattern="dd/MM/yyyy" maxdate="#{cursoBean.dataAtual}" />
-					</p:panelGrid>
-					<br />
-					<p:commandButton value="salvar" action="#{cursoBean.salvar}"
-						update="@form" />
 				</p:panel>
-			</div>
-		</h:form>
+
+			</h:form>
+		</div>
 	</ui:define>
 </ui:decorate>
 </html>
