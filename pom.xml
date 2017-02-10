@@ -6,6 +6,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 
 	<dependencies>
 		<!-- JSF JSF -->
@@ -164,6 +173,16 @@
 			<version>4.1.0.RELEASE</version>
 		</dependency>
 		<!-- SPRING SECURITY SPRING SECURITY -->
+
+		<!-- TEMAS PARA PRIMEFACES -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/cupertino -->
+		<!-- Primefaces Theme Library -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>cupertino</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
 	</dependencies>
 
 
