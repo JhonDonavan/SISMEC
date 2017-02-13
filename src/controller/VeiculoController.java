@@ -10,6 +10,8 @@ import javax.faces.context.FacesContext;
 
 import model.Veiculo;
 import modelDAO.VeiculoDAO;
+
+
 @ManagedBean
 @SessionScoped
 public class VeiculoController {

@@ -7,30 +7,41 @@
 
 	<ui:define name="conteudo">
 
-		<div id="form" style="text-align:left; width:100%; text-align: right;" >
-			<h:form id="cadastrarVeiculo">
-				<p:growl/>
-				<p:panel header="Cadastro de veiculos" style="text-align:left; width:99%;">
+		<div id="form"
+			style="text-align: left; width: 100%; text-align: right; align: center;">
+
+			<p:panel header="Cadastro de veiculos"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarVeiculo">
+					<p:growl />
 					<h:panelGrid columns="2">
-						<p:outputLabel  value="Placa do veiculo:" />
-						<p:inputText value="#{veiculoController.veiculo.placa}" />
-						
-						<p:outputLabel  value="UF:" />
-						<p:inputText value="#{veiculoController.veiculo.uf}" />
-						
-						<p:outputLabel  value="Cidade:" />
-						<p:inputText value="#{veiculoController.veiculo.cidade}" />
-						
-						<p:outputLabel  value="Cor:" />
-						<p:inputText value="#{veiculoController.veiculo.cor}" />
-						
-						<p:commandButton value="Salvar" action="#{veiculoController.salvar}"/>
+						<h:outputLabel value="Placa do veiculo:" />
+						<p:inputText value="#{veiculoController.veiculo.placa}"
+							required="true"
+							requiredMessage="Voce deve preencher a placa do veiculo" />
 
+						<p:outputLabel value="UF:" />
+						<p:inputText value="#{veiculoController.veiculo.uf}"
+							required="true" requiredMessage="Por favor preencha o estado do veiculo" />
+
+						<p:outputLabel value="Cidade:" />
+						<p:inputText value="#{veiculoController.veiculo.cidade}"
+							required="true"
+							requiredMessage="Por favor preencha a cidade do veiculo" />
+
+						<p:outputLabel value="Cor:" />
+						<p:inputText value="#{veiculoController.veiculo.cor}"
+							required="true" requiredMessage="Por favor informe a cor do veiculo" />
+						<br/><br/>
+						<p:commandButton value="Salvar"
+							action="#{veiculoController.salvar}" update="@form" />
 					</h:panelGrid>
+					<p:commandButton value="Salvar"
+							action="#{veiculoController.salvar}" update="@form" />
+				</h:form>
+			</p:panel>
 
-				</p:panel>
 
-			</h:form>
 		</div>
 	</ui:define>
 </ui:decorate>
