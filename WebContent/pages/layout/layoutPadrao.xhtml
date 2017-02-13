@@ -21,33 +21,36 @@ body {
 
 
 <h:body>
-	<div id="layout" align="center">
+	<div style="width:100%;">
+		<div id="layout" align="center">
 
-		<p:layout style="min-width:70%;max-width:60%;min-height:950px">
-			<div id="header">
-				<ui:insert name="header">
-					<ui:include src="header.xhtml" />
-				</ui:insert>
-			</div>
+			<p:layout style="min-width:70%;max-width:60%;min-height:950px">
+				<div id="header">
+					<ui:insert name="header">
+						<ui:include src="header.xhtml" />
+					</ui:insert>
+				</div>
 
-			<div id="menuLateral">
-				<ui:insert name="menuLateral">
-					<ui:include src="menuLateral.xhtml" />
-				</ui:insert>
-			</div>
+				<div id="menuLateral">
+					<ui:insert name="menuLateral">
+						<ui:include src="menuLateral.xhtml" />
+					</ui:insert>
+				</div>
 
-			<p:layoutUnit position="center">
-				<ui:insert name="conteudo">
-                        
-                    </ui:insert>
-			</p:layoutUnit>
+				<p:layoutUnit position="center">
+					<ui:insert name="conteudo">
 
-			<div id="footer">
-				<ui:insert name="footer">
-					<ui:include src="footer.xhtml" />
-				</ui:insert>
-			</div>
-		</p:layout>
+					</ui:insert>
+				</p:layoutUnit>
+
+				<div id="footer">
+					<ui:insert name="footer">
+						<ui:include src="footer.xhtml" />
+					</ui:insert>
+				</div>
+			</p:layout>
+		</div>
 	</div>
+
 </h:body>
 </html>
