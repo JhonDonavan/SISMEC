@@ -24,6 +24,10 @@
 		<param-value>cupertino</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 	<!-- trecho abaixo é para spring security -->
 	<!-- <filter> <filter-name>SpringSecurityFilterChain</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 

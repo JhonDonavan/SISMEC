@@ -1,9 +1,21 @@
 package modelDAO;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import javax.persistence.EntityManager;
 
 import model.Veiculo;
 
-public interface VeiculoDAO extends JpaRepository<Veiculo, Integer>{
+public class VeiculoDAO{
+
+	public void salvar(Veiculo veiculo){
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		entityManager.getTransaction().begin();
+
+		entityManager.merge(veiculo);
+
+		entityManager.getTransaction().commit();
+
+		entityManager.close();
+	}
 
 }
