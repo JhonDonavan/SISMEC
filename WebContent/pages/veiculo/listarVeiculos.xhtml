@@ -6,30 +6,48 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
-		<h1>LISTAR VEICULOS</h1>
 
-		<form id="listaVeiculos">
-			<p:dataTable var="veiculos"
-				value="#{veiculoController.veiculos}" paginator="true" rows="15"
-				lazy="true">
-				<p:column headerText="Placa">
-					<h:outputText value="#{veiculos.placa}" />
-				</p:column>
+		<p:panel header="Veiculos cadastrados">
+			<div style="margin-right: 9800px;">
+				<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
+					action="cadastroVeiculo.xhtml"></p:commandButton>
+			</div>
 
-				<p:column headerText="UF">
-					<h:outputText value="#{veiculos.uf}" />
-				</p:column>
+			<form id="listaVeiculos">
+				<p:dataTable var="veiculos" value="#{veiculoController.veiculos}"
+					paginator="true" rows="15" lazy="true" style="margin-top: 7px;">
 
-				<p:column headerText="Cidade">
-					<h:outputText value="#{veiculos.cidade}" />
-				</p:column>
+					<p:column headerText="Placa">
+						<h:outputText value="#{veiculos.placa}" />
+					</p:column>
 
-				<p:column headerText="Cor">
-					<h:outputText value="#{veiculos.cor}" />
-				</p:column>
+					<p:column headerText="UF">
+						<h:outputText value="#{veiculos.uf}" />
+					</p:column>
 
-			</p:dataTable>
-		</form>
+					<p:column headerText="Cidade">
+						<h:outputText value="#{veiculos.cidade}" />
+					</p:column>
+
+					<p:column headerText="Cor">
+						<h:outputText value="#{veiculos.cor}" />
+					</p:column>
+
+					<p:column style="width=55px">
+						<p:button icon="ui-icon-pencil" title="Icon Only">
+							<f:param name="productId" value="30" />
+						</p:button>
+						
+						<p:button  icon="ui-icon-closethick"
+							title="Icon Only">
+							<f:param name="productId" value="30" />
+						</p:button>
+					</p:column>
+
+				</p:dataTable>
+			</form>
+		</p:panel>
+
 
 	</ui:define>
 

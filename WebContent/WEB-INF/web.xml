@@ -24,10 +24,10 @@
 		<param-value>cupertino</param-value>
 	</context-param>
 
-	<context-param>
+	<!-- <context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
-	</context-param>
+	</context-param> -->
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
