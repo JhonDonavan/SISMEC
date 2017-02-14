@@ -3,10 +3,35 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-<ui:decorate template="../layout/layoutPadrao.xhtml"></ui:decorate>
+<ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
+		<h1>LISTAR VEICULOS</h1>
 
+		<form id="listaVeiculos">
+			<p:dataTable var="veiculos"
+				value="#{veiculoController.veiculos}" paginator="true" rows="15"
+				lazy="true">
+				<p:column headerText="Placa">
+					<h:outputText value="#{veiculos.placa}" />
+				</p:column>
+
+				<p:column headerText="UF">
+					<h:outputText value="#{veiculos.uf}" />
+				</p:column>
+
+				<p:column headerText="Cidade">
+					<h:outputText value="#{veiculos.cidade}" />
+				</p:column>
+
+				<p:column headerText="Cor">
+					<h:outputText value="#{veiculos.cor}" />
+				</p:column>
+
+			</p:dataTable>
+		</form>
 
 	</ui:define>
+
+</ui:decorate>
 </html>

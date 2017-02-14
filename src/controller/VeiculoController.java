@@ -11,19 +11,19 @@ import javax.faces.context.FacesContext;
 import model.Veiculo;
 import modelDAO.VeiculoDAO;
 
-
 @ManagedBean
 @SessionScoped
 public class VeiculoController {
-	
-	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
+
 	private Veiculo veiculo = new Veiculo();
-	
-	public VeiculoController(){
-		 veiculo = new Veiculo();
+	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
+
+	public VeiculoController() {
+		veiculos = new VeiculoDAO().listar();
+		veiculo = new Veiculo();
 	}
-	
-	public void salvar(){
+
+	public void salvar() {
 		new VeiculoDAO().salvar(veiculo);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
 	}
@@ -34,6 +34,14 @@ public class VeiculoController {
 
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 	
 	
