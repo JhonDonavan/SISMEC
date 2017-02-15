@@ -34,14 +34,20 @@
 					</p:column>
 
 					<p:column style="width=55px">
-						<p:button icon="ui-icon-pencil" title="Icon Only">
-							<f:param name="productId" value="30" />
+						<div style="text-align:center;">
+						<p:button  icon="ui-icon-zoomin" title="Mais detalhes">
+							<f:param name="veiculo" value="#{veiculos.id}" />
 						</p:button>
 						
-						<p:button  icon="ui-icon-closethick"
-							title="Icon Only">
-							<f:param name="productId" value="30" />
+						<p:button icon="ui-icon-pencil" title="Editar veiculo">
+							<f:param name="veiculo" value="#{veiculos.id}" />
 						</p:button>
+						
+						<p:button  icon="ui-icon-closethick" title="Excluir veiculo">
+							<f:param name="veiculo" value="#{veiculos.id}" />
+						</p:button>
+						
+						</div>
 					</p:column>
 
 				</p:dataTable>

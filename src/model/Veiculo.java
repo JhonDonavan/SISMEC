@@ -20,6 +20,11 @@ public class Veiculo {
 	private String cidade;
 	
 	private String cor;
+	
+
+	public Integer getId() {
+		return Id;
+	}
 
 	public String getPlaca() {
 		return placa;

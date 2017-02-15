@@ -23,9 +23,12 @@ public class VeiculoController {
 		veiculo = new Veiculo();
 	}
 
-	public void salvar() {
+	public String salvar() {
 		new VeiculoDAO().salvar(veiculo);
+		veiculos = new VeiculoDAO().listar();
+		veiculo = new Veiculo();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
+		return "listarVeiculos?faces-redirect=true";
 	}
 
 	public Veiculo getVeiculo() {
