@@ -50,13 +50,12 @@
 					</p:column>
 				</p:dataTable>
 
-				<p:confirmDialog
-					widgetVar="excluirVeiculo"
+				<p:confirmDialog widgetVar="excluirVeiculo"
+					header="Confirmação de exclusão" severity="alert"
 					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}">
 					<div align="center">
-						<p:commandButton update="@form" value="Sim"
-							action="#{Veiculo.excluir()}"
-							onclick="PF('excluirVeiculo').hide()"
+						<p:commandButton value="Sim" action="#{Veiculo.excluir()}"
+							onclick="PF('excluirVeiculo').hide()" update="@form"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
 						</p:commandButton>
 
