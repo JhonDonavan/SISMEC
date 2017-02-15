@@ -11,7 +11,8 @@ import javax.faces.context.FacesContext;
 import model.Veiculo;
 import modelDAO.VeiculoDAO;
 
-@ManagedBean
+
+@ManagedBean(name = "Veiculo")
 @SessionScoped
 public class VeiculoController {
 
@@ -30,6 +31,26 @@ public class VeiculoController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
 		return "listarVeiculos?faces-redirect=true";
 	}
+	
+	public String editar(Veiculo veiculo){
+		this.veiculo = veiculo;
+		System.out.println("chegou ate aqui.");
+		return "cadastroVeiculo.xhtml?faces-redirect=true";
+	}
+	
+	public void prepararExclusao(Veiculo veiculo){
+		this.veiculo = veiculo;
+	}
+	
+	public void excluir(){
+		new VeiculoDAO().excluir(veiculo);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso!"));
+		veiculos = new VeiculoDAO().listar();
+	}
+	
+	
+	
+	
 
 	public Veiculo getVeiculo() {
 		return veiculo;

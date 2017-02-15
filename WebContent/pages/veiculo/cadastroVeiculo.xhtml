@@ -15,7 +15,7 @@
 					<p:growl />
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Placa do veiculo:" />
-						<p:inputText value="#{veiculoController.veiculo.placa}"
+						<p:inputText value="#{Veiculo.veiculo.placa}"
 							required="true"
 							requiredMessage="Voce deve preencher a placa do veiculo"
 							validatorMessage="A placa do veiculo deve ter 7 caracteres">
@@ -23,28 +23,26 @@
 							</p:inputText>
 
 						<p:outputLabel value="UF:" />
-						<p:inputText value="#{veiculoController.veiculo.uf}"
+						<p:inputText value="#{Veiculo.veiculo.uf}"
 							required="true" requiredMessage="Por favor preencha o estado do veiculo"
 							validatorMessage="UF deve ter 2 caracteres">
 							<f:validateLength minimum="2" maximum="2"></f:validateLength>
 							</p:inputText>
 
 						<p:outputLabel value="Cidade:" />
-						<p:inputText value="#{veiculoController.veiculo.cidade}"
+						<p:inputText value="#{Veiculo.veiculo.cidade}"
 							required="true"
 							requiredMessage="Por favor preencha a cidade do veiculo" />
 
 						<p:outputLabel value="Cor:" />
-						<p:inputText value="#{veiculoController.veiculo.cor}"
+						<p:inputText value="#{Veiculo.veiculo.cor}"
 							required="true" requiredMessage="Por favor informe a cor do veiculo" />
 						<br/><br/>
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{veiculoController.salvar}" update="@form" />
+							action="#{Veiculo.salvar}" update="@form" />
 					</h:panelGrid>
 				</h:form>
 			</p:panel>
-
-
 		</div>
 	</ui:define>
 </ui:decorate>

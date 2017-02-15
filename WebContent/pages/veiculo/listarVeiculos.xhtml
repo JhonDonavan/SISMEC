@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
@@ -13,8 +13,8 @@
 					action="cadastroVeiculo.xhtml"></p:commandButton>
 			</div>
 
-			<form id="listaVeiculos">
-				<p:dataTable var="veiculos" value="#{veiculoController.veiculos}"
+			<h:form id="listaVeiculos">
+				<p:dataTable var="veiculos" value="#{Veiculo.veiculos}"
 					paginator="true" rows="15" lazy="true" style="margin-top: 7px;">
 
 					<p:column headerText="Placa">
@@ -33,29 +33,46 @@
 						<h:outputText value="#{veiculos.cor}" />
 					</p:column>
 
-					<p:column style="width=55px">
-						<div style="text-align:center;">
-						<p:button  icon="ui-icon-zoomin" title="Mais detalhes">
-							<f:param name="veiculo" value="#{veiculos.id}" />
-						</p:button>
-						
-						<p:button icon="ui-icon-pencil" title="Editar veiculo">
-							<f:param name="veiculo" value="#{veiculos.id}" />
-						</p:button>
-						
-						<p:button  icon="ui-icon-closethick" title="Excluir veiculo">
-							<f:param name="veiculo" value="#{veiculos.id}" />
-						</p:button>
-						
-						</div>
-					</p:column>
+					<p:column style="text-align:center;">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
 
+						<p:commandButton icon="ui-icon-pencil"
+							action="#{Veiculo.editar(veiculos)}">
+						</p:commandButton>
+
+						<p:commandButton update="@form" id="BotaoExcluir"
+							icon="ui-icon-closethick" title="Excluir veiculo"
+							actionListener="#{Veiculo.prepararExclusao(veiculos)}"
+							oncomplete="PF('excluirVeiculo').show()">
+						</p:commandButton>
+
+					</p:column>
 				</p:dataTable>
-			</form>
+
+				<p:confirmDialog
+					widgetVar="excluirVeiculo"
+					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}">
+					<div align="center">
+						<p:commandButton update="@form" value="Sim"
+							action="#{Veiculo.excluir()}"
+							onclick="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+						</p:commandButton>
+
+						<p:commandButton value="Não" onclick="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close">
+						</p:commandButton>
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
 		</p:panel>
 
 
 	</ui:define>
 
 </ui:decorate>
+
+
 </html>

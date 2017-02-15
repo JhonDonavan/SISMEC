@@ -7,9 +7,9 @@ import javax.persistence.Query;
 
 import model.Veiculo;
 
-public class VeiculoDAO{
+public class VeiculoDAO {
 
-	public void salvar(Veiculo veiculo){
+	public void salvar(Veiculo veiculo) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 
 		entityManager.getTransaction().begin();
@@ -23,12 +23,27 @@ public class VeiculoDAO{
 
 	@SuppressWarnings("unchecked")
 	public List<Veiculo> listar() {
-		
+
 		EntityManager entityManager = JPAUtil.getEntityManager();
 
 		Query query = entityManager.createQuery("from Veiculo");
-		
+
 		return query.getResultList();
+	}
+
+	public void excluir(Veiculo veiculo) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		entityManager.getTransaction().begin();
+
+		veiculo = entityManager.merge(veiculo);
+
+		entityManager.remove(veiculo);
+
+		entityManager.getTransaction().commit();
+
+		entityManager.close();
+
 	}
 
 }
