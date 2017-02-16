@@ -14,6 +14,7 @@
 			</div>
 
 			<h:form id="listaVeiculos">
+
 				<p:dataTable var="veiculos" value="#{Veiculo.veiculos}"
 					paginator="true" rows="15" lazy="true" style="margin-top: 7px;">
 
@@ -37,30 +38,31 @@
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
 						</p:commandButton>
 
-						<p:commandButton icon="ui-icon-pencil"
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{Veiculo.editar(veiculos)}">
 						</p:commandButton>
 
-						<p:commandButton update="@form" id="BotaoExcluir"
-							icon="ui-icon-closethick" title="Excluir veiculo"
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							actionListener="#{Veiculo.prepararExclusao(veiculos)}"
-							oncomplete="PF('excluirVeiculo').show()">
+							oncomplete="PF('excluirVeiculo').show()" update="@form">
 						</p:commandButton>
+
 
 					</p:column>
 				</p:dataTable>
 
-				<p:confirmDialog widgetVar="excluirVeiculo"
-					header="Confirmação de exclusão" severity="alert"
+				<p:confirmDialog widgetVar="excluirVeiculo" appendTo="@(body)" 
+					header="Confirmação de exclusão"
 					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}">
 					<div align="center">
-						<p:commandButton value="Sim" action="#{Veiculo.excluir()}"
-							onclick="PF('excluirVeiculo').hide()" update="@form"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+						<p:commandButton value="Sim" 
+							action="#{Veiculo.excluir()}" onclick="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="@form">
 						</p:commandButton>
 
-						<p:commandButton value="Não" onclick="PF('excluirVeiculo').hide()"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close">
+						<p:commandButton value="Não"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+							onclick="PF('excluirVeiculo').hide()"> 
 						</p:commandButton>
 					</div>
 				</p:confirmDialog>
@@ -68,9 +70,7 @@
 			</h:form>
 		</p:panel>
 
-
 	</ui:define>
-
 </ui:decorate>
 
 

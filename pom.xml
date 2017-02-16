@@ -179,7 +179,7 @@
 		<!-- Primefaces Theme Library -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>cupertino</artifactId>
+			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>
 		</dependency>
 
