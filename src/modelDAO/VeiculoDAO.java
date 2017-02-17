@@ -35,9 +35,9 @@ public class VeiculoDAO {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 
 		entityManager.getTransaction().begin();
-
+		
 		veiculo = entityManager.merge(veiculo);
-
+		
 		entityManager.remove(veiculo);
 
 		entityManager.getTransaction().commit();

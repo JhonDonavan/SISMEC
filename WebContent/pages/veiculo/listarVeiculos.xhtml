@@ -13,10 +13,9 @@
 					action="cadastroVeiculo.xhtml"></p:commandButton>
 			</div>
 
-			<h:form id="listaVeiculos">
-
+			<h:form>
 				<p:dataTable var="veiculos" value="#{Veiculo.veiculos}"
-					paginator="true" rows="15" lazy="true" style="margin-top: 7px;">
+					paginator="true" rows="15" lazy="true" style="margin-top:7px;">
 
 					<p:column headerText="Placa">
 						<h:outputText value="#{veiculos.placa}" />
@@ -43,27 +42,30 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{Veiculo.prepararExclusao(veiculos)}"
-							oncomplete="PF('excluirVeiculo').show()" update="@form">
+							actionListener="#{Veiculo.excluir(veiculos)}"
+							 update="@form">
 						</p:commandButton>
-						<!--  -->
-
+						<!--COMENTARIO ABAIXO CHAMA CONFIRMDIALOG DO FIM DA PAGINA  -->
+						<!-- oncomplete="PF('excluirVeiculo').show()"  -->
 					</p:column>
 				</p:dataTable>
 
-				<p:confirmDialog widgetVar="excluirVeiculo" appendTo="@(body)"
-					update="@form" header="Confirmação de exclusão"
-					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}">
-					<div align="center">
+				
+				
+				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
+				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
+				<p:confirmDialog widgetVar="excluirVeiculo"
+					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
+					appendTo="@(body)">
+					<div style="text-align: center;">
 
 						<p:commandButton value="Sim" action="#{Veiculo.excluir()}"
-							onclick="PF('excluirVeiculo').hide()" update="@form"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
-						</p:commandButton>
+							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
-						<p:commandButton value="Não" styleClass="ui-confirmdialog-no"
-							icon="ui-icon-close" onclick="PF('excluirVeiculo').hide()">
-						</p:commandButton>
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 
 					</div>
 				</p:confirmDialog>

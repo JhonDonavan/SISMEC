@@ -17,8 +17,6 @@ public class VeiculoController {
 
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
-	
-	
 
 	public VeiculoController() {
 		veiculos = new VeiculoDAO().listar();
@@ -32,21 +30,22 @@ public class VeiculoController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
 		return "listarVeiculos?faces-redirect=true";
 	}
-	
-	public String editar(Veiculo veiculo){
+
+	public String editar(Veiculo veiculo) {
 		this.veiculo = veiculo;
 		return "cadastroVeiculo.xhtml?faces-redirect=true";
 	}
-	
-	public void prepararExclusao(Veiculo veiculo){
+
+	/*METODO ABAIXO É USADO COM EXCLUSAO PELO CONFIRM DALOG // NAO ESTA EM USO NO MOMENTO*/
+	public void prepararExclusao(Veiculo veiculo) {
 		this.veiculo = veiculo;
-		System.out.println("Fim do metodo prepararExclusao");
 	}
-	
-	public void excluir(){
+
+	public void excluir(Veiculo veiculo) {
 		new VeiculoDAO().remove(veiculo);
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Curso excluido com sucesso"));
 		veiculos = new VeiculoDAO().listar();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso!"));
 	}
 
 	public Veiculo getVeiculo() {
