@@ -43,27 +43,28 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							actionListener="#{Veiculo.prepararExclusao(veiculos)}"
-							oncomplete="PF('excluirVeiculo').show()" update="@form">
+							action="#{Veiculo.excluir(veiculos)}" update="@form">
 						</p:commandButton>
+						<!-- oncomplete="PF('excluirVeiculo').show()" -->
 
 
 					</p:column>
 				</p:dataTable>
 
-				<p:confirmDialog widgetVar="excluirVeiculo" appendTo="@(body)" 
-					header="Confirmação de exclusão"
+				<p:confirmDialog widgetVar="excluirVeiculo" appendTo="@(body)"  update="@form"
 					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}">
 					<div align="center">
+					
 						<p:commandButton value="Sim" 
-							action="#{Veiculo.excluir()}" onclick="PF('excluirVeiculo').hide()"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update="@form">
+							actionListener="#{Veiculo.excluir()}" onclick="PF('excluirVeiculo').hide()" update="@form"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
 						</p:commandButton>
 
 						<p:commandButton value="Não"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
 							onclick="PF('excluirVeiculo').hide()"> 
 						</p:commandButton>
+						
 					</div>
 				</p:confirmDialog>
 

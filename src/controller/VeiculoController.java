@@ -17,6 +17,8 @@ public class VeiculoController {
 
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
+	
+	
 
 	public VeiculoController() {
 		veiculos = new VeiculoDAO().listar();
@@ -25,8 +27,8 @@ public class VeiculoController {
 
 	public String salvar() {
 		new VeiculoDAO().salvar(veiculo);
-		veiculos = new VeiculoDAO().listar();
 		veiculo = new Veiculo();
+		veiculos = new VeiculoDAO().listar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
 		return "listarVeiculos?faces-redirect=true";
 	}
@@ -38,14 +40,14 @@ public class VeiculoController {
 	
 	public void prepararExclusao(Veiculo veiculo){
 		this.veiculo = veiculo;
+		System.out.println("Fim do metodo prepararExclusao");
 	}
 	
-	public void excluir(){
+	public void excluir(Veiculo veiculo){
 		System.out.println("Fim do metodo excluir");
-		new VeiculoDAO().excluir(veiculo);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso!"));
+		new VeiculoDAO().remove(veiculo);
 		veiculos = new VeiculoDAO().listar();
-		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso!"));
 	}
 
 	public Veiculo getVeiculo() {

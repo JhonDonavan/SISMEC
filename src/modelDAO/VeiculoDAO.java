@@ -31,7 +31,7 @@ public class VeiculoDAO {
 		return query.getResultList();
 	}
 
-	public void excluir(Veiculo veiculo) {
+	public void remove(Veiculo veiculo) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 
 		entityManager.getTransaction().begin();
