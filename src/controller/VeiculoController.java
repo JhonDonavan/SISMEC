@@ -43,8 +43,7 @@ public class VeiculoController {
 		System.out.println("Fim do metodo prepararExclusao");
 	}
 	
-	public void excluir(Veiculo veiculo){
-		System.out.println("Fim do metodo excluir");
+	public void excluir(){
 		new VeiculoDAO().remove(veiculo);
 		veiculos = new VeiculoDAO().listar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso!"));
