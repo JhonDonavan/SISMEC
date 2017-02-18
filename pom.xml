@@ -88,6 +88,14 @@
 			<version>5.2.6.Final</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.0.Final</version>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/antlr/antlr -->
 		<dependency>
 			<groupId>antlr</groupId>
@@ -183,9 +191,29 @@
 			<version>1.0.10</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
-		<!-- <dependency> <groupId>org.webjars</groupId> <artifactId>font-awesome</artifactId> 
-			<version>4.7.0</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+
+		<!-- EXPORTAR PARA PDFS E XLS -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
+
 
 
 	</dependencies>

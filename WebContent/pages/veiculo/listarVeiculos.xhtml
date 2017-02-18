@@ -14,13 +14,15 @@
 			</div>
 
 			<h:form>
-				<p:dataTable var="veiculos" value="#{Veiculo.veiculos}"
-					paginator="true" rows="15" 
+				<p:growl />
+				<p:dataTable id="VeiculosLista" var="veiculos"
+					value="#{Veiculo.veiculos}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Placa" sortBy="#{veiculos.placa}" filterBy="#{veiculos.placa}" filterMatchMode="contains">
+					<p:column headerText="Placa" sortBy="#{veiculos.placa}"
+						filterBy="#{veiculos.placa}" filterMatchMode="contains">
 						<h:outputText value="#{veiculos.placa}" />
 					</p:column>
 
@@ -36,7 +38,7 @@
 						<h:outputText value="#{veiculos.cor}" />
 					</p:column>
 
-					<p:column style="text-align:center;">
+					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
 						</p:commandButton>
 
@@ -45,12 +47,22 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							actionListener="#{Veiculo.excluir(veiculos)}" update="@form">
+							action="#{Veiculo.excluir(veiculos)}" update="@form">
 						</p:commandButton>
-						<!--COMENTARIO ABAIXO CHAMA CONFIRMDIALOG DO FIM DA PAGINA  -->
-						<!-- oncomplete="PF('excluirVeiculo').show()"  -->
 					</p:column>
 				</p:dataTable>
+
+				<br />
+				<h:commandLink value="Exportar XLS">
+					<p:dataExporter type="xls" target="VeiculosLista"
+						fileName="Veiculos" />
+				</h:commandLink>
+			
+				<br />
+
+				<h:commandLink value="Exportar PDF">
+					<p:dataExporter type="pdf" target="VeiculosLista" fileName="Veiculos" />
+				</h:commandLink>
 
 
 
@@ -61,7 +73,7 @@
 					appendTo="@(body)">
 					<div style="text-align: center;">
 
-						<p:commandButton value="Sim" action="#{Veiculo.excluir()}"
+						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
 							update="@form" oncomplete="PF('excluirVeiculo').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 

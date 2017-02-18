@@ -14,7 +14,7 @@
 				<h:form id="cadastrarVeiculo">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Placa do veiculo:" />
+						<h:outputLabel value="Placa do veiculo:"/>
 						<p:inputText value="#{Veiculo.veiculo.placa}"
 							required="true"
 							requiredMessage="Voce deve preencher a placa do veiculo"
@@ -23,10 +23,8 @@
 							</p:inputText>
 
 						<p:outputLabel value="UF:" />
-						<p:inputText value="#{Veiculo.veiculo.uf}"
-							required="true" requiredMessage="Por favor preencha o estado do veiculo"
-							validatorMessage="UF deve ter 2 caracteres">
-							<f:validateLength minimum="2" maximum="2"></f:validateLength>
+						<p:inputText value="#{Veiculo.veiculo.uf}">
+							
 							</p:inputText>
 
 						<p:outputLabel value="Cidade:" />

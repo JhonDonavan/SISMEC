@@ -36,8 +36,8 @@ public class VeiculoController {
 	public String salvar() {
 		new VeiculoDAO().salvar(veiculo);
 		veiculo = new Veiculo();
-		veiculos = new VeiculoDAO().listar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
+		veiculos = new VeiculoDAO().listar();
 		return "listarVeiculos?faces-redirect=true";
 	}
 
@@ -54,7 +54,7 @@ public class VeiculoController {
 	public void excluir(Veiculo veiculo) {
 		new VeiculoDAO().remove(veiculo);
 		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Curso excluido com sucesso"));
+				new FacesMessage("Veiculo excluido com sucesso"));
 		veiculos = new VeiculoDAO().listar();
 	}
 
