@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,12 +16,21 @@ import modelDAO.VeiculoDAO;
 @SessionScoped
 public class VeiculoController {
 
+	
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
-
+	
+		
 	public VeiculoController() {
 		veiculos = new VeiculoDAO().listar();
 		veiculo = new Veiculo();
+	}
+	
+	@SuppressWarnings("unused")
+	@PostConstruct
+	public void init(){
+		List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
+		listaVeiculos = new VeiculoDAO().listar();
 	}
 
 	public String salvar() {

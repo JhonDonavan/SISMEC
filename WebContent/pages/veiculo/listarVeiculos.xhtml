@@ -15,17 +15,20 @@
 
 			<h:form>
 				<p:dataTable var="veiculos" value="#{Veiculo.veiculos}"
-					paginator="true" rows="15" lazy="true" style="margin-top:7px;">
+					paginator="true" rows="15" 
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
 
-					<p:column headerText="Placa">
+					<p:column headerText="Placa" sortBy="#{veiculos.placa}" filterBy="#{veiculos.placa}" filterMatchMode="contains">
 						<h:outputText value="#{veiculos.placa}" />
 					</p:column>
 
-					<p:column headerText="UF">
+					<p:column headerText="UF" sortBy="#{veiculos.uf}">
 						<h:outputText value="#{veiculos.uf}" />
 					</p:column>
 
-					<p:column headerText="Cidade">
+					<p:column headerText="Cidade" sortBy="#{veiculos.cidade}">
 						<h:outputText value="#{veiculos.cidade}" />
 					</p:column>
 
@@ -42,16 +45,15 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							actionListener="#{Veiculo.excluir(veiculos)}"
-							 update="@form">
+							actionListener="#{Veiculo.excluir(veiculos)}" update="@form">
 						</p:commandButton>
 						<!--COMENTARIO ABAIXO CHAMA CONFIRMDIALOG DO FIM DA PAGINA  -->
 						<!-- oncomplete="PF('excluirVeiculo').show()"  -->
 					</p:column>
 				</p:dataTable>
 
-				
-				
+
+
 				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
 				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
 				<p:confirmDialog widgetVar="excluirVeiculo"
