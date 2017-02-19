@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.validator.constraints.Length;
@@ -17,10 +19,14 @@ public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "CLIENTE_ID", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "CLIENTE_ID", sequenceName = "SEQ_CLIENTE", allocationSize = 1)
+	@GeneratedValue(generator = "VEICULO_ID", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "VEICULO_ID", sequenceName = "SEQ_VEICULO", allocationSize = 1)
 	private Integer Id;
 
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
 	private String placa;
 
 	private String uf;
