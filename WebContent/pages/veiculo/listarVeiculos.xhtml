@@ -6,14 +6,27 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
+		<h:form>
+			<p:panel header="Veiculos cadastrados">
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
+						action="cadastroVeiculo.xhtml" style="margin-right: 985px;" />
+					<div style="margin-left: 990px;position:absolute; margin-top:-30px;">
+						<h:commandLink>
+							<p:graphicImage value="/resources/imagens/icon_xls.png" />
+							<p:dataExporter type="xls" target="VeiculosLista"
+								fileName="Veiculos" encoding="iso-8859-1" />
+						</h:commandLink>
 
-		<p:panel header="Veiculos cadastrados">
-			<div style="margin-right: 9800px;">
-				<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
-					action="cadastroVeiculo.xhtml"></p:commandButton>
-			</div>
+						<h:commandLink>
+							<p:graphicImage value="/resources/imagens/icon_pdf.png" />
+							<p:dataExporter type="pdf" target="VeiculosLista"
+								fileName="Veiculos" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
 
-			<h:form>
+
 				<p:growl />
 				<p:dataTable id="VeiculosLista" var="veiculos"
 					value="#{Veiculo.veiculos}" paginator="true" rows="15"
@@ -52,20 +65,6 @@
 					</p:column>
 				</p:dataTable>
 
-				<br />
-				<h:commandLink value="Exportar XLS">
-					<p:dataExporter type="xls" target="VeiculosLista"
-						fileName="Veiculos" encoding="iso-8859-1"/>
-				</h:commandLink>
-			
-				<br />
-
-				<h:commandLink value="Exportar PDF">
-					<p:dataExporter type="pdf" target="VeiculosLista" fileName="Veiculos" 
-					encoding="iso-8859-1" />
-				</h:commandLink>
-
-
 
 				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
 				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
@@ -85,9 +84,9 @@
 					</div>
 				</p:confirmDialog>
 
-			</h:form>
-		</p:panel>
 
+			</p:panel>
+		</h:form>
 	</ui:define>
 </ui:decorate>
 
