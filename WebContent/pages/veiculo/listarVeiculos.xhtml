@@ -6,20 +6,22 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
-		<h:form>
-			<p:panel header="Veiculos cadastrados">
+
+		<p:panel header="Veiculos cadastrados">
+			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
 						action="cadastroVeiculo.xhtml" style="margin-right: 985px;" />
-					<div style="margin-left: 990px;position:absolute; margin-top:-30px;">
+					<div
+						style="margin-left: 985px; position: absolute; margin-top: -30px;">
 						<h:commandLink>
-							<p:graphicImage value="/resources/imagens/icon_xls.png" />
+							<p:graphicImage library="imagens"  name="icon_xls.png" />
 							<p:dataExporter type="xls" target="VeiculosLista"
 								fileName="Veiculos" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
-							<p:graphicImage value="/resources/imagens/icon_pdf.png" />
+							<p:graphicImage library="imagens"  name="icon_pdf.png" />
 							<p:dataExporter type="pdf" target="VeiculosLista"
 								fileName="Veiculos" encoding="iso-8859-1" />
 						</h:commandLink>
@@ -84,9 +86,9 @@
 					</div>
 				</p:confirmDialog>
 
+			</h:form>
+		</p:panel>
 
-			</p:panel>
-		</h:form>
 	</ui:define>
 </ui:decorate>
 

@@ -21,8 +21,9 @@
 
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>redmond</param-value>
+		<param-value>bootstrap</param-value>
 	</context-param>
+	<!-- redmond -->
 
 	<!-- <context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
