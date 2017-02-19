@@ -55,13 +55,14 @@
 				<br />
 				<h:commandLink value="Exportar XLS">
 					<p:dataExporter type="xls" target="VeiculosLista"
-						fileName="Veiculos" />
+						fileName="Veiculos" encoding="iso-8859-1"/>
 				</h:commandLink>
 			
 				<br />
 
 				<h:commandLink value="Exportar PDF">
-					<p:dataExporter type="pdf" target="VeiculosLista" fileName="Veiculos" />
+					<p:dataExporter type="pdf" target="VeiculosLista" fileName="Veiculos" 
+					encoding="iso-8859-1" />
 				</h:commandLink>
 
 
