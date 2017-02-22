@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 public class Cliente implements Serializable{
 	
