@@ -7,5 +7,7 @@ public class Peca {
 	private String nome;
 	
 	private String num;
+	
+	private int qtd;
 
 }
