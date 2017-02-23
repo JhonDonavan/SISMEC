@@ -5,5 +5,7 @@ public class Peca {
 	private Long id;
 	
 	private String nome;
+	
+	private String num;
 
 }
