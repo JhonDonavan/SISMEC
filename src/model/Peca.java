@@ -1,6 +1,8 @@
 package model;
 
-public class Peca {
+import java.io.Serializable;
+
+public class Peca implements Serializable{
 	
 	private Long id;
 	
