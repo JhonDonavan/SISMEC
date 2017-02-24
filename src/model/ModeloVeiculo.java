@@ -1,10 +1,23 @@
 package model;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @ManagedBean
-public class ModeloVeiculo {
+public class ModeloVeiculo implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(generator = "MODELOVEICULO_ID", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "MODELOVEICULO_ID", sequenceName = "SEQ_MODELOVEICULO", allocationSize = 1)
 	private Integer id;
 	private String nome;
 	private String sigla;
@@ -13,6 +26,13 @@ public class ModeloVeiculo {
 	private Integer numPortas;
 	private TipoCombustivel combustivel_1;
 	private TipoCombustivel combustivel_2;
+	@ManyToOne
+	@JoinColumn(name="montadora_id")
+	private Montadora montadora;
+
+	public Integer getId() {
+		return id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -69,4 +89,15 @@ public class ModeloVeiculo {
 	public void setCombustivel_2(TipoCombustivel combustivel_2) {
 		this.combustivel_2 = combustivel_2;
 	}
+
+	public Montadora getMontadora() {
+		return montadora;
+	}
+
+	public void setMontadora(Montadora montadora) {
+		this.montadora = montadora;
+	}
+	
+	
+	
 }
