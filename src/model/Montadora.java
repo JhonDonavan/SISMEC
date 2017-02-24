@@ -3,27 +3,30 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-
+@ManagedBean
+@Entity
 public class Montadora implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator = "MONTADORE_ID", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "MONTADORE_ID", sequenceName = "SEQ_MONTADORA", allocationSize = 1)
+	@GeneratedValue(generator = "MONTADORA_ID", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "MONTADORA_ID", sequenceName = "SEQ_MONTADORA", allocationSize = 1)
 	private Integer id;
 	private String nome;
 	private String pais;
 	private String site;
 	
-	@OneToMany(mappedBy = "modeloVeiculo", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<ModeloVeiculo> modeloVeiculo;
 
 	public String getNome() {
