@@ -19,7 +19,8 @@ public class Peca implements Serializable{
 	private long id;
 	
 	private String nome;
-	/*dsfksdfksldkfsdgkdksfgkdgfgfhggdsfgh*/
+	/*dsfksdfksldkfsdgkdksfgkdgfgfhggdsfghdfgdfgdfgdfg
+	 * sdfdsfgsd*/
 	private String num;
 	
 	private int qtd;
