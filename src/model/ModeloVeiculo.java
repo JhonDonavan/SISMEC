@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @ManagedBean
+@Entity
 public class ModeloVeiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +29,7 @@ public class ModeloVeiculo implements Serializable {
 	private Integer numPortas;
 	private TipoCombustivel combustivel_1;
 	private TipoCombustivel combustivel_2;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="montadora_id")
 	private Montadora montadora;
 
