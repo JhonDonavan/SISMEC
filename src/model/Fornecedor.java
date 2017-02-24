@@ -31,5 +31,9 @@ public class Fornecedor implements Serializable{
 	private String nome;
 	
 	private String telfornecedor;
+	
+	private String email;
+	
+	private String cnpg;
 
 }
