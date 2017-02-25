@@ -38,7 +38,6 @@ public class TesteRelacionamentoModeloVeiculo {
 		
 		System.out.println("Veiculo e modelo cadastrado com sucesso");
 		
-		
 
 	}
 }

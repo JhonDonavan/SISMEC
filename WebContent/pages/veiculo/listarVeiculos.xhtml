@@ -12,16 +12,17 @@
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
 						action="cadastroVeiculo.xhtml" style="margin-right: 985px;" />
-					
-					<div class="ui-fluid" style="float:right; position: absoulute; margin-top: -28px;">
+
+					<div class="ui-fluid"
+						style="float: right; position: absoulute; margin-top: -28px;">
 						<h:commandLink>
-							<p:graphicImage library="imagens"  name="icon_xls.png" />
+							<p:graphicImage library="imagens" name="icon_xls.png" />
 							<p:dataExporter type="xls" target="VeiculosLista"
 								fileName="Veiculos" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
-							<p:graphicImage library="imagens"  name="icon_pdf.png" />
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
 							<p:dataExporter type="pdf" target="VeiculosLista"
 								fileName="Veiculos" encoding="iso-8859-1" />
 						</h:commandLink>
@@ -41,11 +42,11 @@
 						<h:outputText value="#{veiculos.placa}" />
 					</p:column>
 
-					<p:column headerText="UF" sortBy="#{veiculos.uf}">
-						<h:outputText value="#{veiculos.uf}" />
+					<p:column headerText="Modelo">
+						<h:outputText value="#{veiculos.getModelo().getNome()}" />
 					</p:column>
 
-					<p:column headerText="Cidade" sortBy="#{veiculos.cidade}">
+					<p:column headerText="Cidade" sortBy="#{veiculos.get}">
 						<h:outputText value="#{veiculos.cidade}" />
 					</p:column>
 

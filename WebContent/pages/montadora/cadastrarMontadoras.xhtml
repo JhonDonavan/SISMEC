@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastro de montadoras de veiculos"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarMontadoras">
+					<p:growl />
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Nome da montadora:"/>
+						<p:inputText value="#{Montadora.montadora.nome}"
+							required="true"
+							requiredMessage="Voce deve preencher o nome do modelo">
+							</p:inputText>
+
+						<p:outputLabel value="Pais origem:" />
+						<p:inputText value="#{Montadora.montadora.pais}">
+							
+							</p:inputText>
+
+						<p:outputLabel value="WEB SITE:" />
+						<p:inputText value="#{Montadora.montadora.site}"
+							required="true"
+							requiredMessage="Por favor preencha o WEB SITE da montadora" />
+
+						<br/><br/>
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{Montadora.salvar}" update="@form" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>
