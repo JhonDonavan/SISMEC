@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,18 @@ public class Veiculo implements Serializable {
 	private String cidade;
 
 	private String cor;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="modelo_id")
+	private ModeloVeiculo modelo;
+	
+	public ModeloVeiculo getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(ModeloVeiculo modelo) {
+		this.modelo = modelo;
+	}
 
 	public Integer getId() {
 		return Id;
