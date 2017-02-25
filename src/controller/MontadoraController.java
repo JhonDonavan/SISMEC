@@ -38,7 +38,7 @@ public class MontadoraController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora cadastrada com sucesso!"));
 		montadoras = new MontadoraDAO().listar();
 		
-		return "cadastrarMontadoras?faces-redirect=true";
+		return "listarMontadoras?faces-redirect=true";
 	}
 
 	public Montadora getMontadora() {
