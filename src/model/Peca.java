@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -18,15 +20,26 @@ public class Peca implements Serializable{
 	@SequenceGenerator(name = "PECA_ID", sequenceName = "SEQ_PECA", allocationSize = 1)
 	private long id;
 	
+	@ManyToOne
+	@JoinColumn(name="fornecedor_id")
+	private Fornecedor fornecedor;
+	
 	private String nome;
-	/*dsfksdfksldkfsdgkdksfgkdgfgfhggdsfghdfgdfgdfgdfg
-	 * sdfdsfgsd*/
+
 	private String num;
 	
 	private int qtd;
 
 	public long getId() {
 		return id;
+	}
+	
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 
 	public String getNome() {
@@ -52,6 +65,5 @@ public class Peca implements Serializable{
 	public void setQtd(int qtd) {
 		this.qtd = qtd;
 	}
-	
 
 }
