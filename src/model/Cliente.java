@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,7 @@ public class Cliente implements Serializable{
 	
 	private String cpf;
 
-	private int idade;
+	private Date idade;
 	
 	private String telefone;
 	
@@ -42,46 +43,6 @@ public class Cliente implements Serializable{
 
 	public Integer getId() {
 		return id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public int getIdade() {
-		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-	
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getCelular() {
-		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
 	}
 	
 	public Endereco getEndereco() {
@@ -101,7 +62,46 @@ public class Cliente implements Serializable{
 
 	public void setVeiculo(List<Veiculo> veiculo) {
 		this.veiculo = veiculo;
+	}	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Date getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Date idade) {
+		this.idade = idade;
 	}
 	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 
 }

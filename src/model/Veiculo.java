@@ -39,6 +39,14 @@ public class Veiculo implements Serializable {
 		return Id;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	@NotEmpty(message="O campo 'PLACA' deve ser informado")
 	public String getPlaca() {
 		return placa;
