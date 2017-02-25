@@ -1,8 +1,12 @@
 package modelDAO;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import model.Montadora;
+import model.Veiculo;
 
 public class MontadoraDAO {
 
@@ -17,6 +21,16 @@ public class MontadoraDAO {
 
 		entityManager.close();
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Montadora> listar() {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		Query query = entityManager.createQuery("from Montadora");
+
+		return query.getResultList();
 	}
 
 }

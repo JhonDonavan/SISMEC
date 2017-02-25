@@ -26,13 +26,14 @@ public class VeiculoController {
 		veiculo = new Veiculo();
 	}
 	
-	@SuppressWarnings("unused")
+	/*VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA*/
+	/*@SuppressWarnings("unused")
 	@PostConstruct
 	public void init(){
 		List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
 		listaVeiculos = new VeiculoDAO().listar();
 	}
-
+*/
 	public String salvar() {
 		new VeiculoDAO().salvar(veiculo);
 		veiculo = new Veiculo();

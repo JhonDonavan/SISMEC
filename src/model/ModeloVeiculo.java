@@ -1,15 +1,18 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @ManagedBean
@@ -32,6 +35,18 @@ public class ModeloVeiculo implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="montadora_id")
 	private Montadora montadora;
+	
+	@OneToMany(mappedBy = "modelo", targetEntity = Veiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Veiculo> veiculo;
+	
+
+	public List<Veiculo> getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(List<Veiculo> veiculo) {
+		this.veiculo = veiculo;
+	}
 
 	public Integer getId() {
 		return id;

@@ -7,52 +7,49 @@
 
 	<ui:define name="conteudo">
 
-		<p:panel header="Veiculos cadastrados">
+		<p:panel header="Montadoras cadastrados">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
-						action="cadastroVeiculo.xhtml" style="margin-right: 985px;" />
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaMontadora"
+						action="cadastrarMontadoras.xhtml" style="margin-right: 985px;" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: -28px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
-							<p:dataExporter type="xls" target="VeiculosLista"
-								fileName="Veiculos" encoding="iso-8859-1" />
+							<p:dataExporter type="xls" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_pdf.png" />
-							<p:dataExporter type="pdf" target="VeiculosLista"
-								fileName="Veiculos" encoding="iso-8859-1" />
+							<p:dataExporter type="pdf" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
 						</h:commandLink>
 					</div>
 				</div>
 
 
 				<p:growl />
-				<p:dataTable id="VeiculosLista" var="veiculos"
-					value="#{Veiculo.veiculos}" paginator="true" rows="15"
+				<p:dataTable id="MontadorasLista" var="montadora"
+					value="#{Montadora.montadoras}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Placa" sortBy="#{veiculos.placa}"
-						filterBy="#{veiculos.placa}" filterMatchMode="contains">
-						<h:outputText value="#{veiculos.placa}" />
+					<p:column headerText="Nome" sortBy="#{montadora.nome}"
+						filterBy="#{montadora.nome}" filterMatchMode="contains">
+						<h:outputText value="#{montadora.nome}" />
 					</p:column>
 
-					<p:column headerText="Modelo">
-						<h:outputText value="#{veiculos.getModelo().getNome()}" />
+					<p:column headerText="País" sortBy="#{montadora.pais}">
+						<h:outputText value="#{montadora.pais}" />
 					</p:column>
 
-					<p:column headerText="Cidade" sortBy="#{veiculos.get}">
-						<h:outputText value="#{veiculos.cidade}" />
+					<p:column headerText="WEB SITE" sortBy="#{montadora.site}">
+						<h:outputText value="#{montadora.site}" />
 					</p:column>
 
-					<p:column headerText="Cor" sortBy="#{veiculos.cor}">
-						<h:outputText value="#{veiculos.cor}" />
-					</p:column>
 
 					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
