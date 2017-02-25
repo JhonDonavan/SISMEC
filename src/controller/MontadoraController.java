@@ -24,12 +24,13 @@ public class MontadoraController {
 		montadora = new Montadora();
 	}
 
-	@SuppressWarnings("unused")
+	/*VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA*/
+	/*@SuppressWarnings("unused")
 	@PostConstruct
 	public void init() {
 		List<Montadora> listaMontadoras = new ArrayList<Montadora>();
 		listaMontadoras = new MontadoraDAO().listar();
-	}
+	}*/
 
 	public String salvar() {
 		new MontadoraDAO().salvar(montadora);

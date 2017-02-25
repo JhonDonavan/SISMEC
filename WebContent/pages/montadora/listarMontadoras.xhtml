@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel header="Montadoras cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaMontadora"
+						action="cadastrarMontadoras.xhtml" style="margin-right: 985px;" />
+
+					<div class="ui-fluid"
+						style="float: right; position: absoulute; margin-top: -28px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+
+
+				<p:growl />
+				<p:dataTable id="MontadorasLista" var="montadora"
+					value="#{Montadora.montadoras}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+
+					<p:column headerText="Nome" sortBy="#{montadora.nome}"
+						filterBy="#{montadora.nome}" filterMatchMode="contains">
+						<h:outputText value="#{montadora.nome}" />
+					</p:column>
+
+					<p:column headerText="País" sortBy="#{montadora.pais}">
+						<h:outputText value="#{montadora.pais}" />
+					</p:column>
+
+					<p:column headerText="WEB SITE" sortBy="#{montadora.site}">
+						<h:outputText value="#{montadora.site}" />
+					</p:column>
+
+
+					<p:column style="text-align:center;" exportable="false">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{Veiculo.editar(veiculos)}">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							action="#{Veiculo.excluir(veiculos)}" update="@form">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
+				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
+				<p:confirmDialog widgetVar="excluirVeiculo"
+					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
+					appendTo="@(body)">
+					<div style="text-align: center;">
+
+						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
+							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
+</html>
