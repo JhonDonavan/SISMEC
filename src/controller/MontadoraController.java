@@ -9,7 +9,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Montadora;
+import model.Veiculo;
 import modelDAO.MontadoraDAO;
+import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Montadora")
 @SessionScoped
@@ -44,7 +46,12 @@ public class MontadoraController {
 		this.montadora = montadora;
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora editado com sucesso!"));
 		return "cadastrarMontadoras.xhtml?faces-redirect=true";
+	}
 
+	public void excluir(Montadora montadora) {
+		new MontadoraDAO().remove(montadora);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
+		montadoras = new MontadoraDAO().listar();
 	}
 
 	public Montadora getMontadora() {
