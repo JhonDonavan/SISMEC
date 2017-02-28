@@ -3,14 +3,15 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Montadora;
+import model.Veiculo;
 import modelDAO.MontadoraDAO;
+import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Montadora")
 @SessionScoped
@@ -24,21 +25,33 @@ public class MontadoraController {
 		montadora = new Montadora();
 	}
 
-	/*VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA*/
-	/*@SuppressWarnings("unused")
-	@PostConstruct
-	public void init() {
-		List<Montadora> listaMontadoras = new ArrayList<Montadora>();
-		listaMontadoras = new MontadoraDAO().listar();
-	}*/
+	/* VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA */
+	/*
+	 * @SuppressWarnings("unused")
+	 * 
+	 * @PostConstruct public void init() { List<Montadora> listaMontadoras = new
+	 * ArrayList<Montadora>(); listaMontadoras = new MontadoraDAO().listar(); }
+	 */
 
 	public String salvar() {
 		new MontadoraDAO().salvar(montadora);
 		montadora = new Montadora();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora cadastrada com sucesso!"));
 		montadoras = new MontadoraDAO().listar();
-		
+
 		return "listarMontadoras?faces-redirect=true";
+	}
+
+	public String editar(Montadora montadora) {
+		this.montadora = montadora;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora editado com sucesso!"));
+		return "cadastrarMontadoras.xhtml?faces-redirect=true";
+	}
+
+	public void excluir(Montadora montadora) {
+		new MontadoraDAO().remove(montadora);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
+		montadoras = new MontadoraDAO().listar();
 	}
 
 	public Montadora getMontadora() {
@@ -56,7 +69,5 @@ public class MontadoraController {
 	public void setMontadoras(List<Montadora> montadoras) {
 		this.montadoras = montadoras;
 	}
-	
-	
 
 }

@@ -33,4 +33,18 @@ public class MontadoraDAO {
 		return query.getResultList();
 	}
 
+	public void remove(Montadora montadora) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+
+		entityManager.getTransaction().begin();
+
+		montadora = entityManager.merge(montadora);
+
+		entityManager.remove(montadora);
+
+		entityManager.getTransaction().commit();
+
+		entityManager.close();
+	}
+
 }
