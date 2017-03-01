@@ -4,7 +4,7 @@ import model.ModeloVeiculo;
 import model.Montadora;
 import model.TipoCombustivel;
 import model.Veiculo;
-import modelDAO.ModeloDAO;
+import modelDAO.ModeloVeiculoDAO;
 import modelDAO.MontadoraDAO;
 import modelDAO.VeiculoDAO;
 
@@ -14,7 +14,7 @@ public class TesteRelacionamentoModeloVeiculo {
 		VeiculoDAO daoV = new VeiculoDAO();
 
 		ModeloVeiculo mv = new ModeloVeiculo();
-		ModeloDAO daoM = new ModeloDAO();
+		ModeloVeiculoDAO daoM = new ModeloVeiculoDAO();
 		
 		Montadora mon = new Montadora();
 		MontadoraDAO daoMON = new MontadoraDAO();

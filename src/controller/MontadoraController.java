@@ -9,9 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Montadora;
-import model.Veiculo;
 import modelDAO.MontadoraDAO;
-import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Montadora")
 @SessionScoped

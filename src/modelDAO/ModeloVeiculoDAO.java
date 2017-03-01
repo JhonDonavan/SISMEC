@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 
 import model.ModeloVeiculo;
 
-public class ModeloDAO {
+public class ModeloVeiculoDAO {
 	public void salvar(ModeloVeiculo modelo){
 		EntityManager entityMnager = JPAUtil.getEntityManager();
 		

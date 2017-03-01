@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import model.Montadora;
-import model.Veiculo;
 
 public class MontadoraDAO {
 

@@ -3,7 +3,7 @@ package teste;
 import model.ModeloVeiculo;
 import model.Montadora;
 import model.TipoCombustivel;
-import modelDAO.ModeloDAO;
+import modelDAO.ModeloVeiculoDAO;
 import modelDAO.MontadoraDAO;
 
 public class TesteRelacionamentoModeloMontadora {
@@ -12,7 +12,7 @@ public class TesteRelacionamentoModeloMontadora {
 		Montadora montadora = new Montadora();
 		ModeloVeiculo mv = new ModeloVeiculo();
 		MontadoraDAO montadoraDAO = new MontadoraDAO();
-		ModeloDAO modeloDAO = new ModeloDAO();
+		ModeloVeiculoDAO modeloDAO = new ModeloVeiculoDAO();
 		
 		montadora.setNome("FORD");
 		montadora.setPais("EUA");
