@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Veiculo;
+import modelDAO.GenericDAO;
 import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Veiculo")
@@ -21,7 +22,7 @@ public class VeiculoController {
 	
 		
 	public VeiculoController() {
-		veiculos = new VeiculoDAO().listar();
+		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 		veiculo = new Veiculo();
 	}
 	
@@ -34,10 +35,10 @@ public class VeiculoController {
 	}
 */
 	public String salvar() {
-		new VeiculoDAO().salvar(veiculo);
+		new GenericDAO<Veiculo>(Veiculo.class).salvar(veiculo);
 		veiculo = new Veiculo();
-		veiculos = new VeiculoDAO().listar();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
+		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Veiculo salvo com sucesso!"));
 		return "listarVeiculos?faces-redirect=true";
 	}
 

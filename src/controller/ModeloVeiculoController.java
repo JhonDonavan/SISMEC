@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.ModeloVeiculo;
+import model.Montadora;
+import modelDAO.GenericDAO;
 import modelDAO.ModeloVeiculoDAO;
 
 @ManagedBean(name = "ModeloVeiculo")
@@ -30,7 +32,7 @@ public class ModeloVeiculoController {
 	
 	public String Salvar(){
 		new ModeloVeiculoDAO().salvar(modeloVeiculo);
-		modeloVeiculo = new ModeloVeiculo();
+		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).salvar(modeloVeiculo);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modelo de veiculo cadastrado com sucesso!"));
 		return "cadastrarModeloVeiculo?faces-redirect=true";
 	}
