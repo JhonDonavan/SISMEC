@@ -31,6 +31,15 @@ public class MontadoraDAO {
 
 		return query.getResultList();
 	}
+	
+	
+	
+	
+	
+	public List<Montadora> procurarPorNome(String nome){
+		return null;
+	
+	}
 
 	public void remove(Montadora montadora) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
@@ -45,5 +54,7 @@ public class MontadoraDAO {
 
 		entityManager.close();
 	}
+
+	
 
 }

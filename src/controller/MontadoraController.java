@@ -8,13 +8,17 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import model.Montadora;
+import modelDAO.GenericDAO;
 import modelDAO.MontadoraDAO;
 
 @ManagedBean(name = "Montadora")
 @SessionScoped
 public class MontadoraController {
 
+	
 	private Montadora montadora = new Montadora();
 	private List<Montadora> montadoras = new ArrayList<Montadora>();
 
@@ -32,13 +36,13 @@ public class MontadoraController {
 	 */
 
 	public String salvar() {
-		new MontadoraDAO().salvar(montadora);
+		new GenericDAO<Montadora>(Montadora.class).salvar(montadora);
 		montadora = new Montadora();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora cadastrada com sucesso!"));
-		montadoras = new MontadoraDAO().listar();
-
+		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
 		return "listarMontadoras?faces-redirect=true";
 	}
+	
 
 	public String editar(Montadora montadora) {
 		this.montadora = montadora;

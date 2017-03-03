@@ -11,8 +11,45 @@
 
 			<p:panel header="Cadastro de modelo de veiculos"
 				style="text-align:left; width:99%;">
-				<h:form id="cadastrarVeiculo">
+				<h:form id="cadastrarModeloVeiculo">
 					<p:growl />
+
+					<h:panelGrid columns="2">
+
+						<h:outputLabel value="Nome do modelo: " />
+						<p:inputText value="#{modeloVeiculo.nome}" required="true"
+							requiredMessage="Voce deve preencher o nome do modelo"></p:inputText>
+
+
+						<p:outputLabel value="Sigla: " />
+						<p:inputText value="#{modeloVeiculo.sigla}" />
+
+						<p:outputLabel value="Silindradas: " />
+						<p:inputText value="#{modeloVeiculo.motor}" />
+
+						<p:outputLabel value="Potencia em cavalos: " />
+						<p:inputText value="#{modeloVeiculo.potenciaCavalos}" />
+
+						<p:outputLabel value="Numero de portas: " />
+						<p:inputText value="#{modeloVeiculo.numPortas}" />
+
+						<p:outputLabel value="Combistivel 1: " />
+						<p:inputText value="#{modeloVeiculo.combustivel_1}" />
+
+						<p:outputLabel value="Combistivel 2: " />
+						<p:inputText value="#{modeloVeiculo.combustivel_2}" />
+
+						<p:outputLabel value="Montadora: " />
+						<p:autoComplete id="montadora" value="#{modeloVeiculo.montadora}"
+							required="true"
+							completeMethod="#{ModeloVeiculo.sugerirMontadoras}" />
+
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{Veiculo.salvar}" update="@form" />
+
+					</h:panelGrid>
 
 				</h:form>
 			</p:panel>
