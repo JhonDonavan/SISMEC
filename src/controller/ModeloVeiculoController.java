@@ -21,7 +21,7 @@ public class ModeloVeiculoController {
 	
 	public ModeloVeiculoController(){
 		modeloVeiculo = new ModeloVeiculo();
-		modeloVeiculos = new ModeloVeiculoDAO().listar();
+		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
 	}
 	
 	

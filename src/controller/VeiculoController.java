@@ -53,10 +53,10 @@ public class VeiculoController {
 	}
 
 	public void excluir(Veiculo veiculo) {
-		new VeiculoDAO().remove(veiculo);
+		new GenericDAO<Veiculo>(Veiculo.class).excluir(veiculo);
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage("Veiculo excluido com sucesso"));
-		veiculos = new VeiculoDAO().listar();
+		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 	}
 
 	public Veiculo getVeiculo() {

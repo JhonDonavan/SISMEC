@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Montadora;
+import model.Veiculo;
 import modelDAO.GenericDAO;
 import modelDAO.MontadoraDAO;
 
@@ -49,9 +50,9 @@ public class MontadoraController {
 	}
 
 	public void excluir(Montadora montadora) {
-		new MontadoraDAO().remove(montadora);
+		new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
-		montadoras = new MontadoraDAO().listar();
+		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
 	}
 
 	public Montadora getMontadora() {
