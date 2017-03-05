@@ -25,15 +25,22 @@
 	</context-param>
 	<!-- redmond -->
 
-	<!-- <context-param>
-		<param-name>primefaces.FONT_AWESOME</param-name>
-		<param-value>true</param-value>
-	</context-param> -->
+	<!-- <context-param> <param-name>primefaces.FONT_AWESOME</param-name> <param-value>true</param-value> 
+		</context-param> -->
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
+
+	<session-config>
+		<session-timeout>45</session-timeout>
+	</session-config>
+
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/exception/sessionexpired.xhtml</location>
+	</error-page>
 
 	<!-- trecho abaixo é para spring security -->
 	<!-- <filter> <filter-name>SpringSecurityFilterChain</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 

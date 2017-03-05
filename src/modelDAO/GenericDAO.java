@@ -15,6 +15,8 @@ public class GenericDAO<T> {
 	public void salvar(T t) {
 		EntityManager em = JPAUtil.getEntityManager();
 
+		System.out.println("Objeto salvo com sucesso: " + t.getClass().getName());
+		
 		em.getTransaction().begin();
 
 		em.merge(t);

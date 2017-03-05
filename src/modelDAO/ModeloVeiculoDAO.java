@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import model.ModeloVeiculo;
+import model.Montadora;
 
 public class ModeloVeiculoDAO {
 	public void salvar(ModeloVeiculo modelo) {
@@ -42,4 +43,16 @@ public class ModeloVeiculoDAO {
 
 		entityManager.close();
 	}
+	
+	
+	public List<Montadora> buscaMontadoraByNome(String nomeMontadora) {
+		System.out.println("entrou no metodo buscarMontadoraByNome no ModeloVeiculoDAO: " + nomeMontadora);
+		EntityManager em = JPAUtil.getEntityManager();
+		Query query = em.createQuery("SELECT m FROM Montadora m WHERE upper(m.nomeMontadora) like upper(:nomeMontadora)");
+        query.setParameter("nomeMontadora", "%" + nomeMontadora + "%");
+        
+        return query.getResultList();
+
+    }
+	
 }
