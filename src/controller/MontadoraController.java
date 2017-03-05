@@ -53,7 +53,7 @@ public class MontadoraController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora editado com sucesso!"));
 		return "cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
-
+/*teste*/
 	public void excluir(Montadora montadora) {
 		new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
