@@ -49,8 +49,8 @@
 						<p:outputLabel value="Montadora: " />
 						<p:autoComplete id="montadoraID"
 							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
-							size="30" completeMethod="#{Montadora.listarPorNome}" var="m"
-							itemLabel="#{m.nome}" itemValue="#{m}"
+							size="30" completeMethod="#{Montadora.listarPorNome}" var="modelo"
+							itemLabel="#{modelo.nome}" itemValue="#{modelo}"
 							converter="montadoraConverter"  forceSelection="true"/>
 
 						<br />

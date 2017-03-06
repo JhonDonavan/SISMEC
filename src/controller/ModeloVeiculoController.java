@@ -41,6 +41,8 @@ public class ModeloVeiculoController {
 				new FacesMessage("Modelo de veiculo cadastrado com sucesso!"));
 		System.out.println("Objeto " + modeloVeiculo.getNome() + " salvo com sucesso!");
 		return "cadastrarModeloVeiculo?faces-redirect=true";
+		
+		
 	}
 
 	public List<Montadora> listarPorNome(String nomeMontadora){
@@ -49,6 +51,10 @@ public class ModeloVeiculoController {
 		System.out.println("Entrou no metodo listarPorNome: " + nomeMontadora + " E " + nomeMontadora);
 		for(Montadora m : montadorasSelecionados){
 			System.out.println("Montadora: " + m.getNome() + " + "  + m.getPais() + " + "  + m.getSite());
+		}
+		if(montadorasSelecionados.isEmpty()){
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Montadora de veiculo nao cadastrado."));
 		}
 		return montadorasSelecionados;
 	}
