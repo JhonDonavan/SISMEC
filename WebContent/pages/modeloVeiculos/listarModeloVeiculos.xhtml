@@ -11,7 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novoModeloDeVeiculo" action="cadastrarMontadoras.xhtml"
+						id="novoModeloDeVeiculo" action="cadastrarModeloVeiculo.xhtml"
 						style="margin-right: 985px;" />
 
 					<div class="ui-fluid"
@@ -31,16 +31,47 @@
 				</div>
 
 				<p:growl />
-				<p:dataTable id="modeloVeiculosLista" var="modeloVeiculos"
+				<p:dataTable id="modeloVeiculosLista" var="modelos"
 					value="#{ModeloVeiculoController.modeloVeiculos}" paginator="true"
 					rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome" sortBy="#{ModeloVeiculoController.modeloVeiculo.nome}"
-						filterBy="#{ModeloVeiculoController.modeloVeiculo.nome}" filterMatchMode="contains">
-						<h:outputText value="#{ModeloVeiculoController.modeloVeiculo.nome}" />
+					<p:column headerText="Nome" sortBy="#{modelos.nome}"
+						filterBy="#{modelos.nome}" filterMatchMode="contains">
+						<h:outputText value="#{modelos.nome}" />
 					</p:column>
+					
+					<p:column headerText="Sigla" sortBy="#{modelos.sigla}">
+						<h:outputText value="#{modelos.sigla}" />
+					</p:column>
+
+					<p:column headerText="Montadora" sortBy="#{modelos.montadora.nome}"
+						filterBy="#{modelos.montadora.nome}" filterMatchMode="contains">
+						<h:outputText value="#{modelos.montadora.nome}" />
+					</p:column>
+					
+					<p:column headerText="Motor" sortBy="#{modelos.motor}">
+						<h:outputText value="#{modelos.motor}" />
+					</p:column>
+					
+					<p:column headerText="Combustivel" sortBy="#{modelos.combustivel_1}">
+						<h:outputText value="#{modelos.combustivel_1}" />
+					</p:column>
+
+					<p:column style="text-align:center;" exportable="false">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{Montadora.editar(montadora)}">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							action="#{Montadora.excluir(montadora)}" update="@form">
+						</p:commandButton>
+					</p:column>
+
 
 
 

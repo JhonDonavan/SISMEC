@@ -44,18 +44,12 @@ public class ModeloVeiculoDAO {
 		entityManager.close();
 	}
 	
-	
-	
 	@SuppressWarnings("unchecked")
 	public List<Montadora> buscaMontadoraByNome(String nomeMontadora) {
 		EntityManager em = JPAUtil.getEntityManager();
-		System.out.println("entrou no metodo buscarMontadoraByNome no ModeloVeiculoDAO: " + nomeMontadora);
 		Query query = em.createQuery("SELECT * FROM Montadora");
-		/*Query query = em.createQuery("SELECT * FROM Montadora m WHERE upper(m.nome) like upper(:nomeMontadora)");*/
         query.setParameter("nomeMontadora", "%" + nomeMontadora + "%");
         return query.getResultList();
-        
-
     }
 	
 }

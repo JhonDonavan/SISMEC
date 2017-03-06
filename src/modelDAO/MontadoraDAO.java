@@ -38,23 +38,6 @@ public class MontadoraDAO {
 		return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Montadora> procurarPorNome(String nome) {
-		Session session = JPAUtil.getEntityManager().unwrap(Session.class);
-		@SuppressWarnings("deprecation")
-		Criteria criteria = session.createCriteria(Montadora.class);
-		if (StringUtils.isNotBlank(nome)) {
-			criteria.add(Restrictions.ilike("nome", nome.toUpperCase(), MatchMode.START));
-		}
-		return criteria.list();
-
-		/*
-		 * EntityManager entityManager = JPAUtil.getEntityManager(); Query query
-		 * = entityManager.createQuery("from Montadora where nome like" + nome +
-		 * "%"); return query.getResultList();
-		 */
-
-	}
 
 	@SuppressWarnings("unchecked")
 	public List<Montadora> buscaMontadoraByNome(String nomeMontadora) {
