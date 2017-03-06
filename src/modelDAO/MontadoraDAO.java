@@ -61,7 +61,7 @@ public class MontadoraDAO {
 		System.out.println("entrou no metodo buscarMontadoraByNome no ModeloVeiculoDAO: " + nomeMontadora);
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em
-				.createQuery("SELECT m FROM Montadora m WHERE upper(m.nomeMontadora) like upper(:nomeMontadora)");
+				.createQuery("SELECT m FROM Montadora m WHERE upper(m.nome) like upper(:nomeMontadora)");
 		query.setParameter("nomeMontadora", "%" + nomeMontadora + "%");
 
 		return query.getResultList();

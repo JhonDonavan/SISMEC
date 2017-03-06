@@ -48,7 +48,7 @@ public class ModeloVeiculoController {
 		montadorasSelecionados = modeloVeiculoDAO.buscaMontadoraByNome(nomeMontadora);
 		System.out.println("Entrou no metodo listarPorNome: " + nomeMontadora + " E " + nomeMontadora);
 		for(Montadora m : montadorasSelecionados){
-			System.out.println("Montadora: " + m.getNome());
+			System.out.println("Montadora: " + m.getNome() + " + "  + m.getPais() + " + "  + m.getSite());
 		}
 		return montadorasSelecionados;
 	}
