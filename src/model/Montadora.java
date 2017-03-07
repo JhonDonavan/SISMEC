@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,8 @@ public class Montadora implements Serializable {
 	private String pais;
 	private String site;
 	
-	@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	/*@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)*/
+	@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY)
 	private List<ModeloVeiculo> modeloVeiculo;
 
 	public String getNome() {
