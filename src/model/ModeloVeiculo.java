@@ -32,7 +32,7 @@ public class ModeloVeiculo implements Serializable {
 	private Integer numPortas;
 	private TipoCombustivel combustivel_1;
 	private TipoCombustivel combustivel_2;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="montadora_id")
 	private Montadora montadora;
 	

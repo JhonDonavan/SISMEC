@@ -16,7 +16,7 @@ public class GenericDAO<T> {
 		EntityManager em = JPAUtil.getEntityManager();
 
 		System.out.println("Objeto salvo com sucesso: " + t.getClass().getName());
-		
+
 		em.getTransaction().begin();
 
 		em.merge(t);
@@ -27,15 +27,23 @@ public class GenericDAO<T> {
 	}
 
 	public void excluir(T t) {
-
+		System.out.println("5");
 		EntityManager em = JPAUtil.getEntityManager();
-
+		System.out.println("6");
 		em.getTransaction().begin();
-
-		em.remove(t);
-
+		System.out.println("7");
+		T t2 = em.merge(t);
+		System.out.println("8");
+		
+		try {
+			em.remove(t2);
+			System.out.println(t2.getClass().getName());
+		} catch (Exception e) {
+			System.out.println("ERROR: " + e);
+		}
+		System.out.println("9");
 		em.getTransaction().commit();
-
+		System.out.println("10");
 		em.close();
 
 	}
@@ -52,7 +60,8 @@ public class GenericDAO<T> {
 
 	public T obterPorId(Integer id) {
 		EntityManager em = JPAUtil.getEntityManager();
-		T t = em.createQuery("from " + classe.getName() + " where id = :cod", classe).setParameter("cod", id).getSingleResult();
+		T t = em.createQuery("from " + classe.getName() + " where id = :cod", classe).setParameter("cod", id)
+				.getSingleResult();
 		em.close();
 		return t;
 	}

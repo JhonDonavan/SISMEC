@@ -42,7 +42,22 @@ public class ModeloVeiculoController {
 		System.out.println("Objeto " + modeloVeiculo.getNome() + " salvo com sucesso!");
 		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
 		return "listarModeloVeiculos?faces-redirect=true";
-		
+	}
+	
+	public String editar(ModeloVeiculo modelo){
+		this.modeloVeiculo = modelo;
+		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
+	}
+	
+	public void excluir(ModeloVeiculo modelo){
+		System.out.println("1");
+		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modelo);
+		System.out.println("2");
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Modelo de Veiculo excluido com sucesso"));
+		System.out.println("3");
+		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
+		System.out.println("4");
 	}
 
 	public List<Montadora> listarPorNome(String nomeMontadora){

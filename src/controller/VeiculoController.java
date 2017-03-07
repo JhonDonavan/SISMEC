@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 
 import model.Veiculo;
 import modelDAO.GenericDAO;
-import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Veiculo")
 @SessionScoped
