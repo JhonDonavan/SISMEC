@@ -1,7 +1,7 @@
 package model;
 
 public enum TipoCombustivel {
-	GASOLINA("Gasolina"), ETANOL("Etanol"), DIESEL("Diesel"), GNV("GNV");
+	NAO_POSSUI("Nao_possui"), GASOLINA("Gasolina"), ETANOL("Etanol"), DIESEL("Diesel"), GNV("GNV");
 
 	private String label;
 

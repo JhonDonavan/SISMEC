@@ -36,7 +36,7 @@ public class Veiculo implements Serializable {
 
 	private String cor;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="modelo_id")
 	private ModeloVeiculo modelo;
 	

@@ -27,8 +27,7 @@ public class Cliente implements Serializable{
 	@Embedded
 	private Endereco endereco;
 	
-	@OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, 
-			fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
 	private List<Veiculo> veiculo;
 
 	private String nome;
