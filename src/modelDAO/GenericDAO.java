@@ -27,23 +27,16 @@ public class GenericDAO<T> {
 	}
 
 	public void excluir(T t) {
-		System.out.println("5");
 		EntityManager em = JPAUtil.getEntityManager();
-		System.out.println("6");
 		em.getTransaction().begin();
-		System.out.println("7");
 		T t2 = em.merge(t);
-		System.out.println("8");
 		
 		try {
 			em.remove(t2);
-			System.out.println(t2.getClass().getName());
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e);
 		}
-		System.out.println("9");
 		em.getTransaction().commit();
-		System.out.println("10");
 		em.close();
 
 	}
