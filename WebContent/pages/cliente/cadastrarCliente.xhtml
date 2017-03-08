@@ -14,24 +14,23 @@
 				<h:form id="cadastrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome:"/>
-						<p:inputText value="#{Cliente.cliente.nome}"
-							required="true"
+						<h:outputLabel value="Nome:" />
+						<p:inputText value="#{Cliente.cliente.nome}" required="true"
 							requiredMessage="Voce deve preencher o nome do cliente">
-							</p:inputText>
+						</p:inputText>
 
 						<p:outputLabel value="CPF:" />
 						<p:inputText value="#{Cliente.cliente.cpf}">
-							
-							</p:inputText>
+
+						</p:inputText>
 
 						<p:outputLabel value="Telefone Fixo:" />
-						<p:inputText value="#{Cliente.cliente.telefone}"
-							required="true"/>
+						<p:inputText value="#{Cliente.cliente.telefone}" required="true" />
 
 						<p:outputLabel value="Telefone Celular:" />
-						<p:inputText value="#{Cliente.cliente.celular}"/>
-						<br/><br/>
+						<p:inputText value="#{Cliente.cliente.celular}" />
+						<br />
+						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{Cliente.salvar}" update="@form" />
 					</h:panelGrid>
