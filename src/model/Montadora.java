@@ -25,7 +25,7 @@ public class Montadora implements Serializable {
 	private String pais;
 	private String site;
 	
-	/*@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)*/
+	
 	@OneToMany(mappedBy = "montadora", targetEntity = ModeloVeiculo.class, fetch = FetchType.LAZY)
 	private List<ModeloVeiculo> modeloVeiculo;
 
