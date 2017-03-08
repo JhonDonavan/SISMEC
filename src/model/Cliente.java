@@ -34,8 +34,7 @@ public class Cliente implements Serializable{
 	
 	private String cpf;
 
-	private Date idade;
-	
+	private Date dataNascimento;
 	
 	private String telefone;
 	
@@ -81,11 +80,11 @@ public class Cliente implements Serializable{
 	}
 
 	public Date getIdade() {
-		return idade;
+		return dataNascimento;
 	}
 
 	public void setIdade(Date idade) {
-		this.idade = idade;
+		this.dataNascimento = dataNascimento;
 	}
 	
 	public String getTelefone() {
