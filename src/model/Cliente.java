@@ -36,6 +36,7 @@ public class Cliente implements Serializable{
 
 	private Date idade;
 	
+	
 	private String telefone;
 	
 	private String celular;
