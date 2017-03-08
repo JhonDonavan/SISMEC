@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
 
-</body>
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastro de clientes"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarCliente">
+					<p:growl />
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Nome:"/>
+						<p:inputText value="#{Cliente.cliente.nome}"
+							required="true"
+							requiredMessage="Voce deve preencher o nome do cliente">
+							</p:inputText>
+
+						<p:outputLabel value="CPF:" />
+						<p:inputText value="#{Cliente.cliente.cpf}">
+							
+							</p:inputText>
+
+						<p:outputLabel value="Telefone Fixo:" />
+						<p:inputText value="#{Cliente.cliente.telefone}"
+							required="true"/>
+
+						<p:outputLabel value="Telefone Celular:" />
+						<p:inputText value="#{Cliente.cliente.celular}"/>
+						<br/><br/>
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{Cliente.salvar}" update="@form" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
 </html>
