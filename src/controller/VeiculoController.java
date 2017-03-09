@@ -8,21 +8,31 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import model.ModeloVeiculo;
+import model.Montadora;
 import model.Veiculo;
 import modelDAO.GenericDAO;
+import modelDAO.ModeloVeiculoDAO;
 
 @ManagedBean(name = "Veiculo")
 @SessionScoped
 public class VeiculoController {
 
 	
+	@Autowired
+	private List<ModeloVeiculo> modelosSelecionados;
+	
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
+	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
 	
 		
 	public VeiculoController() {
 		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 		veiculo = new Veiculo();
+		modelosSelecionados = new ArrayList<>();
 	}
 	
 	/*VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA*/
@@ -57,6 +67,21 @@ public class VeiculoController {
 				new FacesMessage("Veiculo excluido com sucesso"));
 		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 	}
+	
+	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
+		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo);
+		try {
+			System.out.println("ENTROU NO TRY");
+			modelosSelecionados = modeloVeiculoDAO.buscaModeloByNome(nomeModelo);
+		} catch (Exception e) {
+			System.out.println("ERROR Exception: " + e);
+		}
+		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo + " E " + nomeModelo);
+		for (ModeloVeiculo m : modelosSelecionados) {
+			System.out.println("Montadora: " + m.getNome());
+		}
+		return modelosSelecionados;
+	}
 
 	public Veiculo getVeiculo() {
 		return veiculo;
@@ -73,5 +98,15 @@ public class VeiculoController {
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
 	}
+
+	public List<ModeloVeiculo> getModelosSelecionados() {
+		return modelosSelecionados;
+	}
+
+	public void setModelosSelecionados(List<ModeloVeiculo> modelosSelecionados) {
+		this.modelosSelecionados = modelosSelecionados;
+	}
+	
+	
 
 }

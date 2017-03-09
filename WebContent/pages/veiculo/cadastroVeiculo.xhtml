@@ -14,28 +14,34 @@
 				<h:form id="cadastrarVeiculo">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Placa do veiculo:"/>
-						<p:inputText value="#{Veiculo.veiculo.placa}"
-							required="true"
+						<h:outputLabel value="Placa do veiculo:" />
+						<p:inputText value="#{Veiculo.veiculo.placa}" required="true"
 							requiredMessage="Voce deve preencher a placa do veiculo"
 							validatorMessage="A placa do veiculo deve ter 7 caracteres">
 							<f:validateLength minimum="7" maximum="7"></f:validateLength>
-							</p:inputText>
+						</p:inputText>
 
 						<p:outputLabel value="UF:" />
 						<p:inputText value="#{Veiculo.veiculo.uf}">
-							
-							</p:inputText>
+
+						</p:inputText>
 
 						<p:outputLabel value="Cidade:" />
-						<p:inputText value="#{Veiculo.veiculo.cidade}"
-							required="true"
+						<p:inputText value="#{Veiculo.veiculo.cidade}" required="true"
 							requiredMessage="Por favor preencha a cidade do veiculo" />
 
 						<p:outputLabel value="Cor:" />
-						<p:inputText value="#{Veiculo.veiculo.cor}"
-							required="true" requiredMessage="Por favor informe a cor do veiculo" />
-						<br/><br/>
+						<p:inputText value="#{Veiculo.veiculo.cor}" required="true"
+							requiredMessage="Por favor informe a cor do veiculo" />
+
+						<p:outputLabel value="Montadora: " />
+						<p:autoComplete id="veiculoID"
+							value="#{Veiculo.veiculo.modelo}"
+							size="30" completeMethod="#{ModeloVeiculoController.listarPorNome}"
+							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
+							converter="montadoraConverter" forceSelection="true" />
+						<br />
+						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{Veiculo.salvar}" update="@form" />
 					</h:panelGrid>

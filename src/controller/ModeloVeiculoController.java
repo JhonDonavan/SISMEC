@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.ModeloVeiculo;
-import model.Montadora;
 import modelDAO.GenericDAO;
 import modelDAO.ModeloVeiculoDAO;
 
@@ -21,18 +20,17 @@ public class ModeloVeiculoController {
 
 	
 	@Autowired
-	private ModeloVeiculoDAO modeloVeiculoDAO;
-	@Autowired
-	private List<Montadora> montadorasSelecionados;
+	private List<ModeloVeiculo> modelosSelecionados;
 	
 	private ModeloVeiculo modeloVeiculo = new ModeloVeiculo();
 	private List<ModeloVeiculo> modeloVeiculos = new ArrayList<ModeloVeiculo>();
-	
+	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
 	
 
 	public ModeloVeiculoController() {
 		modeloVeiculo = new ModeloVeiculo();
 		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
+		modelosSelecionados = new ArrayList<>();
 	}
 
 	public String salvar() {
@@ -60,9 +58,19 @@ public class ModeloVeiculoController {
 		System.out.println("4");
 	}
 
-	public List<Montadora> listarPorNome(String nomeMontadora){
-		montadorasSelecionados = modeloVeiculoDAO.buscaMontadoraByNome(nomeMontadora);
-		return montadorasSelecionados;
+	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
+		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo);
+		try {
+			System.out.println("ENTROU NO TRY");
+			modelosSelecionados = modeloVeiculoDAO.buscaModeloByNome(nomeModelo);
+		} catch (Exception e) {
+			System.out.println("ERROR Exception: " + e);
+		}
+		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo + " E " + nomeModelo);
+		for (ModeloVeiculo m : modelosSelecionados) {
+			System.out.println("Montadora: " + m.getNome());
+		}
+		return modelosSelecionados;
 	}
 
 	public ModeloVeiculo getModeloVeiculo() {

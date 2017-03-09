@@ -51,5 +51,13 @@ public class ModeloVeiculoDAO {
         query.setParameter("nomeMontadora", "%" + nomeMontadora + "%");
         return query.getResultList();
     }
+
+	@SuppressWarnings("unchecked")
+	public List<ModeloVeiculo> buscaModeloByNome(String nomeModelo) {
+		EntityManager em = JPAUtil.getEntityManager();
+		Query query = em.createQuery("SELECT * FROM ModeloVeiculo");
+        query.setParameter("nomeModelo", "%" + nomeModelo + "%");
+        return query.getResultList();
+	}
 	
 }
