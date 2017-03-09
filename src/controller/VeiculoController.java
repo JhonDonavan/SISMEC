@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.ModeloVeiculo;
-import model.Montadora;
 import model.Veiculo;
 import modelDAO.GenericDAO;
 import modelDAO.ModeloVeiculoDAO;
@@ -77,8 +76,8 @@ public class VeiculoController {
 			System.out.println("ERROR Exception: " + e);
 		}
 		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo + " E " + nomeModelo);
-		for (ModeloVeiculo m : modelosSelecionados) {
-			System.out.println("Montadora: " + m.getNome());
+		for (ModeloVeiculo mv : modelosSelecionados) {
+			System.out.println("Montadora: " + mv.getNome());
 		}
 		return modelosSelecionados;
 	}
