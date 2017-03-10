@@ -35,6 +35,8 @@ public class Cliente implements Serializable {
 	private String telefone;
 
 	private String celular;
+	
+	private String email;
 
 	public Integer getId() {
 		return id;
@@ -89,6 +91,14 @@ public class Cliente implements Serializable {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
