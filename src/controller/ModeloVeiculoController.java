@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,6 +13,7 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.ModeloVeiculo;
+import model.TipoCombustivel;
 import modelDAO.GenericDAO;
 import modelDAO.ModeloVeiculoDAO;
 
@@ -25,6 +28,12 @@ public class ModeloVeiculoController {
 	private ModeloVeiculo modeloVeiculo = new ModeloVeiculo();
 	private List<ModeloVeiculo> modeloVeiculos = new ArrayList<ModeloVeiculo>();
 	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
+	private List<TipoCombustivel> combustivel;
+	
+	@PostConstruct
+	public void init(){
+		combustivel = Arrays.asList(TipoCombustivel.values());
+	}
 	
 
 	public ModeloVeiculoController() {
@@ -89,4 +98,8 @@ public class ModeloVeiculoController {
 		this.modeloVeiculos = modeloVeiculos;
 	}
 
+	public List<TipoCombustivel> getCombustivel() {
+		return combustivel;
+	}
+	
 }

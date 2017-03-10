@@ -38,20 +38,26 @@
 						<p:inputText
 							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
 
-						<p:outputLabel value="Combistivel 1: " />
-						<p:inputText
-							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}" />
+						<p:outputLabel for="tipoCombustivel1" value="Combistivel 1: " />
+						<p:selectOneMenu id="tipoCombustivel1" value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}">
+							<f:selectItem itemLabel="Selecione um combustivel" />
+							<f:selectItems value="#{ModeloVeiculoController.combustivel}" var="combustivel" 
+							itemLabel="#{combustivel}" itemValue="#{combustivel}"/>
+						</p:selectOneMenu>
 
-						<p:outputLabel value="Combistivel 2: " />
-						<p:inputText
-							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+						<p:outputLabel for="tipoCombustivel2" value="Combistivel 2: " />
+						<p:selectOneMenu id="tipoCombustivel2" value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}">
+							<f:selectItem itemLabel="Selecione um combustivel"/>
+							<f:selectItems value="#{ModeloVeiculoController.combustivel}" var="combustivel" 
+							itemLabel="#{combustivel}" itemValue="#{combustivel}"/>
+						</p:selectOneMenu>
 
 						<p:outputLabel value="Montadora: " />
 						<p:autoComplete id="montadoraID"
 							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
-							size="30" completeMethod="#{Montadora.listarPorNome}" var="modelo"
-							itemLabel="#{modelo.nome}" itemValue="#{modelo}"
-							converter="montadoraConverter"  forceSelection="true"/>
+							size="30" completeMethod="#{Montadora.listarPorNome}"
+							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
+							converter="montadoraConverter" forceSelection="true" />
 
 						<br />
 						<br />
