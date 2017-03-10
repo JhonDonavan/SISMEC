@@ -20,15 +20,38 @@
 						</p:inputText>
 
 						<p:outputLabel value="CPF:" />
-						<p:inputText value="#{Cliente.cliente.cpf}">
-
-						</p:inputText>
+						<p:inputText value="#{Cliente.cliente.cpf}"/>
 
 						<p:outputLabel value="Telefone Fixo:" />
 						<p:inputText value="#{Cliente.cliente.telefone}" required="true" />
 
 						<p:outputLabel value="Telefone Celular:" />
 						<p:inputText value="#{Cliente.cliente.celular}" />
+						
+						<p:outputLabel value="Email:"/>
+						<p:inputText value="#{Cliente.cliente.email}"/>
+						
+						<p:outputLabel value="Endereço:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.logradouro}"/>
+						
+						<p:outputLabel value="Nº:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.numero}"/>
+						
+						<p:outputLabel value="Complemento:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.complemento}"/>
+						
+						<p:outputLabel value="Bairro:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.bairro}"/>
+						
+						<p:outputLabel value="Cidade:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.cidade}"/>
+						
+						<p:outputLabel value="UF:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.uf}"/>
+						
+						<p:outputLabel value="CEP:"/>
+						<p:inputText value="#{Cliente.cliente.endereco.cep}"/>
+						
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
