@@ -14,26 +14,47 @@
 				<h:form id="cadastrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome:" />
+						<h:outputLabel value="Nome: " />
 						<p:inputText value="#{Cliente.cliente.nome}" required="true"
-							requiredMessage="Voce deve preencher o nome do cliente">
+							requiredMessage="Voce deve preencher o nome do cliente" size="40">
 						</p:inputText>
-
-						<p:outputLabel value="CPF:" />
-						<p:inputText value="#{Cliente.cliente.cpf}">
-
-						</p:inputText>
-
-						<p:outputLabel value="Telefone Fixo:" />
+						
+						<p:outputLabel value="CPF: "/>
+						<p:inputText value="#{Cliente.cliente.cpf}"/>
+						
+						<p:outputLabel value="Telefone Fixo: " />
 						<p:inputText value="#{Cliente.cliente.telefone}" required="true" />
 
-						<p:outputLabel value="Telefone Celular:" />
+						<p:outputLabel value="Telefone Celular: " />
 						<p:inputText value="#{Cliente.cliente.celular}" />
+						
+						<p:outputLabel value="E-Mail: " />
+						<p:inputText value="#{Cliente.cliente.email}" size="40"/>
+						
+						<p:outputLabel for="button" value="Data de nascimento: " />
+						<p:calendar id="button" value="#{Cliente.cliente.dataNascimento}"
+							showOn="button" mask="true" pattern="dd-MM-yyyy"/>
+							
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{Cliente.salvar}" update="@form" />
 					</h:panelGrid>
+
+
+					<!-- DIALOG PARA CALENDARIO -->
+
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="dlg" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+							<h:outputText value="Button:" />
+							<h:outputText value="#{Cliente.cliente.dataNascimento}">
+								<f:convertDateTime pattern="MM/dd/yyyy" />
+							</h:outputText>
+						</p:panelGrid>
+					</p:dialog>
+
+
 				</h:form>
 			</p:panel>
 		</div>

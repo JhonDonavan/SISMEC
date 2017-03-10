@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -35,6 +36,10 @@ public class Cliente implements Serializable {
 	private String telefone;
 
 	private String celular;
+	
+	private String email;
+	
+	private Date dataNascimento;
 
 	public Integer getId() {
 		return id;
@@ -91,4 +96,24 @@ public class Cliente implements Serializable {
 		this.celular = celular;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
 }
