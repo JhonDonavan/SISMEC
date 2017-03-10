@@ -1,10 +1,113 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
 
-</body>
+	<ui:define name="conteudo">
+
+		<p:panel header="Veiculos cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoCliente"
+						action="cadastrarCliente.xhtml" style="margin-right: 985px;" />
+
+					<div class="ui-fluid"
+						style="float: right; position: absoulute; margin-top: -28px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="ClientesLista"
+								fileName="Clientes" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="ClientesLista"
+								fileName="Clientes" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+				
+				<p:growl />
+				<p:dataTable id="ClientesLista" var="clientes"
+					value="#{Cliente.clientes}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+
+					<p:column headerText="Nome" sortBy="#{clientes.nome}"
+						filterBy="#{clientes.nome}" filterMatchMode="contains">
+						<h:outputText value="#{clientes.nome}" />
+					</p:column>
+
+					<p:column headerText="CPF">
+						<h:outputText value="#{clientes.cpf}" />
+					</p:column>
+
+					<p:column headerText="Telefone" sortBy="#{clientes.telefone}">
+						<h:outputText value="#{clientes.telefone}" />
+					</p:column>
+
+					<p:column headerText="Celular" sortBy="#{clientes.celular}">
+						<h:outputText value="#{clientes.celular}" />
+					</p:column>
+					
+					<p:column headerText="Email" sortBy="#{clientes.email}">
+						<h:outputText value="#{clientes.email}" />
+					</p:column>
+					
+					<p:column headerText="Data de Nascimento" sortBy="#{clientes.dataNascimento}">
+						<h:outputText value="#{clientes.dataNascimento}" />
+					</p:column>
+					
+					<p:column headerText="Endereço" sortBy="#{clientes.endereco.logradouro}">
+						<h:outputText value="#{clientes.endereco.logradouro}" />
+					</p:column>
+					
+					<p:column headerText="Nº" sortBy="#{clientes.endereco.numero}">
+						<h:outputText value="#{clientes.endereco.numero}" />
+					</p:column>
+					
+					<p:column headerText="Complemento" sortBy="#{clientes.endereco.comlemento}">
+						<h:outputText value="#{clientes.endereco.complemento}" />
+					</p:column>
+					
+					<p:column headerText="Bairro" sortBy="#{clientes.endereco.bairro}">
+						<h:outputText value="#{clientes.endereco.bairro}" />
+					</p:column>
+					
+					<p:column headerText="Cidade" sortBy="#{clientes.endereco.cidade}">
+						<h:outputText value="#{clientes.endereco.cidade}" />
+					</p:column>
+					
+					<p:column headerText="UF" sortBy="#{clientes.endereco.uf}">
+						<h:outputText value="#{clientes.endereco.uf}" />
+					</p:column>
+					
+					<p:column headerText="CEP" sortBy="#{clientes.endereco.cep}">
+						<h:outputText value="#{clientes.endereco.cep}" />
+					</p:column>
+
+					<p:column style="text-align:center;" exportable="false">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{Cliente.editar(clientes)}">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							action="#{Cliente.excluir(clientes)}" update="@form">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
 </html>
