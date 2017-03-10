@@ -29,6 +29,18 @@ public class ClienteController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Cadastrado com Sucesso"));
 		return "cadastrarCliente?faces-redirect=true";
 	}
+	
+	public String editar(Cliente cliente) {
+		this.cliente = cliente;
+		return "cadastrarCliente.xhtml?faces-redirect=true";
+	}
+	
+	public void excluir(Cliente cliente) {
+		new GenericDAO<Cliente>(Cliente.class).excluir(cliente);
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("CLiente excluido com sucesso"));
+		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+	}
 
 	public Cliente getCliente() {
 		return cliente;
