@@ -27,6 +27,18 @@ public class ClienteController {
 		new GenericDAO<Cliente>(Cliente.class).salvar(cliente);
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Cadastrado com Sucesso"));
+		return "listarClientes?faces-redirect=true";
+	}
+	
+	public void excluir(Cliente cliente){
+		new GenericDAO<Cliente>(Cliente.class).excluir(cliente);
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Cliente excluido com sucesso"));
+		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+	}
+	
+	public String editar(Cliente cliente){
+		this.cliente = cliente;
 		return "cadastrarCliente?faces-redirect=true";
 	}
 

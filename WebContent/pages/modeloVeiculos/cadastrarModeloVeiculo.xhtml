@@ -39,17 +39,21 @@
 							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
 
 						<p:outputLabel for="tipoCombustivel1" value="Combistivel 1: " />
-						<p:selectOneMenu id="tipoCombustivel1" value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}">
+						<p:selectOneMenu id="tipoCombustivel1"
+							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}">
 							<f:selectItem itemLabel="Selecione um combustivel" />
-							<f:selectItems value="#{ModeloVeiculoController.combustivel}" var="combustivel" 
-							itemLabel="#{combustivel}" itemValue="#{combustivel}"/>
+							<f:selectItems value="#{ModeloVeiculoController.combustivel}"
+								var="combustivel" itemLabel="#{combustivel}"
+								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
 
 						<p:outputLabel for="tipoCombustivel2" value="Combistivel 2: " />
-						<p:selectOneMenu id="tipoCombustivel2" value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}">
-							<f:selectItem itemLabel="Selecione um combustivel"/>
-							<f:selectItems value="#{ModeloVeiculoController.combustivel}" var="combustivel" 
-							itemLabel="#{combustivel}" itemValue="#{combustivel}"/>
+						<p:selectOneMenu id="tipoCombustivel2"
+							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}">
+							<f:selectItem itemLabel="Selecione um combustivel" />
+							<f:selectItems value="#{ModeloVeiculoController.combustivel}"
+								var="combustivel" itemLabel="#{combustivel}"
+								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Montadora: " />

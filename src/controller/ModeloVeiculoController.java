@@ -57,14 +57,10 @@ public class ModeloVeiculoController {
 	}
 	
 	public void excluir(ModeloVeiculo modelo){
-		System.out.println("1");
 		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modelo);
-		System.out.println("2");
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage("Modelo de Veiculo excluido com sucesso"));
-		System.out.println("3");
 		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
-		System.out.println("4");
 	}
 
 	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
