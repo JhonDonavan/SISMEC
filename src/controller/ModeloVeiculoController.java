@@ -64,14 +64,11 @@ public class ModeloVeiculoController {
 	}
 
 	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
-		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo);
 		try {
-			System.out.println("ENTROU NO TRY");
 			modelosSelecionados = modeloVeiculoDAO.buscaModeloByNome(nomeModelo);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}
-		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo + " E " + nomeModelo);
 		for (ModeloVeiculo m : modelosSelecionados) {
 			System.out.println("Montadora: " + m.getNome());
 		}

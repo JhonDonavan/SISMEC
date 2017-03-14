@@ -8,6 +8,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import model.Cliente;
 import modelDAO.GenericDAO;
 
@@ -15,12 +17,17 @@ import modelDAO.GenericDAO;
 @SessionScoped
 public class ClienteController {
 	
+	@Autowired
+	private List<Cliente> clientesSelecionados;
+	
 	private Cliente cliente = new Cliente();
 	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private ClienteDAO clienteDAO = new ClienteDAO();
 	
 	public ClienteController() {
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
 		cliente = new Cliente();
+		clientesSelecionados = new ArrayList<>();
 	}
 	
 	public String salvar(){
@@ -40,6 +47,18 @@ public class ClienteController {
 	public String editar(Cliente cliente){
 		this.cliente = cliente;
 		return "cadastrarCliente?faces-redirect=true";
+	}
+	
+	public List<Cliente> listarPorNome(String nomeCliente){
+		try{
+			clientesSelecionados = clienteDAO.buscarClienteByNome(nomeCliente);
+		}catch(Exception e){
+			System.out.println("ERROR Exception: " + e);
+		}
+		for(Cliente c : clientesSelecionados){
+			System.out.println("Clientes: " + c.getNome());
+		}
+		return clientesSelecionados;
 	}
 
 	public Cliente getCliente() {

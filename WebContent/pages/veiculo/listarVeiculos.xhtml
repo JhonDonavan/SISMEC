@@ -36,6 +36,11 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
+					
+					<p:column headerText="Cliente" sortBy="#{veiculos.getCliente().getNome()}"
+						filterBy="#{veiculos.getCliente().getNome()}" filterMatchMode="contains">
+						<h:outputText value="#{veiculos.getCliente().getNome()}" />
+					</p:column>
 
 					<p:column headerText="Placa" sortBy="#{veiculos.placa}"
 						filterBy="#{veiculos.placa}" filterMatchMode="contains">

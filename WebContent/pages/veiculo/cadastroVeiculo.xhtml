@@ -34,12 +34,19 @@
 						<p:inputText value="#{Veiculo.veiculo.cor}" required="true"
 							requiredMessage="Por favor informe a cor do veiculo" />
 
-						<p:outputLabel value="Modelo Veiculo " />
-						<p:autoComplete id="veiculoID"
-							value="#{Veiculo.veiculo.modelo}"
-							size="30" completeMethod="#{ModeloVeiculoController.listarPorNome}"
+						<p:outputLabel value="Modelo Veiculo: " />
+						<p:autoComplete id="veiculoID" value="#{Veiculo.veiculo.modelo}"
+							size="30"
+							completeMethod="#{ModeloVeiculoController.listarPorNome}"
 							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
 							converter="modeloVeiculoConverter" forceSelection="true" />
+
+						<p:outputLabel value="Cliente: " />
+						<p:autoComplete id="clienteId" value="#{Veiculo.veiculo.cliente}"
+							size="30"
+							completeMethod="#{Cliente.listarPorNome}"
+							var="cliente" itemLabel="#{cliente.nome}" itemValue="#{cliente}"
+							converter="clienteConverter" forceSelection="true" />
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
