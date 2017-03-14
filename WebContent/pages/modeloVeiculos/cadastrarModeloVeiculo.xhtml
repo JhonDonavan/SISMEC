@@ -57,7 +57,8 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Montadora: " />
-						<p:autoComplete id="montadoraID"
+						<p:autoComplete id="montadoraID" dropdown="true"
+							minQueryLength="3"
 							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
 							size="30" completeMethod="#{Montadora.listarPorNome}"
 							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"

@@ -14,19 +14,19 @@
 				<h:form id="cadastrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome: " />
-						<p:inputText value="#{Cliente.cliente.nome}" required="true"
+						<h:outputLabel value="Nome: "/>
+						<p:inputText value="#{Cliente.cliente.nome}" required="true" 
 							requiredMessage="Voce deve preencher o nome do cliente" size="40">
 						</p:inputText>
 						
-						<p:outputLabel value="CPF: "/>
-						<p:inputText value="#{Cliente.cliente.cpf}"/>
+						<p:outputLabel value="CPF: " for="cpf"/>
+						<p:inputMask value="#{Cliente.cliente.cpf}" id="cpf" mask="999.999.999-99"/>
 						
-						<p:outputLabel value="Telefone Fixo: " />
-						<p:inputText value="#{Cliente.cliente.telefone}" required="true" />
+						<p:outputLabel value="Telefone Fixo: " for="telefone" />
+						<p:inputMask  value="#{Cliente.cliente.telefone}" required="true" id="telefone" mask="(99) 9999-9999" />
 
-						<p:outputLabel value="Telefone Celular: " />
-						<p:inputText value="#{Cliente.cliente.celular}" />
+						<p:outputLabel value="Telefone Celular: " for="celular"/>
+						<p:inputMask value="#{Cliente.cliente.celular}" id="celular" mask="(99) 99999-9999" />
 						
 						<p:outputLabel value="E-Mail: " />
 						<p:inputText value="#{Cliente.cliente.email}" size="40"/>
