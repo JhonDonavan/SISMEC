@@ -37,12 +37,12 @@
 						<p:outputLabel value="Modelo Veiculo: " />
 						<p:autoComplete id="veiculoID" value="#{Veiculo.veiculo.modelo}"
 							size="30"
-							completeMethod="#{ModeloVeiculoController.listarPorNome}"
+							completeMethod="#{ModeloVeiculoController.listarPorNome}" dropdown="true" minQueryLength="3"
 							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
 							converter="modeloVeiculoConverter" forceSelection="true" />
 
 						<p:outputLabel value="Cliente: " />
-						<p:autoComplete id="clienteId" value="#{Veiculo.veiculo.cliente}"
+						<p:autoComplete id="clienteId" value="#{Veiculo.veiculo.cliente}" dropdown="true" minQueryLength="3"
 							size="30"
 							completeMethod="#{Cliente.listarPorNome}"
 							var="cliente" itemLabel="#{cliente.nome}" itemValue="#{cliente}"
