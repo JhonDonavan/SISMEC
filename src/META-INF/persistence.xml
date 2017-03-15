@@ -20,7 +20,7 @@
 				value="jdbc:postgresql://127.0.0.1:5432/SISMEC?charSet=LATIN1" />
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
 			<property name="hibernate.connection.username" value="postgres" />
-			<property name="hibernate.connection.password" value="fofield" />
+			<property name="hibernate.connection.password" value="postgres" />
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
