@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
+import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 
 @ManagedBean (name = "Cliente")
@@ -31,7 +32,9 @@ public class ClienteController {
 	}
 	
 	public String salvar(){
+		System.out.println("cliente no controller: " + cliente.getNome());
 		new GenericDAO<Cliente>(Cliente.class).salvar(cliente);
+		cliente = new Cliente();
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente Cadastrado com Sucesso"));
 		return "listarClientes?faces-redirect=true";
@@ -46,6 +49,7 @@ public class ClienteController {
 	
 	public String editar(Cliente cliente){
 		this.cliente = cliente;
+		System.out.println("Cliente selecionado:  " + cliente.getNome() );
 		return "cadastrarCliente?faces-redirect=true";
 	}
 	
@@ -63,6 +67,14 @@ public class ClienteController {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+
+	public List<Cliente> getClientesSelecionados() {
+		return clientesSelecionados;
+	}
+
+	public void setClientesSelecionados(List<Cliente> clientesSelecionados) {
+		this.clientesSelecionados = clientesSelecionados;
 	}
 
 	public void setCliente(Cliente cliente) {

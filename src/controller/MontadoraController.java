@@ -50,7 +50,6 @@ public class MontadoraController {
 
 	public String editar(Montadora montadora) {
 		this.montadora = montadora;
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora editado com sucesso!"));
 		return "cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
 /*teste*/

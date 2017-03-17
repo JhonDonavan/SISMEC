@@ -29,7 +29,8 @@
 					</div>
 				</div>
 				
-				<p:growl />
+				<p:growl  showDetail="true" />
+				
 				<p:dataTable id="ClientesLista" var="clientes"
 					value="#{Cliente.clientes}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
@@ -57,38 +58,6 @@
 						<h:outputText value="#{clientes.email}" />
 					</p:column>
 					
-					<!--
-					<p:column headerText="Data de Nascimento" sortBy="#{clientes.dataNascimento}">
-						<h:outputText value="#{clientes.dataNascimento}" />
-					</p:column>
-					
-					 <p:column headerText="Endereço" sortBy="#{clientes.endereco.logradouro}">
-						<h:outputText value="#{clientes.endereco.logradouro}" />
-					</p:column>
-					
-					<p:column headerText="Nº" sortBy="#{clientes.endereco.numero}">
-						<h:outputText value="#{clientes.endereco.numero}" />
-					</p:column>
-					
-					<p:column headerText="Complemento" sortBy="#{clientes.endereco.comlemento}">
-						<h:outputText value="#{clientes.endereco.complemento}" />
-					</p:column>
-					
-					<p:column headerText="Bairro" sortBy="#{clientes.endereco.bairro}">
-						<h:outputText value="#{clientes.endereco.bairro}" />
-					</p:column>
-					
-					<p:column headerText="Cidade" sortBy="#{clientes.endereco.cidade}">
-						<h:outputText value="#{clientes.endereco.cidade}" />
-					</p:column>
-					
-					<p:column headerText="UF" sortBy="#{clientes.endereco.uf}">
-						<h:outputText value="#{clientes.endereco.uf}" />
-					</p:column>
-					
-					<p:column headerText="CEP" sortBy="#{clientes.endereco.cep}">
-						<h:outputText value="#{clientes.endereco.cep}" />
-					</p:column> -->
 
 					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">

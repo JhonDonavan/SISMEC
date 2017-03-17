@@ -14,23 +14,22 @@
 				<h:form id="cadastrarMontadoras">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome da montadora:"/>
-						<p:inputText value="#{Montadora.montadora.nome}"
-							required="true"
+						<h:outputLabel value="Nome da montadora:" />
+						<p:inputText value="#{Montadora.montadora.nome}" required="true"
 							requiredMessage="Voce deve preencher o nome do modelo">
-							</p:inputText>
+						</p:inputText>
 
 						<p:outputLabel value="Pais origem:" />
 						<p:inputText value="#{Montadora.montadora.pais}">
-							
-							</p:inputText>
+
+						</p:inputText>
 
 						<p:outputLabel value="WEB SITE:" />
-						<p:inputText value="#{Montadora.montadora.site}"
-							required="true"
+						<p:inputText value="#{Montadora.montadora.site}" required="true"
 							requiredMessage="Por favor preencha o WEB SITE da montadora" />
 
-						<br/><br/>
+						<br />
+						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{Montadora.salvar}" update="@form" />
 					</h:panelGrid>

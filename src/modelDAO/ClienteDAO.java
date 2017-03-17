@@ -1,4 +1,4 @@
-package controller;
+package modelDAO;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import model.Cliente;
-import modelDAO.JPAUtil;
 
 public class ClienteDAO {
 

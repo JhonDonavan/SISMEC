@@ -9,73 +9,22 @@
 
 		<div id="form">
 
-			<p:panel header="Cadastro de clientes"
+			<p:panel header="Cadastro de cliente"
 				style="text-align:left; width:99%;">
-				<h:form id="cadastrarCliente">
+				<h:form id="cadasttrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome: "/>
-						<p:inputText value="#{Cliente.cliente.nome}" required="true" 
-							requiredMessage="Voce deve preencher o nome do cliente" size="40">
+						<h:outputLabel value="Nome do cliente: " />
+						<p:inputText value="#{Cliente.cliente.nome}" required="true"
+							requiredMessage="Voce deve digitar o nome do cliente">
 						</p:inputText>
-						
-						<p:outputLabel value="CPF: " for="cpf"/>
-						<p:inputMask value="#{Cliente.cliente.cpf}" id="cpf" mask="999.999.999-99"/>
-						
-						<p:outputLabel value="Telefone Fixo: " for="telefone" />
-						<p:inputMask  value="#{Cliente.cliente.telefone}" required="true" id="telefone" mask="(99) 9999-9999" />
 
-						<p:outputLabel value="Telefone Celular: " for="celular"/>
-						<p:inputMask value="#{Cliente.cliente.celular}" id="celular" mask="(99) 99999-9999" />
-						
-						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{Cliente.cliente.email}" size="40"/>
-						
-						<p:outputLabel for="button" value="Data de nascimento: " />
-						<p:calendar id="button" value="#{Cliente.cliente.dataNascimento}"
-							showOn="button" mask="true" pattern="dd-MM-yyyy"/>
-							
-						<p:outputLabel value="Endereço:" />
-						<p:inputText value="#{Cliente.cliente.endereco.logradouro}"/>
-						
-						<p:outputLabel value="Nº:" />
-						<p:inputText value="#{Cliente.cliente.endereco.numero}"/>
-						
-						<p:outputLabel value="Complemento:" />
-						<p:inputText value="#{Cliente.cliente.endereco.complemento}"/>
-						
-						<p:outputLabel value="Bairro:" />
-						<p:inputText value="#{Cliente.cliente.endereco.bairro}"/>
-						
-						<p:outputLabel value="Cidade:" />
-						<p:inputText value="#{Cliente.cliente.endereco.cidade}"/>
-						
-						<p:outputLabel value="UF:" />
-						<p:inputText value="#{Cliente.cliente.endereco.uf}"/>
-						
-						<p:outputLabel value="CEP:" />
-						<p:inputText value="#{Cliente.cliente.endereco.cep}"/>
-							
+
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{Cliente.salvar}" update="@form" />
 					</h:panelGrid>
-
-
-					<!-- DIALOG PARA CALENDARIO -->
-
-					<p:dialog modal="true" resizable="false" header="Values"
-						widgetVar="dlg" showEffect="fold">
-						<p:panelGrid id="display" columns="2" columnClasses="label,value">
-							<h:outputText value="Button:" />
-							<h:outputText value="#{Cliente.cliente.dataNascimento}">
-								<f:convertDateTime pattern="MM/dd/yyyy" />
-							</h:outputText>
-						</p:panelGrid>
-					</p:dialog>
-
-
 				</h:form>
 			</p:panel>
 		</div>
