@@ -35,6 +35,13 @@ public class ClienteMB {
 		this.cliente = cliente;
 		return "cadastrarCliente.xhtml?faces-redirect=true";
 	}
+	
+	public void excluir (Cliente cliente){
+		new GenericDAO<Cliente>(Cliente.class).excluir(cliente);
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Cliente excluido com sucesso!"));
+		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+	}
 
 	public Cliente getCliente() {
 		return cliente;
