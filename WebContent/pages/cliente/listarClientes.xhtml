@@ -49,11 +49,11 @@
 					<p:column headerText="Telefone" sortBy="#{clientesVAR.telefone}">
 						<h:outputText value="#{clientesVAR.telefone}" />
 					</p:column>
-					
+
 					<p:column headerText="Celular" sortBy="#{clientesVAR.celular}">
 						<h:outputText value="#{clientesVAR.celular}" />
 					</p:column>
-					
+
 					<p:column headerText="E-Mail" sortBy="#{clientesVAR.email}">
 						<h:outputText value="#{clientesVAR.email}" />
 					</p:column>
@@ -64,11 +64,12 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action=	"#{clienteMB.editar(clientesVAR)}">
+							action="#{clienteMB.editar(clientesVAR)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{clienteMB.excluir(clientesVAR)}" update="@form">
+							actionListener="#{clienteMB.prepararExclusao(clientesVAR)}"
+							oncomplete="PF('excluirCliente').show()">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
@@ -76,20 +77,18 @@
 
 				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
 				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
-				<p:confirmDialog widgetVar="excluirVeiculo"
-					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
-					appendTo="@(body)">
-					<div style="text-align: center;">
+				<p:confirmDialog widgetVar="excluirCliente" 
+					message="deseja realmente excluir o cliente #{clienteMB.cliente.nome}"
+					appendTo="@(body)" header="Excluir Cliente">
 
-						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
-							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+						<p:commandButton value="Sim" action="#{clienteMB.excluir()}"
+							 onclick="PF('excluirCliente').hide()" update="@form"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
 						<p:commandButton value="Não"
-							oncomplete="PF('excluirVeiculo').hide()"
+							oncomplete="PF('excluirCliente').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 
-					</div>
 				</p:confirmDialog>
 
 			</h:form>

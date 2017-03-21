@@ -25,9 +25,10 @@ public class ClienteMB {
 
 	public String salvar() {
 		new GenericDAO<Cliente>(Cliente.class).salvar(cliente);
+		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+		cliente = new Cliente();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente cadastrado com sucesso"));
 		System.out.println("Objeto " + cliente.getNome() + " cadastrado com sucesso!");
-		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
 		return "listarClientes?faces-redirect=true";
 	}
 	
@@ -36,10 +37,15 @@ public class ClienteMB {
 		return "cadastrarCliente.xhtml?faces-redirect=true";
 	}
 	
-	public void excluir (Cliente cliente){
+	public void prepararExclusao(Cliente cliente){
+		this.cliente = cliente;
+		System.out.println(" preparar para excluir cliente: " + cliente.getNome());
+	}
+	
+	public void excluir(){
+		System.out.println("excluir cliente: " + cliente.getNome());
 		new GenericDAO<Cliente>(Cliente.class).excluir(cliente);
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Cliente excluido com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente excluido com sucesso!"));
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
 	}
 

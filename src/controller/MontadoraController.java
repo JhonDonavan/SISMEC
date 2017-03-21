@@ -52,7 +52,6 @@ public class MontadoraController {
 		this.montadora = montadora;
 		return "cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
-/*teste*/
 	public void excluir(Montadora montadora) {
 		new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
