@@ -7,47 +7,55 @@
 
 	<ui:define name="conteudo">
 
-		<p:panel header="Montadoras cadastrados">
+		<p:panel header="Clientes cadastrados">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaMontadora"
-						action="cadastrarMontadoras.xhtml" style="margin-right: 1300px;" />
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoCliente"
+						action="cadastrarCliente.xhtml" style="margin-right: 1300px;" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
-							<p:dataExporter type="xls" target="MontadorasLista"
-								fileName="Montadoras" encoding="iso-8859-1" />
+							<p:dataExporter type="xls" target="ClienteLista"
+								fileName="Clientes" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_pdf.png" />
-							<p:dataExporter type="pdf" target="MontadorasLista"
-								fileName="Montadoras" encoding="iso-8859-1" />
+							<p:dataExporter type="pdf" target="ClienteLista"
+								fileName="Clientes" encoding="iso-8859-1" />
 						</h:commandLink>
 					</div>
 				</div>
 
 
 				<p:growl />
-				<p:dataTable id="MontadorasLista" var="montadora"
-					value="#{Montadora.montadoras}" paginator="true" rows="15"
+				<p:dataTable id="ClienteLista" var="clientesVAR"
+					value="#{clienteMB.clientes}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome" sortBy="#{montadora.nome}}"
-						filterBy="#{montadora.nome}}" filterMatchMode="contains">
-						<h:outputText value="#{montadora.nome}" />
+					<p:column headerText="Nome" sortBy="#{clientesVAR.nome}}"
+						filterBy="#{clientesVAR.nome}}" filterMatchMode="contains">
+						<h:outputText value="#{clientesVAR.nome}" />
 					</p:column>
 
-					<p:column headerText="País" sortBy="#{montadora.pais}">
-						<h:outputText value="#{montadora.pais}" />
+					<p:column headerText="CPF" sortBy="#{clientesVAR.cpf}">
+						<h:outputText value="#{clientesVAR.cpf}" />
 					</p:column>
 
-					<p:column headerText="WEB SITE" sortBy="#{montadora.site}">
-						<h:outputText value="#{montadora.site}" />
+					<p:column headerText="Telefone" sortBy="#{clientesVAR.telefone}">
+						<h:outputText value="#{clientesVAR.telefone}" />
+					</p:column>
+					
+					<p:column headerText="Celular" sortBy="#{clientesVAR.celular}">
+						<h:outputText value="#{clientesVAR.celular}" />
+					</p:column>
+					
+					<p:column headerText="E-Mail" sortBy="#{clientesVAR.email}">
+						<h:outputText value="#{clientesVAR.email}" />
 					</p:column>
 
 
@@ -56,11 +64,11 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action=	"#{Montadora.editar(montadora)}">
+							action=	"#{clienteMB.editar(clienteVAR)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{Montadora.excluir(montadora)}" update="@form">
+							action="#{clienteMB.excluir(clienteVAR)}" update="@form">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>

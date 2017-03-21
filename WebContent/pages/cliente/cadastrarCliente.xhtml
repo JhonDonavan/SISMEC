@@ -14,24 +14,32 @@
 				<h:form id="cadastrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome Cliente:" />
-						<p:inputText value="#{Montadora.montadora.nome}" required="true"
-							requiredMessage="Voce deve preencher o nome do modelo">
+						<h:outputLabel value="Nome Cliente: " />
+						<p:inputText value="#{clienteMB.cliente.nome}" required="true"
+							requiredMessage="Você deve fornecer o nome do cliente">
 						</p:inputText>
 
-						<p:outputLabel value="Pais origem:" />
-						<p:inputText value="#{Montadora.montadora.pais}">
-
+						<p:outputLabel value="CPF: " />
+						<p:inputText value="#{clienteMB.cliente.cpf}" required="true"
+							requiredMessage="Você deve fornecer o CPF do cliente">
 						</p:inputText>
 
-						<p:outputLabel value="WEB SITE:" />
-						<p:inputText value="#{Montadora.montadora.site}" required="true"
-							requiredMessage="Por favor preencha o WEB SITE da montadora" />
+						<p:outputLabel value="Telefone: " />
+						<p:inputText value="#{clienteMB.cliente.telefone}" />
+
+						<p:outputLabel value="Celular: " />
+						<p:inputText value="#{clienteMB.cliente.celular}"/>
+
+						<p:outputLabel value="E-Mail: " />
+						<p:inputText value="#{clienteMB.cliente.email}" />
+
+						<!-- <p:outputLabel value="Data de nascimento: " />
+						<p:inputText value="#{clienteMB.cliente.dataNascimento}" /> -->
 
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{Montadora.salvar}" update="@form" />
+							action="#{clienteMB.salvar}" update="@form" />
 					</h:panelGrid>
 				</h:form>
 			</p:panel>
