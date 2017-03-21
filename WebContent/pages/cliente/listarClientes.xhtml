@@ -7,72 +7,83 @@
 
 	<ui:define name="conteudo">
 
-		<p:panel header="Veiculos cadastrados">
+		<p:panel header="Montadoras cadastrados">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoCliente"
-						action="cadastrarCliente.xhtml" style="margin-right: 1300px;" />
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaMontadora"
+						action="cadastrarMontadoras.xhtml" style="margin-right: 1300px;" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
-							<p:dataExporter type="xls" target="ClientesLista"
-								fileName="Clientes" encoding="iso-8859-1" />
+							<p:dataExporter type="xls" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_pdf.png" />
-							<p:dataExporter type="pdf" target="ClientesLista"
-								fileName="Clientes" encoding="iso-8859-1" />
+							<p:dataExporter type="pdf" target="MontadorasLista"
+								fileName="Montadoras" encoding="iso-8859-1" />
 						</h:commandLink>
 					</div>
 				</div>
-				
-				<p:growl  showDetail="true" />
-				
-				<p:dataTable id="ClientesLista" var="clientes"
-					value="#{Cliente.clientes}" paginator="true" rows="15"
+
+
+				<p:growl />
+				<p:dataTable id="MontadorasLista" var="montadora"
+					value="#{Montadora.montadoras}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome" sortBy="#{clientes.nome}"
-						filterBy="#{clientes.nome}" filterMatchMode="contains">
-						<h:outputText value="#{clientes.nome}" />
+					<p:column headerText="Nome" sortBy="#{montadora.nome}}"
+						filterBy="#{montadora.nome}}" filterMatchMode="contains">
+						<h:outputText value="#{montadora.nome}" />
 					</p:column>
 
-					<p:column headerText="CPF">
-						<h:outputText value="#{clientes.cpf}" />
+					<p:column headerText="País" sortBy="#{montadora.pais}">
+						<h:outputText value="#{montadora.pais}" />
 					</p:column>
 
-					<p:column headerText="Telefone" sortBy="#{clientes.telefone}">
-						<h:outputText value="#{clientes.telefone}" />
+					<p:column headerText="WEB SITE" sortBy="#{montadora.site}">
+						<h:outputText value="#{montadora.site}" />
 					</p:column>
 
-					<p:column headerText="Celular" sortBy="#{clientes.celular}">
-						<h:outputText value="#{clientes.celular}" />
-					</p:column>
-					
-					<p:column headerText="Email" sortBy="#{clientes.email}">
-						<h:outputText value="#{clientes.email}" />
-					</p:column>
-					
 
 					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{Cliente.editar(clientes)}">
+							action=	"#{Montadora.editar(montadora)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{Cliente.excluir(clientes)}" update="@form">
+							action="#{Montadora.excluir(montadora)}" update="@form">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
-				
+
+
+				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
+				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
+				<p:confirmDialog widgetVar="excluirVeiculo"
+					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
+					appendTo="@(body)">
+					<div style="text-align: center;">
+
+						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
+							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirVeiculo').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+					</div>
+				</p:confirmDialog>
+
 			</h:form>
 		</p:panel>
 

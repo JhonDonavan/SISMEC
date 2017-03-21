@@ -9,21 +9,29 @@
 
 		<div id="form">
 
-			<p:panel header="Cadastro de cliente"
+			<p:panel header="Cadastrar Cliente"
 				style="text-align:left; width:99%;">
-				<h:form id="cadasttrarCliente">
+				<h:form id="cadastrarCliente">
 					<p:growl />
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome do cliente: " />
-						<p:inputText value="#{Cliente.cliente.nome}" required="true"
-							requiredMessage="Voce deve digitar o nome do cliente">
+						<h:outputLabel value="Nome Cliente:" />
+						<p:inputText value="#{Montadora.montadora.nome}" required="true"
+							requiredMessage="Voce deve preencher o nome do modelo">
 						</p:inputText>
 
+						<p:outputLabel value="Pais origem:" />
+						<p:inputText value="#{Montadora.montadora.pais}">
+
+						</p:inputText>
+
+						<p:outputLabel value="WEB SITE:" />
+						<p:inputText value="#{Montadora.montadora.site}" required="true"
+							requiredMessage="Por favor preencha o WEB SITE da montadora" />
 
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{Cliente.salvar}" update="@form" />
+							action="#{Montadora.salvar}" update="@form" />
 					</h:panelGrid>
 				</h:form>
 			</p:panel>

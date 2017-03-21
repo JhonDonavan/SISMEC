@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,8 +22,8 @@ public class Cliente implements Serializable {
 	@SequenceGenerator(name = "CLIENTE_ID", sequenceName = "SEQ_CLIENTE", allocationSize = 1)
 	private Integer id;
 
-	@Embedded
-	private Endereco endereco;
+	/*@Embedded
+	private Endereco endereco;*/
 
 	@OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
 	private List<Veiculo> veiculo;
@@ -45,7 +44,7 @@ public class Cliente implements Serializable {
 		return id;
 	}
 
-	public Endereco getEndereco() {
+	/*public Endereco getEndereco() {
 		if (endereco == null)
 			endereco = new Endereco();
 		return endereco;
@@ -53,7 +52,7 @@ public class Cliente implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
+	}*/
 
 	public List<Veiculo> getVeiculo() {
 		return veiculo;
