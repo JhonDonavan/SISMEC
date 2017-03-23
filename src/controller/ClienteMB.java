@@ -8,19 +8,28 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import converter.ClienteConverter;
 import model.Cliente;
+import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 
 @ManagedBean(name = "clienteMB")
 @SessionScoped
 public class ClienteMB {
 
+	@Autowired
+	private List<Cliente> clientesSelecionados;
+	
 	private Cliente cliente = new Cliente();
 	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private ClienteDAO clienteDAO = new ClienteDAO();
 
 	public ClienteMB() {
 		cliente = new Cliente();
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+		clientesSelecionados = new ArrayList<>();
 	}
 
 	public String salvar() {
@@ -47,6 +56,16 @@ public class ClienteMB {
 		new GenericDAO<Cliente>(Cliente.class).excluir(cliente);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente excluido com sucesso!"));
 		clientes = new GenericDAO<Cliente>(Cliente.class).listarTodos();
+	}
+	
+	public List<Cliente> listarPorNome(String nomeCliente){
+		try {
+			clientesSelecionados = clienteDAO.buscarClienteByNome(nomeCliente);
+		} catch (Exception e) {
+			System.out.println("ERROR: " + e);
+		}
+		return clientesSelecionados;
+		
 	}
 
 	public Cliente getCliente() {

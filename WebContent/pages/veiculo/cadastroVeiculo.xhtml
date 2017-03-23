@@ -45,7 +45,7 @@
 						<p:outputLabel value="Cliente: " />
 						<p:autoComplete id="clienteId" value="#{Veiculo.veiculo.cliente}"
 							dropdown="true" minQueryLength="3" size="30"
-							completeMethod="#{Cliente.listarPorNome}" var="cliente"
+							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
 							converter="clienteConverter" forceSelection="true" />
 						<br />
