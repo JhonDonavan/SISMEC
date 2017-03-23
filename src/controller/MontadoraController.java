@@ -75,6 +75,10 @@ public class MontadoraController {
 		}
 		return montadorasSelecionados;
 	}
+	
+	public void limpaMontadora(){
+		this.montadora = new Montadora();
+	}
 
 	public Montadora getMontadora() {
 		return montadora;

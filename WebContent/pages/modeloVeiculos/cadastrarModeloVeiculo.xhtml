@@ -71,15 +71,17 @@
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
 						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
-					<p:spacer width="50" height="10" />
-
-					<p:commandButton actionListener="#{buttonView.buttonAction}"
+					<p:spacer width="830" height="10" />
+					
+					<!-- Comando action="#{Montadora.limpaMontadora()}"  chama um metodo 
+						LimparMontadora para limpar o Bean e o formulario ficar vazio -->
+					<p:commandButton action="#{Montadora.limpaMontadora()}"
 						value="Nova montadora" id="iconOnly" icon="ui-icon-plusthick"
 						title="Icon Only" oncomplete="PF('cadastrarMontadora').show()" />
 				</h:form>
 
 
-				<p:confirmDialog widgetVar="cadastrarMontadora"
+				<p:confirmDialog widgetVar="cadastrarMontadora" width="500"
 					message="Entre com os dados da nova Montadora" appendTo="@(body)"
 					header="Cadastrar Montadora">
 					<h:form id="cadastrorMontadora">
@@ -99,9 +101,13 @@
 							<br />
 							<br />
 							<p:commandButton value="Salvar" icon="ui-icon-disk"
-								actionListener="#{Montadora.salvar}" ajax="true"
+								actionListener="#{Montadora.salvar}"
 								oncomplete="PF('cadastrarMontadora').hide()" update="@form" />
+								<p:commandButton value="Cancelar" icon="ui-icon-disk"
+								oncomplete="PF('cadastrarMontadora').hide()">
+						</p:commandButton>
 						</h:panelGrid>
+						
 					</h:form>
 				</p:confirmDialog>
 

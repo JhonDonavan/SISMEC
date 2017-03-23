@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import converter.ClienteConverter;
 import model.Cliente;
 import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
@@ -65,7 +64,10 @@ public class ClienteMB {
 			System.out.println("ERROR: " + e);
 		}
 		return clientesSelecionados;
-		
+	}
+	
+	public void limparCliente(){
+		this.cliente = new Cliente();
 	}
 
 	public Cliente getCliente() {
