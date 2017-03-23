@@ -25,6 +25,9 @@ public class MontadoraController {
 
 	private Montadora montadora = new Montadora();
 	private List<Montadora> montadoras = new ArrayList<Montadora>();
+	private String mensagemCadastroSucesso = "Montadora cadastrado com sucesso";
+	
+
 
 	public MontadoraController() {
 		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
@@ -96,5 +99,15 @@ public class MontadoraController {
 	public void setMontadorasSelecionados(List<Montadora> montadorasSelecionados) {
 		this.montadorasSelecionados = montadorasSelecionados;
 	}
+
+	public String getMensagemCadastroSucesso() {
+		return mensagemCadastroSucesso;
+	}
+
+	public void setMensagemCadastroSucesso(String mensagemCadastroSucesso) {
+		this.mensagemCadastroSucesso = mensagemCadastroSucesso;
+	}
+	
+	
 
 }

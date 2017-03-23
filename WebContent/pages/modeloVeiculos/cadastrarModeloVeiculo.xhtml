@@ -14,7 +14,8 @@
 				<h:form id="cadastrarModeloVeiculo">
 					<p:growl />
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="4" width="100%" style="text-align:left"
+						cellpadding="3">
 
 						<h:outputLabel value="Nome do modelo: " />
 						<p:inputText value="#{ModeloVeiculoController.modeloVeiculo.nome}"
@@ -64,13 +65,48 @@
 							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
 							converter="montadoraConverter" forceSelection="true" />
 
-						<br />
-						<br />
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{ModeloVeiculoController.salvar}" update="@form" />
-
 					</h:panelGrid>
+
+					<p:separator />
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						action="#{ModeloVeiculoController.salvar}" update="@form" />
+
+					<p:spacer width="50" height="10" />
+
+					<p:commandButton actionListener="#{buttonView.buttonAction}"
+						value="Nova montadora" id="iconOnly" icon="ui-icon-plusthick"
+						title="Icon Only" oncomplete="PF('cadastrarMontadora').show()" />
 				</h:form>
+
+
+				<p:confirmDialog widgetVar="cadastrarMontadora"
+					message="Entre com os dados da nova Montadora" appendTo="@(body)"
+					header="Cadastrar Montadora">
+					<h:form id="cadastrorMontadora">
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Nome da montadora:" />
+							<p:inputText value="#{Montadora.montadora.nome}" required="true"
+								requiredMessage="Voce deve preencher o nome do modelo">
+							</p:inputText>
+
+							<p:outputLabel value="Pais origem:" />
+							<p:inputText value="#{Montadora.montadora.pais}" />
+
+							<p:outputLabel value="WEB SITE:" />
+							<p:inputText value="#{Montadora.montadora.site}" required="true"
+								requiredMessage="Por favor preencha o WEB SITE da montadora" />
+
+							<br />
+							<br />
+							<p:commandButton value="Salvar" icon="ui-icon-disk"
+								actionListener="#{Montadora.salvar}" ajax="true"
+								oncomplete="PF('cadastrarMontadora').hide()" update="@form" />
+						</h:panelGrid>
+					</h:form>
+				</p:confirmDialog>
+
+
+
 			</p:panel>
 		</div>
 	</ui:define>

@@ -16,5 +16,4 @@ public class ClienteDAO {
 		query.setParameter("nomeCliente", "%" + nomeCliente + "%");
 		return query.getResultList();
 	}
-
 }
