@@ -28,19 +28,27 @@
 						<p:inputText value="#{clienteMB.cliente.telefone}" />
 
 						<p:outputLabel value="Celular: " />
-						<p:inputText value="#{clienteMB.cliente.celular}"/>
+						<p:inputText value="#{clienteMB.cliente.celular}" />
 
 						<p:outputLabel value="E-Mail: " />
 						<p:inputText value="#{clienteMB.cliente.email}" />
 
-						<!-- <p:outputLabel value="Data de nascimento: " />
-						<p:inputText value="#{clienteMB.cliente.dataNascimento}" /> -->
+						<p:outputLabel value="Data de nascimento: " for="button" />
+						<p:calendar id="button" value="#{clienteMB.cliente.dataNascimento}" showOn="button" />
 
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{clienteMB.salvar}" update="@form" />
 					</h:panelGrid>
+
+					<!-- Mostra modal da data -->
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="data" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						</p:panelGrid>
+					</p:dialog>
+
 				</h:form>
 			</p:panel>
 		</div>
