@@ -20,14 +20,12 @@ public class MontadoraController {
 
 	@Autowired
 	private List<Montadora> montadorasSelecionados;
-	
+
 	private MontadoraDAO montadoraDAO = new MontadoraDAO();
 
 	private Montadora montadora = new Montadora();
 	private List<Montadora> montadoras = new ArrayList<Montadora>();
 	private String mensagemCadastroSucesso = "Montadora cadastrado com sucesso";
-	
-
 
 	public MontadoraController() {
 		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
@@ -55,7 +53,12 @@ public class MontadoraController {
 		this.montadora = montadora;
 		return "cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
-	public void excluir(Montadora montadora) {
+
+	public void prepararExclusao(Montadora montadora) {
+		this.montadora = montadora;
+	}
+
+	public void excluir() {
 		new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
 		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
@@ -75,8 +78,12 @@ public class MontadoraController {
 		}
 		return montadorasSelecionados;
 	}
-	
-	public void limpaMontadora(){
+
+	public void limparMontadora() {
+		this.montadora = new Montadora();
+	}
+
+	public void limpaMontadora() {
 		this.montadora = new Montadora();
 	}
 
@@ -111,7 +118,5 @@ public class MontadoraController {
 	public void setMensagemCadastroSucesso(String mensagemCadastroSucesso) {
 		this.mensagemCadastroSucesso = mensagemCadastroSucesso;
 	}
-	
-	
 
 }

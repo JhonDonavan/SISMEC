@@ -12,7 +12,8 @@
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
 						id="novaMontadora" action="cadastrarMontadoras.xhtml"
-						style="margin-right: 1300px;" />
+						style="margin-right: 1300px;"
+						actionListener="#{Montadora.limparMontadora()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
@@ -61,25 +62,26 @@
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{Montadora.excluir(montadora)}" update="@form">
+							oncomplete="PF('excluirMontadora').show()"
+							actionListener="#{Montadora.prepararExclusao(montadora)}">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
 
-				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
-				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
-				<p:confirmDialog widgetVar="excluirVeiculo"
-					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
-					appendTo="@(body)">
+
+				<p:confirmDialog widgetVar="excluirMontadora"
+					message="deseja realmente excluir a montadora #{Montadora.montadora.nome}?"
+					appendTo="@(body)" header="Excluir Montadora">
 					<div style="text-align: center;">
 
-						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
-							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+						<p:commandButton value="Sim" action="#{Montadora.excluir()}"
+							update="@form" process="@this"
+							onclick="PF('excluirMontadora').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
 						<p:commandButton value="Não"
-							oncomplete="PF('excluirVeiculo').hide()"
+							oncomplete="PF('excluirMontadora').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 
 					</div>
