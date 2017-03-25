@@ -56,8 +56,13 @@ public class ModeloVeiculoController {
 		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
 	}
 	
-	public void excluir(ModeloVeiculo modelo){
-		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modelo);
+	public void prepararExclusao(ModeloVeiculo modeloVeiculo){
+		this.modeloVeiculo = modeloVeiculo;
+		System.out.println(" preparar para excluir modelo veiculo: " + modeloVeiculo.getNome());
+	}
+	
+	public void excluir(){
+		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modeloVeiculo);
 		FacesContext.getCurrentInstance().addMessage(null, 
 				new FacesMessage("Modelo de Veiculo excluido com sucesso"));
 		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
@@ -74,7 +79,12 @@ public class ModeloVeiculoController {
 		}
 		return modelosSelecionados;
 	}
-
+	
+	public void limparModeloVeiculo(){
+		System.out.println("Limpando modelo Veiculo: "  + modeloVeiculo.getNome());
+		this.modeloVeiculo = new ModeloVeiculo();
+	}
+	
 	public ModeloVeiculo getModeloVeiculo() {
 		return modeloVeiculo;
 	}

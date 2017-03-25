@@ -11,7 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoCliente"
-						action="cadastrarCliente.xhtml" style="margin-right: 1300px;" />
+						action="cadastrarCliente.xhtml" style="margin-right: 1300px;" actionListener="#{clienteMB.limparCliente()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
@@ -77,7 +77,7 @@
 
 				<p:confirmDialog widgetVar="excluirCliente"
 					message="deseja realmente excluir o cliente #{clienteMB.cliente.nome}?"
-					appendTo="@(body)" header="Excluir Cliente">
+					appendTo="@(body)" header="Excluir cliente?">
 					<div style="text-align: center;">
 						<p:commandButton value="Sim" process="@this"
 							action="#{clienteMB.excluir()}"
@@ -86,7 +86,7 @@
 
 						<p:commandButton value="Não"
 							oncomplete="PF('excluirCliente').hide()"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close"  action="#{clienteMB.limparCliente()}"/>
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
 

@@ -72,7 +72,7 @@
 						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
 					<p:spacer width="830" height="10" />
-					
+
 					<!-- Comando action="#{Montadora.limpaMontadora()}"  chama um metodo 
 						LimparMontadora para limpar o Bean e o formulario ficar vazio -->
 					<p:commandButton action="#{Montadora.limpaMontadora()}"
@@ -99,15 +99,16 @@
 								requiredMessage="Por favor preencha o WEB SITE da montadora" />
 
 							<br />
-							<br />
-							<p:commandButton value="Salvar" icon="ui-icon-disk"
-								actionListener="#{Montadora.salvar}"
-								oncomplete="PF('cadastrarMontadora').hide()" update="@form" />
-								<p:commandButton value="Cancelar" icon="ui-icon-disk"
-								oncomplete="PF('cadastrarMontadora').hide()">
-						</p:commandButton>
 						</h:panelGrid>
-						
+							<p:separator/>
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							actionListener="#{Montadora.salvar}"
+							oncomplete="PF('cadastrarMontadora').hide()" update="@form" />
+						<p:commandButton value="Cancelar" icon="ui-icon-disk"
+							oncomplete="PF('cadastrarMontadora').hide()">
+						</p:commandButton>
+
+
 					</h:form>
 				</p:confirmDialog>
 
