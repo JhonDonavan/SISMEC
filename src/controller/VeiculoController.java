@@ -55,7 +55,6 @@ public class VeiculoController {
 		return "cadastroVeiculo.xhtml?faces-redirect=true";
 	}
 
-	/*METODO ABAIXO É USADO COM EXCLUSAO PELO CONFIRM DALOG // NAO ESTA EM USO NO MOMENTO*/
 	public void prepararExclusao(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
@@ -80,6 +79,10 @@ public class VeiculoController {
 			System.out.println("Montadora: " + mv.getNome());
 		}
 		return modelosSelecionados;
+	}
+	
+	public void limparVeiculo(){
+		this.veiculo = new Veiculo();
 	}
 
 	public Veiculo getVeiculo() {

@@ -11,7 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
-						action="cadastroVeiculo.xhtml" style="margin-right: 1300px;" />
+						action="cadastroVeiculo.xhtml" style="margin-right: 1300px;"  actionListener="#{Veiculo.limparVeiculo()}"/>
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
@@ -67,22 +67,21 @@
 							action="#{Veiculo.editar(veiculos)}">
 						</p:commandButton>
 
-						<p:commandButton icon="ui-icon-trash" title="Excluir"
-							action="#{Veiculo.excluir(veiculos)}" update="@form">
+						<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('excluirVeiculo').show()"
+							action="#{Veiculo.prepararExclusao(veiculos)}" update="@form">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
 
-				<!--EXCLUIR VEICULO PELO MODAL COM BUG, SISTEMA EXCLUINDO SEM 
-				QUESTIONAMENTO PELA LISTA ATÉ SER CORRIGIDO PROBLEMA DO MODAL  -->
+			
 				<p:confirmDialog widgetVar="excluirVeiculo"
 					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
-					appendTo="@(body)">
+					appendTo="@(body)" header="excluir veivulo?">
 					<div style="text-align: center;">
 
 						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
-							update="@form" oncomplete="PF('excluirVeiculo').hide()"
+							update="@form" process="@this" oncomplete="PF('excluirVeiculo').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
 						<p:commandButton value="Não"

@@ -12,7 +12,8 @@
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
 						id="novoModeloDeVeiculo" action="cadastrarModeloVeiculo.xhtml"
-						style="margin-right: 1300px;" actionListener="#{ModeloVeiculoController.limparModeloVeiculo()}" />
+						style="margin-right: 1300px;"
+						actionListener="#{ModeloVeiculoController.limparModeloVeiculo()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: absoulute; margin-top: 0px;">
@@ -41,7 +42,7 @@
 						filterBy="#{modelos.nome}" filterMatchMode="contains">
 						<h:outputText value="#{modelos.nome}" />
 					</p:column>
-					
+
 					<p:column headerText="Sigla" sortBy="#{modelos.sigla}">
 						<h:outputText value="#{modelos.sigla}" />
 					</p:column>
@@ -50,12 +51,13 @@
 						filterBy="#{modelos.montadora.nome}" filterMatchMode="contains">
 						<h:outputText value="#{modelos.montadora.nome}" />
 					</p:column>
-					
+
 					<p:column headerText="Motor" sortBy="#{modelos.motor}">
 						<h:outputText value="#{modelos.motor}" />
 					</p:column>
-					
-					<p:column headerText="Combustivel" sortBy="#{modelos.combustivel_1}">
+
+					<p:column headerText="Combustivel"
+						sortBy="#{modelos.combustivel_1}">
 						<h:outputText value="#{modelos.combustivel_1}" />
 					</p:column>
 
@@ -67,12 +69,11 @@
 							action="#{ModeloVeiculoController.editar(modelos)}">
 						</p:commandButton>
 
-						<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('excluirModeloVeiculo').show()"
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('excluirModeloVeiculo').show()"
 							actionListener="#{ModeloVeiculoController.prepararExclusao(modelos)}">
 						</p:commandButton>
 					</p:column>
-
-
 
 				</p:dataTable>
 
@@ -87,7 +88,7 @@
 
 						<p:commandButton value="Não"
 							oncomplete="PF('excluirModeloVeiculo').hide()"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
 
