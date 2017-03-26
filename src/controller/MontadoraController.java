@@ -82,9 +82,10 @@ public class MontadoraController {
 	public void limparMontadora() {
 		this.montadora = new Montadora();
 	}
-
-	public void limpaMontadora() {
-		this.montadora = new Montadora();
+	
+	public void detalheMontadora(Montadora montadora){
+		this.montadora = montadora;
+		System.out.println(montadora.getNome());
 	}
 
 	public Montadora getMontadora() {

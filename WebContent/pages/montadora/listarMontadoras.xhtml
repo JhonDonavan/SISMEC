@@ -54,7 +54,9 @@
 
 
 					<p:column style="text-align:center;" exportable="false">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							onclick="PF('detalhes').show();"
+							action="#{Montadora.detalheMontadora(montadora)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
@@ -69,12 +71,11 @@
 				</p:dataTable>
 
 
-
+				<!-- Modal para confirmação de exclusão -->
 				<p:confirmDialog widgetVar="excluirMontadora"
 					message="deseja realmente excluir a montadora #{Montadora.montadora.nome}?"
 					appendTo="@(body)" header="Excluir Montadora">
 					<div style="text-align: center;">
-
 						<p:commandButton value="Sim" action="#{Montadora.excluir()}"
 							update="@form" process="@this"
 							onclick="PF('excluirMontadora').hide()"
@@ -83,9 +84,31 @@
 						<p:commandButton value="Não"
 							oncomplete="PF('excluirMontadora').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-
 					</div>
 				</p:confirmDialog>
+
+				<!-- Modal para botao detalhes -->
+
+				<p:dialog header="Modal Dialog" widgetVar="detalhes"
+					appendTo="@(body)" minimizable="true" maximizable="true"
+					height="250">
+					<h2>Montadora:</h2>
+					<p:separator/>
+					<h:outputText
+						value="Nome da montadora: #{Montadora.montadora.nome}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Pais da montadora: #{Montadora.montadora.pais}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Web site da montadora: #{Montadora.montadora.site}" />
+
+
+				</p:dialog>
+
+
 
 			</h:form>
 		</p:panel>
