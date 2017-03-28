@@ -68,23 +68,22 @@
 					</h:panelGrid>
 
 					<p:separator />
-					<p:commandButton value="Salvar" icon="ui-icon-disk"
+					<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Modelo de veiculo"
 						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
-					<p:spacer width="830" height="10" />
+					<p:spacer width="828" height="10" />
 
-					<!-- Comando action="#{Montadora.limpaMontadora()}"  chama um metodo 
-						LimparMontadora para limpar o Bean e o formulario ficar vazio -->
-					<p:commandButton action="#{Montadora.limpaMontadora()}"
-						value="Nova montadora" id="iconOnly" icon="ui-icon-plusthick"
-						title="Icon Only" oncomplete="PF('cadastrarMontadora').show()" />
+					<p:commandButton value="Nova montadora" id="iconOnly" update=":cadastrarMontadora"
+						icon="ui-icon-plusthick" title="Cadastrar nova montadora" actionListener="#{Montadora.limparMontadora()}"
+						oncomplete="PF('cadastrarMontadora').show()" />
 				</h:form>
 
 
+				<h:form id="cadastrarMontadora">
 				<p:confirmDialog widgetVar="cadastrarMontadora" width="500"
 					message="Entre com os dados da nova Montadora" appendTo="@(body)"
 					header="Cadastrar Montadora">
-					<h:form id="cadastrorMontadora">
+					
 						<h:panelGrid columns="2">
 							<h:outputLabel value="Nome da montadora:" />
 							<p:inputText value="#{Montadora.montadora.nome}" required="true"
@@ -100,7 +99,7 @@
 
 							<br />
 						</h:panelGrid>
-							<p:separator/>
+						<p:separator />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							actionListener="#{Montadora.salvar}"
 							oncomplete="PF('cadastrarMontadora').hide()" update="@form" />
@@ -108,9 +107,8 @@
 							oncomplete="PF('cadastrarMontadora').hide()">
 						</p:commandButton>
 
-
-					</h:form>
 				</p:confirmDialog>
+				</h:form>
 
 
 
