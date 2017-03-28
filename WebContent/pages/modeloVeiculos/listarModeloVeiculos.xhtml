@@ -62,7 +62,9 @@
 					</p:column>
 
 					<p:column style="text-align:center;" exportable="false">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{ModeloVeiculoController.detalheModeloVeiculo(modelos)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
@@ -77,6 +79,7 @@
 
 				</p:dataTable>
 
+				<!--MODAL PARA CONFIRMAR EXCLUSÃO  -->
 				<p:confirmDialog widgetVar="excluirModeloVeiculo"
 					message="deseja realmente excluir o modelo de veiculo #{ModeloVeiculoController.modeloVeiculo.nome}?"
 					appendTo="@(body)" header="Excluir modelo de veiculo?">
@@ -91,7 +94,63 @@
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
+			</h:form>
 
+			<!--MODAL PARA BOTAO DETALHES DO MODELO DE VEICULO  -->
+			<h:form id="modalDetalhes">
+				<p:dialog header="Detalhes do modelo de veiculo"
+					widgetVar="detalhes" appendTo="@(body)" minimizable="true"
+					maximizable="true" width="650" showEffect="fade" hideEffect="none">
+					<h2>TODOS OS DETALHES DO MODELO</h2>
+					<p:separator />
+					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
+						toggleSpeed="650">
+						<h:outputText
+							value="Nome do modelo: #{ModeloVeiculoController.modeloVeiculo.nome}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Sigla do modelo: #{ModeloVeiculoController.modeloVeiculo.sigla}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Cilindrada do motor: #{ModeloVeiculoController.modeloVeiculo.motor}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Potência em cavalos: #{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Numeros de porta: #{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Combustível principal: #{ModeloVeiculoController.modeloVeiculo.combustivel_1}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Segundo combustível: #{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+						<p:separator />
+					</p:fieldset>
+					<!-- <h2>Montadora do modelo:</h2> -->
+					<p:separator />
+					 <p:fieldset legend="Montadora do modelo" toggleable="true"
+						toggleSpeed="650">
+						<h:outputText
+							value="Montadora do modelo: #{ModeloVeiculoController.modeloVeiculo.montadora.nome}" />
+						<br />
+						<br />
+						<h:outputText
+							value="Pais da montadora: #{ModeloVeiculoController.modeloVeiculo.montadora.pais}" />
+						<br />
+						<br />
+						<h:outputText
+							value="WEB Site da montadora: #{ModeloVeiculoController.modeloVeiculo.montadora.site}" />
+						<br />
+						<br />
+					</p:fieldset>
+				</p:dialog>
 			</h:form>
 		</p:panel>
 

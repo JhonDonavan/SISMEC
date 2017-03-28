@@ -85,6 +85,10 @@ public class ModeloVeiculoController {
 		this.modeloVeiculo = new ModeloVeiculo();
 	}
 	
+	public void detalheModeloVeiculo(ModeloVeiculo modeloVeiculo){
+		this.modeloVeiculo = modeloVeiculo;
+	}
+	
 	public ModeloVeiculo getModeloVeiculo() {
 		return modeloVeiculo;
 	}
