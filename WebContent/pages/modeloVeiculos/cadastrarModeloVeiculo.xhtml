@@ -68,22 +68,25 @@
 					</h:panelGrid>
 
 					<p:separator />
-					<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Modelo de veiculo"
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						title="Salvar Modelo de veiculo"
 						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
 					<p:spacer width="828" height="10" />
 
-					<p:commandButton value="Nova montadora" id="iconOnly" update=":cadastrarMontadora"
-						icon="ui-icon-plusthick" title="Cadastrar nova montadora" actionListener="#{Montadora.limparMontadora()}"
+					<p:commandButton value="Nova montadora" id="iconOnly"
+						update=":cadastrarMontadora" icon="ui-icon-plusthick"
+						title="Cadastrar nova montadora"
+						actionListener="#{Montadora.limparMontadora()}"
 						oncomplete="PF('cadastrarMontadora').show()" />
 				</h:form>
 
 
-				<h:form id="cadastrarMontadora">
+
 				<p:confirmDialog widgetVar="cadastrarMontadora" width="500"
 					message="Entre com os dados da nova Montadora: " appendTo="@(body)"
 					header="Cadastrar Montadora">
-					
+					<h:form id="cadastrarMontadora">
 						<h:panelGrid columns="2">
 							<h:outputLabel value="Nome da montadora:" />
 							<p:inputText value="#{Montadora.montadora.nome}" required="true"
@@ -106,9 +109,9 @@
 						<p:commandButton value="Cancelar" icon="ui-icon-disk"
 							oncomplete="PF('cadastrarMontadora').hide()">
 						</p:commandButton>
-
+					</h:form>
 				</p:confirmDialog>
-				</h:form>
+
 
 
 
