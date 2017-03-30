@@ -60,13 +60,17 @@
 					</p:column>
 
 
-					<p:column style="text-align:center;" exportable="false">
+					<p:column style="text-align:center;" exportable="false" width="10%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
 						</p:commandButton>
+						
+						<p:spacer width="5"/>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{clienteMB.editar(clientesVAR)}">
 						</p:commandButton>
+						
+						<p:spacer width="5"/>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							actionListener="#{clienteMB.prepararExclusao(clientesVAR)}"
@@ -93,6 +97,9 @@
 
 			</h:form>
 		</p:panel>
+		
+		
+		
 
 	</ui:define>
 </ui:decorate>

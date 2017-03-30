@@ -23,22 +23,9 @@
 							required="true"
 							requiredMessage="Voce deve preencher o nome do modelo"></p:inputText>
 
-
-						<p:outputLabel value="Sigla: " />
-						<p:inputText
-							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
-
 						<p:outputLabel value="Silindradas: " />
 						<p:inputText
 							value="#{ModeloVeiculoController.modeloVeiculo.motor}" />
-
-						<p:outputLabel value="Potencia em cavalos: " />
-						<p:inputText
-							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
-
-						<p:outputLabel value="Numero de portas: " />
-						<p:inputText
-							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
 
 						<p:outputLabel for="tipoCombustivel1" value="Combistivel 1: " />
 						<p:selectOneMenu id="tipoCombustivel1"
@@ -49,6 +36,14 @@
 								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
 
+						<p:outputLabel value="Potencia em cavalos: " />
+						<p:inputText
+							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+
+						<p:outputLabel value="Numero de portas: " />
+						<p:inputText
+							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+
 						<p:outputLabel for="tipoCombustivel2" value="Combistivel 2: " />
 						<p:selectOneMenu id="tipoCombustivel2"
 							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}">
@@ -57,6 +52,10 @@
 								var="combustivel" itemLabel="#{combustivel}"
 								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
+
+						<p:outputLabel value="Sigla: " />
+						<p:inputText
+							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
 
 						<p:outputLabel value="Montadora: " />
 						<p:autoComplete id="montadoraID" dropdown="true"
@@ -70,22 +69,19 @@
 
 					<p:separator />
 
-					
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							title="Salvar Modelo de veiculo"
-							action="#{ModeloVeiculoController.salvar}" update="@form" />
-						
-						<p:spacer width="50" height="10" />
 
-						<p:commandButton value="Nova montadora" id="iconOnly"
-							update=":cadastrarMontadora" icon="ui-icon-plusthick"
-							title="Cadastrar nova montadora" process="@this"
-							actionListener="#{Montadora.limparMontadora()}"
-							oncomplete="PF('cadastrarMontadora').show()" />
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						title="Salvar Modelo de veiculo"
+						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
-					
+					<p:spacer width="50" height="10" />
+
+					<p:commandButton value="Nova montadora" id="iconOnly"
+						update=":cadastrarMontadora" icon="ui-icon-plusthick"
+						title="Cadastrar nova montadora" process="@this"
+						actionListener="#{Montadora.limparMontadora()}"
+						oncomplete="PF('cadastrarMontadora').show()" />
 				</h:form>
-
 
 
 				<p:confirmDialog widgetVar="cadastrarMontadora" width="500"
@@ -116,9 +112,6 @@
 						</p:commandButton>
 					</h:form>
 				</p:confirmDialog>
-
-
-
 
 			</p:panel>
 		</div>

@@ -53,15 +53,19 @@
 					</p:column>
 
 
-					<p:column style="text-align:center;" exportable="false">
+					<p:column style="text-align:center;" exportable="false" width="10%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
 							action="#{Montadora.detalheMontadora(montadora)}">
 						</p:commandButton>
+						
+						<p:spacer width="5"/>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{Montadora.editar(montadora)}">
 						</p:commandButton>
+						
+						<p:spacer width="5"/>
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							oncomplete="PF('excluirMontadora').show()"

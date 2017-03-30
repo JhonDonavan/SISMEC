@@ -84,6 +84,10 @@ public class VeiculoController {
 	public void limparVeiculo(){
 		this.veiculo = new Veiculo();
 	}
+	
+	public void detalhesVeiculo(Veiculo veiculo){
+		this.veiculo = veiculo;
+	}
 
 	public Veiculo getVeiculo() {
 		return veiculo;

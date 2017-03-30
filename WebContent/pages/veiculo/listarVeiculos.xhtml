@@ -11,7 +11,8 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoVeiculo"
-						action="cadastroVeiculo.xhtml" style="margin-right: 1500px;"  actionListener="#{Veiculo.limparVeiculo()}"/>
+						action="cadastroVeiculo.xhtml" style="margin-right: 1500px;"
+						actionListener="#{Veiculo.limparVeiculo()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: relative; margin-top: -30px;">
@@ -36,9 +37,11 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
-					
-					<p:column headerText="Cliente" sortBy="#{veiculos.getCliente().getNome()}"
-						filterBy="#{veiculos.getCliente().getNome()}" filterMatchMode="contains">
+
+					<p:column headerText="Cliente"
+						sortBy="#{veiculos.getCliente().getNome()}"
+						filterBy="#{veiculos.getCliente().getNome()}"
+						filterMatchMode="contains">
 						<h:outputText value="#{veiculos.getCliente().getNome()}" />
 					</p:column>
 
@@ -59,40 +62,102 @@
 						<h:outputText value="#{veiculos.cor}" />
 					</p:column>
 
-					<p:column style="text-align:center;" exportable="false">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+					<p:column style="text-align:center;" exportable="false" width="10%">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{Veiculo.detalhesVeiculo(veiculos)}">
 						</p:commandButton>
+
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{Veiculo.editar(veiculos)}">
 						</p:commandButton>
 
-						<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('excluirVeiculo').show()"
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('excluirVeiculo').show()"
 							action="#{Veiculo.prepararExclusao(veiculos)}" update="@form">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
 
-			
+				<!--Modal para confirmação de exclusão  -->
 				<p:confirmDialog widgetVar="excluirVeiculo"
 					message="deseja realmente excluir o veiculo #{Veiculo.veiculo.placa}"
 					appendTo="@(body)" header="excluir veivulo?">
 					<div style="text-align: center;">
 
 						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
-							update="@form" process="@this" oncomplete="PF('excluirVeiculo').hide()"
+							update="@form" process="@this"
+							oncomplete="PF('excluirVeiculo').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
 						<p:commandButton value="Não"
 							oncomplete="PF('excluirVeiculo').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-
 					</div>
 				</p:confirmDialog>
-
 			</h:form>
 		</p:panel>
+
+
+		<!--MODAL PARA BOTAO DETALHES DO veiculo  -->
+		<h:form id="modalDetalhes">
+			<p:dialog header="Detalhes do modelo: #{Veiculo.veiculo.placa}"
+				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
+				maximizable="true" width="650" showEffect="fade" hideEffect="none">
+				<p:separator />
+					 <p:fieldset legend="Detalhes do veiculo" toggleable="true"
+					toggleSpeed="650">
+					<h:outputText value="Placa do veiculo: #{Veiculo.veiculo.placa}" />
+					<br />
+					<br />
+					<h:outputText value="Modelo: #{Veiculo.veiculo.modelo.nome}"/>
+					<br />
+					<br />
+					<h:outputText value="Cidade: #{Veiculo.veiculo.cidade}" />
+					<br />
+					<br />
+					<h:outputText value="Cilindrada do motor: #{Veiculo.veiculo.uf}" />
+					<br />
+					<br />
+					<h:outputText value="Cor do veiculo: #{Veiculo.veiculo.cor}" />
+				</p:fieldset>
+
+				<p:separator/>
+
+				<p:fieldset legend="Proprietário do veículo" toggleable="true"
+					toggleSpeed="650">
+					<h:outputText
+						value="Proprietário do veiculo: #{Veiculo.veiculo.cliente.nome}" />
+					<br />
+					<br />
+					<h:outputText
+						value="CPF do proprietário: #{Veiculo.veiculo.cliente.cpf}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Data de nascimento: #{Veiculo.veiculo.cliente.dataNascimento}" />
+					<br />
+					<br />
+					<h:outputText
+						value="E-Mail do proprietário: #{Veiculo.veiculo.cliente.email}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Celular do proprietário: #{Veiculo.veiculo.cliente.celular}" />
+					<br />
+					<br />
+					<h:outputText
+						value="telfone do proprietário: #{Veiculo.veiculo.cliente.telefone}" />
+					<br />
+					<br />
+				</p:fieldset>
+			</p:dialog>
+		</h:form>
 
 	</ui:define>
 </ui:decorate>
