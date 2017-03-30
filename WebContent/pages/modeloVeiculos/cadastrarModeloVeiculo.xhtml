@@ -3,6 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
+
+
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
@@ -14,8 +16,7 @@
 				<h:form id="cadastrarModeloVeiculo">
 					<p:growl />
 
-					<h:panelGrid columns="4" width="100%" style="text-align:left"
-						cellpadding="3">
+					<h:panelGrid columns="6" width="100%" cellpadding="3">
 
 						<h:outputLabel value="Nome do modelo: " />
 						<p:inputText value="#{ModeloVeiculoController.modeloVeiculo.nome}"
@@ -68,17 +69,21 @@
 					</h:panelGrid>
 
 					<p:separator />
-					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						title="Salvar Modelo de veiculo"
-						action="#{ModeloVeiculoController.salvar}" update="@form" />
 
-					<p:spacer width="828" height="10" />
+					
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							title="Salvar Modelo de veiculo"
+							action="#{ModeloVeiculoController.salvar}" update="@form" />
+						
+						<p:spacer width="50" height="10" />
 
-					<p:commandButton value="Nova montadora" id="iconOnly"
-						update=":cadastrarMontadora" icon="ui-icon-plusthick"
-						title="Cadastrar nova montadora" process="@this"
-						actionListener="#{Montadora.limparMontadora()}"
-						oncomplete="PF('cadastrarMontadora').show()" />
+						<p:commandButton value="Nova montadora" id="iconOnly"
+							update=":cadastrarMontadora" icon="ui-icon-plusthick"
+							title="Cadastrar nova montadora" process="@this"
+							actionListener="#{Montadora.limparMontadora()}"
+							oncomplete="PF('cadastrarMontadora').show()" />
+
+					
 				</h:form>
 
 
