@@ -85,7 +85,6 @@ public class MontadoraController {
 	
 	public void detalheMontadora(Montadora montadora){
 		this.montadora = montadora;
-		System.out.println(montadora.getNome());
 	}
 
 	public Montadora getMontadora() {
