@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel header="Atendentes cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoAtendente"
+						action="cadastrarAtendente.xhtml" style="margin-right: 1300px;"
+						actionListener="#{atendenteMB.limparAtendente()}" />
+
+					<div class="ui-fluid"
+						style="float: right; position: absoulute; margin-top: 0px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="AtendenteLista"
+								fileName="Atendentes" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="AtendenteLista"
+								fileName="Atendentes" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+
+
+				<p:growl />
+				<p:dataTable id="AtendenteLista" var="atendentes"
+					value="#{atendenteMB.atendentes}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+					
+					<p:column headerText="CPF" sortBy="#{atendentes.salario}">
+						<h:outputText value="#{atendentes.salario}" />
+					</p:column>
+
+					<p:column headerText="Nome" sortBy="#{atendentes.nome}}"
+						filterBy="#{atendentes.nome}}" filterMatchMode="contains">
+						<h:outputText value="#{atendentes.nome}" />
+					</p:column>
+
+					<p:column headerText="CPF" sortBy="#{atendentes.cpf}">
+						<h:outputText value="#{atendentes.cpf}" />
+					</p:column>
+
+					<p:column headerText="Telefone" sortBy="#{atendentes.telefone}">
+						<h:outputText value="#{atendentes.telefone}" />
+					</p:column>
+
+					<p:column headerText="Celular" sortBy="#{atendentes.celular}">
+						<h:outputText value="#{atendentes.celular}" />
+					</p:column>
+
+					<p:column headerText="E-Mail" sortBy="#{atendentes.email}">
+						<h:outputText value="#{atendentes.email}" />
+					</p:column>
+
+
+					<p:column style="text-align:center;" exportable="false">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{atendenteMB.editar(atendentes)}">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							actionListener="#{atendenteMB.prepararExclusao(atendentes)}"
+							oncomplete="PF('excluirAtendente').show()">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<p:confirmDialog widgetVar="excluirAtendente"
+					message="deseja realmente excluir o atendente #{atendenteMB.atendente.nome}?"
+					appendTo="@(body)" header="Excluir atendente?">
+					<div style="text-align: center;">
+						<p:commandButton value="Sim" process="@this"
+							action="#{atendenteMB.excluir()}"
+							onclick="PF('excluirAtendente').hide()" update="@form"
+							styleClass="ui-confirmdialog-yes" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirAtendente').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
+</html>

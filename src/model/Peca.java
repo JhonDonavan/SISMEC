@@ -21,6 +21,10 @@ public class Peca implements Serializable{
 	private long id;
 	
 	@ManyToOne
+	@JoinColumn(name="serviço_id")
+	private Servico serviço;
+	
+	@ManyToOne
 	@JoinColumn(name="fornecedor_id")
 	private Fornecedor fornecedor;
 	

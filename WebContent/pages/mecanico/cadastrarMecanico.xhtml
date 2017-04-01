@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastrar Mecanico"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarMecanico">
+					<p:growl />
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputLabel value="Salário Mecanico: " />
+						<p:inputText value="#{mecanicoMB.mecanico.salario}" required="true"
+							requiredMessage="Informe o salário do mecanico">
+						</p:inputText>
+						
+						<h:outputLabel value="Nome Mecanico: " />
+						<p:inputText value="#{mecanicoMB.mecanico.nome}" required="true"
+							requiredMessage="Você deve fornecer o nome do mecanico">
+						</p:inputText>
+
+						<p:outputLabel value="CPF: " />
+						<p:inputText value="#{mecanicoMB.mecanico.cpf}" required="true"
+							requiredMessage="Você deve fornecer o CPF do mecanico">
+						</p:inputText>
+
+						<p:outputLabel value="Telefone: " />
+						<p:inputText value="#{mecanicoMB.mecanico.telefone}" />
+
+						<p:outputLabel value="Celular: " />
+						<p:inputText value="#{mecanicoMB.mecanico.celular}" />
+
+						<p:outputLabel value="E-Mail: " />
+						<p:inputText value="#{mecanicoMB.mecanico.email}" />
+
+						<p:outputLabel value="Data de nascimento: " for="button" />
+						<p:calendar id="button" value="#{mecanicoMB.mecanico.dataNascimento}" showOn="button" />
+						
+						<p:outputLabel value="Celular: " />
+						<p:inputText value="#{mecanicoMB.mecanico.login}" />
+
+						<p:outputLabel value="E-Mail: " />
+						<p:inputText value="#{mecanicoMB.mecanico.senha}" />
+
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{mecanicoMB.salvar}" update="@form" />
+					</h:panelGrid>
+
+					<!-- Mostra modal da data -->
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="data" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						</p:panelGrid>
+					</p:dialog>
+
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>
