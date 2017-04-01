@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel header="Mecanicos cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoMecanico"
+						action="cadastrarMecanico.xhtml" style="margin-right: 1300px;"
+						actionListener="#{mecanicoMB.limparMecanico()}" />
+
+					<div class="ui-fluid"
+						style="float: right; position: absoulute; margin-top: 0px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="MecanicoLista"
+								fileName="Mecanicos" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="MecanicoLista"
+								fileName="Mecanicos" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+
+
+				<p:growl />
+				<p:dataTable id="MecanicoLista" var="mecanicos"
+					value="#{mecanicoMB.mecanicos}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+					
+					<p:column headerText="CPF" sortBy="#{mecanicos.salario}">
+						<h:outputText value="#{mecanicos.salario}" />
+					</p:column>
+
+					<p:column headerText="Nome" sortBy="#{mecanicos.nome}}"
+						filterBy="#{mecanicos.nome}}" filterMatchMode="contains">
+						<h:outputText value="#{mecanicos.nome}" />
+					</p:column>
+
+					<p:column headerText="CPF" sortBy="#{mecanicos.cpf}">
+						<h:outputText value="#{mecanicos.cpf}" />
+					</p:column>
+
+					<p:column headerText="Telefone" sortBy="#{mecanicos.telefone}">
+						<h:outputText value="#{mecanicos.telefone}" />
+					</p:column>
+
+					<p:column headerText="Celular" sortBy="#{mecanicos.celular}">
+						<h:outputText value="#{mecanicos.celular}" />
+					</p:column>
+
+					<p:column headerText="E-Mail" sortBy="#{mecanicos.email}">
+						<h:outputText value="#{mecanicos.email}" />
+					</p:column>
+
+
+					<p:column style="text-align:center;" exportable="false">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{mecanicoMB.editar(mecanicos)}">
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							actionListener="#{mecanicoMB.prepararExclusao(mecanicos)}"
+							oncomplete="PF('excluirMecanico').show()">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<p:confirmDialog widgetVar="excluirMecanico"
+					message="deseja realmente excluir o mecanico #{mecanicoMB.mecanico.nome}?"
+					appendTo="@(body)" header="Excluir mecanico?">
+					<div style="text-align: center;">
+						<p:commandButton value="Sim" process="@this"
+							action="#{mecanicoMB.excluir()}"
+							onclick="PF('excluirMecanico').hide()" update="@form"
+							styleClass="ui-confirmdialog-yes" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirMecanico').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
+</html>

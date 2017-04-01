@@ -41,6 +41,10 @@ public class Mecanico implements Serializable{
 	private String login;
 	
 	private String senha;
+	
+	public Integer getId(){
+		return id;
+	}
 
 	public Endereco getEndereco() {
 		if (endereco == null)
