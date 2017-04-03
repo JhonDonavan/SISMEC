@@ -11,7 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoMecanico"
-						action="cadastrarMecanico.xhtml" style="margin-right: 1500px;"
+						action="cadastrarMecanico.xhtml" style="margin-right: 1600px;"
 						actionListener="#{mecanicoMB.limparMecanico()}" />
 
 					<div class="ui-fluid"
@@ -37,10 +37,6 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
-
-					<p:column headerText="CPF" sortBy="#{mecanicos.salario}">
-						<h:outputText value="#{mecanicos.salario}" />
-					</p:column>
 
 					<p:column headerText="Nome" sortBy="#{mecanicos.nome}}"
 						filterBy="#{mecanicos.nome}}" filterMatchMode="contains">

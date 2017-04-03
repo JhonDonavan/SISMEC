@@ -10,12 +10,13 @@
 		<p:panel header="Atendentes cadastrados">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoAtendente"
-						action="cadastrarAtendente.xhtml" style="margin-right: 1300px;"
+					<p:commandButton value="Novo" icon="ui-icon-plus"
+						id="novoAtendente" action="cadastrarAtendente.xhtml"
+						style="margin-right: 1600px;"
 						actionListener="#{atendenteMB.limparAtendente()}" />
 
 					<div class="ui-fluid"
-						style="float: right; position: absoulute; margin-top: 0px;">
+						style="float: right; position: relative; margin-top: -27px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
 							<p:dataExporter type="xls" target="AtendenteLista"
@@ -37,7 +38,7 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
-					
+
 					<p:column headerText="CPF" sortBy="#{atendentes.salario}">
 						<h:outputText value="#{atendentes.salario}" />
 					</p:column>
