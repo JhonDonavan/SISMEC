@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -41,6 +42,8 @@ public class Mecanico implements Serializable{
 	private String login;
 	
 	private String senha;
+	
+	private Date dataNascimento;
 	
 	public Integer getId(){
 		return id;
@@ -135,5 +138,15 @@ public class Mecanico implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	
+	
 
 }

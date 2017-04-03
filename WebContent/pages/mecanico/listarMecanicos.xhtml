@@ -11,11 +11,11 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoMecanico"
-						action="cadastrarMecanico.xhtml" style="margin-right: 1300px;"
+						action="cadastrarMecanico.xhtml" style="margin-right: 1500px;"
 						actionListener="#{mecanicoMB.limparMecanico()}" />
 
 					<div class="ui-fluid"
-						style="float: right; position: absoulute; margin-top: 0px;">
+						style="float: right; position: relative; margin-top: -27px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
 							<p:dataExporter type="xls" target="MecanicoLista"
@@ -37,7 +37,7 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
-					
+
 					<p:column headerText="CPF" sortBy="#{mecanicos.salario}">
 						<h:outputText value="#{mecanicos.salario}" />
 					</p:column>
