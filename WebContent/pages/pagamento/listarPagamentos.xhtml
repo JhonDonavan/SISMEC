@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel header="Pagamentos cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus"
+						id="novaPagamento" action="cadastrarPagamentos.xhtml"
+						style="margin-right: 1600px;"
+						actionListener="#{Pagamento.limparPagamento()}" />
+
+					<div class="ui-fluid"
+						style="float: right; position: relative; margin-top: -27px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="PagamentosLista"
+								fileName="Pagamentos" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="PagamentosLista"
+								fileName="Pagamentos" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+
+
+				<p:growl />
+				<p:dataTable id="PagamentosLista" var="pagamento"
+					value="#{Pagamento.pagamentos}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+
+					<p:column headerText="Observação" sortBy="#{pagamento.formaPagamento}}"
+						filterBy="#{pagamento.formaPagamento}}" filterMatchMode="contains">
+						<h:outputText value="#{pagamento.formaPagamento}" />
+					</p:column>
+
+					<p:column headerText="Data do Orçamento" sortBy="#{pagamento.dataPagamento}">
+						<h:outputText value="#{pagamento.dataPagamento}" />
+					</p:column>
+
+					<p:column headerText="Valor Orçado" sortBy="#{pagamento.valorTotal}">
+						<h:outputText value="#{pagamento.valorTotal}" />
+					</p:column>
+
+
+					<p:column style="text-align:center;" exportable="false" width="15%">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{Pagamento.detalhePagamento(pagamento)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{Pagamento.editar(pagamento)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('excluirPagamento').show()"
+							actionListener="#{Pagamento.prepararExclusao(pagamento)}">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<!-- Modal para confirmação de exclusão -->
+
+				<p:confirmDialog widgetVar="excluirPagamento"
+					message="deseja realmente excluir o pagamento?"
+					appendTo="@(body)" header="Excluir Pagamento">
+					<div style="text-align: center;">
+						<p:commandButton value="Sim" action="#{Pagamento.excluir()}"
+							update="@form" process="@this"
+							onclick="PF('excluirPagamento').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirPagamento').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
+
+			<h:form id="modalDetalhes">
+				<!-- Modal para botao detalhes -->
+				<p:dialog header="Detalhes de pagamentos" widgetVar="detalhes"
+					appendTo="@(body)" minimizable="true" maximizable="true"
+					width="650" showEffect="fade" hideEffect="none">
+					<h2>Pagamento:</h2>
+					<p:separator />
+					<h:outputText
+						value="Nome da pagamento: #{Pagamento.pagamento.formaPagamento}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Numeração da pagamento: #{Pagamento.pagamento.dataPagamento}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Quantidade de pagamentos: #{Pagamento.pagamento.valorTotal}" />
+				</p:dialog>
+			</h:form>
+
+
+
+
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
+</html>

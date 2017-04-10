@@ -22,7 +22,7 @@ public class Peca implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="serviço_id")
-	private Servico serviço;
+	private Servico servico;
 	
 	@ManyToOne
 	@JoinColumn(name="fornecedor_id")
