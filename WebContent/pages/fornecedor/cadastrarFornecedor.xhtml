@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastrar Fornecedor"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarFornecedor">
+					<p:growl />
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputLabel value="Nome do Fornecedor: " />
+						<p:inputText value="#{fornecedorMB.fornecedor.nome}" required="true"
+							requiredMessage="Informe o nome do fornecedor">
+						</p:inputText>
+						
+						<p:outputLabel value="Telefone: " />
+						<p:inputText value="#{fornecedorMB.fornecedor.telfornecedor}" />
+						
+						<h:outputLabel value="Email do Fornecedor: " />
+						<p:inputText value="#{fornecedorMB.fornecedor.email}" required="true"
+							requiredMessage="Você deve fornecer o nome do fornecedor">
+						</p:inputText>
+
+						<p:outputLabel value="CNPJ: " />
+						<p:inputText value="#{fornecedorMB.fornecedor.cnpj}" required="true"
+							requiredMessage="Você deve fornecer o CNPJ do fornecedor">
+						</p:inputText>
+						
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{fornecedorMB.salvar}" update="@form" />
+					</h:panelGrid>
+
+					</p:dialog>
+
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>
