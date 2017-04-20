@@ -69,7 +69,7 @@ public class Veiculo implements Serializable {
 	}
 
 	@NotEmpty(message="O campo 'UF' deve ser informado")
-	@Length(min=2, max=2, message="O campo 'UF' deve conter 2 caracteres.")
+	@Length(min=2, max=2, message="O campo 'UF' deve conter 2 caracteres. PELO BANCO")
 	public String getUf() {
 		return uf;
 	}

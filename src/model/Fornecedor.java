@@ -89,6 +89,11 @@ public class Fornecedor implements Serializable{
 	public void setCnpg(String cnpg) {
 		this.cnpg = cnpg;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Fornecedor [id=" + id + ", endereco=" + endereco + ", peca=" + peca + ", nome=" + nome
+				+ ", telfornecedor=" + telfornecedor + ", email=" + email + ", cnpg=" + cnpg + "]";
+	}
 	
 }

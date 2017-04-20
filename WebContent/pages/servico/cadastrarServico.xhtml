@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastrar Servico"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarServico">
+					<p:growl />
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputLabel value="Nome do Servico: " />
+						<p:inputText value="#{servicoMB.servico.nome}" required="true"
+							requiredMessage="Informe o nome do servico">
+						</p:inputText>
+						
+						<p:outputLabel value="Prazo do serviço: " for="button" />
+						<p:calendar id="button" value="#{servicoMB.servico.prazo}" showOn="button" />
+						
+						<h:outputLabel value="Valor do Serviço: " />
+						<p:inputText value="#{servicoMB.servico.valor}" required="true"
+							requiredMessage="Você deve fornecer o valor do servico">
+						</p:inputText>
+						
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{servicoMB.salvar}" update="@form" />
+					</h:panelGrid>
+
+					<!-- Mostra modal da data -->
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="data" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						</p:panelGrid>
+					</p:dialog>
+
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>

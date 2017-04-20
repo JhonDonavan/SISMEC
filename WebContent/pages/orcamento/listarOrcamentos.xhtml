@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<p:panel header="Orcamentos cadastrados">
+			<h:form>
+				<div>
+					<p:commandButton value="Novo" icon="ui-icon-plus"
+						id="novaOrcamento" action="cadastrarOrcamentos.xhtml"
+						style="margin-right: 1600px;"
+						actionListener="#{Orcamento.limparOrcamento()}" />
+
+					<div class="ui-fluid"
+						style="float: right; position: relative; margin-top: -27px;">
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_xls.png" />
+							<p:dataExporter type="xls" target="OrcamentosLista"
+								fileName="Orcamentos" encoding="iso-8859-1" />
+						</h:commandLink>
+
+						<h:commandLink>
+							<p:graphicImage library="imagens" name="icon_pdf.png" />
+							<p:dataExporter type="pdf" target="OrcamentosLista"
+								fileName="Orcamentos" encoding="iso-8859-1" />
+						</h:commandLink>
+					</div>
+				</div>
+
+
+				<p:growl />
+				<p:dataTable id="OrcamentosLista" var="orcamento"
+					value="#{Orcamento.orcamentos}" paginator="true" rows="15"
+					rowsPerPageTemplate="5,10,15,20,25,50"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					style="margin-top:7px;">
+
+					<p:column headerText="Observação" sortBy="#{orcamento.observacao}}"
+						filterBy="#{orcamento.observacao}}" filterMatchMode="contains">
+						<h:outputText value="#{orcamento.observacao}" />
+					</p:column>
+
+					<p:column headerText="Data do Orçamento" sortBy="#{orcamento.data}">
+						<h:outputText value="#{orcamento.data}" />
+					</p:column>
+
+					<p:column headerText="Valor Orçado" sortBy="#{orcamento.valorOrcado}">
+						<h:outputText value="#{orcamento.valorOrcado}" />
+					</p:column>
+
+
+					<p:column style="text-align:center;" exportable="false" width="15%">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{Orcamento.detalheOrcamento(orcamento)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{Orcamento.editar(orcamento)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('excluirOrcamento').show()"
+							actionListener="#{Orcamento.prepararExclusao(orcamento)}">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+
+				<!-- Modal para confirmação de exclusão -->
+
+				<p:confirmDialog widgetVar="excluirOrcamento"
+					message="deseja realmente excluir a orcamento?"
+					appendTo="@(body)" header="Excluir Orcamento">
+					<div style="text-align: center;">
+						<p:commandButton value="Sim" action="#{Orcamento.excluir()}"
+							update="@form" process="@this"
+							onclick="PF('excluirOrcamento').hide()"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+						<p:commandButton value="Não"
+							oncomplete="PF('excluirOrcamento').hide()"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</div>
+				</p:confirmDialog>
+
+			</h:form>
+
+			<h:form id="modalDetalhes">
+				<!-- Modal para botao detalhes -->
+				<p:dialog header="Detalhes de orcamentos" widgetVar="detalhes"
+					appendTo="@(body)" minimizable="true" maximizable="true"
+					width="650" showEffect="fade" hideEffect="none">
+					<h2>Orcamento:</h2>
+					<p:separator />
+					<h:outputText
+						value="Nome da orcamento: #{Orcamento.orcamento.observacao}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Numeração da orcamento: #{Orcamento.orcamento.data}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Quantidade de orcamentos: #{Orcamento.orcamento.valorOrcado}" />
+				</p:dialog>
+			</h:form>
+
+
+
+
+		</p:panel>
+
+	</ui:define>
+</ui:decorate>
+
+
+</html>
