@@ -50,7 +50,8 @@
 						<h:outputText value="#{veiculos.placa}" />
 					</p:column>
 
-					<p:column headerText="Modelo">
+					<p:column headerText="Modelo" sortBy="#{veiculos.modelo.nome}"
+						filterBy="#{veiculos.modelo.nome}" filterMatchMode="contains">
 						<h:outputText value="#{veiculos.getModelo().getNome()}" />
 					</p:column>
 
