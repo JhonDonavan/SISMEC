@@ -14,6 +14,7 @@ public class ClienteDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT c FROM Cliente c WHERE upper(c.nome) like upper(:nomeCliente)");
 		query.setParameter("nomeCliente", "%" + nomeCliente + "%");
+		System.out.println("entrou no metodo buscarClienteByNome no DAO");
 		return query.getResultList();
 	}
 }
