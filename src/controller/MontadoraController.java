@@ -45,6 +45,7 @@ public class MontadoraController {
 		new GenericDAO<Montadora>(Montadora.class).salvar(montadora);
 		montadora = new Montadora();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora cadastrada com sucesso!"));
+		
 		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
 		return "listarMontadoras?faces-redirect=true";
 	}
