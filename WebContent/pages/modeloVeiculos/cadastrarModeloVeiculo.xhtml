@@ -20,8 +20,8 @@
 			<p:panel header="Cadastro de modelo de veiculos"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarModeloVeiculo">
-					<p:messages id="msgs" closable="true"/>
-					<p:growl/>
+					<p:messages id="msgs" closable="true" />
+					<p:growl />
 
 					<h:panelGrid columns="6" width="100%" cellpadding="3"
 						style="text-align: left">
@@ -29,7 +29,7 @@
 						<h:outputLabel value="Nome do modelo " class="outputLabel" />
 						<p:inputText id="nomeModelo"
 							value="#{ModeloVeiculoController.modeloVeiculo.nome}"
-							required="true" requiredMessage="Informe o nome do modelo"/>
+							required="true" requiredMessage="Informe o nome do modelo" />
 
 						<p:outputLabel value="Silindradas " class="outputLabel" />
 						<p:inputText id="silindradas"
@@ -37,39 +37,32 @@
 							required="true"
 							requiredMessage="Informe o numero de silindradas do motor" />
 
-						<p:outputLabel value="Sigla " class="outputLabel" />
-						<p:inputText id="sigla" required="true" requiredMessage="Informe a sigla do modelo"
-							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
-
-
-						<p:outputLabel value="Potencia em cavalos " class="outputLabel" />
-						<p:inputText id="cavalos" required="true" requiredMessage="Informe a potência em cavalos"
-							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
-
-
-						<p:outputLabel value="Montadora " class="outputLabel" />
-						<p:autoComplete id="montadoraID" dropdown="true"
-							minQueryLength="3"
-							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
-							size="30" completeMethod="#{Montadora.listarPorNome}"
-							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
-							converter="montadoraConverter" forceSelection="true" required="true" requiredMessage="Informe a montadora do modelo"/>
-
 
 						<p:outputLabel for="tipoCombustivel1" value="Combistível 1 "
 							class="outputLabel" />
-						<p:selectOneMenu id="tipoCombustivel1" required="true" requiredMessage="Informa o combustível principal"
+						<p:selectOneMenu id="tipoCombustivel1" required="true"
+							requiredMessage="Informa o combustível principal"
 							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}">
 							<f:selectItem itemLabel="Selecione um combustivel" />
 							<f:selectItems value="#{ModeloVeiculoController.combustivel}"
 								var="combustivel" itemLabel="#{combustivel}"
-								itemValue="#{combustivel}"/>
+								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
 
+						<p:outputLabel value="Sigla " class="outputLabel" />
+						<p:inputText id="sigla" required="true"
+							requiredMessage="Informe a sigla do modelo"
+							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
 
-						<p:outputLabel value="Numero de portas " class="outputLabel" />
-						<p:inputText id="numPortas" required="true" requiredMessage="Informe o número de portas"
-							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+						<p:outputLabel value="Potencia em cavalos " class="outputLabel" />
+						<p:inputText id="cavalos" required="true"
+							requiredMessage="Informe a potência em cavalos"
+							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+
+
+
+
+
 
 						<p:outputLabel for="tipoCombustivel2" value="Combistível 2: "
 							class="outputLabel" />
@@ -80,6 +73,28 @@
 								var="combustivel" itemLabel="#{combustivel}"
 								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
+
+
+						<p:outputLabel value="Montadora " class="outputLabel" />
+						<p:autoComplete id="montadoraID" dropdown="true"
+							minQueryLength="3"
+							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
+							size="30" completeMethod="#{Montadora.listarPorNome}"
+							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
+							converter="montadoraConverter" forceSelection="true"
+							required="true" requiredMessage="Informe a montadora do modelo" />
+
+
+
+						<p:outputLabel value="Número de portas " class="outputLabel" />
+						<p:inputText id="numPortas" required="true"
+							requiredMessage="Informe o número de portas"
+							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+
+
+
+
+
 
 
 					</h:panelGrid>
