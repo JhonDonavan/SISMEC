@@ -78,5 +78,10 @@ private static final long SerialVersionUID = 1L;
 	public void setAtendente(Mecanico atendente) {
 		this.atendente = atendente;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Orcamento [id=" + id + ", observacao=" + observacao + ", data=" + data + ", valorOrcado=" + valorOrcado
+				+ ", mecanico=" + mecanico + ", atendente=" + atendente + "]";
+	}
 }

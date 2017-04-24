@@ -27,6 +27,9 @@ public class Cliente implements Serializable {
 
 	@OneToMany(mappedBy = "cliente", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
 	private List<Veiculo> veiculo;
+	
+	@OneToMany(mappedBy = "cliente", targetEntity = Pagamento.class, fetch = FetchType.LAZY)
+	private List<Pagamento> pagamento;
 
 	private String nome;
 
@@ -60,6 +63,14 @@ public class Cliente implements Serializable {
 
 	public void setVeiculo(List<Veiculo> veiculo) {
 		this.veiculo = veiculo;
+	}
+
+	public List<Pagamento> getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(List<Pagamento> pagamento) {
+		this.pagamento = pagamento;
 	}
 
 	public String getNome() {
@@ -113,5 +124,11 @@ public class Cliente implements Serializable {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", veiculo=" + veiculo + ", pagamento=" + pagamento + ", nome=" + nome + ", cpf="
+				+ cpf + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", dataNascimento="
+				+ dataNascimento + "]";
+	}
 }

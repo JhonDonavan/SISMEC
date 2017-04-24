@@ -70,4 +70,10 @@ public class Peca implements Serializable{
 		this.qtd = qtd;
 	}
 
+	@Override
+	public String toString() {
+		return "Peca [id=" + id + ", servico=" + servico + ", fornecedor=" + fornecedor + ", nome=" + nome + ", num="
+				+ num + ", qtd=" + qtd + "]";
+	}
+
 }
