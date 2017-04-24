@@ -2,12 +2,15 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -19,6 +22,12 @@ public class Mecanico implements Serializable{
 	@GeneratedValue(generator = "MECANICO_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "MECANICO_ID", sequenceName = "SEQ_MECANICO", allocationSize = 1)
 	private Integer id;
+	
+	@OneToMany(mappedBy = "mecanico", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeSerivco;
+	
+	@OneToMany(mappedBy = "mecanico", targetEntity = Orcamento.class, fetch = FetchType.LAZY)
+	private List<Orcamento> orcamento;
 
 	@Embedded
 	private Endereco endereco;
@@ -47,6 +56,22 @@ public class Mecanico implements Serializable{
 	
 	public Integer getId(){
 		return id;
+	}
+
+	public List<OrdemDeServico> getOrdemDeSerivco() {
+		return ordemDeSerivco;
+	}
+
+	public void setOrdemDeSerivco(List<OrdemDeServico> ordemDeSerivco) {
+		this.ordemDeSerivco = ordemDeSerivco;
+	}
+
+	public List<Orcamento> getOrcamento() {
+		return orcamento;
+	}
+
+	public void setOrcamento(List<Orcamento> orcamento) {
+		this.orcamento = orcamento;
 	}
 
 	public Endereco getEndereco() {
@@ -146,7 +171,12 @@ public class Mecanico implements Serializable{
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Mecanico [id=" + id + ", ordemDeSerivco=" + ordemDeSerivco + ", orcamento=" + orcamento + ", endereco="
+				+ endereco + ", nome=" + nome + ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario
+				+ ", comissao=" + comissao + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email
+				+ ", login=" + login + ", senha=" + senha + ", dataNascimento=" + dataNascimento + "]";
+	}
 }

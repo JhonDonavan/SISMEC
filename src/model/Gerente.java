@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+@Entity
 public class Gerente implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,9 @@ public class Gerente implements Serializable{
 	@GeneratedValue(generator = "GERENTE_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "GERENTE_ID", sequenceName = "SEQ_GERENTE", allocationSize = 1)
 	private Integer id;
+	
+	@OneToMany(mappedBy = "gerente", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeServico;
 
 	@Embedded
 	private Endereco endereco;
@@ -43,6 +48,18 @@ public class Gerente implements Serializable{
 	private String login;
 	
 	private String senha;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public List<OrdemDeServico> getOrdemDeServico() {
+		return ordemDeServico;
+	}
+
+	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
+	}
 
 	public Endereco getEndereco() {
 		if (endereco == null)
@@ -134,4 +151,11 @@ public class Gerente implements Serializable{
 		this.senha = senha;
 	}
 
+	@Override
+	public String toString() {
+		return "Gerente [id=" + id + ", ordemDeServico=" + ordemDeServico + ", endereco=" + endereco + ", nome=" + nome
+				+ ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario + ", bonusSalario="
+				+ bonusSalario + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", login="
+				+ login + ", senha=" + senha + "]";
+	}
 }

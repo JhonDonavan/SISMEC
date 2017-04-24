@@ -1,12 +1,16 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -18,6 +22,12 @@ public class Atendente implements Serializable{
 	@GeneratedValue(generator = "ATENDENTE_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "ATENDENTE_ID", sequenceName = "SEQ_ATENDENTE", allocationSize = 1)
 	private Integer id;
+	
+	@OneToMany(mappedBy = "atendente", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<OrdemDeServico> ordemDeServico;
+	
+	@OneToMany(mappedBy = "atendente", targetEntity = Orcamento.class, fetch = FetchType.LAZY)
+	private List<Orcamento> orcamento;
 
 	@Embedded
 	private Endereco endereco;
@@ -42,6 +52,22 @@ public class Atendente implements Serializable{
 	
 	public Integer getId(){
 		return id;
+	}
+
+	public List<OrdemDeServico> getOrdemDeServico() {
+		return ordemDeServico;
+	}
+
+	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
+	}
+
+	public List<Orcamento> getOrcamento() {
+		return orcamento;
+	}
+
+	public void setOrcamento(List<Orcamento> orcamento) {
+		this.orcamento = orcamento;
 	}
 
 	public Endereco getEndereco() {
@@ -126,4 +152,11 @@ public class Atendente implements Serializable{
 		this.senha = senha;
 	}
 
+	@Override
+	public String toString() {
+		return "Atendente [id=" + id + ", ordemDeServico=" + ordemDeServico + ", orcamento=" + orcamento + ", endereco="
+				+ endereco + ", nome=" + nome + ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario
+				+ ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", login=" + login
+				+ ", senha=" + senha + "]";
+	}
 }

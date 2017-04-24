@@ -65,4 +65,10 @@ public class Montadora implements Serializable {
 		this.modeloVeiculo = modeloVeiculo;
 	}
 
+	@Override
+	public String toString() {
+		return "Montadora [id=" + id + ", nome=" + nome + ", pais=" + pais + ", site=" + site + ", modeloVeiculo="
+				+ modeloVeiculo + "]";
+	}
+
 }

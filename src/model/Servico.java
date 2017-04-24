@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -24,6 +26,10 @@ public class Servico implements Serializable {
 
 	@OneToMany(mappedBy = "servico", targetEntity = Peca.class, fetch = FetchType.LAZY)
 	private List<Peca> peca;
+	
+	@ManyToOne
+	@JoinColumn(name="ordem_de_servico_id")
+	private OrdemDeServico ordemDeServico;
 
 	private String nome;
 
@@ -41,6 +47,14 @@ public class Servico implements Serializable {
 
 	public void setPeca(List<Peca> peca) {
 		this.peca = peca;
+	}
+
+	public OrdemDeServico getOrdemDeServico() {
+		return ordemDeServico;
+	}
+
+	public void setOrdemDeServico(OrdemDeServico ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
 	}
 
 	public String getNome() {
@@ -69,8 +83,7 @@ public class Servico implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servico [id=" + id + ", peca=" + peca + ", nome=" + nome + ", prazo=" + prazo
-				+ ", valor=" + valor + "]";
+		return "Servico [id=" + id + ", peca=" + peca + ", ordemDeServico=" + ordemDeServico + ", nome=" + nome
+				+ ", prazo=" + prazo + ", valor=" + valor + "]";
 	}
-
 }

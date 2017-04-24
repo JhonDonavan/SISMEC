@@ -32,6 +32,7 @@ public class ModeloVeiculo implements Serializable {
 	private Integer numPortas;
 	private TipoCombustivel combustivel_1;
 	private TipoCombustivel combustivel_2;
+	
 	@ManyToOne
 	@JoinColumn(name="montadora_id")
 	private Montadora montadora;
@@ -115,7 +116,13 @@ public class ModeloVeiculo implements Serializable {
 	public void setMontadora(Montadora montadora) {
 		this.montadora = montadora;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "ModeloVeiculo [id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", motor=" + motor
+				+ ", PotenciaCavalos=" + PotenciaCavalos + ", numPortas=" + numPortas + ", combustivel_1="
+				+ combustivel_1 + ", combustivel_2=" + combustivel_2 + ", montadora=" + montadora + ", veiculo="
+				+ veiculo + "]";
+	}
 	
 }
