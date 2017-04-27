@@ -12,7 +12,9 @@
 			<p:panel header="Cadastro de veiculos"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarVeiculo">
+					<p:messages id="msgs" closable="true" />
 					<p:growl />
+					
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Placa do veiculo:" />
 						<p:inputText value="#{Veiculo.veiculo.placa}" required="true"
@@ -40,14 +42,16 @@
 							completeMethod="#{ModeloVeiculoController.listarPorNome}"
 							dropdown="true" minQueryLength="3" var="modelo"
 							itemLabel="#{modelo.nome}" itemValue="#{modelo}"
-							converter="modeloVeiculoConverter" forceSelection="true" />
+							converter="modeloVeiculoConverter" required="true"
+							requiredMessage="Por favor Selecione o modelo do veiculo" />
 
 						<p:outputLabel value="Cliente: " />
 						<p:autoComplete id="clienteId" value="#{Veiculo.veiculo.cliente}"
 							dropdown="true" minQueryLength="3" size="30"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
-							converter="clienteConverter" forceSelection="true" />
+							converter="clienteConverter" required="true"
+							requiredMessage="Por favor informe o nomeo do cliente" />
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
