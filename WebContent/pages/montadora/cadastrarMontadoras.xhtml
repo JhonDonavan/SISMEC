@@ -9,32 +9,32 @@
 
 		<div id="form">
 
+
 			<p:panel header="Cadastro de montadoras de veiculos"
 				style="text-align:left; width:99%;">
-				
+
+
 				<h:form id="cadastrarMontadoras">
-					<p:growl showSummary="true" autoUpdate="true" life="5000" />
-					<!-- 	<p:message autoUpdate="true" for="nomeMontadora" /> -->
-					<h:panelGrid columns="3">
+					<p:messages id="msgs" closable="true" />
+					<p:growl />
+
+					<h:panelGrid columns="2">
 
 						<h:outputLabel value="Nome da montadora:" />
 						<p:inputText id="nomeMontadora"
-							value="#{Montadora.montadora.nome}" required="true"
-							>
+							value="#{Montadora.montadora.nome}" required="true" requiredMessage="Por favor informe o Nome da montadora">
 						</p:inputText>
-						<p:message autoUpdate="true" for="nomeMontadora" display="icon"/>
 
 						<p:outputLabel value="Pais origem:" />
 						<p:inputText id="paisMontadora"
-							value="#{Montadora.montadora.pais}" required="true" requiredMessage="Informe o pais de origem">
+							value="#{Montadora.montadora.pais}" required="true"
+							requiredMessage="Informe o pais de origem da montadora">
 						</p:inputText>
-						<p:message for="paisMontadora" />
 
 						<p:outputLabel value="WEB SITE:" />
 						<p:inputText id="webSiteMontadora"
 							value="#{Montadora.montadora.site}" required="true"
 							requiredMessage="Por favor preencha o WEB SITE da montadora" />
-						<p:message autoUpdate="true" for="webSiteMontadora" />
 
 						<br />
 						<br />

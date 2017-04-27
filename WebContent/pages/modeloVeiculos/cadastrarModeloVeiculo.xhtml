@@ -16,7 +16,6 @@
 </style>
 
 		<div id="form">
-
 			<p:panel header="Cadastro de modelo de veiculos"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarModeloVeiculo">
@@ -59,11 +58,6 @@
 							requiredMessage="Informe a potência em cavalos"
 							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
 
-
-
-
-
-
 						<p:outputLabel for="tipoCombustivel2" value="Combistível 2: "
 							class="outputLabel" />
 						<p:selectOneMenu id="tipoCombustivel2"
@@ -74,7 +68,6 @@
 								itemValue="#{combustivel}" />
 						</p:selectOneMenu>
 
-
 						<p:outputLabel value="Montadora " class="outputLabel" />
 						<p:autoComplete id="montadoraID" dropdown="true"
 							minQueryLength="3"
@@ -84,18 +77,10 @@
 							converter="montadoraConverter" forceSelection="true"
 							required="true" requiredMessage="Informe a montadora do modelo" />
 
-
-
 						<p:outputLabel value="Número de portas " class="outputLabel" />
 						<p:inputText id="numPortas" required="true"
 							requiredMessage="Informe o número de portas"
 							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
-
-
-
-
-
-
 
 					</h:panelGrid>
 
