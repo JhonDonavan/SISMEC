@@ -27,6 +27,14 @@ public class Veiculo implements Serializable {
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
+	@ManyToOne
+	@JoinColumn(name="ordem_de_servico_id")
+	private OrdemDeServico ordemDeServico;
+	
+	@ManyToOne
+	@JoinColumn(name="modelo_id")
+	private ModeloVeiculo modelo;
+	
 	private String placa;
 
 	private String uf;
@@ -34,10 +42,6 @@ public class Veiculo implements Serializable {
 	private String cidade;
 
 	private String cor;
-	
-	@ManyToOne
-	@JoinColumn(name="modelo_id")
-	private ModeloVeiculo modelo;
 	
 	public ModeloVeiculo getModelo() {
 		return modelo;
@@ -57,6 +61,14 @@ public class Veiculo implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public OrdemDeServico getOrdemDeServico() {
+		return ordemDeServico;
+	}
+
+	public void setOrdemDeServico(OrdemDeServico ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
 	}
 
 	@NotEmpty(message="O campo 'PLACA' deve ser informado")
@@ -96,4 +108,9 @@ public class Veiculo implements Serializable {
 		this.cor = cor;
 	}
 
+	@Override
+	public String toString() {
+		return "Veiculo [Id=" + Id + ", cliente=" + cliente + ", ordemDeServico=" + ordemDeServico + ", modelo="
+				+ modelo + ", placa=" + placa + ", uf=" + uf + ", cidade=" + cidade + ", cor=" + cor + "]";
+	}
 }
