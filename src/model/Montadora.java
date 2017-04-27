@@ -66,6 +66,7 @@ public class Montadora implements Serializable {
 	}
 
 	@Override
+
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -92,5 +93,11 @@ public class Montadora implements Serializable {
 	}
 	
 	
+
+	public String toString() {
+		return "Montadora [id=" + id + ", nome=" + nome + ", pais=" + pais + ", site=" + site + ", modeloVeiculo="
+				+ modeloVeiculo + "]";
+	}
+
 
 }
