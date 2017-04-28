@@ -12,7 +12,9 @@
 			<p:panel header="Cadastrar Cliente"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarCliente">
+					<p:messages id="msgs" closable="true" />
 					<p:growl />
+					
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Nome Cliente: " />
 						<p:inputText value="#{clienteMB.cliente.nome}" required="true"
@@ -25,7 +27,9 @@
 						</p:inputText>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputText value="#{clienteMB.cliente.telefone}" />
+						<p:inputText value="#{clienteMB.cliente.telefone}"
+						required="true"
+							requiredMessage="Favor informarmar um telefone de contato" />
 
 						<p:outputLabel value="Celular: " />
 						<p:inputText value="#{clienteMB.cliente.celular}" />
