@@ -39,11 +39,12 @@
 					style="margin-top:7px;">
 
 					<p:column headerText="Nome" sortBy="#{clientesVAR.nome}}"
-						filterBy="#{clientesVAR.nome}}" filterMatchMode="contains">
+						filterBy="#{clientesVAR.nome}" filterMatchMode="contains">
 						<h:outputText value="#{clientesVAR.nome}" />
 					</p:column>
 
-					<p:column headerText="CPF" sortBy="#{clientesVAR.cpf}">
+					<p:column headerText="CPF" sortBy="#{clientesVAR.cpf}"
+					filterBy="#{clientesVAR.cpf}" filterMatchMode="contains">
 						<h:outputText value="#{clientesVAR.cpf}" />
 					</p:column>
 
@@ -55,7 +56,8 @@
 						<h:outputText value="#{clientesVAR.celular}" />
 					</p:column>
 
-					<p:column headerText="E-Mail" sortBy="#{clientesVAR.email}">
+					<p:column headerText="E-Mail" sortBy="#{clientesVAR.email}"
+					filterBy="#{clientesVAR.email}" filterMatchMode="contains">
 						<h:outputText value="#{clientesVAR.email}" />
 					</p:column>
 

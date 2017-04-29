@@ -14,21 +14,20 @@
 				<h:form id="cadastrarCliente">
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
-					
+
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Nome Cliente: " />
 						<p:inputText value="#{clienteMB.cliente.nome}" required="true"
-							requiredMessage="Você deve fornecer o nome do cliente">
+							requiredMessage="Favor informar o nome completo do cliente">
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
 						<p:inputText value="#{clienteMB.cliente.cpf}" required="true"
-							requiredMessage="Você deve fornecer o CPF do cliente">
+							requiredMessage="Favor informar o CPF do cliente">
 						</p:inputText>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputText value="#{clienteMB.cliente.telefone}"
-						required="true"
+						<p:inputText value="#{clienteMB.cliente.telefone}" required="true"
 							requiredMessage="Favor informarmar um telefone de contato" />
 
 						<p:outputLabel value="Celular: " />
@@ -38,7 +37,10 @@
 						<p:inputText value="#{clienteMB.cliente.email}" />
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
-						<p:calendar id="button" value="#{clienteMB.cliente.dataNascimento}" showOn="button" />
+						<p:calendar id="button"
+							value="#{clienteMB.cliente.dataNascimento}" showOn="button"
+							required="true"
+							requiredMessage="Favor informar Data de nascimento" />
 
 						<br />
 						<br />
