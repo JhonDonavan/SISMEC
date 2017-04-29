@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -46,9 +47,8 @@ public class Atendente implements Serializable{
 	
 	private String email;
 	
-	private String login;
+	private Date dataNascimento;
 	
-	private String senha;
 	
 	public Integer getId(){
 		return id;
@@ -136,27 +136,45 @@ public class Atendente implements Serializable{
 		this.email = email;
 	}
 
-	public String getLogin() {
-		return login;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
-	public String getSenha() {
-		return senha;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atendente other = (Atendente) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Atendente [id=" + id + ", ordemDeServico=" + ordemDeServico + ", orcamento=" + orcamento + ", endereco="
 				+ endereco + ", nome=" + nome + ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario
-				+ ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", login=" + login
-				+ ", senha=" + senha + "]";
+				+ ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", dataNascimento="
+				+ dataNascimento + "]";
 	}
+	
 }
