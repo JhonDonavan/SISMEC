@@ -69,6 +69,10 @@ public class ClienteMB {
 	public void limparCliente(){
 		this.cliente = new Cliente();
 	}
+	
+	public void detalheCliente(Cliente cliente){
+		this.cliente = cliente;
+	}
 
 	public Cliente getCliente() {
 		return cliente;

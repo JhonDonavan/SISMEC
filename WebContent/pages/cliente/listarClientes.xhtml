@@ -7,7 +7,7 @@
 
 	<ui:define name="conteudo">
 
-		<p:panel header="Clientes cadastrados">
+		<p:panel header="Clientes cadastrados" id="PanellistarClientes">
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoCliente"
@@ -44,7 +44,7 @@
 					</p:column>
 
 					<p:column headerText="CPF" sortBy="#{clientesVAR.cpf}"
-					filterBy="#{clientesVAR.cpf}" filterMatchMode="contains">
+						filterBy="#{clientesVAR.cpf}" filterMatchMode="contains">
 						<h:outputText value="#{clientesVAR.cpf}" />
 					</p:column>
 
@@ -57,22 +57,24 @@
 					</p:column>
 
 					<p:column headerText="E-Mail" sortBy="#{clientesVAR.email}"
-					filterBy="#{clientesVAR.email}" filterMatchMode="contains">
+						filterBy="#{clientesVAR.email}" filterMatchMode="contains">
 						<h:outputText value="#{clientesVAR.email}" />
 					</p:column>
 
 
 					<p:column style="text-align:center;" exportable="false" width="15%">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detahles').show();" update=":modalDetalhes"
+							action="#{clienteMB.detalheCliente(clientesVAR)}">
 						</p:commandButton>
-						
-						<p:spacer width="5"/>
+
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{clienteMB.editar(clientesVAR)}">
 						</p:commandButton>
-						
-						<p:spacer width="5"/>
+
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							actionListener="#{clienteMB.prepararExclusao(clientesVAR)}"
@@ -82,6 +84,7 @@
 				</p:dataTable>
 
 
+				<!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO  -->
 				<p:confirmDialog widgetVar="excluirCliente"
 					message="deseja realmente excluir o cliente #{clienteMB.cliente.nome}?"
 					appendTo="@(body)" header="Excluir cliente?">
@@ -96,12 +99,49 @@
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
-
 			</h:form>
 		</p:panel>
-		
-		
-		
+
+
+		<!--MODAL PARA BOTAO DETALHES DO CLIENTE  -->
+		<h:form id="modalDetalhes">
+			<p:dialog id="DialogDetahlesCliente"
+				header="Detalhes do Cliente: #{clienteMB.cliente.nome}"
+				widgetVar="detahles" appendTo="@(body)" minimizable="true"
+				maximizable="true" width="650" showEffect="fade" hideEffect="none">
+				<p:separator />
+					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
+					toggleSpeed="650">
+					<h:outputText value="Nome do modelo: #{clienteMB.cliente.nome}" />
+					<br />
+					<br />
+					<h:outputText value="CPF do cliente: #{clienteMB.cliente.cpf} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Telefone residencial do cliente: #{clienteMB.cliente.telefone} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Celular do Cliente: #{clienteMB.cliente.celular}" />
+					<br />
+					<br />
+					<h:outputText
+						value="E-Mail do cliente: #{clienteMB.cliente.email} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Data de nascimento do Cliente:  #{clienteMB.cliente.dataNascimento}" />
+					<br />
+					<br />
+				</p:fieldset>
+				<p:separator />
+			</p:dialog>
+		</h:form>
+
+
+
+
 
 	</ui:define>
 </ui:decorate>
