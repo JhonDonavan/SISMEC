@@ -19,6 +19,7 @@
 						<p:inputNumber value="#{atendenteMB.atendente.salario}"
 							required="true"
 							requiredMessage="Favor informar o salario do atendente.">
+							<f:validator validatorId="salario-validator" />
 						</p:inputNumber>
 
 						<h:outputLabel value="Nome Atendente: " />
