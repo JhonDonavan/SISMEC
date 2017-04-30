@@ -39,7 +39,7 @@
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="CPF" sortBy="#{atendentes.salario}">
+					<p:column headerText="Salário" sortBy="#{atendentes.salario}">
 						<h:outputText value="#{atendentes.salario}" />
 					</p:column>
 
@@ -48,7 +48,8 @@
 						<h:outputText value="#{atendentes.nome}" />
 					</p:column>
 
-					<p:column headerText="CPF" sortBy="#{atendentes.cpf}">
+					<p:column headerText="CPF" sortBy="#{atendentes.cpf}"
+						filterBy="#{atendentes.cpf}" filterMatchMode="contains">
 						<h:outputText value="#{atendentes.cpf}" />
 					</p:column>
 
@@ -60,7 +61,8 @@
 						<h:outputText value="#{atendentes.celular}" />
 					</p:column>
 
-					<p:column headerText="E-Mail" sortBy="#{atendentes.email}">
+					<p:column headerText="E-Mail" sortBy="#{atendentes.email}"
+						filterBy="#{atendentes.email}" filterMatchMode="contains">
 						<h:outputText value="#{atendentes.email}" />
 					</p:column>
 
