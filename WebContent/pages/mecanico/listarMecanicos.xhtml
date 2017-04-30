@@ -43,7 +43,12 @@
 						<h:outputText value="#{mecanicos.nome}" />
 					</p:column>
 
-					<p:column headerText="CPF" sortBy="#{mecanicos.cpf}">
+					<p:column headerText="Salário" sortBy="#{mecanicos.salario}">
+						<h:outputText value="#{mecanicos.salario}" />
+					</p:column>
+
+					<p:column headerText="CPF" sortBy="#{mecanicos.cpf}"
+						filterBy="#{mecanicos.cpf}}" filterMatchMode="contains">
 						<h:outputText value="#{mecanicos.cpf}" />
 					</p:column>
 
@@ -55,7 +60,8 @@
 						<h:outputText value="#{mecanicos.celular}" />
 					</p:column>
 
-					<p:column headerText="E-Mail" sortBy="#{mecanicos.email}">
+					<p:column headerText="E-Mail" sortBy="#{mecanicos.email}"
+						filterBy="#{mecanicos.email}}" filterMatchMode="contains">
 						<h:outputText value="#{mecanicos.email}" />
 					</p:column>
 
