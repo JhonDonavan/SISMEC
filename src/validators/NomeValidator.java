@@ -19,7 +19,7 @@ public class NomeValidator implements Validator {
 						new FacesMessage(FacesMessage.SEVERITY_ERROR, "O nome deve ter no mínimo 5 letras", null));
 
 			for (char letra : valor.toCharArray()) {
-				if (!Character.isLetter(letra))
+				if (!(Character.isLetter(letra)) && !(Character.isSpaceChar(letra)))
 					throw new ValidatorException(
 							new FacesMessage(FacesMessage.SEVERITY_ERROR, "O nome deve ter apenas letras", null));
 
