@@ -21,10 +21,9 @@ public class NomeValidator implements Validator {
 			for (char letra : valor.toCharArray()) {
 				if (!(Character.isLetter(letra)) && !(Character.isSpaceChar(letra)))
 					throw new ValidatorException(
-							new FacesMessage(FacesMessage.SEVERITY_ERROR, "O nome deve ter apenas letras", null));
+							new FacesMessage(FacesMessage.SEVERITY_FATAL, "O nome deve ter apenas letras", null));
 
 			}
 		}
 	}
-
 }

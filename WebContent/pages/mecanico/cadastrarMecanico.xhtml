@@ -12,37 +12,43 @@
 			<p:panel header="Cadastrar Mecanico"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarMecanico">
+					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Salário Mecanico: " />
 						<p:inputText value="#{mecanicoMB.mecanico.salario}"
-							required="true" requiredMessage="Informe o salário do mecanico">
+							required="true" requiredMessage="Favor informar o salário do mecânico.">
 							<f:validator validatorId="salario-validator" />
 						</p:inputText>
 
-						<h:outputLabel value="Nome Mecanico: " />
+						<h:outputLabel value="Nome Mecânico: " />
 						<p:inputText value="#{mecanicoMB.mecanico.nome}" required="true"
-							requiredMessage="Você deve fornecer o nome do mecanico">
+							requiredMessage="Favor informar o nome completo do mecânico">
 							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
 						<p:inputText value="#{mecanicoMB.mecanico.cpf}" required="true"
-							requiredMessage="Você deve fornecer o CPF do mecanico">
+							requiredMessage="Favor informar o CPF do mecânico.">
 						</p:inputText>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputText value="#{mecanicoMB.mecanico.telefone}" />
+						<p:inputText value="#{mecanicoMB.mecanico.telefone}" 
+						/>
 
 						<p:outputLabel value="Celular: " />
-						<p:inputText value="#{mecanicoMB.mecanico.celular}" />
+						<p:inputText value="#{mecanicoMB.mecanico.celular}" 
+						required="true"
+							requiredMessage="Favor informar o número de delular do mecânico."/>
 
 						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{mecanicoMB.mecanico.email}" />
+						<p:inputText value="#{mecanicoMB.mecanico.email}" required="true"
+							requiredMessage="Favor informar E-Mail do mecânico."/>
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
 						<p:calendar id="button"
-							value="#{mecanicoMB.mecanico.dataNascimento}" showOn="button" />
+							value="#{mecanicoMB.mecanico.dataNascimento}" showOn="button" required="true"
+							requiredMessage="Favor informar a data de nascimento do mecânico."/>
 
 						<br />
 						<br />
