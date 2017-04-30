@@ -69,6 +69,10 @@ public class MecanicoMB {
 	public void limparMecanico(){
 		this.mecanico = new Mecanico();
 	}
+	
+	public void detalhesMecanico(Mecanico mecanico){
+		this.mecanico = mecanico;
+	}
 
 	public Mecanico getMecanico() {
 		return mecanico;

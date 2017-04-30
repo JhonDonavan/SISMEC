@@ -65,9 +65,10 @@
 						<h:outputText value="#{mecanicos.email}" />
 					</p:column>
 
-
 					<p:column style="text-align:center;" exportable="false">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show()" update=":modalDetalhes"
+							action="#{mecanicoMB.detalhesMecanico(mecanicos)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
@@ -81,7 +82,7 @@
 					</p:column>
 				</p:dataTable>
 
-
+				<!-- MODAL CONFIRMAR EXCLUSÃO -->
 				<p:confirmDialog widgetVar="excluirMecanico"
 					message="deseja realmente excluir o mecanico #{mecanicoMB.mecanico.nome}?"
 					appendTo="@(body)" header="Excluir mecanico?">
@@ -99,6 +100,48 @@
 
 			</h:form>
 		</p:panel>
+
+		<!--MODAL PARA BOTAO DETALHES DO CLIENTE  -->
+		<h:form id="modalDetalhes">
+			<p:dialog id="DialogDetahlesAtendente"
+				header="Detalhes do Atendente: #{mecanicoMB.mecanico.nome}"
+				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
+				maximizable="true" width="650" showEffect="fade" hideEffect="none">
+				<p:separator />
+					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
+					toggleSpeed="650">
+					<h:outputText value="Nome do mecânico: #{mecanicoMB.mecanico.nome}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Salário do mecânico: #{mecanicoMB.mecanico.salario}" />
+					<br />
+					<br />
+					<h:outputText value="CPF do mecânico: #{mecanicoMB.mecanico.cpf}"/>
+					<br />
+					<br />
+					<h:outputText
+						value="Telefone residencial do mecânico: #{mecanicoMB.mecanico.telefone}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Celular do mecânico: #{mecanicoMB.mecanico.celular}" />
+					<br />
+					<br />
+					<h:outputText
+						value="E-Mail do mecânico: #{mecanicoMB.mecanico.email} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Data de nascimento do mecãnico:  #{mecanicoMB.mecanico.dataNascimento}" />
+					<br />
+					<br />
+				</p:fieldset>
+				<p:separator />
+			</p:dialog>
+		</h:form>
+
+
 
 	</ui:define>
 </ui:decorate>
