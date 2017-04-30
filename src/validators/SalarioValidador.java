@@ -10,6 +10,6 @@ import javax.faces.validator.ValidatorException;
 public class SalarioValidador implements Validator {
 
 	public void validate(FacesContext contexto, UIComponent campo, Object objeto) throws ValidatorException {
-		
+
 	}
 }

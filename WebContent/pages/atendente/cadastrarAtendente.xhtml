@@ -44,8 +44,8 @@
 						<p:inputText value="#{atendenteMB.atendente.email}"
 							required="true"
 							requiredMessage="Favor informar o E-Mail do atendente.">
-								<p:keyFilter  regEx="/[a-z0-9_\.\-@]/i"/>
-							</p:inputText>
+							<p:keyFilter regEx="/[a-z0-9_\.\-@]/i" />
+						</p:inputText>
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
 						<p:calendar id="button"
