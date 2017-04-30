@@ -15,10 +15,10 @@
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Salário Atendente: " />
-						<p:inputText value="#{atendenteMB.atendente.salario}" required="true"
-							requiredMessage="Informe o salário do atendente">
+						<p:inputText value="#{atendenteMB.atendente.salario}"
+							required="true" requiredMessage="Informe o salário do atendente">
 						</p:inputText>
-						
+
 						<h:outputLabel value="Nome Atendente: " />
 						<p:inputText value="#{atendenteMB.atendente.nome}" required="true"
 							requiredMessage="Você deve fornecer o nome do atendente">
@@ -39,13 +39,8 @@
 						<p:inputText value="#{atendenteMB.atendente.email}" />
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
-						<p:calendar id="button" value="#{atendenteMB.atendente.dataNascimento}" showOn="button" />
-						
-						<!-- <p:outputLabel value="Celular: " />
-						<p:inputText value="#{atendenteMB.atendente.login}" />
-
-						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{atendenteMB.atendente.senha}" /> -->
+						<p:calendar id="button"
+							value="#{atendenteMB.atendente.dataNascimento}" showOn="button" />
 
 						<br />
 						<br />

@@ -57,8 +57,4 @@ public class Usuario {
 	public void setUltimoAcesso(Date ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
 	}
-
-     
-     
-     
 }
