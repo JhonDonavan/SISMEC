@@ -9,38 +9,49 @@
 
 		<div id="form">
 
-			<p:panel header="Cadastrar Atendente"
+			<p:panel header="CADASTRAR ATENDENTE"
 				style="text-align:left; width:99%;">
 				<h:form id="cadastrarAtendente">
+					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Salário Atendente: " />
-						<p:inputText value="#{atendenteMB.atendente.salario}"
-							required="true" requiredMessage="Informe o salário do atendente">
-						</p:inputText>
+						<p:inputNumber value="#{atendenteMB.atendente.salario}"
+							required="true"
+							requiredMessage="Favor informar o salario do atendente.">
+						</p:inputNumber>
 
 						<h:outputLabel value="Nome Atendente: " />
 						<p:inputText value="#{atendenteMB.atendente.nome}" required="true"
-							requiredMessage="Você deve fornecer o nome do atendente">
+							requiredMessage="Favor informar o nome completo do atendente.">
+							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
 						<p:inputText value="#{atendenteMB.atendente.cpf}" required="true"
-							requiredMessage="Você deve fornecer o CPF do atendente">
+							requiredMessage="Favor informar o numero de CPF do atendente.">
 						</p:inputText>
 
 						<p:outputLabel value="Telefone: " />
 						<p:inputText value="#{atendenteMB.atendente.telefone}" />
 
 						<p:outputLabel value="Celular: " />
-						<p:inputText value="#{atendenteMB.atendente.celular}" />
+						<p:inputText value="#{atendenteMB.atendente.celular}"
+							required="true"
+							requiredMessage="Favor informar o telefone celular do atendente." />
 
 						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{atendenteMB.atendente.email}" />
+						<p:inputText value="#{atendenteMB.atendente.email}"
+							required="true"
+							requiredMessage="Favor informar o E-Mail do atendente.">
+								<p:keyFilter  regEx="/[a-z0-9_\.\-@]/i"/>
+							</p:inputText>
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
 						<p:calendar id="button"
-							value="#{atendenteMB.atendente.dataNascimento}" showOn="button" />
+							value="#{atendenteMB.atendente.dataNascimento}" showOn="button"
+							required="true"
+							requiredMessage="Favor informar a data de nascimento do atendente." />
 
 						<br />
 						<br />
