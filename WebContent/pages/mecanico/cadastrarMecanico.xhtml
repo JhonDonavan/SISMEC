@@ -15,13 +15,15 @@
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Salário Mecanico: " />
-						<p:inputText value="#{mecanicoMB.mecanico.salario}" required="true"
-							requiredMessage="Informe o salário do mecanico">
+						<p:inputText value="#{mecanicoMB.mecanico.salario}"
+							required="true" requiredMessage="Informe o salário do mecanico">
+							<f:validator validatorId="salario-validator" />
 						</p:inputText>
-						
+
 						<h:outputLabel value="Nome Mecanico: " />
 						<p:inputText value="#{mecanicoMB.mecanico.nome}" required="true"
 							requiredMessage="Você deve fornecer o nome do mecanico">
+							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
@@ -39,8 +41,9 @@
 						<p:inputText value="#{mecanicoMB.mecanico.email}" />
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
-						<p:calendar id="button" value="#{mecanicoMB.mecanico.dataNascimento}" showOn="button" />
-						
+						<p:calendar id="button"
+							value="#{mecanicoMB.mecanico.dataNascimento}" showOn="button" />
+
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"

@@ -19,6 +19,7 @@
 						<h:outputLabel value="Nome Cliente: " />
 						<p:inputText value="#{clienteMB.cliente.nome}" required="true"
 							requiredMessage="Favor informar o nome completo do cliente">
+							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
