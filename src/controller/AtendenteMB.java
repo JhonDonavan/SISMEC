@@ -69,6 +69,10 @@ public class AtendenteMB {
 	public void limparAtendente(){
 		this.atendente = new Atendente();
 	}
+	
+	public void detalhesAtendente(Atendente atendente){
+		this.atendente = atendente;
+	}
 
 	public Atendente getAtendente() {
 		return atendente;

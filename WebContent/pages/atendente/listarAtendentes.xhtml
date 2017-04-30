@@ -68,7 +68,9 @@
 
 
 					<p:column style="text-align:center;" exportable="false">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{atendenteMB.detalhesAtendente(atendentes)}">
 						</p:commandButton>
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
@@ -83,6 +85,7 @@
 				</p:dataTable>
 
 
+				<!-- MODAL CONFIRMAÇÃO EXCLUSÃO DE ATENDENTE -->
 				<p:confirmDialog widgetVar="excluirAtendente"
 					message="deseja realmente excluir o atendente #{atendenteMB.atendente.nome}?"
 					appendTo="@(body)" header="Excluir atendente?">
@@ -100,6 +103,47 @@
 
 			</h:form>
 		</p:panel>
+
+
+		<!--MODAL PARA BOTAO DETALHES DO CLIENTE  -->
+		<h:form id="modalDetalhes">
+			<p:dialog id="DialogDetahlesAtendente"
+				header="Detalhes do Atendente: #{atendenteMB.atendente.nome}"
+				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
+				maximizable="true" width="650" showEffect="fade" hideEffect="none">
+				<p:separator />
+					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
+					toggleSpeed="650">
+					<h:outputText
+						value="Salário do atendente: #{atendenteMB.atendente.salario}" />
+					<br />
+					<br />
+					<h:outputText value="Nome do modelo: #{atendenteMB.atendente.nome}" />
+					<br />
+					<br />
+					<h:outputText value="CPF do cliente: #{atendenteMB.atendente.cpf} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Telefone residencial do atendente #{atendenteMB.atendente.telefone} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Celular do atendente: #{atendenteMB.atendente.celular}" />
+					<br />
+					<br />
+					<h:outputText
+						value="E-Mail do atendente: #{atendenteMB.atendente.email} " />
+					<br />
+					<br />
+					<h:outputText
+						value="Data de nascimento do atendente:  #{atententeMB.atendente.dataNascimento}" />
+					<br />
+					<br />
+				</p:fieldset>
+				<p:separator />
+			</p:dialog>
+		</h:form>
 
 	</ui:define>
 </ui:decorate>

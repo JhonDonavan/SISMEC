@@ -64,7 +64,7 @@
 
 					<p:column style="text-align:center;" exportable="false" width="15%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
-							oncomplete="PF('detahles').show();" update=":modalDetalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
 							action="#{clienteMB.detalheCliente(clientesVAR)}">
 						</p:commandButton>
 
@@ -107,7 +107,7 @@
 		<h:form id="modalDetalhes">
 			<p:dialog id="DialogDetahlesCliente"
 				header="Detalhes do Cliente: #{clienteMB.cliente.nome}"
-				widgetVar="detahles" appendTo="@(body)" minimizable="true"
+				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
 					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
