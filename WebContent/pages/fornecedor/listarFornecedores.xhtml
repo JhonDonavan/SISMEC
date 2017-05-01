@@ -11,29 +11,29 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaFornecedor" action="cadastrarFornecedors.xhtml"
+						id="novoFornecedor" action="cadastrarFornecedores.xhtml"
 						style="margin-right: 1600px;"
-						actionListener="#{Fornecedor.limparFornecedor()}" />
+						actionListener="#{fornecedorMB.limparFornecedor()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: relative; margin-top: -27px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
-							<p:dataExporter type="xls" target="FornecedorsLista"
-								fileName="Fornecedors" encoding="iso-8859-1" />
+							<p:dataExporter type="xls" target="FornecedoresLista"
+								fileName="Fornecedores" encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_pdf.png" />
-							<p:dataExporter type="pdf" target="FornecedorsLista"
-								fileName="Fornecedors" encoding="iso-8859-1" />
+							<p:dataExporter type="pdf" target="FornecedoresLista"
+								fileName="Fornecedores" encoding="iso-8859-1" />
 						</h:commandLink>
 					</div>
 				</div>
 
 
 				<p:growl />
-				<p:dataTable id="FornecedorsLista" var="fornecedor"
+				<p:dataTable id="FornecedoresLista" var="fornecedor"
 					value="#{Fornecedor.fornecedors}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

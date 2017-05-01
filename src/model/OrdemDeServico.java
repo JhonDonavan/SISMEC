@@ -130,6 +130,85 @@ public class OrdemDeServico implements Serializable{
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((atendente == null) ? 0 : atendente.hashCode());
+		result = prime * result + ((dataConclusao == null) ? 0 : dataConclusao.hashCode());
+		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
+		result = prime * result + ((dataPrevisto == null) ? 0 : dataPrevisto.hashCode());
+		result = prime * result + ((gerente == null) ? 0 : gerente.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
+		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
+		result = prime * result + ((servico == null) ? 0 : servico.hashCode());
+		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrdemDeServico other = (OrdemDeServico) obj;
+		if (atendente == null) {
+			if (other.atendente != null)
+				return false;
+		} else if (!atendente.equals(other.atendente))
+			return false;
+		if (dataConclusao == null) {
+			if (other.dataConclusao != null)
+				return false;
+		} else if (!dataConclusao.equals(other.dataConclusao))
+			return false;
+		if (dataInicio == null) {
+			if (other.dataInicio != null)
+				return false;
+		} else if (!dataInicio.equals(other.dataInicio))
+			return false;
+		if (dataPrevisto == null) {
+			if (other.dataPrevisto != null)
+				return false;
+		} else if (!dataPrevisto.equals(other.dataPrevisto))
+			return false;
+		if (gerente == null) {
+			if (other.gerente != null)
+				return false;
+		} else if (!gerente.equals(other.gerente))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (mecanico == null) {
+			if (other.mecanico != null)
+				return false;
+		} else if (!mecanico.equals(other.mecanico))
+			return false;
+		if (pagamento == null) {
+			if (other.pagamento != null)
+				return false;
+		} else if (!pagamento.equals(other.pagamento))
+			return false;
+		if (servico == null) {
+			if (other.servico != null)
+				return false;
+		} else if (!servico.equals(other.servico))
+			return false;
+		if (veiculo == null) {
+			if (other.veiculo != null)
+				return false;
+		} else if (!veiculo.equals(other.veiculo))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "OrdemDeServico [id=" + id + ", veiculo=" + veiculo + ", servico=" + servico + ", pagamento=" + pagamento
 				+ ", gerente=" + gerente + ", atendente=" + atendente + ", mecanico=" + mecanico + ", dataInicio="
