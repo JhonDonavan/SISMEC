@@ -15,7 +15,7 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel value="Salário Atendente: " />
+						<h:outputLabel id="salario" mask="9.999,99" value="Salário Atendente: " />
 						<p:inputNumber value="#{atendenteMB.atendente.salario}"
 							required="true"
 							requiredMessage="Favor informar o salário do atendente.">
@@ -29,15 +29,15 @@
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
-						<p:inputText value="#{atendenteMB.atendente.cpf}" required="true"
+						<p:inputMask id="cpf" mask="999.999.999-99" value="#{atendenteMB.atendente.cpf}" required="true"
 							requiredMessage="Favor informar o número de CPF do atendente.">
-						</p:inputText>
+						</p:inputMask>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputText value="#{atendenteMB.atendente.telefone}" />
+						<p:inputMask id="telefone" mask="(99) 9999-9999" value="#{atendenteMB.atendente.telefone}" />
 
 						<p:outputLabel value="Celular: " />
-						<p:inputText value="#{atendenteMB.atendente.celular}"
+						<p:inputMask  id="celular" mask="(99) 99999-9999" value="#{atendenteMB.atendente.celular}"
 							required="true"
 							requiredMessage="Favor informar o telefone celular do atendente." />
 

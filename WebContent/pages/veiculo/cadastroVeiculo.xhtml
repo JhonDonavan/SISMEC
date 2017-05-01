@@ -17,11 +17,11 @@
 					
 					<h:panelGrid columns="2">
 						<h:outputLabel value="Placa do veiculo:" />
-						<p:inputText value="#{Veiculo.veiculo.placa}" required="true"
+						<p:inputMask id="placaMask" mask="aaa9999" value="#{Veiculo.veiculo.placa}" required="true"
 							requiredMessage="Voce deve preencher a placa do veiculo"
 							validatorMessage="A placa do veiculo deve ter 7 caracteres">
 							<f:validateLength minimum="7" maximum="7"></f:validateLength>
-						</p:inputText>
+						</p:inputMask>
 
 						<p:outputLabel value="UF:" />
 						<p:inputText value="#{Veiculo.veiculo.uf}">

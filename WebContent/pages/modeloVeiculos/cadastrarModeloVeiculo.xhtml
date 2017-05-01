@@ -30,11 +30,11 @@
 							value="#{ModeloVeiculoController.modeloVeiculo.nome}"
 							required="true" requiredMessage="Informe o nome do modelo" />
 
-						<p:outputLabel value="Silindradas " class="outputLabel" />
-						<p:inputText id="silindradas"
+						<p:outputLabel value="Cilindradas " class="outputLabel" />
+						<p:inputText id="Cilindradas"
 							value="#{ModeloVeiculoController.modeloVeiculo.motor}"
 							required="true"
-							requiredMessage="Informe o numero de silindradas do motor" />
+							requiredMessage="Informe o número de Cilindradas do motor" />
 
 
 						<p:outputLabel for="tipoCombustivel1" value="Combistível 1 "
@@ -42,7 +42,7 @@
 						<p:selectOneMenu id="tipoCombustivel1" required="true"
 							requiredMessage="Informa o combustível principal"
 							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}">
-							<f:selectItem itemLabel="Selecione um combustivel" />
+							<f:selectItem itemLabel="SELECIONE UM COMBUSTÍVEL" />
 							<f:selectItems value="#{ModeloVeiculoController.combustivel}"
 								var="combustivel" itemLabel="#{combustivel}"
 								itemValue="#{combustivel}" />
@@ -53,7 +53,7 @@
 							requiredMessage="Informe a sigla do modelo"
 							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
 
-						<p:outputLabel value="Potencia em cavalos " class="outputLabel" />
+						<p:outputLabel value="Potência em cavalos " class="outputLabel" />
 						<p:inputText id="cavalos" required="true"
 							requiredMessage="Informe a potência em cavalos"
 							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
@@ -62,7 +62,7 @@
 							class="outputLabel" />
 						<p:selectOneMenu id="tipoCombustivel2"
 							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}">
-							<f:selectItem itemLabel="NAO POSSUI" />
+							<f:selectItem itemLabel="NÃO POSSUI" />
 							<f:selectItems value="#{ModeloVeiculoController.combustivel}"
 								var="combustivel" itemLabel="#{combustivel}"
 								itemValue="#{combustivel}" />

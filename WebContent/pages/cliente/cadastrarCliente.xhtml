@@ -23,16 +23,21 @@
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
-						<p:inputText value="#{clienteMB.cliente.cpf}" required="true"
+						<p:inputMask id="cpf" mask="999.999.999-99"
+							value="#{clienteMB.cliente.cpf}" required="true"
 							requiredMessage="Favor informar o CPF do cliente">
-						</p:inputText>
+						</p:inputMask>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputText value="#{clienteMB.cliente.telefone}" required="true"
-							requiredMessage="Favor informarmar um telefone de contato" />
+						<p:inputMask id="telefone" mask="(99) 9999-9999"
+							value="#{clienteMB.cliente.telefone}" required="true"
+							requiredMessage="Favor informarmar um telefone de contato">
+						</p:inputMask>
 
 						<p:outputLabel value="Celular: " />
-						<p:inputText value="#{clienteMB.cliente.celular}" />
+						<p:inputMask id="celular" mask="(99) 99999-9999"
+							value="#{clienteMB.cliente.celular}">
+						</p:inputMask>
 
 						<p:outputLabel value="E-Mail: " />
 						<p:inputText value="#{clienteMB.cliente.email}" />
