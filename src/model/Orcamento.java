@@ -80,6 +80,60 @@ private static final long SerialVersionUID = 1L;
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((atendente == null) ? 0 : atendente.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
+		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(valorOrcado);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Orcamento other = (Orcamento) obj;
+		if (atendente == null) {
+			if (other.atendente != null)
+				return false;
+		} else if (!atendente.equals(other.atendente))
+			return false;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (mecanico == null) {
+			if (other.mecanico != null)
+				return false;
+		} else if (!mecanico.equals(other.mecanico))
+			return false;
+		if (observacao == null) {
+			if (other.observacao != null)
+				return false;
+		} else if (!observacao.equals(other.observacao))
+			return false;
+		if (Double.doubleToLongBits(valorOrcado) != Double.doubleToLongBits(other.valorOrcado))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Orcamento [id=" + id + ", observacao=" + observacao + ", data=" + data + ", valorOrcado=" + valorOrcado
 				+ ", mecanico=" + mecanico + ", atendente=" + atendente + "]";

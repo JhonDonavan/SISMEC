@@ -19,25 +19,25 @@ import modelDAO.GenericDAO;
 public class FornecedorMB {
 	
 	@Autowired
-	private List<Fornecedor> fornecedorsSelecionados;
+	private List<Fornecedor> fornecedoresSelecionados;
 	
 	private Fornecedor fornecedor = new Fornecedor();
-	private List<Fornecedor> fornecedors = new ArrayList<Fornecedor>();
+	private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 	private FornecedorDAO fornecedorDAO = new FornecedorDAO();
 
 	public FornecedorMB() {
 		fornecedor = new Fornecedor();
-		fornecedors = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
-		fornecedorsSelecionados = new ArrayList<>();
+		fornecedores = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
+		fornecedoresSelecionados = new ArrayList<>();
 	}
 
 	public String salvar() {
 		new GenericDAO<Fornecedor>(Fornecedor.class).salvar(fornecedor);
-		fornecedors = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
+		fornecedores = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
 		fornecedor = new Fornecedor();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor cadastrado com sucesso"));
 		System.out.println("Objeto " + fornecedor.getNome() + " cadastrado com sucesso!");
-		return "listarFornecedors?faces-redirect=true";
+		return "listarFornecedores?faces-redirect=true";
 	}
 	
 	public String editar(Fornecedor fornecedor){
@@ -54,16 +54,16 @@ public class FornecedorMB {
 		System.out.println("excluir fornecedor: " + fornecedor.getNome());
 		new GenericDAO<Fornecedor>(Fornecedor.class).excluir(fornecedor);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor excluido com sucesso!"));
-		fornecedors = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
+		fornecedores = new GenericDAO<Fornecedor>(Fornecedor.class).listarTodos();
 	}
 	
 	public List<Fornecedor> listarPorNome(String nomeFornecedor){
 		try {
-			fornecedorsSelecionados = fornecedorDAO.buscarFornecedorByNome(nomeFornecedor);
+			fornecedoresSelecionados = fornecedorDAO.buscarFornecedorByNome(nomeFornecedor);
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e);
 		}
-		return fornecedorsSelecionados;
+		return fornecedoresSelecionados;
 	}
 	
 	public void limparFornecedor(){
@@ -79,11 +79,11 @@ public class FornecedorMB {
 	}
 
 	public List<Fornecedor> getFornecedors() {
-		return fornecedors;
+		return fornecedores;
 	}
 
 	public void setFornecedors(List<Fornecedor> fornecedors) {
-		this.fornecedors = fornecedors;
+		this.fornecedores = fornecedors;
 	}
 
 }

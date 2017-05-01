@@ -71,6 +71,55 @@ public class Peca implements Serializable{
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fornecedor == null) ? 0 : fornecedor.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((num == null) ? 0 : num.hashCode());
+		result = prime * result + qtd;
+		result = prime * result + ((servico == null) ? 0 : servico.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Peca other = (Peca) obj;
+		if (fornecedor == null) {
+			if (other.fornecedor != null)
+				return false;
+		} else if (!fornecedor.equals(other.fornecedor))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (num == null) {
+			if (other.num != null)
+				return false;
+		} else if (!num.equals(other.num))
+			return false;
+		if (qtd != other.qtd)
+			return false;
+		if (servico == null) {
+			if (other.servico != null)
+				return false;
+		} else if (!servico.equals(other.servico))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Peca [id=" + id + ", servico=" + servico + ", fornecedor=" + fornecedor + ", nome=" + nome + ", num="
 				+ num + ", qtd=" + qtd + "]";

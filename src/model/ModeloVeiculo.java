@@ -118,6 +118,79 @@ public class ModeloVeiculo implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((PotenciaCavalos == null) ? 0 : PotenciaCavalos.hashCode());
+		result = prime * result + ((combustivel_1 == null) ? 0 : combustivel_1.hashCode());
+		result = prime * result + ((combustivel_2 == null) ? 0 : combustivel_2.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((montadora == null) ? 0 : montadora.hashCode());
+		result = prime * result + ((motor == null) ? 0 : motor.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((numPortas == null) ? 0 : numPortas.hashCode());
+		result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
+		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ModeloVeiculo other = (ModeloVeiculo) obj;
+		if (PotenciaCavalos == null) {
+			if (other.PotenciaCavalos != null)
+				return false;
+		} else if (!PotenciaCavalos.equals(other.PotenciaCavalos))
+			return false;
+		if (combustivel_1 != other.combustivel_1)
+			return false;
+		if (combustivel_2 != other.combustivel_2)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (montadora == null) {
+			if (other.montadora != null)
+				return false;
+		} else if (!montadora.equals(other.montadora))
+			return false;
+		if (motor == null) {
+			if (other.motor != null)
+				return false;
+		} else if (!motor.equals(other.motor))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numPortas == null) {
+			if (other.numPortas != null)
+				return false;
+		} else if (!numPortas.equals(other.numPortas))
+			return false;
+		if (sigla == null) {
+			if (other.sigla != null)
+				return false;
+		} else if (!sigla.equals(other.sigla))
+			return false;
+		if (veiculo == null) {
+			if (other.veiculo != null)
+				return false;
+		} else if (!veiculo.equals(other.veiculo))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "ModeloVeiculo [id=" + id + ", nome=" + nome + ", sigla=" + sigla + ", motor=" + motor
 				+ ", PotenciaCavalos=" + PotenciaCavalos + ", numPortas=" + numPortas + ", combustivel_1="
