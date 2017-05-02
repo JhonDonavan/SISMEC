@@ -14,7 +14,7 @@ import model.Pagamento;
 import modelDAO.GenericDAO;
 import modelDAO.PagamentoDAO;
 
-@ManagedBean(name = "Pagamento")
+@ManagedBean(name = "pagamentoMB")
 @SessionScoped
 public class PagamentoMB {
 

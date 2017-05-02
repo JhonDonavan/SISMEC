@@ -70,10 +70,14 @@
 							oncomplete="PF('detalhes').show()" update=":modalDetalhes"
 							action="#{mecanicoMB.detalhesMecanico(mecanicos)}">
 						</p:commandButton>
+						
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{mecanicoMB.editar(mecanicos)}">
 						</p:commandButton>
+						
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							actionListener="#{mecanicoMB.prepararExclusao(mecanicos)}"

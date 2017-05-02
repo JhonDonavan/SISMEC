@@ -43,7 +43,7 @@
 						filterBy="#{atendentes.nome}}" filterMatchMode="contains">
 						<h:outputText value="#{atendentes.nome}" />
 					</p:column>
-					
+
 					<p:column headerText="Salário" sortBy="#{atendentes.salario}">
 						<h:outputText value="#{atendentes.salario}" />
 					</p:column>
@@ -73,9 +73,13 @@
 							action="#{atendenteMB.detalhesAtendente(atendentes)}">
 						</p:commandButton>
 
+						<p:spacer width="5" />
+
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{atendenteMB.editar(atendentes)}">
 						</p:commandButton>
+
+						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							actionListener="#{atendenteMB.prepararExclusao(atendentes)}"
@@ -118,10 +122,12 @@
 						value="Salário do atendente: #{atendenteMB.atendente.salario}" />
 					<br />
 					<br />
-					<h:outputText value="Nome do atendente: #{atendenteMB.atendente.nome}" />
+					<h:outputText
+						value="Nome do atendente: #{atendenteMB.atendente.nome}" />
 					<br />
 					<br />
-					<h:outputText value="CPF do atendente: #{atendenteMB.atendente.cpf} " />
+					<h:outputText
+						value="CPF do atendente: #{atendenteMB.atendente.cpf} " />
 					<br />
 					<br />
 					<h:outputText

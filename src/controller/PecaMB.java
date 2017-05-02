@@ -14,7 +14,7 @@ import model.Peca;
 import modelDAO.GenericDAO;
 import modelDAO.PecaDAO;
 
-@ManagedBean(name = "Peca")
+@ManagedBean(name = "pecasMB")
 @SessionScoped
 public class PecaMB {
 

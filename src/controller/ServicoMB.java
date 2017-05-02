@@ -14,7 +14,7 @@ import model.Servico;
 import modelDAO.GenericDAO;
 import modelDAO.ServicoDAO;
 
-@ManagedBean(name = "Servico")
+@ManagedBean(name = "servicoMB")
 @SessionScoped
 public class ServicoMB {
 
