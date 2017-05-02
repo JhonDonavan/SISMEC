@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>SISMEC</title>
 
-<style type="text/css">
+	<style type="text/css">
 body {
 	background-color: #eeeeef;
 	font-size: 12px
@@ -18,36 +18,26 @@ body {
 
 
 <h:body>
-	<div style="width: 100%;">
-		<div id="layout" align="center">
 
-			<p:layout style="min-width:90%;max-width:100%;min-height:930px" fullPage="true">
-				<div id="header">
-					<ui:insert name="header">
-						<ui:include src="header.xhtml" />
-					</ui:insert>
-				</div>
+			<p:layout style="min-width:100%;max-width:100%;" fullPage="true">
 
-				<div id="menuLateral">
-					<ui:insert name="menuLateral">
-						<ui:include src="menuLateral.xhtml" />
-					</ui:insert>
-				</div>
+				<ui:insert name="header">
+					<ui:include src="header.xhtml" />
+				</ui:insert>
+
+				<ui:insert name="menuLateral">
+					<ui:include src="menuLateral.xhtml" />
+				</ui:insert>
 
 				<p:layoutUnit position="center">
-					<ui:insert name="conteudo">
-
-					</ui:insert>
+					<ui:insert name="conteudo" />
 				</p:layoutUnit>
 
-				<div id="footer">
-					<ui:insert name="footer">
-						<ui:include src="footer.xhtml" />
-					</ui:insert>
-				</div>
+				<ui:insert name="footer">
+					<ui:include src="footer.xhtml" />
+				</ui:insert>
+
 			</p:layout>
-		</div>
-	</div>
 
 </h:body>
 </html>
