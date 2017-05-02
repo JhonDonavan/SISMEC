@@ -15,24 +15,24 @@
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
 						<h:outputLabel value="Nome Peca: " />
-						<p:inputText value="#{pecaMB.peca.nome}" required="true"
+						<p:inputText value="#{pecasMB.peca.nome}" required="true"
 							requiredMessage="Informe o nome da peca">
 						</p:inputText>
 
 						<p:outputLabel value="Numeração: " />
-						<p:inputText value="#{pecaMB.peca.cpf}" required="true"
+						<p:inputText value="#{pecasMB.peca.num}" required="true"
 							requiredMessage="Informe a numeração de peca">
 						</p:inputText>
 
 						<p:outputLabel value="Quantidade: " />
-						<p:inputText value="#{pecaMB.peca.qtd}" required="true"
+						<p:inputText value="#{pecasMB.peca.qtd}" required="true"
 						requiredMessage="Informe a numeração de peca">
 						</p:inputText>
 
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{pecaMB.salvar}" update="@form" />
+							action="#{pecasMB.salvar}" update="@form" />
 					</h:panelGrid>
 
 					<!-- Mostra modal da data -->

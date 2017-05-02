@@ -10,32 +10,30 @@
 		<p:panel header="Pecas cadastradas">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaPeca" action="cadastrarPecas.xhtml"
-						style="margin-right: 1600px;"
-						actionListener="#{Peca.limparPeca()}" />
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaPeca"
+						action="cadastrarPecas.xhtml" style="margin-right: 1600px;"
+						actionListener="#{pecasMB.limparPeca()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: relative; margin-top: -27px;">
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_xls.png" />
-							<p:dataExporter type="xls" target="PecasLista"
-								fileName="Pecas" encoding="iso-8859-1" />
+							<p:dataExporter type="xls" target="PecasLista" fileName="Pecas"
+								encoding="iso-8859-1" />
 						</h:commandLink>
 
 						<h:commandLink>
 							<p:graphicImage library="imagens" name="icon_pdf.png" />
-							<p:dataExporter type="pdf" target="PecasLista"
-								fileName="Pecas" encoding="iso-8859-1" />
+							<p:dataExporter type="pdf" target="PecasLista" fileName="Pecas"
+								encoding="iso-8859-1" />
 						</h:commandLink>
 					</div>
 				</div>
 
 
 				<p:growl />
-				<p:dataTable id="PecasLista" var="peca"
-					value="#{Peca.pecas}" paginator="true" rows="15"
-					rowsPerPageTemplate="5,10,15,20,25,50"
+				<p:dataTable id="PecasLista" var="peca" value="#{pecasMB.pecas}"
+					paginator="true" rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
@@ -56,13 +54,13 @@
 					<p:column style="text-align:center;" exportable="false" width="15%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{Peca.detalhePeca(peca)}">
+							action="#{pecasMB.detalhePeca(peca)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{Peca.editar(peca)}">
+							action="#{pecasMB.editar(peca)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
@@ -76,48 +74,36 @@
 
 
 				<!-- Modal para confirmação de exclusão -->
-
 				<p:confirmDialog widgetVar="excluirPeca"
 					message="deseja realmente excluir a peca #{Peca.peca.nome}?"
 					appendTo="@(body)" header="Excluir Peca">
 					<div style="text-align: center;">
-						<p:commandButton value="Sim" action="#{Peca.excluir()}"
-							update="@form" process="@this"
-							onclick="PF('excluirPeca').hide()"
+						<p:commandButton value="Sim" action="#{pecasMB.excluir()}"
+							update="@form" process="@this" onclick="PF('excluirPeca').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
-						<p:commandButton value="Não"
-							oncomplete="PF('excluirPeca').hide()"
+						<p:commandButton value="Não" oncomplete="PF('excluirPeca').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
-
 			</h:form>
-
-			<h:form id="modalDetalhes">
-				<!-- Modal para botao detalhes -->
-				<p:dialog header="Detalhes de pecas" widgetVar="detalhes"
-					appendTo="@(body)" minimizable="true" maximizable="true"
-					width="650" showEffect="fade" hideEffect="none">
-					<h2>Peca:</h2>
-					<p:separator />
-					<h:outputText
-						value="Nome da peca: #{Peca.peca.nome}" />
-					<br />
-					<br />
-					<h:outputText
-						value="Numeração da peca: #{Peca.peca.num}" />
-					<br />
-					<br />
-					<h:outputText
-						value="Quantidade de pecas: #{Peca.peca.qtd}" />
-				</p:dialog>
-			</h:form>
-
-
-
-
 		</p:panel>
+
+		<h:form id="modalDetalhes">
+			<!-- Modal para botao detalhes --> 
+			<p:dialog widgetVar="detalhes" header="Detalhes da peça: #{pecasMB.peca.nome}"
+				appendTo="@(body)" minimizable="true" maximizable="true" width="650"
+				showEffect="fade" hideEffect="none">
+				<p:separator />
+				<h:outputText value="Nome da peca: #{pecasMB.peca.nome}" />
+				<br />
+				<br />
+				<h:outputText value="Numeração da peca: #{pecasMB.peca.num}" />
+				<br />
+				<br />
+				<h:outputText value="Quantidade de pecas: #{pecasMB.peca.qtd}" />
+			</p:dialog>
+		</h:form>
 
 	</ui:define>
 </ui:decorate>
