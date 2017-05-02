@@ -12,8 +12,7 @@
 	<p:layoutUnit position="west" size="220" class="ui-fluid">
 		<ui:insert name="menu">
 			<h:form>
-				<p:menu style="width: 200px">
-					<p:submenu label="Menu">
+				<p:menu style="width: 100%; border: none">
 						<p:menuitem value="Login" icon="ui-icon-key" />
 						<p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" />
 						<p:menuitem value="Veiculos" action="/pages/veiculo/listarVeiculos.xhtml" icon="ui-icon-flag" />
@@ -27,7 +26,6 @@
 						<p:menuitem value="Pagamento" action="/pages/pagamento/listarPagamentos.xhtml" icon="ui-icon-flag" />
 						<p:menuitem value="Servico" action="/pages/servico/listarServicos.xhtml" icon="ui-icon-flag" />
 						<p:menuitem value="Fornecedor" action="/pages/fornecedor/listarFornecedores.xhtml" icon="ui-icon-flag" />
-					</p:submenu>
 				</p:menu>
 			</h:form>
 		</ui:insert>
