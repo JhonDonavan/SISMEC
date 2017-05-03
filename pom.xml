@@ -13,6 +13,15 @@
 			<url>http://repository.primefaces.org</url>
 			<layout>default</layout>
 		</repository>
+
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/libs-snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 
@@ -163,34 +172,54 @@
 			<version>1.11.0.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
 
 		<!-- SPRING SECURITY SPRING SECURITY -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.0.1.RELEASE</version>
+			<version>3.0.2.RELEASE</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.0.1.RELEASE</version>
+			<version>3.0.1.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.0.2.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<artifactId>org.springframework.context</artifactId>
+			<version>3.0.2.RELEASE</version>
 		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> 
+			<version>4.0.1.RELEASE</version> </dependency> -->
+
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-orm</artifactId> 
+			<version>4.1.0.RELEASE</version> </dependency> -->
 		<!-- SPRING SECURITY SPRING SECURITY -->
 
-		<!-- TEMAS PARA PRIMEFACES -->
-		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/cupertino -->
-		<!-- Primefaces Theme Library -->
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.10</version>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
 		<dependency>
@@ -222,9 +251,8 @@
 			<version>3.5</version>
 		</dependency>
 
-
-
-
+		<!-- <dependency> <groupId>org.primefaces.themes</groupId> <artifactId>bootstrap</artifactId> 
+			<version>1.0.10</version> <scope>test</scope> </dependency> -->
 	</dependencies>
 
 

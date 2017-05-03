@@ -1,13 +1,19 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-public class Usuario {
+@Entity
+public class Usuario implements Serializable{
 	
 	 @Id
      @Column(name="id", nullable=false, unique=true)
@@ -21,14 +27,52 @@ public class Usuario {
      
      @Column(name="password", nullable=false, unique=false)
      private String senha;
-
+     
+     @Column(name = "enable", columnDefinition = "BOOLEAN")
+     private boolean enable;
+     
+     @OneToMany(mappedBy = "usuario", targetEntity = Autorizacao.class, fetch = FetchType.LAZY)
+     private List<Autorizacao> autorizacoes;
+     
      @Column(name="lastAccess", unique=true)
      @Temporal(TemporalType.DATE)
      private Date ultimoAcesso;
+     
+     public Usuario(){
+    	 
+     }
 
 	public String getNomeUsuario() {
 		return nomeUsuario;
 	}
+	
+	public boolean isEnable() {
+		return enable;
+	}
+
+
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+
+
+	public List<Autorizacao> getAutorizacoes() {
+		return autorizacoes;
+	}
+
+	public void setAutorizacoes(List<Autorizacao> autorizacoes) {
+		this.autorizacoes = autorizacoes;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
 
 	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
@@ -56,5 +100,10 @@ public class Usuario {
 
 	public void setUltimoAcesso(Date ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
+	}
+
+	public static void TESTE() {
+		System.out.println("TESTE");
+		
 	}
 }

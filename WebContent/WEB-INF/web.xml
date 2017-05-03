@@ -3,49 +3,74 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-	<display-name>SISMEC</display-name>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
 	
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>bootstrap</param-value>
-	</context-param>
+	<!-- <context-param> <param-name>primefaces.THEME</param-name> <param-value>bootstrap</param-value> 
+		</context-param> -->
+	
+	<display-name>SISMEC</display-name>
+	<welcome-file-list>
+		<welcome-file>login.xhtml</welcome-file>
+	</welcome-file-list>
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
 
-	<session-config>
-		<session-timeout>45</session-timeout>
-	</session-config>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+		<url-pattern>*.xhtml</url-pattern>
+		<url-pattern>*.jsp</url-pattern>
+	</servlet-mapping>
+	
+	 <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+   
 
-	<error-page>
+	<!-- <error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
 		<location>/exception/sessionexpired.xhtml</location>
-	</error-page>
+	</error-page> -->
+	
+	
+	
+	<!-- Início das configurações para o Spring Security 3 -->
+	
+	<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/applicationContext.xml</param-value>
+</context-param>
 
-	<!-- trecho abaixo é para spring security -->
-	<!-- <filter> <filter-name>SpringSecurityFilterChain</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
-		</filter> <filter-mapping> <filter-name>SpringSecurityFilterChain</filter-name> 
-		<url-pattern>/*</url-pattern> <dispatcher>FORWARD</dispatcher> <dispatcher>REQUEST</dispatcher> 
-		</filter-mapping> -->
+ <listener>
+   <listener-class>
+         org.springframework.web.context.ContextLoaderListener
+   </listener-class>
+ </listener>
+	
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- Fim das configuração para utilizar o Spring Security 3 -->
+	
 
-	<!--ESTAVA CAUSANDO O MESMO PROBLEMA QUE O GUILHERME ESTA ENFRENTANDO -->
-	<!-- <servlet-mapping> <servlet-name>Faces Servlet</servlet-name> <url-pattern>*.jsf</url-pattern> 
-		</servlet-mapping> -->
-	<!-- <servlet-mapping> <servlet-name>Faces Servlet</servlet-name> <url-pattern>*.xhtml</url-pattern> 
-		<url-pattern>/faces/*</url-pattern> </servlet-mapping> -->
+
 </web-app>
