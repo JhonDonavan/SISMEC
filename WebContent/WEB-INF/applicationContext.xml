@@ -7,14 +7,22 @@
 	 http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/**" access="ROLE_ADMINISTRADORES"/>
+	
+		<intercept-url pattern="/**" access="ROLE_ADMINISTRADORES"/> 
+		<!-- <intercept-url pattern="/**" access="hasAnyRole('ADMINISTRADORES')"/>
+		<intercept-url pattern="pages/home/**" access="isAuthenticated()"/>
+		<intercept-url pattern="/pages/atendente/**" access="hasAnyRole('ADMINISTRADORES', 'GERENTES')"/>
+		<intercept-url pattern="/pages/cliente/**" access="hasAnyRole('ADMINISTRADORES', 'GERENTES', 'ATENDENTES')"/> -->
+		
 	</http>
 
 	 <authentication-manager>
 	 	<authentication-provider>
 	 		<user-service>
 	 			<user name="admin" password="admin" authorities="ROLE_ADMINISTRADORES"/>
-	 				<user name="mecanico" password="mecanico" authorities="ROLE_MECANICOS"/>
+	 			<!-- <user name="mecanico" password="mecanico" authorities="MECANICOS"/>
+	 			<user name="gerente" password="gerente" authorities="GERENTES"/>
+	 			<user name="atendente" password="atendente" authorities="ATENDENTES"/> -->
 	 		</user-service>
 	 	</authentication-provider>
 	 </authentication-manager>
