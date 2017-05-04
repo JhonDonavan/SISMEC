@@ -251,8 +251,14 @@
 			<version>3.5</version>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.primefaces.themes</groupId> <artifactId>bootstrap</artifactId> 
-			<version>1.0.10</version> <scope>test</scope> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+
 	</dependencies>
 
 

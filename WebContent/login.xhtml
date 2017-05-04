@@ -19,11 +19,22 @@
 		</center>
 		<form action="j_spring_security_check" method="post">
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel for="j_username" value="Username: *" />
-				<h:inputText id="j_username" required="true" />
-				<h:outputLabel for="j_password" value="Password: * " />
-				<h:inputSecret id="j_password" required="true" />
-				<h:commandButton value="Login" />
+				<h:outputLabel style="width:20%; align:right;" for="username"
+					value="Usuário:" />
+				<p:inputText id="username" value="#{userLoginView.username}"
+					required="true" label="username" />
+
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" value="#{userLoginView.password}"
+					required="true" label="password" />
+
+
+
+				<f:facet name="footer">
+					<!-- <p:commandButton value="Login" actionListener="#{userLoginView.login}" oncomplete="handleLoginRequest(xhr, status, args)" /> -->
+					<h:outputLink value="pages/home/home.xhtml">LOGIN</h:outputLink>
+				</f:facet>
+
 			</h:panelGrid>
 		</form>
 	</p:dialog>
