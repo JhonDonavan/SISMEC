@@ -178,8 +178,15 @@
 			<version>3.0.5.RELEASE</version>
 		</dependency>
 
-
-		<!-- SPRING SECURITY SPRING SECURITY -->
+		<!--INICIO SPRING SECURITY (AUTENTICAÇÃO E AUTORIZAÇÃO)  -->
+		<!-- SPRING SECURITY SPRING SECURITY  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.0.2.RELEASE</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -192,12 +199,9 @@
 			<version>3.0.1.RELEASE</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>3.0.2.RELEASE</version>
-		</dependency>
+		<!--FIM SPRING SECURITY (AUTENTICAÇÃO E AUTORIZAÇÃO)  -->
+		<!-- SPRING SECURITY SPRING SECURITY  -->
+		
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.context -->
 		<dependency>
