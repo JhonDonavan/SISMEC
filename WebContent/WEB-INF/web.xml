@@ -4,15 +4,20 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 
-	<listener>
-	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/applicationContext.xml
+		</param-value>
+	</context-param>
+	
+	
 	
 	 <listener>
      	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
  	</listener>
-	
-	
+ 	
 	<context-param> 
 		<param-name>primefaces.THEME</param-name> 
 		<param-value>bootstrap</param-value> 
@@ -54,7 +59,9 @@
         <dispatcher>REQUEST</dispatcher>
      </filter-mapping>
      
-	
+	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	
 	
     

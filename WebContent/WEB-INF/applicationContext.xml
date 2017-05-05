@@ -1,30 +1,39 @@
 <b:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:b="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	 http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/security
 	 http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<http auto-config="true">
-	
-		<intercept-url pattern="/**" access="ROLE_ADMINISTRADORES"/> 
-		<!-- <intercept-url pattern="/**" access="hasAnyRole('ADMINISTRADORES')"/>
-		<intercept-url pattern="pages/home/**" access="isAuthenticated()"/>
-		<intercept-url pattern="/pages/atendente/**" access="hasAnyRole('ADMINISTRADORES', 'GERENTES')"/>
-		<intercept-url pattern="/pages/cliente/**" access="hasAnyRole('ADMINISTRADORES', 'GERENTES', 'ATENDENTES')"/> -->
-		
+
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/home.xhtml" access="isAuthenticated()"/>
+		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES')"/>
+		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES')"/>
+		<intercept-url pattern="/atendente/**" access="hasAnyRole('GERENTES')"/>
+		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasRole('MECANICOS')"/>
+		<intercept-url pattern="/cliente/**" access="hasAnyRole('ATENDENTES', 'GERENTES')"/>
+		<intercept-url pattern="/fornecedor/listarFornecedores.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES')"/>
+		<intercept-url pattern="/fornecedor/**" access="hasAnyRole('GERENTES')"/>
+		<intercept-url pattern="/mecanico/listarMecanico.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES')"/>
+		<intercept-url pattern="/mecanico/**" access="hasAnyRole('GERENTES')"/>
+		<intercept-url pattern="/modeloVeiculos/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES')"/>
+		<intercept-url pattern="/orcamento/cadastrarOrcamentos.xhtml" access="hasAnyRole('MECANICOS', 'GERENTES')"/>
+		<intercept-url pattern="/pagamento/**" access="hasAnyRole('GERENTES', 'ATENDENTES')"/>
+		<intercept-url pattern="/peca/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES')"/>
+		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasRole('MECANICOS')"/>
+		<intercept-url pattern="/servico/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES')"/>
 	</http>
 
-	 <authentication-manager>
-	 	<authentication-provider>
-	 		<user-service>
-	 			<user name="admin" password="admin" authorities="ROLE_ADMINISTRADORES"/>
-	 			<!-- <user name="mecanico" password="mecanico" authorities="MECANICOS"/>
-	 			<user name="gerente" password="gerente" authorities="GERENTES"/>
-	 			<user name="atendente" password="atendente" authorities="ATENDENTES"/> -->
-	 		</user-service>
-	 	</authentication-provider>
-	 </authentication-manager>
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="admin" authorities="ADMINISTRADORES" />
+				<user name="mecanico" password="mecanico" authorities="MECANICOS" />
+				<user name="gerente" password="gerente" authorities="GERENTES" />
+				<user name="atendente" password="atendente" authorities="ATENDENTES" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 
-</b:beans>
+</b:beans>	
