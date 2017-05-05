@@ -66,8 +66,9 @@ public class MecanicoMB {
 		return mecanicosSelecionados;
 	}
 	
-	public void limparMecanico(){
+	public String limparMecanico(){
 		this.mecanico = new Mecanico();
+		return "cadastrarMecanico.xhtml?faces-redirect=true";
 	}
 	
 	public void detalhesMecanico(Mecanico mecanico){

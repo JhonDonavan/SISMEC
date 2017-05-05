@@ -80,9 +80,9 @@ public class ModeloVeiculoController {
 		return modelosSelecionados;
 	}
 	
-	public void limparModeloVeiculo(){
-		System.out.println("Limpando modelo Veiculo: "  + modeloVeiculo.getNome());
+	public String limparModeloVeiculo(){
 		this.modeloVeiculo = new ModeloVeiculo();
+		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheModeloVeiculo(ModeloVeiculo modeloVeiculo){

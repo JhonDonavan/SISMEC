@@ -80,8 +80,9 @@ public class MontadoraController {
 		return montadorasSelecionados;
 	}
 
-	public void limparMontadora() {
+	public String limparMontadora() {
 		this.montadora = new Montadora();
+		return "cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheMontadora(Montadora montadora){

@@ -66,8 +66,9 @@ public class ClienteMB {
 		return clientesSelecionados;
 	}
 	
-	public void limparCliente(){
+	public String limparCliente(){
 		this.cliente = new Cliente();
+		return "cadastrarCliente.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheCliente(Cliente cliente){

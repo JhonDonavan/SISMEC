@@ -11,8 +11,8 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus" id="novoMecanico"
-						action="cadastrarMecanico.xhtml" style="margin-right: 1600px;"
-						actionListener="#{mecanicoMB.limparMecanico()}" />
+						style="margin-right: 1600px;"
+						action="#{mecanicoMB.limparMecanico()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: relative; margin-top: -27px;">
@@ -70,13 +70,13 @@
 							oncomplete="PF('detalhes').show()" update=":modalDetalhes"
 							action="#{mecanicoMB.detalhesMecanico(mecanicos)}">
 						</p:commandButton>
-						
+
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
 							action="#{mecanicoMB.editar(mecanicos)}">
 						</p:commandButton>
-						
+
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
@@ -121,7 +121,7 @@
 						value="Salário do mecânico: #{mecanicoMB.mecanico.salario}" />
 					<br />
 					<br />
-					<h:outputText value="CPF do mecânico: #{mecanicoMB.mecanico.cpf}"/>
+					<h:outputText value="CPF do mecânico: #{mecanicoMB.mecanico.cpf}" />
 					<br />
 					<br />
 					<h:outputText

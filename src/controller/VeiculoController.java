@@ -81,8 +81,9 @@ public class VeiculoController {
 		return modelosSelecionados;
 	}
 	
-	public void limparVeiculo(){
+	public String limparVeiculo(){
 		this.veiculo = new Veiculo();
+		return "cadastroVeiculo.xhtml?faces-redirect=true";
 	}
 	
 	public void detalhesVeiculo(Veiculo veiculo){

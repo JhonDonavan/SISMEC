@@ -79,8 +79,9 @@ public class ServicoMB {
 		return servicosSelecionados;
 	}
 
-	public void limparServico() {
+	public String limparServico() {
 		this.servico = new Servico();
+		return "cadastrarServicos.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheServico(Servico servico){

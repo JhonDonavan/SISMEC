@@ -37,7 +37,7 @@ public class FornecedorMB {
 		fornecedor = new Fornecedor();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor cadastrado com sucesso"));
 		System.out.println("Objeto " + fornecedor.getNome() + " cadastrado com sucesso!");
-		return "listarFornecedores?faces-redirect=true";
+		return "listarFornecedores.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Fornecedor fornecedor){
@@ -66,8 +66,9 @@ public class FornecedorMB {
 		return fornecedoresSelecionados;
 	}
 	
-	public void limparFornecedor(){
+	public String limparFornecedor(){
 		this.fornecedor = new Fornecedor();
+		return "cadastrarCliente.xhtml?faces-redirect=true";
 	}
 
 	public Fornecedor getFornecedor() {

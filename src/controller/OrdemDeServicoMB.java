@@ -80,8 +80,9 @@ public class OrdemDeServicoMB {
 		return ordemDeServicosSelecionados;
 	}*/
 
-	public void limparOrdemDeServico() {
+	public String limparOrdemDeServico() {
 		this.ordemDeServico = new OrdemDeServico();
+		return "cadastrarOrdemDeServicos.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheOrdemDeServico(OrdemDeServico ordemDeServico){

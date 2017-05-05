@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +15,10 @@ import model.Atendente;
 import modelDAO.AtendenteDAO;
 import modelDAO.GenericDAO;
 
+@SuppressWarnings("serial")
 @ManagedBean(name = "atendenteMB")
 @SessionScoped
-public class AtendenteMB {
+public class AtendenteMB implements Serializable{
 	
 	@Autowired
 	private List<Atendente> atendentesSelecionados;
@@ -37,7 +39,7 @@ public class AtendenteMB {
 		atendente = new Atendente();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atendente cadastrado com sucesso"));
 		System.out.println("Objeto " + atendente.getNome() + " cadastrado com sucesso!");
-		return "listarAtendentes?faces-redirect=true";
+		return "listarAtendentes.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Atendente atendente){
@@ -66,8 +68,9 @@ public class AtendenteMB {
 		return atendentesSelecionados;
 	}
 	
-	public void limparAtendente(){
+	public String limparAtendente(){
 		this.atendente = new Atendente();
+		return "cadastrarAtendente.xhtml?faces-redirect=true";
 	}
 	
 	public void detalhesAtendente(Atendente atendente){

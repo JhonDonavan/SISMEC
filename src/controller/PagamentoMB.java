@@ -80,8 +80,9 @@ public class PagamentoMB {
 		return pagamentosSelecionados;
 	}*/
 
-	public void limparPagamento() {
+	public String limparPagamento() {
 		this.pagamento = new Pagamento();
+		return "cadastrarPagamentos.xhtml?faces-redirect=true";
 	}
 	
 	public void detalhePagamento(Pagamento pagamento){

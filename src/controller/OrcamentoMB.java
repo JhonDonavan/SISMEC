@@ -80,8 +80,9 @@ public class OrcamentoMB {
 		return orcamentosSelecionados;
 	}*/
 
-	public void limparOrcamento() {
+	public String limparOrcamento() {
 		this.orcamento = new Orcamento();
+		return "cadastrarOrcamentos.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheOrcamento(Orcamento orcamento){

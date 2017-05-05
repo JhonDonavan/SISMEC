@@ -79,8 +79,9 @@ public class PecaMB {
 		return pecasSelecionados;
 	}
 
-	public void limparPeca() {
+	public String limparPeca() {
 		this.peca = new Peca();
+		return "cadastrarPecas.xhtml?faces-redirect=true";
 	}
 	
 	public void detalhePeca(Peca peca){
