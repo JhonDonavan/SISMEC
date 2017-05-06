@@ -16,6 +16,7 @@ import model.Usuario;
 @SessionScoped
 public class UsuarioController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
 
 	public UsuarioController() {
@@ -30,11 +31,9 @@ public class UsuarioController implements Serializable {
 		}
 		
 	}
-	
-	
 
 	public Usuario getUsuario() {
-		Usuario.TESTE();
+		
 		return usuario;
 	}
 

@@ -1,24 +1,46 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Autorizacao implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
-    private String nome;
+	@GeneratedValue(generator = "codigo_papel", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "codigo_papel", sequenceName = "codigo_papel", allocationSize = 1)	
+	private Integer id;
+   	
+	private String nome;
 	
-	@ManyToOne
-	@JoinColumn(name="Usuario_id")
-	private Usuario usuario;
+	private String descricao;
+	
+	/*@ManyToMany(mappedBy="autorizacoes")
+	private List<Usuario> usuarios;*/
  
     public Autorizacao() {
     }
+    
+	
+    
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -27,7 +49,25 @@ public class Autorizacao implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
- 
-   
- 	
+
+	public String getDescricao() {
+		return descricao;
+	}
+	
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	/*public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+*/
+
+	
+	
 }

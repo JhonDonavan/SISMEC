@@ -3,6 +3,8 @@ package modelDAO;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 public class GenericDAO<T> {
 
@@ -30,7 +32,7 @@ public class GenericDAO<T> {
 		EntityManager em = JPAUtil.getEntityManager();
 		em.getTransaction().begin();
 		T t2 = em.merge(t);
-		
+
 		try {
 			em.remove(t2);
 		} catch (Exception e) {
@@ -57,5 +59,18 @@ public class GenericDAO<T> {
 				.getSingleResult();
 		em.close();
 		return t;
+	}
+
+	public T opterPorUserName(String username) {
+		EntityManager em = JPAUtil.getEntityManager();
+		try {
+			T t = em.createQuery("from " + classe.getName() + " where username = :cod", classe)
+					.setParameter("cod", username).getSingleResult();
+			em.close();
+			return t;
+		} catch (NoResultException e) {
+			// Nenhum usuario encontrado com o email informado.
+			return null;
+		}
 	}
 }
