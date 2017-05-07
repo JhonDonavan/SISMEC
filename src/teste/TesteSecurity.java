@@ -14,7 +14,8 @@ public class TesteSecurity {
 		Usuario usuario = new Usuario();
 		Autorizacao auto = new Autorizacao();
 		
-		/*auto.setDescricao("ADMINISTRADOR DO SISTEMA");
+		/*CRIAR AUTORIZAÇÕES*/
+		auto.setDescricao("ADMINISTRADOR DO SISTEMA");
 		auto.setNome("ADMINISTRADORES");
 		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);
 		
@@ -28,7 +29,7 @@ public class TesteSecurity {
 		
 		auto.setDescricao("ATENDENTE DA OFICINA");
 		auto.setNome("ATENDENTES");
-		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);*/
+		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);
 		
 		
 		/*CRIA USUARIO ADMINISTRADOR*/
