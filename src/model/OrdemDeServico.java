@@ -14,9 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ordemDeServicos")
 public class OrdemDeServico implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

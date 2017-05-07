@@ -12,12 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="fornecedores")
 public class Fornecedor implements Serializable{
 	
-	private static final long SerialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(generator = "FORNECEDOR_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "FORNECEDOR_ID", sequenceName = "SEQ_FORNECEDOR", allocationSize = 1)

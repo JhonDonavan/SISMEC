@@ -11,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="autorizacoes")
 public class Autorizacao implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -26,14 +28,10 @@ public class Autorizacao implements Serializable{
 	
 	private String descricao;
 	
-	/*@ManyToMany(mappedBy="autorizacoes")
-	private List<Usuario> usuarios;*/
  
     public Autorizacao() {
     }
-    
 	
-    
 	public Integer getId() {
 		return id;
 	}
@@ -54,20 +52,8 @@ public class Autorizacao implements Serializable{
 		return descricao;
 	}
 	
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	/*public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-*/
-
-	
-	
 }

@@ -68,7 +68,7 @@ public class FornecedorMB {
 	
 	public String limparFornecedor(){
 		this.fornecedor = new Fornecedor();
-		return "cadastrarCliente.xhtml?faces-redirect=true";
+		return "cadastrarFornecedores.xhtml?faces-redirect=true";
 	}
 
 	public Fornecedor getFornecedor() {

@@ -10,12 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="pagamentos")
 public class Pagamento implements Serializable{
 	
-	private static final long SerialVersionUID = 1L;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(generator = "PAGAMENTO_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "PAGAMENTO_ID", sequenceName = "SEQ_PAGAMENTO", allocationSize = 1)

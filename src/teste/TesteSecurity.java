@@ -14,47 +14,76 @@ public class TesteSecurity {
 		Usuario usuario = new Usuario();
 		Autorizacao auto = new Autorizacao();
 		
-	/*	auto.setDescricao("ADMINISTRADOR DO SISTEMA");
-		auto.setNome("ADMINSTRADOR");
+		/*auto.setDescricao("ADMINISTRADOR DO SISTEMA");
+		auto.setNome("ADMINISTRADORES");
 		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);
 		
 		auto.setDescricao("GERENTE DA OFICINA");
-		auto.setNome("GERENTE");
+		auto.setNome("GERENTES");
+		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);
+		
+		auto.setDescricao("MECÂNICO DA OFICINA");
+		auto.setNome("MECANICOS");
+		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);
+		
+		auto.setDescricao("ATENDENTE DA OFICINA");
+		auto.setNome("ATENDENTES");
 		new GenericDAO<Autorizacao>(Autorizacao.class).salvar(auto);*/
 		
-		/*Autorizacao a1 = new Autorizacao();
-		a1 = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(7);
 		
-		Autorizacao a2 = new Autorizacao();
-		a2 = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(8);
+		/*CRIA USUARIO ADMINISTRADOR*/
+		Autorizacao admin = new Autorizacao();
+		admin = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(1);
 		
-		List<Autorizacao> autorizacoes = new ArrayList<>();
-		autorizacoes.add(a1);
-		autorizacoes.add(a2);
-		
-		
-		usuario.setEmail("jhondonavan@gmail.com");
-		usuario.setNomeUsuario("jhon");
+		List<Autorizacao> autorizacoesADMIN = new ArrayList<>();
+		autorizacoesADMIN.add(admin);
+	
+		usuario.setEmail("admin@gmail.com");
+		usuario.setNomeUsuario("admin");
 		usuario.setSenha("123");
-		usuario.setAutorizacoes(autorizacoes);
-		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);*/
+		usuario.setAutorizacoes(autorizacoesADMIN);
+		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
+		
+	/*	CRIA USUARIO GERENTE*/
+		Autorizacao GERENTE = new Autorizacao();
+		GERENTE = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(2);
+		
+		List<Autorizacao> autorizacoesGerente = new ArrayList<>();
+		autorizacoesGerente.add(GERENTE);
+	
+		usuario.setEmail("gerente@gmail.com");
+		usuario.setNomeUsuario("gerente");
+		usuario.setSenha("123");
+		usuario.setAutorizacoes(autorizacoesGerente);
+		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
+		
+		/*CRIA USUARIO MECANICO*/
+		Autorizacao MECANICO = new Autorizacao();
+		MECANICO = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(3);
+		
+		List<Autorizacao> autorizacoesMecanico = new ArrayList<>();
+		autorizacoesMecanico.add(MECANICO);
+	
+		usuario.setEmail("mecanico@gmail.com");
+		usuario.setNomeUsuario("mecanico");
+		usuario.setSenha("123");
+		usuario.setAutorizacoes(autorizacoesMecanico);
+		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
 		
 		
+		/*CRIA USUARIO ATENDENTE*/
+		Autorizacao ATENDENTE = new Autorizacao();
+		ATENDENTE = new GenericDAO<Autorizacao>(Autorizacao.class).obterPorId(4);
 		
-		Usuario teste = new Usuario();
-		teste = new GenericDAO<>(Usuario.class).opterPorUserName("jhon");
+		List<Autorizacao> autorizacoesAtendente = new ArrayList<>();
+		autorizacoesAtendente.add(ATENDENTE);
+	
+		usuario.setEmail("atendente@gmail.com");
+		usuario.setNomeUsuario("atendente");
+		usuario.setSenha("123");
+		usuario.setAutorizacoes(autorizacoesAtendente);
+		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
 		
-		
-		
-		
-		System.out.println("Email: "  + teste.getEmail());
-		System.out.println("USER NAME: "  + teste.getNomeUsuario());
-		System.out.println("SENHA: "  + teste.getSenha());
-		
-		
-		for(Autorizacao grupos : teste.getAutorizacoes()){
-			System.out.println(grupos.getNome());
-		}
 
 	}
 
