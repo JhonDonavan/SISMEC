@@ -2,14 +2,29 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
-      
-      <p:layoutUnit position="north" size="95" >  
-                  <!--  <h:graphicImage url="/tema/imagens/topo.jpg" />  -->
-                </p:layoutUnit> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 
+<style>
+.teste {
+	width: 60px !important; /* //largura  */
+	height: 25px !important; /* //tamanho */
+	background-color: red;
+}
+</style>
+
+<p:layoutUnit position="north" size="48">
+	<h:form>
+		<div style="float: right; margin-right: 110px">
+			<span
+				style="float: left; height: 30px; line-height: 30px; margin-right: 30px">
+				 <b>Olá  #{seguranca.nomeUsuario}! </b>  <p:commandButton value="SAIR"
+					style="tex-align: center;" styleClass="teste"></p:commandButton>
+			</span>
+		</div>
+	</h:form>
+</p:layoutUnit>
 
 </html>
