@@ -29,7 +29,7 @@
 		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasRole('MECANICOS')"/>
 		
-		<form-login login-page="/login.xhtml" default-target-url="/" always-use-default-target="true"/>
+		<form-login login-page="/login.xhtml" default-target-url="/" authentication-failure-url="/login.xhtml?invalid=true" always-use-default-target="true"/>
 		<logout logout-url="/j_spring_security_logout" invalidate-session="true"  />
 	</http>
 

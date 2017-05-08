@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.hssf.util.HSSFColor.DARK_BLUE;
+
 @ManagedBean(name = "loginMB")
 @SessionScoped
 public class LoginMB implements Serializable {
@@ -20,6 +22,15 @@ public class LoginMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String userName;
+
+	public void preRender() {
+		ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+		HttpServletRequest request = ((HttpServletRequest) context.getRequest());
+
+		if ("true".equals(request.getParameter("invalid"))) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuário ou senha inválidos!", "menssagem para usuario ou senha invalidos" ));
+		}
+	}
 
 	public void login() throws IOException, ServletException {
 
