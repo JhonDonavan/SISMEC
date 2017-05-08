@@ -23,28 +23,29 @@
 <h:body>
 
 	<f:metadata>
-		<f:event listener="#{loginMB.preRender}" type="preRenderView" ></f:event>
+		<f:event listener="#{loginMB.preRender}" type="preRenderView"></f:event>
 	</f:metadata>
 
 	<div id="login" class="login">
 		<h1>Login</h1>
 		<h:form id="frm" prependId="false">
+				<p:messages id="messages" autoUpdate="true" closable="true" />
 
-			<p:messages id="messages" autoUpdate="true" closable="true" />
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel value="Usuário:" />
+					<p:inputText id="j_username" value="#{loginMB.userName}"
+						required="true" requiredMessage="Favor iformar nome de usuário"
+						size="30" />
 
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="Usuário:" />
-				<p:inputText id="j_username" value="#{loginMB.userName}"
-					required="true" requiredMessage="Favor iformar nome de usuário" size="30" />
+					<h:outputLabel for="password" value="Password:" />
+					<p:password id="j_password" required="true"
+						requiredMessage="Favor informar senha do usuário" size="30" />
 
-				<h:outputLabel for="password" value="Password:" />
-				<p:password id="j_password" required="true"  requiredMessage="Favor informar senha do usuário" size="30" />
-
-				<f:facet name="footer">
-					<p:commandButton value="Login" actionListener="#{loginMB.login}"
-						ajax="false" />
-				</f:facet>
-			</h:panelGrid>
+					<f:facet name="footer">
+						<p:commandButton value="Login" actionListener="#{loginMB.login}"
+							ajax="false" />
+					</f:facet>
+				</h:panelGrid>
 		</h:form>
 	</div>
 </h:body>
