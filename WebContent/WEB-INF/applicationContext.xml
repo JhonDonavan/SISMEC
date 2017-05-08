@@ -8,8 +8,9 @@
 	<b:bean id="appUserDetailsService" class="security.AppUserDetailService"/>
 
 	<http pattern="/javax.faces.resource/**" security="none" />
+	<http pattern="/login.xhtml" security="none" />
 
-	<http auto-config="true" use-expressions="true">
+	<http auto-config="false" use-expressions="true">
 		<intercept-url pattern="/home.xhtml"  access="isAuthenticated()" />
 		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
@@ -27,6 +28,9 @@
 		<intercept-url pattern="/peca/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasRole('MECANICOS')"/>
+		
+		<form-login login-page="/login.xhtml" default-target-url="/" always-use-default-target="true"/>
+		<logout logout-url="/j_spring_security_logout" invalidate-session="true"  />
 	</http>
 
 	<authentication-manager>

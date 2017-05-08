@@ -17,26 +17,24 @@
 			<h:outputText value="Usuário ou senha incorretos!"
 				rendered="#{param.erro}" style="color: darkred" />
 		</center>
-		<form action="j_spring_security_check" method="post">
+		<h:form id="frm" prependId="false">
+			
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+					
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel style="width:20%; align:right;" for="username"
-					value="Usuário:" />
-				<p:inputText id="username" value="#{userLoginView.username}"
-					required="true" label="username" />
+				<h:outputLabel value="Usuário:" />
+				<p:inputText id="j_username" value="#{loginMB.userName}"
+					required="true" label="username" size="30"/>
 
 				<h:outputLabel for="password" value="Password:" />
-				<p:password id="password" value="#{userLoginView.password}"
-					required="true" label="password" />
-
-
+				<p:password id="j_password" size="30"/>
 
 				<f:facet name="footer">
-					<!-- <p:commandButton value="Login" actionListener="#{userLoginView.login}" oncomplete="handleLoginRequest(xhr, status, args)" /> -->
-					<h:outputLink value="pages/home/home.xhtml">LOGIN</h:outputLink>
+					<p:commandButton value="Login" actionListener="#{loginMB.login}" ajax="false" />
 				</f:facet>
 
 			</h:panelGrid>
-		</form>
+		</h:form>
 	</p:dialog>
 </h:body>
 </html>
