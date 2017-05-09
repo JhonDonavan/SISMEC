@@ -29,12 +29,14 @@
 
 	<http pattern="/javax.faces.resource/**" security="none" />
 	<http pattern="/login.xhtml" security="none" />
+	<http pattern="/acessoNegado.xhtml" security="none" />
 
 	<http auto-config="false" use-expressions="true">
 		
 		<custom-filter ref="exceptionTranslationFilter" before="FILTER_SECURITY_INTERCEPTOR" />		
 		
 		<intercept-url pattern="/home.xhtml"  access="isAuthenticated()" />
+		<intercept-url pattern="/acessoNegado.xhtml"  access="isAuthenticated()" />
 		<intercept-url pattern="/acessoNegado.xhtml"   access="isAuthenticated()" />
 		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
