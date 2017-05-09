@@ -17,6 +17,11 @@
 	overflow: visible !important;
 }
 /*codico acima evita que o sub-menu fique escondido atras do parte principal do sistema*/
+.menubar-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: none !important;
+}
 </style>
 
 <p:layoutUnit position="north" size="63" styleClass="ui-layout-north">
@@ -28,15 +33,15 @@
 	</div>
 
 
-	<div style="float: right; margin-right: 110px; margin-top: 5px;">
+	<div style="float: right; margin-right: 110px; margin-top: 10px;">
 		<span
-			style="float: left; height: 30px; line-height: 30px; margin-right: 60px; margin-top: -10px;">
+			style="float: left; height: 30px; line-height: 30px; margin-right: 60px; margin-top: -17px;">
 			<h2>
 				<b>Olá #{seguranca.nomeUsuario}</b>
 			</h2>
 		</span>
 		<h:form style="display: inline-block">
-			<p:menubar>
+			<p:menubar styleClass="menubar-sistema">
 				<p:submenu label="Cadastros">
 					<p:menuitem value="Clientes" />
 					<p:menuitem value="Usuários" />
@@ -48,7 +53,7 @@
 					<p:menuitem value="Novo pedido" />
 					<p:menuitem value="Serviços finalizados" />
 				</p:submenu>
-				<p:menuitem value="Sair" />
+				<p:menuitem value="Sair" icon="ui-icon-key" url="/j_spring_security_logout"/>
 			</p:menubar>
 		</h:form>
 		<div style="clear: both"></div>
