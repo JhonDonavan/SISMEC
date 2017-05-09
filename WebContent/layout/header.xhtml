@@ -8,31 +8,52 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <style>
-.teste {
-	width: 70px !important; /* //largura  */
-	height: 25px !important; /* //tamanho */
-	background-color: red;
+/*codico abaixo evita que o sub-menu fique escondido atras do parte principal do sistema*/
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
 }
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+/*codico acima evita que o sub-menu fique escondido atras do parte principal do sistema*/
 </style>
 
-<p:layoutUnit position="north" size="63">
+<p:layoutUnit position="north" size="63" styleClass="ui-layout-north">
 
 	<div style="float: left;">
 		<h:link>
-				<p:graphicImage library="imagens" name="logo.png" />
+			<p:graphicImage library="imagens" name="logo.png" />
 		</h:link>
 	</div>
 
 
-	<div style="float: right; margin-right: 110px">
+	<div style="float: right; margin-right: 110px; margin-top: 5px;">
 		<span
-			style="float: left; height: 30px; line-height: 30px; margin-right: 30px">
-			<b>Olá #{seguranca.nomeUsuario}! </b>
+			style="float: left; height: 30px; line-height: 30px; margin-right: 60px; margin-top: -10px;">
+			<h2>
+				<b>Olá #{seguranca.nomeUsuario}</b>
+			</h2>
 		</span>
-		<h:form>
+		<h:form style="display: inline-block">
+			<p:menubar>
+				<p:submenu label="Cadastros">
+					<p:menuitem value="Clientes" />
+					<p:menuitem value="Usuários" />
+					<p:separator />
+					<p:menuitem value="Categorias" />
+					<p:menuitem value="Produtos" />
+				</p:submenu>
+				<p:submenu label="Pedidos">
+					<p:menuitem value="Novo pedido" />
+					<p:menuitem value="Serviços finalizados" />
+				</p:submenu>
+				<p:menuitem value="Sair" />
+			</p:menubar>
 		</h:form>
-
+		<div style="clear: both"></div>
 	</div>
+
 </p:layoutUnit>
 
 </html>
