@@ -105,7 +105,7 @@
 		<!--MODAL PARA BOTAO DETALHES DO MODELO DE VEICULO  -->
 		<h:form id="modalDetalhes">
 			<p:dialog
-				header="Detalhes do modelo: #{ModeloVeiculoController.modeloVeiculo.nome}"
+				header="Detalhes do modelo: #{ModeloVeiculoController.modeloVeiculo.nome} #{ModeloVeiculoController.modeloVeiculo.sigla}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
