@@ -40,14 +40,14 @@
 		<intercept-url pattern="/acessoNegado.xhtml"   access="isAuthenticated()" />
 		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/atendente/listarAtendentes.xhtml" access="hasAnyRole('ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/atendente/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
+		<intercept-url pattern="/atendente/listarAtendentes.xhtml" access="hasAnyRole('ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/cliente/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS')"/>
-		<intercept-url pattern="/fornecedor/listarFornecedores.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/fornecedor/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/mecanico/listarMecanicos.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
+		<intercept-url pattern="/fornecedor/listarFornecedores.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/mecanico/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
+		<intercept-url pattern="/mecanico/listarMecanicos.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/modeloVeiculos/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/orcamento/cadastrarOrcamentos.xhtml" access="hasAnyRole('MECANICOS', 'GERENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/pagamento/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
