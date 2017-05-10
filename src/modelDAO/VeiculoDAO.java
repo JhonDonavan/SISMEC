@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import model.ModeloVeiculo;
 import model.Veiculo;
 
 public class VeiculoDAO {
@@ -44,6 +45,15 @@ public class VeiculoDAO {
 
 		entityManager.close();
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static List<Veiculo> buscaVeiculoByPlaca(String placa) {
+		System.out.println("entrou no metodo buscaVeiculoByPlaca no VeiculoDAO: " + placa);
+		EntityManager em = JPAUtil.getEntityManager();
+		Query query = em.createQuery("SELECT v FROM Veiculo v WHERE upper(v.placa) like upper(:placa)");
+		query.setParameter("placa", "%" + placa + "%");
+		return query.getResultList();
 	}
 
 }

@@ -39,7 +39,7 @@ public class Orcamento implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="atendente_id")
-	private Mecanico atendente;
+	private Atendente atendente;
 
 	public Integer getId() {
 		return id;
@@ -77,11 +77,11 @@ public class Orcamento implements Serializable{
 		this.mecanico = mecanico;
 	}
 
-	public Mecanico getAtendente() {
+	public Atendente getAtendente() {
 		return atendente;
 	}
 
-	public void setAtendente(Mecanico atendente) {
+	public void setAtendente(Atendente atendente) {
 		this.atendente = atendente;
 	}
 

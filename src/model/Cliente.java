@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -32,6 +34,9 @@ public class Cliente implements Serializable {
 	
 	@OneToMany(mappedBy = "cliente", targetEntity = Pagamento.class, fetch = FetchType.LAZY)
 	private List<Pagamento> pagamento;
+	
+	@OneToMany(mappedBy = "cliente", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeServico;
 
 	private String nome;
 
@@ -73,6 +78,14 @@ public class Cliente implements Serializable {
 
 	public void setPagamento(List<Pagamento> pagamento) {
 		this.pagamento = pagamento;
+	}
+
+	public List<OrdemDeServico> getOrdemDeServico() {
+		return ordemDeServico;
+	}
+
+	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
 	}
 
 	public String getNome() {
@@ -137,6 +150,7 @@ public class Cliente implements Serializable {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((ordemDeServico == null) ? 0 : ordemDeServico.hashCode());
 		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
@@ -182,6 +196,11 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (ordemDeServico == null) {
+			if (other.ordemDeServico != null)
+				return false;
+		} else if (!ordemDeServico.equals(other.ordemDeServico))
+			return false;
 		if (pagamento == null) {
 			if (other.pagamento != null)
 				return false;
@@ -202,8 +221,8 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", veiculo=" + veiculo + ", pagamento=" + pagamento + ", nome=" + nome + ", cpf="
-				+ cpf + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", dataNascimento="
-				+ dataNascimento + "]";
+		return "Cliente [id=" + id + ", veiculo=" + veiculo + ", pagamento=" + pagamento + ", ordemDeServico="
+				+ ordemDeServico + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", celular=" + celular
+				+ ", email=" + email + ", dataNascimento=" + dataNascimento + "]";
 	}
 }

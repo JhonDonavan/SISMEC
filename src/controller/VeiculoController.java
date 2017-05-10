@@ -14,6 +14,7 @@ import model.ModeloVeiculo;
 import model.Veiculo;
 import modelDAO.GenericDAO;
 import modelDAO.ModeloVeiculoDAO;
+import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "Veiculo")
 @SessionScoped
@@ -23,6 +24,7 @@ public class VeiculoController {
 	@Autowired
 	private List<ModeloVeiculo> modelosSelecionados;
 	
+	private List<Veiculo> placas;
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
 	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
@@ -66,19 +68,19 @@ public class VeiculoController {
 		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 	}
 	
-	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
-		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo);
+	public List<Veiculo> listarPorPlaca(String placa) {
+		System.out.println("Entrou no metodo listarPorPlaca: " + placa);
 		try {
 			System.out.println("ENTROU NO TRY");
-			modelosSelecionados = modeloVeiculoDAO.buscaModeloByNome(nomeModelo);
+			placas = VeiculoDAO.buscaVeiculoByPlaca(placa);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}
-		System.out.println("Entrou no metodo listarPorNome: " + nomeModelo + " E " + nomeModelo);
-		for (ModeloVeiculo mv : modelosSelecionados) {
-			System.out.println("Montadora: " + mv.getNome());
+		System.out.println("Entrou no metodo listarPorNome: " + placa + " E " + placa);
+		for (Veiculo v : placas) {
+			System.out.println("Montadora: " + v.getPlaca());
 		}
-		return modelosSelecionados;
+		return placas;
 	}
 	
 	public String limparVeiculo(){

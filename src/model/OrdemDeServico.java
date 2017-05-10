@@ -27,11 +27,17 @@ public class OrdemDeServico implements Serializable{
 	@SequenceGenerator(name = "ORDEM_DE_SERVICO_ID", sequenceName = "SEQ_ORDEM_DE_SERVICO", allocationSize = 1)
 	private Integer id;
 	
-	@OneToMany(mappedBy = "ordemDeServico", targetEntity = Veiculo.class, fetch = FetchType.LAZY)
-	private List<Veiculo> veiculo;
+	@ManyToOne
+	@JoinColumn(name="veiculo_id")
+	private Veiculo veiculo;
 	
-	@OneToMany(mappedBy = "ordemDeServico", targetEntity = Servico.class, fetch = FetchType.LAZY)
-	private List<Servico> servico;
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="servico_id")
+	private Servico servico;
 	
 	@OneToOne
 	private Pagamento pagamento;
@@ -58,19 +64,27 @@ public class OrdemDeServico implements Serializable{
 		return id;
 	}
 
-	public List<Veiculo> getVeiculo() {
+	public Veiculo getVeiculo() {
 		return veiculo;
 	}
 
-	public void setVeiculo(List<Veiculo> veiculo) {
+	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
 
-	public List<Servico> getServico() {
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Servico getServico() {
 		return servico;
 	}
 
-	public void setServico(List<Servico> servico) {
+	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
 
@@ -131,10 +145,19 @@ public class OrdemDeServico implements Serializable{
 	}
 
 	@Override
+	public String toString() {
+		return "OrdemDeServico [id=" + id + ", veiculo=" + veiculo + ", cliente=" + cliente + ", servico=" + servico
+				+ ", pagamento=" + pagamento + ", gerente=" + gerente + ", atendente=" + atendente + ", mecanico="
+				+ mecanico + ", dataInicio=" + dataInicio + ", dataPrevisto=" + dataPrevisto + ", dataConclusao="
+				+ dataConclusao + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((atendente == null) ? 0 : atendente.hashCode());
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((dataConclusao == null) ? 0 : dataConclusao.hashCode());
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + ((dataPrevisto == null) ? 0 : dataPrevisto.hashCode());
@@ -160,6 +183,11 @@ public class OrdemDeServico implements Serializable{
 			if (other.atendente != null)
 				return false;
 		} else if (!atendente.equals(other.atendente))
+			return false;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
 			return false;
 		if (dataConclusao == null) {
 			if (other.dataConclusao != null)
@@ -207,12 +235,5 @@ public class OrdemDeServico implements Serializable{
 		} else if (!veiculo.equals(other.veiculo))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "OrdemDeServico [id=" + id + ", veiculo=" + veiculo + ", servico=" + servico + ", pagamento=" + pagamento
-				+ ", gerente=" + gerente + ", atendente=" + atendente + ", mecanico=" + mecanico + ", dataInicio="
-				+ dataInicio + ", dataPrevisto=" + dataPrevisto + ", dataConclusao=" + dataConclusao + "]";
 	}
 }

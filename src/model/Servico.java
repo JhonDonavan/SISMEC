@@ -29,9 +29,8 @@ public class Servico implements Serializable {
 	@OneToMany(mappedBy = "servico", targetEntity = Peca.class, fetch = FetchType.LAZY)
 	private List<Peca> peca;
 	
-	@ManyToOne
-	@JoinColumn(name="ordem_de_servico_id")
-	private OrdemDeServico ordemDeServico;
+	@OneToMany(mappedBy = "servico", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeServico;
 
 	private String nome;
 
@@ -51,11 +50,11 @@ public class Servico implements Serializable {
 		this.peca = peca;
 	}
 
-	public OrdemDeServico getOrdemDeServico() {
+	public List<OrdemDeServico> getOrdemDeServico() {
 		return ordemDeServico;
 	}
 
-	public void setOrdemDeServico(OrdemDeServico ordemDeServico) {
+	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
 	}
 

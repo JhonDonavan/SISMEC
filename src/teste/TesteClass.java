@@ -1,5 +1,6 @@
 package teste;
 
+import model.OrdemDeServico;
 import model.Veiculo;
 import modelDAO.VeiculoDAO;
 
@@ -29,7 +30,6 @@ public class TesteClass {
 			
 			e.printStackTrace();
 		}
-		
 		
 	
 	}

@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="Cadastrar O.S"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarOrdemDeServico">
+					<p:messages id="msgs" closable="true" />
+					<p:growl />
+
+					<h:panelGrid columns="2" cellpadding="3">
+						<p:outputLabel value="Cliente: " />
+						<p:autoComplete id="clienteId" value="#{ordemDeServicoMB.ordemDeServico.cliente}"
+							dropdown="true" minQueryLength="3" size="30"
+							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
+							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
+							converter="clienteConverter" required="true"
+							requiredMessage="Por favor informe o nome do cliente" />
+
+						<p:outputLabel value="Veiculo: " />
+						<p:autoComplete id="veiculoId" value="#{ordemDeServicoMB.ordemDeServico.veiculo}"
+							dropdown="true" minQueryLength="3" size="30"
+							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
+							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
+							converter="veiculoConverter" required="true"
+							requiredMessage="Por favor informe a placa do veículo" />
+
+						<p:outputLabel value="Servico: " />
+						<p:autoComplete id="servicod" value="#{ordemDeServicoMB.ordemDeServico.servico}"
+							dropdown="true" minQueryLength="3" size="30"
+							completeMethod="#{servicoMB.listarPorNome}" var="servico"
+							itemLabel="#{servico.nome}" itemValue="#{servico}"
+							converter="servicoConverter" required="true"
+							requiredMessage="Por favor informe o serviço a ser prestado" />
+
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{ordemDeServicoMB.salvar}" update="@form" />
+					</h:panelGrid>
+
+					<!-- Mostra modal da data -->
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="data" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						</p:panelGrid>
+					</p:dialog>
+
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>

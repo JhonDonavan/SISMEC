@@ -34,7 +34,7 @@
 
 				<p:growl />
 				<p:dataTable id="ServicosLista" var="servico"
-					value="#{Servico.servicos}" paginator="true" rows="15"
+					value="#{servicoMB.servicos}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">

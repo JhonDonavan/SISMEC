@@ -1,13 +1,16 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,9 +32,8 @@ public class Veiculo implements Serializable {
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	@ManyToOne
-	@JoinColumn(name="ordem_de_servico_id")
-	private OrdemDeServico ordemDeServico;
+	@OneToMany(mappedBy = "veiculo", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeServico;
 	
 	@ManyToOne
 	@JoinColumn(name="modelo_id")
@@ -64,12 +66,12 @@ public class Veiculo implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	public OrdemDeServico getOrdemDeServico() {
+
+	public List<OrdemDeServico> getOrdemDeServico() {
 		return ordemDeServico;
 	}
 
-	public void setOrdemDeServico(OrdemDeServico ordemDeServico) {
+	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
 	}
 
