@@ -10,7 +10,7 @@ import javax.faces.convert.FacesConverter;
 
 import model.Mecanico;
 
-@FacesConverter("atendenteConverter")
+@FacesConverter("mecanicoConverter")
 public class MecanicoConverter implements Converter{
 	
 	private static Map<String, Mecanico> mapa = new HashMap<String, Mecanico>();

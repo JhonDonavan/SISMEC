@@ -59,6 +59,8 @@ public class OrdemDeServico implements Serializable{
 	private Date dataPrevisto;
 	
 	private Date dataConclusao;
+	
+	private String formaPagamento;
 
 	public Integer getId() {
 		return id;
@@ -138,6 +140,14 @@ public class OrdemDeServico implements Serializable{
 
 	public Date getDataConclusao() {
 		return dataConclusao;
+	}
+	
+	public String getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
 	}
 
 	public void setDataConclusao(Date dataConclusao) {

@@ -9,41 +9,104 @@
 
 		<div id="form">
 
-			<p:panel header="Cadastrar O.S"
-				style="text-align:left; width:99%;">
+			<p:panel header="Cadastrar O.S" style="text-align:left; width:99%;">
 				<h:form id="cadastrarOrdemDeServico">
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 
 					<h:panelGrid columns="2" cellpadding="3">
+
 						<p:outputLabel value="Cliente: " />
-						<p:autoComplete id="clienteId" value="#{ordemDeServicoMB.ordemDeServico.cliente}"
-							dropdown="true" minQueryLength="3" size="30"
+						<p:autoComplete id="clienteId"
+							value="#{ordemDeServico.ordemDeServico.cliente}" dropdown="true"
+							minQueryLength="3" size="30"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
 							converter="clienteConverter" required="true"
 							requiredMessage="Por favor informe o nome do cliente" />
 
 						<p:outputLabel value="Veiculo: " />
-						<p:autoComplete id="veiculoId" value="#{ordemDeServicoMB.ordemDeServico.veiculo}"
-							dropdown="true" minQueryLength="3" size="30"
+						<p:autoComplete id="veiuloId"
+							value="#{ordemDeServico.ordemDeServico.veiculo}" dropdown="true"
+							minQueryLength="3" size="30"
 							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
 							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
 							converter="veiculoConverter" required="true"
-							requiredMessage="Por favor informe a placa do veículo" />
+							requiredMessage="Por favor informe o nome do veiculo" />
 
 						<p:outputLabel value="Servico: " />
-						<p:autoComplete id="servicod" value="#{ordemDeServicoMB.ordemDeServico.servico}"
-							dropdown="true" minQueryLength="3" size="30"
+						<p:autoComplete id="servicoId"
+							value="#{ordemDeServico.ordemDeServico.servico}" dropdown="true"
+							minQueryLength="3" size="30"
 							completeMethod="#{servicoMB.listarPorNome}" var="servico"
 							itemLabel="#{servico.nome}" itemValue="#{servico}"
 							converter="servicoConverter" required="true"
-							requiredMessage="Por favor informe o serviço a ser prestado" />
+							requiredMessage="Por favor informe o nome do serviço" />
+
+						<p:outputLabel value="Atendente: " />
+						<p:autoComplete id="atendenteId"
+							value="#{ordemDeServico.ordemDeServico.atendente}"
+							dropdown="true" minQueryLength="3" size="30"
+							completeMethod="#{atendenteMB.listarPorNome}" var="atendente"
+							itemLabel="#{atendente.nome}" itemValue="#{atendente}"
+							converter="atendenteConverter" required="true"
+							requiredMessage="Por favor informe o nome do atendente" />
+
+						<p:outputLabel value="Mecanico: " />
+						<p:autoComplete id="mecanicoId"
+							value="#{ordemDeServico.ordemDeServico.mecanico}" dropdown="true"
+							minQueryLength="3" size="30"
+							completeMethod="#{mecanicoMB.listarPorNome}" var="mecanico"
+							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
+							converter="mecanicoConverter" required="true"
+							requiredMessage="Por favor informe o nome do Mecanico" />
+
+						<p:outputLabel value="Data: " for="button" />
+						<p:calendar id="button"
+							value="#{ordemDeServico.ordemDeServico.dataInicio}"
+							showOn="button" required="true"
+							requiredMessage="Favor informar a data de inclusão" />
 
 						<br />
 						<br />
+
+
+						<p:dataTable id="ListaDeServicos" var="servicoVar"
+							value="#{ordemDeServico.ordemDeServicos}">
+							<f:facet name="header">
+								Serviços Incluídos
+							</f:facet>
+							<p:column headerText="Id">
+								<h:outputText value="#{servicoVar.servico.id}" />
+							</p:column>
+
+							<p:column headerText="Descrição">
+								<h:outputText value="#{servicoVar.servico.nome}" />
+							</p:column>
+
+							<p:column headerText="Valor">
+								<h:outputText value="#{servicoVar.servico.valor}" />
+							</p:column>
+
+							<p:column style="text-align:center;" exportable="false"
+								width="15%">
+
+								<p:spacer width="5" />
+
+								<p:commandButton icon="ui-icon-pencil" title="Editar">
+
+								</p:commandButton>
+
+								<p:spacer width="5" />
+
+								<p:commandButton icon="ui-icon-trash" title="Excluir">
+
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{ordemDeServicoMB.salvar}" update="@form" />
+							action="#{ordemDeServico.salvar}" update="@form" />
 					</h:panelGrid>
 
 					<!-- Mostra modal da data -->

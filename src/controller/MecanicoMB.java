@@ -40,6 +40,7 @@ public class MecanicoMB {
 		return "listarMecanicos?faces-redirect=true";
 	}
 	
+	
 	public String editar(Mecanico mecanico){
 		this.mecanico = mecanico;
 		return "cadastrarMecanico.xhtml?faces-redirect=true";
@@ -62,6 +63,10 @@ public class MecanicoMB {
 			mecanicosSelecionados = mecanicoDAO.buscarMecanicoByNome(nomeMecanico);
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e);
+		}
+		
+		for(Mecanico aux : mecanicosSelecionados){
+			System.out.println(aux.getNome());
 		}
 		return mecanicosSelecionados;
 	}

@@ -22,9 +22,9 @@ public class OrdemDeServicoConverter implements Converter {
 
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value instanceof OrdemDeServico) {
-			OrdemDeServico m = (OrdemDeServico) value;
-			mapa.put(String.valueOf(m.getId()), m);
-			return String.valueOf(m.getId());
+			OrdemDeServico os = (OrdemDeServico) value;
+			mapa.put(String.valueOf(os.getId()), os);
+			return String.valueOf(os.getId());
 		} else {
 			return "";
 		}

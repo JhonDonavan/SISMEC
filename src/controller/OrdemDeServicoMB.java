@@ -10,9 +10,15 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.Cliente;
+import model.Mecanico;
 import model.OrdemDeServico;
+import model.Veiculo;
+import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
+import modelDAO.MecanicoDAO;
 import modelDAO.OrdemDeServicoDAO;
+import modelDAO.VeiculoDAO;
 
 @ManagedBean(name = "ordemDeServicoMB")
 @SessionScoped
@@ -20,6 +26,12 @@ public class OrdemDeServicoMB {
 
 	@Autowired
 	private List<OrdemDeServico> ordemDeServicosSelecionados;
+	@Autowired
+	private MecanicoDAO mecanicos;
+	@Autowired
+	private VeiculoDAO veiculos;
+	@Autowired
+	private ClienteDAO clientes;
 
 	private OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
 
@@ -37,8 +49,9 @@ public class OrdemDeServicoMB {
 	/*
 	 * @SuppressWarnings("unused")
 	 * 
-	 * @PostConstruct public void init() { List<OrdemDeServico> listaOrdemDeServicos = new
-	 * ArrayList<OrdemDeServico>(); listaOrdemDeServicos = new OrdemDeServicoDAO().listar(); }
+	 * @PostConstruct public void init() { List<OrdemDeServico>
+	 * listaOrdemDeServicos = new ArrayList<OrdemDeServico>();
+	 * listaOrdemDeServicos = new OrdemDeServicoDAO().listar(); }
 	 */
 
 	public String salvar() {
@@ -64,31 +77,27 @@ public class OrdemDeServicoMB {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
 	}
 
-	/*
-	public List<OrdemDeServico> listarPorNome(String nomeOrdemDeServico) {
-		System.out.println("Entrou no metodo listarPorNome: " + nomeOrdemDeServico);
-		try {
-			System.out.println("ENTROU NO TRY");
-			ordemDeServicosSelecionados = ordemDeServicoDAO.buscaOrdemDeServicoByNome(nomeOrdemDeServico);
-		} catch (Exception e) {
-			System.out.println("ERROR Exception: " + e);
-		}
-		System.out.println("Entrou no metodo listarPorNome: " + nomeOrdemDeServico + " E " + nomeOrdemDeServico);
-		for (OrdemDeServico m : ordemDeServicosSelecionados) {
-			System.out.println("OrdemDeServico: " + m.getNome());
-		}
-		return ordemDeServicosSelecionados;
-	}*/
-
 	public String limparOrdemDeServico() {
 		this.ordemDeServico = new OrdemDeServico();
 		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
-	
-	public void detalheOrdemDeServico(OrdemDeServico ordemDeServico){
+
+	public void detalheOrdemDeServico(OrdemDeServico ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
 	}
 
+	public List<Mecanico> completarMecanico(String nomeMecanico) {
+		return this.mecanicos.buscarMecanicoByNome(nomeMecanico);
+	}
+	
+	public List<Veiculo> completarVeiculo(String placa){
+		return this.veiculos.buscaVeiculoByPlaca(placa);
+	}
+	
+	public List<Cliente> completarCliente(String nome){
+		return this.clientes.buscarClienteByNome(nome);
+	}
+		
 	public OrdemDeServico getOrdemDeServico() {
 		return ordemDeServico;
 	}
