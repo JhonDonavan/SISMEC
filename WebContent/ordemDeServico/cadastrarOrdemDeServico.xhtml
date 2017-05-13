@@ -14,7 +14,8 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 
-					<h:panelGrid columns="4" width="100%" cellpadding="2" cellspacing="2">
+					<h:panelGrid columns="4" width="100%" cellpadding="2"
+						cellspacing="2">
 						<p:outputLabel value="Cliente: " />
 						<p:autoComplete id="clienteId"
 							value="#{ordemDeServico.ordemDeServico.cliente}" dropdown="true"
@@ -59,7 +60,7 @@
 							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
 							converter="mecanicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do Mecanico" />
-						
+
 						<p:outputLabel value="Data de emissão: " for="dataEmissao" />
      					<p:calendar id="dataEmissao"
 							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
@@ -77,9 +78,21 @@
 						</p:selectOneMenu>
 					</h:panelGrid>
 					<p:separator />
-					<br/>
+					
+	<p:tabView>
+        <p:tab title="Items de serviço">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="AQUI VAI FICAR A TABELA DE SERVIÇOS INCLUSO" />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Detalhes do orçamento">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText value="AQUI VAI ENTRAR UMA TEXTAREA PARA DETALHES DO SERVIÇO" />
+            </h:panelGrid>
+        </p:tab>
+	</p:tabView>
 
-					<p:dataTable id="ListaDeServicos" var="servicoVar"
+					<!-- <p:dataTable id="ListaDeServicos" var="servicoVar"
 						value="#{ordemDeServico.ordemDeServicos}">
 						<f:facet name="header">
 								Serviços Incluídos
@@ -110,7 +123,7 @@
 							<p:commandButton icon="ui-icon-trash" title="Excluir" />
 
 						</p:column>
-					</p:dataTable>
+					</p:dataTable> -->
 					<br />
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
 						action="#{ordemDeServico.salvar}" update="@form" />
