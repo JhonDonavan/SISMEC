@@ -14,12 +14,11 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 
-					<h:panelGrid columns="2" cellpadding="3">
-
+					<h:panelGrid columns="4" width="100%" cellpadding="2" cellspacing="2">
 						<p:outputLabel value="Cliente: " />
 						<p:autoComplete id="clienteId"
 							value="#{ordemDeServico.ordemDeServico.cliente}" dropdown="true"
-							minQueryLength="3" size="30"
+							minQueryLength="3" size="50"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
 							converter="clienteConverter" required="true"
@@ -28,7 +27,7 @@
 						<p:outputLabel value="Veiculo: " />
 						<p:autoComplete id="veiuloId"
 							value="#{ordemDeServico.ordemDeServico.veiculo}" dropdown="true"
-							minQueryLength="3" size="30"
+							minQueryLength="3" size="50"
 							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
 							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
 							converter="veiculoConverter" required="true"
@@ -37,7 +36,7 @@
 						<p:outputLabel value="Servico: " />
 						<p:autoComplete id="servicoId"
 							value="#{ordemDeServico.ordemDeServico.servico}" dropdown="true"
-							minQueryLength="3" size="30"
+							minQueryLength="3" size="50"
 							completeMethod="#{servicoMB.listarPorNome}" var="servico"
 							itemLabel="#{servico.nome}" itemValue="#{servico}"
 							converter="servicoConverter" required="true"
@@ -46,7 +45,7 @@
 						<p:outputLabel value="Atendente: " />
 						<p:autoComplete id="atendenteId"
 							value="#{ordemDeServico.ordemDeServico.atendente}"
-							dropdown="true" minQueryLength="3" size="30"
+							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{atendenteMB.listarPorNome}" var="atendente"
 							itemLabel="#{atendente.nome}" itemValue="#{atendente}"
 							converter="atendenteConverter" required="true"
@@ -55,59 +54,66 @@
 						<p:outputLabel value="Mecanico: " />
 						<p:autoComplete id="mecanicoId"
 							value="#{ordemDeServico.ordemDeServico.mecanico}" dropdown="true"
-							minQueryLength="3" size="30"
+							minQueryLength="3" size="50"
 							completeMethod="#{mecanicoMB.listarPorNome}" var="mecanico"
 							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
 							converter="mecanicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do Mecanico" />
+						
+						<p:outputLabel value="Data de emissão: " for="dataEmissao" />
+     					<p:calendar id="dataEmissao"
+							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
+							navigator="true" pattern="dd-MM-yyyy" />
 
-						<p:outputLabel value="Data: " for="button" />
-						<p:calendar id="button"
-							value="#{ordemDeServico.ordemDeServico.dataInicio}"
-							showOn="button" required="true"
-							requiredMessage="Favor informar a data de inclusão" />
+						<p:outputLabel value="Forma de pagamento: " for="formaDePagamento"
+							class="autputLabel" />
+						<p:selectOneMenu id="formaDePagamento" required="true"
+							value="#{ordemDeServicoMB.ordemDeServico.formaPagamento}"
+							requiredMessage="Favor informar a data de inclusão">
+							<f:selectItem itemLabel="FORMA DE PAGAMENTO" />
+							<f:selectItems value="#{ordemDeServicoMB.formaPagamento}"
+								var="pagamento" itemLabel="#{pagamento}"
+								itemValue="#{pagamento}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+					<p:separator />
+					<br/>
 
-						<br />
-						<br />
-
-
-						<p:dataTable id="ListaDeServicos" var="servicoVar"
-							value="#{ordemDeServico.ordemDeServicos}">
-							<f:facet name="header">
+					<p:dataTable id="ListaDeServicos" var="servicoVar"
+						value="#{ordemDeServico.ordemDeServicos}">
+						<f:facet name="header">
 								Serviços Incluídos
 							</f:facet>
-							<p:column headerText="Id">
-								<h:outputText value="#{servicoVar.servico.id}" />
-							</p:column>
+						<p:column headerText="Id">
+							<h:outputText value="#{servicoVar.servico.id}" />
+						</p:column>
 
-							<p:column headerText="Descrição">
-								<h:outputText value="#{servicoVar.servico.nome}" />
-							</p:column>
+						<p:column headerText="Descrição">
+							<h:outputText value="#{servicoVar.servico.nome}" />
+						</p:column>
 
-							<p:column headerText="Valor">
-								<h:outputText value="#{servicoVar.servico.valor}" />
-							</p:column>
+						<p:column headerText="Valor">
+							<h:outputText value="#{servicoVar.servico.valor}" />
+						</p:column>
 
-							<p:column style="text-align:center;" exportable="false"
-								width="15%">
+						<p:column style="text-align:center;" exportable="false"
+							width="15%">
 
-								<p:spacer width="5" />
+							<p:spacer width="5" />
 
-								<p:commandButton icon="ui-icon-pencil" title="Editar">
+							<p:commandButton icon="ui-icon-pencil" title="Editar">
 
-								</p:commandButton>
+							</p:commandButton>
 
-								<p:spacer width="5" />
+							<p:spacer width="5" />
 
-								<p:commandButton icon="ui-icon-trash" title="Excluir">
+							<p:commandButton icon="ui-icon-trash" title="Excluir" />
 
-								</p:commandButton>
-							</p:column>
-						</p:dataTable>
-
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{ordemDeServico.salvar}" update="@form" />
-					</h:panelGrid>
+						</p:column>
+					</p:dataTable>
+					<br />
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						action="#{ordemDeServico.salvar}" update="@form" />
 
 					<!-- Mostra modal da data -->
 					<p:dialog modal="true" resizable="false" header="Values"

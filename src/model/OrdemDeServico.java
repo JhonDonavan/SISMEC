@@ -60,7 +60,7 @@ public class OrdemDeServico implements Serializable{
 	
 	private Date dataConclusao;
 	
-	private String formaPagamento;
+	private FormaPagamento formaPagamento;
 
 	public Integer getId() {
 		return id;
@@ -142,11 +142,11 @@ public class OrdemDeServico implements Serializable{
 		return dataConclusao;
 	}
 	
-	public String getFormaPagamento() {
+	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(String formaPagamento) {
+	public void setFormaPagamento(FormaPagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 

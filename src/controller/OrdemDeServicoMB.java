@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,6 +13,7 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
+import model.FormaPagamento;
 import model.Mecanico;
 import model.OrdemDeServico;
 import model.Veiculo;
@@ -38,6 +41,12 @@ public class OrdemDeServicoMB {
 	private OrdemDeServico ordemDeServico = new OrdemDeServico();
 	private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 	private String mensagemCadastroSucesso = "OrdemDeServico cadastrado com sucesso";
+	private List<FormaPagamento> formaPagamento;
+	
+	@PostConstruct
+	public void init(){
+		formaPagamento = Arrays.asList(FormaPagamento.values());
+	}
 
 	public OrdemDeServicoMB() {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
@@ -90,6 +99,7 @@ public class OrdemDeServicoMB {
 		return this.mecanicos.buscarMecanicoByNome(nomeMecanico);
 	}
 	
+	@SuppressWarnings("static-access")
 	public List<Veiculo> completarVeiculo(String placa){
 		return this.veiculos.buscaVeiculoByPlaca(placa);
 	}
@@ -129,5 +139,15 @@ public class OrdemDeServicoMB {
 	public void setMensagemCadastroSucesso(String mensagemCadastroSucesso) {
 		this.mensagemCadastroSucesso = mensagemCadastroSucesso;
 	}
+
+	public List<FormaPagamento> getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(ArrayList<FormaPagamento> formaPagamento) {
+		this.formaPagamento = formaPagamento;
+	}
+	
+	
 
 }
