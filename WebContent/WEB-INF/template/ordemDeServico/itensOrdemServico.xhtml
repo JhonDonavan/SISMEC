@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<p:dataTable id="ListaDeServicos" var="servicoVar"
+		value="#{ordemDeServico.ordemDeServicos}">
+		<f:facet name="header">
+			<p>Serviços Incluídos</p>
+		</f:facet>
+		<p:column headerText="Id" width="30px">
+			<h:outputText value="#{servicoVar.servico.id}" />
+		</p:column>
+
+		<p:column headerText="Descrição">
+			<h:outputText value="#{servicoVar.servico.nome}" />
+		</p:column>
+
+		<p:column headerText="Valor">
+			<h:outputText value="#{servicoVar.servico.valor}" />
+		</p:column>
+
+		<p:column style="text-align:center;" exportable="false" width="15%">
+			<p:spacer width="5" />
+			<p:commandButton icon="ui-icon-pencil" title="Editar" />
+			<p:spacer width="5" />
+			<p:commandButton icon="ui-icon-trash" title="Excluir" />
+		</p:column>
+	</p:dataTable>
+
+</ui:composition>

@@ -14,9 +14,9 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 
-					<h:panelGrid columns="4" width="100%" cellpadding="2"
-						cellspacing="2">
-						<p:outputLabel value="Cliente: " />
+					<h:panelGrid columns="4" width="100%" cellpadding="5"
+						cellspacing="5">
+						<p:outputLabel value="Cliente: " id="cliente" for="clienteId" />
 						<p:autoComplete id="clienteId"
 							value="#{ordemDeServico.ordemDeServico.cliente}" dropdown="true"
 							minQueryLength="3" size="50"
@@ -25,7 +25,7 @@
 							converter="clienteConverter" required="true"
 							requiredMessage="Por favor informe o nome do cliente" />
 
-						<p:outputLabel value="Veiculo: " />
+						<p:outputLabel value="Veiculo: " id="veiculo" for="veiuloId" />
 						<p:autoComplete id="veiuloId"
 							value="#{ordemDeServico.ordemDeServico.veiculo}" dropdown="true"
 							minQueryLength="3" size="50"
@@ -34,7 +34,7 @@
 							converter="veiculoConverter" required="true"
 							requiredMessage="Por favor informe o nome do veiculo" />
 
-						<p:outputLabel value="Servico: " />
+						<p:outputLabel value="Servico: " id="servico" for="servicoId" />
 						<p:autoComplete id="servicoId"
 							value="#{ordemDeServico.ordemDeServico.servico}" dropdown="true"
 							minQueryLength="3" size="50"
@@ -43,7 +43,8 @@
 							converter="servicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do serviço" />
 
-						<p:outputLabel value="Atendente: " />
+						<p:outputLabel value="Atendente: " id="atendente"
+							for="atendenteId" />
 						<p:autoComplete id="atendenteId"
 							value="#{ordemDeServico.ordemDeServico.atendente}"
 							dropdown="true" minQueryLength="3" size="50"
@@ -52,7 +53,7 @@
 							converter="atendenteConverter" required="true"
 							requiredMessage="Por favor informe o nome do atendente" />
 
-						<p:outputLabel value="Mecanico: " />
+						<p:outputLabel value="Mecanico: " id="mecanico" for="mecanicoId" />
 						<p:autoComplete id="mecanicoId"
 							value="#{ordemDeServico.ordemDeServico.mecanico}" dropdown="true"
 							minQueryLength="3" size="50"
@@ -60,11 +61,6 @@
 							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
 							converter="mecanicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do Mecanico" />
-
-						<p:outputLabel value="Data de emissão: " for="dataEmissao" />
-     					<p:calendar id="dataEmissao"
-							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
-							navigator="true" pattern="dd-MM-yyyy" />
 
 						<p:outputLabel value="Forma de pagamento: " for="formaDePagamento"
 							class="autputLabel" />
@@ -76,54 +72,27 @@
 								var="pagamento" itemLabel="#{pagamento}"
 								itemValue="#{pagamento}" />
 						</p:selectOneMenu>
+						
+						<!-- CRIAR METODO PARA PEGAR DATA DE EMISSÃO AO SALVAR O.S -->
+						<!-- <p:outputLabel value="Data de emissão: " id="dataEmissao"
+							for="dataEmissaoId" />
+     					<p:calendar id="dataEmissaoId" required="true"
+							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
+							navigator="true" pattern="dd-MM-yyyy" /> -->
+							
 					</h:panelGrid>
+
 					<p:separator />
-					
-	<p:tabView>
-        <p:tab title="Items de serviço">
-            <h:panelGrid columns="2" cellpadding="10">
-                <h:outputText value="AQUI VAI FICAR A TABELA DE SERVIÇOS INCLUSO" />
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="Detalhes do orçamento">
-            <h:panelGrid columns="2" cellpadding="10">
-                <h:outputText value="AQUI VAI ENTRAR UMA TEXTAREA PARA DETALHES DO SERVIÇO" />
-            </h:panelGrid>
-        </p:tab>
-	</p:tabView>
 
-					<!-- <p:dataTable id="ListaDeServicos" var="servicoVar"
-						value="#{ordemDeServico.ordemDeServicos}">
-						<f:facet name="header">
-								Serviços Incluídos
-							</f:facet>
-						<p:column headerText="Id">
-							<h:outputText value="#{servicoVar.servico.id}" />
-						</p:column>
+					<p:tabView>
+				        <p:tab title="Items de serviço">
+				            <ui:include src="/WEB-INF/template/ordemDeServico/itensOrdemServico.xhtml"></ui:include>
+				        </p:tab>
+				        <p:tab title="Observações do orçamento">
+				  <ui:include src="/WEB-INF/template/ordemDeServico/descricaoOrdemServico.xhtml"></ui:include>
+				        </p:tab>
+					</p:tabView>
 
-						<p:column headerText="Descrição">
-							<h:outputText value="#{servicoVar.servico.nome}" />
-						</p:column>
-
-						<p:column headerText="Valor">
-							<h:outputText value="#{servicoVar.servico.valor}" />
-						</p:column>
-
-						<p:column style="text-align:center;" exportable="false"
-							width="15%">
-
-							<p:spacer width="5" />
-
-							<p:commandButton icon="ui-icon-pencil" title="Editar">
-
-							</p:commandButton>
-
-							<p:spacer width="5" />
-
-							<p:commandButton icon="ui-icon-trash" title="Excluir" />
-
-						</p:column>
-					</p:dataTable> -->
 					<br />
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
 						action="#{ordemDeServico.salvar}" update="@form" />
