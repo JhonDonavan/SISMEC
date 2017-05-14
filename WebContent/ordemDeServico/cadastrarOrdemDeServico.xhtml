@@ -18,7 +18,7 @@
 						cellspacing="5">
 						<p:outputLabel value="Cliente: " id="cliente" for="clienteId" />
 						<p:autoComplete id="clienteId"
-							value="#{ordemDeServico.ordemDeServico.cliente}" dropdown="true"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente}" dropdown="true"
 							minQueryLength="3" size="50"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
@@ -27,7 +27,7 @@
 
 						<p:outputLabel value="Veiculo: " id="veiculo" for="veiuloId" />
 						<p:autoComplete id="veiuloId"
-							value="#{ordemDeServico.ordemDeServico.veiculo}" dropdown="true"
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo}" dropdown="true"
 							minQueryLength="3" size="50"
 							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
 							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
@@ -36,7 +36,7 @@
 
 						<p:outputLabel value="Servico: " id="servico" for="servicoId" />
 						<p:autoComplete id="servicoId"
-							value="#{ordemDeServico.ordemDeServico.servico}" dropdown="true"
+							value="#{ordemDeServicoMB.ordemDeServico.servico}" dropdown="true"
 							minQueryLength="3" size="50"
 							completeMethod="#{servicoMB.listarPorNome}" var="servico"
 							itemLabel="#{servico.nome}" itemValue="#{servico}"
@@ -46,7 +46,7 @@
 						<p:outputLabel value="Atendente: " id="atendente"
 							for="atendenteId" />
 						<p:autoComplete id="atendenteId"
-							value="#{ordemDeServico.ordemDeServico.atendente}"
+							value="#{ordemDeServicoMB.ordemDeServico.atendente}"
 							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{atendenteMB.listarPorNome}" var="atendente"
 							itemLabel="#{atendente.nome}" itemValue="#{atendente}"
@@ -55,7 +55,7 @@
 
 						<p:outputLabel value="Mecanico: " id="mecanico" for="mecanicoId" />
 						<p:autoComplete id="mecanicoId"
-							value="#{ordemDeServico.ordemDeServico.mecanico}" dropdown="true"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico}" dropdown="true"
 							minQueryLength="3" size="50"
 							completeMethod="#{mecanicoMB.listarPorNome}" var="mecanico"
 							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
@@ -95,7 +95,7 @@
 
 					<br />
 					<p:commandButton value="Salvar" icon="ui-icon-disk"
-						action="#{ordemDeServico.salvar}" update="@form" />
+						action="#{ordemDeServicoMB.salvar}" update="@form" />
 
 					<!-- Mostra modal da data -->
 					<p:dialog modal="true" resizable="false" header="Values"

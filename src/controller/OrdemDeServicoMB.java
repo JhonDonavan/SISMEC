@@ -68,7 +68,7 @@ public class OrdemDeServicoMB {
 		ordemDeServico = new OrdemDeServico();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("OrdemDeServico cadastrado com sucesso!"));
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
-		return "/index.xhtml?faces-redirect=true";
+		return "/listarOrdemDeServicos.xhtml?faces-redirect=true";
 	}
 
 	public String editar(OrdemDeServico ordemDeServico) {

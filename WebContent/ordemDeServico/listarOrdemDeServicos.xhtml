@@ -38,6 +38,10 @@
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
+					
+					<p:column headerText="Identificador">
+						<h:outputText value="#{OS.id}" />
+					</p:column>
 
 					<p:column headerText="Cliente">
 						<h:outputText value="#{OS.cliente.nome}" />
@@ -50,6 +54,11 @@
 					<p:column headerText="Valor Orçado">
 						<h:outputText value="#{OS.servico.nome}" />
 					</p:column>
+					
+					<p:column headerText="Forma de pagamento">
+						<h:outputText value="#{OS.formaPagamento}" />
+					</p:column>
+					
 				</p:dataTable>
 
 
