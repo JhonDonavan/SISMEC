@@ -1,12 +1,13 @@
 package model;
 
-import java.beans.Transient;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +29,8 @@ public class OrdemDeServico implements Serializable{
 	@SequenceGenerator(name = "ORDEM_DE_SERVICO_ID", sequenceName = "SEQ_ORDEM_DE_SERVICO", allocationSize = 1)
 	private Integer id;
 	
-	@OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ItemServico> itemServico;
+	@OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<ItemServico> itemServico = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name="veiculo_id")
@@ -70,6 +71,7 @@ public class OrdemDeServico implements Serializable{
 		return itemServico;
 	}
 
+	
 	public void setItemServico(List<ItemServico> itemServico) {
 		this.itemServico = itemServico;
 	}
