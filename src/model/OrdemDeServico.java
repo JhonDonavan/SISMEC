@@ -4,17 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="ordemDeServicosMB")
@@ -27,6 +32,9 @@ public class OrdemDeServico implements Serializable{
 	@SequenceGenerator(name = "ORDEM_DE_SERVICO_ID", sequenceName = "SEQ_ORDEM_DE_SERVICO", allocationSize = 1)
 	private Integer id;
 	
+	@OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ItemServico> itemServico;
+	
 	@ManyToOne
 	@JoinColumn(name="veiculo_id")
 	private Veiculo veiculo;
@@ -34,10 +42,6 @@ public class OrdemDeServico implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
-	
-	@ManyToOne
-	@JoinColumn(name="servico_id")
-	private Servico servico;
 	
 	@OneToOne
 	private Pagamento pagamento;
@@ -66,6 +70,14 @@ public class OrdemDeServico implements Serializable{
 		return id;
 	}
 
+	public List<ItemServico> getItemServico() {
+		return itemServico;
+	}
+
+	public void setItemServico(List<ItemServico> itemServico) {
+		this.itemServico = itemServico;
+	}
+
 	public Veiculo getVeiculo() {
 		return veiculo;
 	}
@@ -80,14 +92,6 @@ public class OrdemDeServico implements Serializable{
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	public Servico getServico() {
-		return servico;
-	}
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
 	}
 
 	public Pagamento getPagamento() {
@@ -153,13 +157,15 @@ public class OrdemDeServico implements Serializable{
 	public void setDataConclusao(Date dataConclusao) {
 		this.dataConclusao = dataConclusao;
 	}
-
-	@Override
-	public String toString() {
-		return "OrdemDeServico [id=" + id + ", veiculo=" + veiculo + ", cliente=" + cliente + ", servico=" + servico
-				+ ", pagamento=" + pagamento + ", gerente=" + gerente + ", atendente=" + atendente + ", mecanico="
-				+ mecanico + ", dataInicio=" + dataInicio + ", dataPrevisto=" + dataPrevisto + ", dataConclusao="
-				+ dataConclusao + "]";
+	
+	public void adicionarItemVazio(){
+		Servico servico = new Servico();
+		
+		ItemServico item = new ItemServico();
+		item.setServico(servico);
+		item.setOrdemDeServico(this);
+		
+		this.getItemServico().add(0, item);
 	}
 
 	@Override
@@ -171,11 +177,12 @@ public class OrdemDeServico implements Serializable{
 		result = prime * result + ((dataConclusao == null) ? 0 : dataConclusao.hashCode());
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + ((dataPrevisto == null) ? 0 : dataPrevisto.hashCode());
+		result = prime * result + ((formaPagamento == null) ? 0 : formaPagamento.hashCode());
 		result = prime * result + ((gerente == null) ? 0 : gerente.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((itemServico == null) ? 0 : itemServico.hashCode());
 		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
 		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
-		result = prime * result + ((servico == null) ? 0 : servico.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -214,6 +221,8 @@ public class OrdemDeServico implements Serializable{
 				return false;
 		} else if (!dataPrevisto.equals(other.dataPrevisto))
 			return false;
+		if (formaPagamento != other.formaPagamento)
+			return false;
 		if (gerente == null) {
 			if (other.gerente != null)
 				return false;
@@ -224,6 +233,11 @@ public class OrdemDeServico implements Serializable{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (itemServico == null) {
+			if (other.itemServico != null)
+				return false;
+		} else if (!itemServico.equals(other.itemServico))
+			return false;
 		if (mecanico == null) {
 			if (other.mecanico != null)
 				return false;
@@ -233,11 +247,6 @@ public class OrdemDeServico implements Serializable{
 			if (other.pagamento != null)
 				return false;
 		} else if (!pagamento.equals(other.pagamento))
-			return false;
-		if (servico == null) {
-			if (other.servico != null)
-				return false;
-		} else if (!servico.equals(other.servico))
 			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)

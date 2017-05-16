@@ -28,9 +28,6 @@ public class Servico implements Serializable {
 
 	@OneToMany(mappedBy = "servico", targetEntity = Peca.class, fetch = FetchType.LAZY)
 	private List<Peca> peca;
-	
-	@OneToMany(mappedBy = "servico", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
-	private List<OrdemDeServico> ordemDeServico;
 
 	private String nome;
 
@@ -48,14 +45,6 @@ public class Servico implements Serializable {
 
 	public void setPeca(List<Peca> peca) {
 		this.peca = peca;
-	}
-
-	public List<OrdemDeServico> getOrdemDeServico() {
-		return ordemDeServico;
-	}
-
-	public void setOrdemDeServico(List<OrdemDeServico> ordemDeServico) {
-		this.ordemDeServico = ordemDeServico;
 	}
 
 	public String getNome() {
@@ -88,7 +77,6 @@ public class Servico implements Serializable {
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((ordemDeServico == null) ? 0 : ordemDeServico.hashCode());
 		result = prime * result + ((peca == null) ? 0 : peca.hashCode());
 		result = prime * result + ((prazo == null) ? 0 : prazo.hashCode());
 		long temp;
@@ -113,11 +101,6 @@ public class Servico implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (ordemDeServico == null) {
-			if (other.ordemDeServico != null)
-				return false;
-		} else if (!ordemDeServico.equals(other.ordemDeServico))
-			return false;
 		if (peca == null) {
 			if (other.peca != null)
 				return false;
@@ -135,7 +118,7 @@ public class Servico implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servico [id=" + id + ", peca=" + peca + ", ordemDeServico=" + ordemDeServico + ", nome=" + nome
+		return "Servico [id=" + id + ", peca=" + peca + ", ordemDeServico=" + ", nome=" + nome
 				+ ", prazo=" + prazo + ", valor=" + valor + "]";
 	}
 }
