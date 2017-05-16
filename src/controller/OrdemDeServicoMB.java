@@ -9,11 +9,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
 import model.FormaPagamento;
+import model.ItemServico;
 import model.Mecanico;
 import model.OrdemDeServico;
 import model.Veiculo;
@@ -22,7 +24,9 @@ import modelDAO.GenericDAO;
 import modelDAO.MecanicoDAO;
 import modelDAO.OrdemDeServicoDAO;
 import modelDAO.VeiculoDAO;
+import util.jsf.FacesUtil;
 
+@Named
 @ManagedBean(name = "ordemDeServicoMB")
 @SessionScoped
 public class OrdemDeServicoMB {
@@ -42,11 +46,14 @@ public class OrdemDeServicoMB {
 	private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 	private String mensagemCadastroSucesso = "OrdemDeServico cadastrado com sucesso";
 	private List<FormaPagamento> formaPagamento;
-	
+
+	private ItemServico items;
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
 	}
+
 
 	public OrdemDeServicoMB() {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
@@ -62,6 +69,12 @@ public class OrdemDeServicoMB {
 	 * listaOrdemDeServicos = new ArrayList<OrdemDeServico>();
 	 * listaOrdemDeServicos = new OrdemDeServicoDAO().listar(); }
 	 */
+	
+	public void inicializar() {
+		if (FacesUtil.isNotPostback()) {
+			this.ordemDeServico.adicionarItemVazio();
+		}
+	}
 
 	public String salvar() {
 		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
@@ -98,16 +111,16 @@ public class OrdemDeServicoMB {
 	public List<Mecanico> completarMecanico(String nomeMecanico) {
 		return this.mecanicos.buscarMecanicoByNome(nomeMecanico);
 	}
-	
+
 	@SuppressWarnings("static-access")
-	public List<Veiculo> completarVeiculo(String placa){
+	public List<Veiculo> completarVeiculo(String placa) {
 		return this.veiculos.buscaVeiculoByPlaca(placa);
 	}
-	
-	public List<Cliente> completarCliente(String nome){
+
+	public List<Cliente> completarCliente(String nome) {
 		return this.clientes.buscarClienteByNome(nome);
 	}
-		
+
 	public OrdemDeServico getOrdemDeServico() {
 		return ordemDeServico;
 	}
@@ -146,6 +159,14 @@ public class OrdemDeServicoMB {
 
 	public void setFormaPagamento(ArrayList<FormaPagamento> formaPagamento) {
 		this.formaPagamento = formaPagamento;
+	}
+
+	public ItemServico getItems() {
+		return items;
+	}
+
+	public void setItems(ItemServico items) {
+		this.items = items;
 	}
 	
 	

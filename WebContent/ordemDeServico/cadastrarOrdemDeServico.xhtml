@@ -5,9 +5,15 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
+	<f:metadata>
+		<f:event listener="#{ordemDeServicoMB.inicializar}" type="preRenderView" />
+	</f:metadata>
+
 	<ui:define name="conteudo">
 
 		<div id="form">
+
+
 
 			<p:panel header="Cadastrar O.S" style="text-align:left; width:99%;">
 				<h:form id="cadastrarOrdemDeServico">

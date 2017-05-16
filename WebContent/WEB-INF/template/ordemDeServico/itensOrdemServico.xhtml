@@ -4,8 +4,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
+	<f:metadata>
+		<f:event listener="#{ordemDeServicoMB.inicializar}"
+			type="preRenderView" />
+	</f:metadata>
+
 	<p:dataTable id="ListaDeServicos" var="servicoVar"
-		value="#{ordemDeServico.ordemDeServicos}">
+		value="#{ordemDeServicoMB.ordemDeServico.itemServico}">
 		<f:facet name="header">
 			<p>Serviços Incluídos</p>
 		</f:facet>
@@ -16,18 +21,19 @@
 		<p:column headerText="Descrição" width="45%">
 			<h:outputText value="#{servicoVar.servico.nome}" />
 		</p:column>
-		
+
 		<p:column headerText="Valor" width="20%">
 			<h:outputText value="#{servicoVar.servico.valor}" />
 		</p:column>
-		
+
 		<p:column headerText="Valor Total" width="20%px">
 			<h:outputText value="#{servicoVar.servico.valor}" />
 		</p:column>
 
 		<f:facet name="footer">
 			<p:row>
-				<p:column colspan="5" footerText="Subtotal" style="text-align: right" />
+				<p:column colspan="5" footerText="Subtotal"
+					style="text-align: right" />
 				<p:column footerText="R$ 0,00" style="text-align: right" />
 			</p:row>
 		</f:facet>
