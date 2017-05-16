@@ -9,24 +9,28 @@
 		<f:facet name="header">
 			<p>Serviços Incluídos</p>
 		</f:facet>
-		<p:column headerText="Id" width="30px">
+		<p:column headerText="Código" width="15%">
 			<h:outputText value="#{servicoVar.servico.id}" />
 		</p:column>
 
-		<p:column headerText="Descrição">
+		<p:column headerText="Descrição" width="45%">
 			<h:outputText value="#{servicoVar.servico.nome}" />
 		</p:column>
-
-		<p:column headerText="Valor">
+		
+		<p:column headerText="Valor" width="20%">
+			<h:outputText value="#{servicoVar.servico.valor}" />
+		</p:column>
+		
+		<p:column headerText="Valor Total" width="20%px">
 			<h:outputText value="#{servicoVar.servico.valor}" />
 		</p:column>
 
-		<p:column style="text-align:center;" exportable="false" width="15%">
-			<p:spacer width="5" />
-			<p:commandButton icon="ui-icon-pencil" title="Editar" />
-			<p:spacer width="5" />
-			<p:commandButton icon="ui-icon-trash" title="Excluir" />
-		</p:column>
+		<f:facet name="footer">
+			<p:row>
+				<p:column colspan="5" footerText="Subtotal" style="text-align: right" />
+				<p:column footerText="R$ 0,00" style="text-align: right" />
+			</p:row>
+		</f:facet>
 	</p:dataTable>
 
 </ui:composition>
