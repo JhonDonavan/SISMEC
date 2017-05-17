@@ -4,39 +4,53 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<f:metadata>
-		<f:event listener="#{ordemDeServicoMB.inicializar}"
-			type="preRenderView" />
-	</f:metadata>
+	<style>
+.produto-tabela {
+	width: 100% !important;
+}
+</style>
 
-	<p:dataTable id="ListaDeServicos" var="servicoVar"
-		value="#{ordemDeServicoMB.ordemDeServico.itemServico}">
-		<f:facet name="header">
-			<p>Serviços Incluídos</p>
-		</f:facet>
-		<p:column headerText="Código" width="15%">
-			<h:outputText value="#{servicoVar.servico.id}" />
+
+	<p:dataTable  var="item" id="tabelaItens"
+		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
+		<p:column headerText="Código" style="text-align: center; width:120px">
+			<h:inputText size="8" />
 		</p:column>
 
-		<p:column headerText="Descrição" width="45%">
-			<h:outputText value="#{servicoVar.servico.nome}" />
+		<p:column headerText="Serviço" style="text-align: right; width:100px">
+			<p:autoComplete styleClass="produto-tabela" value="#{ordemDeServicoMB.servicoLinhaEditavel}"
+			completeMethod="#{ordemDeServicoMB.completarServico}" var="servico" itemLabel="#{servico.nome}" itemValue="servico"
+			forceSelection="true">
+			<p:ajax  event="itemSelect" update="tabelaItens"
+			listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}"/>
+			</p:autoComplete>
 		</p:column>
 
-		<p:column headerText="Valor" width="20%">
-			<h:outputText value="#{servicoVar.servico.valor}" />
+		<p:column headerText="Quantidade"
+			style="text-align: right; width:100px">
+			<h:outputText size="8" value="1" />
 		</p:column>
 
-		<p:column headerText="Valor Total" width="20%px">
-			<h:outputText value="#{servicoVar.servico.valor}" />
+		<p:column headerText="Valor unitário"
+			style="text-align: right; width:100px">
+			<h:outputText size="8" value="R$ 0,00" />
 		</p:column>
 
-		<f:facet name="footer">
+		<p:column headerText="estoque" style="text-align: right; width:100px">
+			<h:outputText value="R$ 0,00" />
+		</p:column>
+
+		<p:column headerText="Valor Total" style="text-align: right; width:100px">
+			<h:outputText size="8" value="R$ 0,00" />
+		</p:column>
+
+		<p:columnGroup type="footer">
 			<p:row>
 				<p:column colspan="5" footerText="Subtotal"
 					style="text-align: right" />
 				<p:column footerText="R$ 0,00" style="text-align: right" />
 			</p:row>
-		</f:facet>
+		</p:columnGroup>
 	</p:dataTable>
 
 </ui:composition>

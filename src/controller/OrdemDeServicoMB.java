@@ -18,11 +18,13 @@ import model.FormaPagamento;
 import model.ItemServico;
 import model.Mecanico;
 import model.OrdemDeServico;
+import model.Servico;
 import model.Veiculo;
 import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 import modelDAO.MecanicoDAO;
 import modelDAO.OrdemDeServicoDAO;
+import modelDAO.ServicoDAO;
 import modelDAO.VeiculoDAO;
 import util.jsf.FacesUtil;
 
@@ -39,6 +41,8 @@ public class OrdemDeServicoMB {
 	private VeiculoDAO veiculos;
 	@Autowired
 	private ClienteDAO clientes;
+	@Autowired
+	private ServicoDAO servicos;
 
 	private OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
 
@@ -49,6 +53,8 @@ public class OrdemDeServicoMB {
 
 	private ItemServico items;
 
+	private Servico servicoLinhaEditavel;
+	
 	@PostConstruct
 	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
@@ -102,6 +108,14 @@ public class OrdemDeServicoMB {
 	public String limparOrdemDeServico() {
 		this.ordemDeServico = new OrdemDeServico();
 		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
+	}
+	
+	public void carregarServicoLinhaEditavel(){
+		
+	}
+	
+	public List<Servico> completarServico(String nome){
+		return this.servicos.buscaServicoByNome(nome);
 	}
 
 	public void detalheOrdemDeServico(OrdemDeServico ordemDeServico) {
@@ -168,6 +182,19 @@ public class OrdemDeServicoMB {
 	public void setItems(ItemServico items) {
 		this.items = items;
 	}
+
+
+	public Servico getServicoLinhaEditavel() {
+		return servicoLinhaEditavel;
+	}
+
+
+	public void setServicoLinhaEditavel(Servico servicoLinhaEditavel) {
+		this.servicoLinhaEditavel = servicoLinhaEditavel;
+	}
+
+
+	
 	
 	
 
