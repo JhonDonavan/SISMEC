@@ -51,7 +51,7 @@ public class OrdemDeServicoMB {
 	private String mensagemCadastroSucesso = "OrdemDeServico cadastrado com sucesso";
 	private List<FormaPagamento> formaPagamento;
 
-	private ArrayList<ItemServico> itens = new ArrayList<>();
+	private List<Servico> itens = new ArrayList<>();
 
 	private Servico servicoLinhaEditavel;
 	
@@ -102,17 +102,25 @@ public class OrdemDeServicoMB {
 		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
 	
+	
+	
+	
 	public void carregarServicoLinhaEditavel(){
 		System.out.println("Entrou no método carregarLinhaDigitavel");
 		
-		ItemServico itens = this.ordemDeServico.getItemServico().get(0);
+		ItemServico item = this.ordemDeServico.getItemServico().get(0);
+		System.out.println(item.getServico().getNome());
 		
 		if(this.servicoLinhaEditavel != null){
-			itens.setServico(this.servicoLinhaEditavel);
+			item.setServico(this.servicoLinhaEditavel);
 			this.ordemDeServico.adicionarItemVazio();
 			this.servicoLinhaEditavel = null;
 		}
 	}
+	
+	
+	
+	
 	
 	public List<Servico> completarServico(String nome){
 		return this.ordemDeServicoDAO.buscaServicoByNome(nome);
@@ -176,12 +184,14 @@ public class OrdemDeServicoMB {
 	}
 
 
-	public ArrayList<ItemServico> getItens() {
+	
+
+	public List<Servico> getItens() {
 		return itens;
 	}
 
 
-	public void setItens(ArrayList<ItemServico> itens) {
+	public void setItens(List<Servico> itens) {
 		this.itens = itens;
 	}
 

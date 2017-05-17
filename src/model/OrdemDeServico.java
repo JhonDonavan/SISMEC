@@ -19,59 +19,59 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ordemDeServicosMB")
-public class OrdemDeServico implements Serializable{
-	
+@Table(name = "ordemDeServicosMB")
+public class OrdemDeServico implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(generator = "ORDEM_DE_SERVICO_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "ORDEM_DE_SERVICO_ID", sequenceName = "SEQ_ORDEM_DE_SERVICO", allocationSize = 1)
 	private Integer id;
-	
+
 	@OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<ItemServico> itemServico = new ArrayList<>();
-	
+
 	@ManyToOne
-	@JoinColumn(name="veiculo_id")
+	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="cliente_id")
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	
+
 	@OneToOne
 	private Pagamento pagamento;
-	
+
 	@ManyToOne
-	@JoinColumn(name="gerente_id")
+	@JoinColumn(name = "gerente_id")
 	private Gerente gerente;
-	
+
 	@ManyToOne
-	@JoinColumn(name="atendente_id")
+	@JoinColumn(name = "atendente_id")
 	private Atendente atendente;
-	
+
 	@ManyToOne
-	@JoinColumn(name="mecanico_id")
+	@JoinColumn(name = "mecanico_id")
 	private Mecanico mecanico;
-	
+
 	private Date dataInicio;
-	
+
 	private Date dataPrevisto;
-	
+
 	private Date dataConclusao;
-	
+
 	private FormaPagamento formaPagamento;
 
 	public Integer getId() {
 		return id;
 	}
 
+
 	public List<ItemServico> getItemServico() {
 		return itemServico;
 	}
 
-	
 	public void setItemServico(List<ItemServico> itemServico) {
 		this.itemServico = itemServico;
 	}
@@ -143,7 +143,7 @@ public class OrdemDeServico implements Serializable{
 	public Date getDataConclusao() {
 		return dataConclusao;
 	}
-	
+
 	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
@@ -154,18 +154,6 @@ public class OrdemDeServico implements Serializable{
 
 	public void setDataConclusao(Date dataConclusao) {
 		this.dataConclusao = dataConclusao;
-	}
-	
-	public void adicionarItemVazio(){
-		Servico servico = new Servico();
-		
-		ItemServico item = new ItemServico();
-		
-		item.setServico(servico);
-		
-		item.setOrdemDeServico(this);
-		
-		this.getItemServico().add(0, item);
 	}
 
 	@Override
@@ -255,4 +243,17 @@ public class OrdemDeServico implements Serializable{
 			return false;
 		return true;
 	}
+
+	public void adicionarItemVazio() {
+		Servico servico = new Servico();
+
+		ItemServico item = new ItemServico();
+
+		item.setServico(servico);
+
+		item.setOrdemDeServico(this);
+
+		this.getItemServico().add(0, item);
+	}
+
 }
