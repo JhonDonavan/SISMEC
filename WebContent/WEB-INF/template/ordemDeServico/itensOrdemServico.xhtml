@@ -11,18 +11,23 @@
 </style>
 
 
-	<p:dataTable  var="item" id="tabelaItens"
+	<p:dataTable var="item" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
 		<p:column headerText="Código" style="text-align: center; width:120px">
 			<h:inputText size="8" />
 		</p:column>
-		<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}"/>
+
 		<p:column headerText="Serviço" style="text-align: right; width:100px">
-			<p:autoComplete styleClass="produto-tabela" value="#{ordemDeServicoMB.servicoLinhaEditavel}"
-			completeMethod="#{ordemDeServicoMB.completarServico}" var="servico" itemLabel="#{servico.nome}" itemValue="#{servico}"
-			forceSelection="true" converter="servicoConverter" rendered="#{not item.servicoAssociado}">
-			<p:ajax  event="itemSelect" update="tabelaItens"
-			listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}"/>
+			<h:outputText value="#{item.servico.nome}"
+				rendered="#{item.servicoAssociado}" />
+			<p:autoComplete styleClass="produto-tabela"
+				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
+				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
+				itemLabel="#{servico.nome}" itemValue="#{servico}"
+				forceSelection="true" converter="servicoConverter"
+				rendered="#{not item.servicoAssociado}">
+				<p:ajax event="itemSelect" update="tabelaItens"
+					listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}" />
 			</p:autoComplete>
 		</p:column>
 
@@ -40,7 +45,8 @@
 			<h:outputText value="R$ 0,00" />
 		</p:column>
 
-		<p:column headerText="Valor Total" style="text-align: right; width:100px">
+		<p:column headerText="Valor Total"
+			style="text-align: right; width:100px">
 			<h:outputText size="8" value="R$ 0,00" />
 		</p:column>
 
