@@ -24,8 +24,8 @@ public class ItemServico implements Serializable{
 	@GeneratedValue(generator = "item_servico_id", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "item_servico_id", sequenceName = "item_servico_id", allocationSize = 1)
 	private long id;
-	private Integer quantidade;
-	private BigDecimal valorUnitario;
+	private Integer quantidade = 1;
+	private BigDecimal valorUnitario = BigDecimal.ZERO;
 	private Servico servico;
 	
 	@ManyToOne

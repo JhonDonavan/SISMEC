@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,10 +64,11 @@ public class OrdemDeServico implements Serializable {
 
 	private FormaPagamento formaPagamento;
 
+	private BigDecimal valorTotal = BigDecimal.ZERO;
+
 	public Integer getId() {
 		return id;
 	}
-
 
 	public List<ItemServico> getItemServico() {
 		return itemServico;
@@ -154,6 +156,14 @@ public class OrdemDeServico implements Serializable {
 
 	public void setDataConclusao(Date dataConclusao) {
 		this.dataConclusao = dataConclusao;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	@Override

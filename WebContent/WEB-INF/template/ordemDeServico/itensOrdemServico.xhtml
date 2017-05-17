@@ -31,18 +31,20 @@
 			</p:autoComplete>
 		</p:column>
 
-		<p:column headerText="Quantidade"
-			style="text-align: right; width:100px">
-			<h:outputText size="8" value="1" />
-		</p:column>
-
 		<p:column headerText="Valor unitário"
 			style="text-align: right; width:100px">
-			<h:outputText size="8" value="R$ 0,00" />
+			<h:outputText size="8" value="#{item.servico.valor}">
+				<f:convertNumber type="currency" />
+			</h:outputText>
+		</p:column>
+
+		<p:column headerText="Quantidade"
+			style="text-align: right; width:100px">
+			<h:inputText size="8" value="1" />
 		</p:column>
 
 		<p:column headerText="estoque" style="text-align: right; width:100px">
-			<h:outputText value="R$ 0,00" />
+			<h:outputText value="#{item.servico.quantidadeEstoque}" />
 		</p:column>
 
 		<p:column headerText="Valor Total"

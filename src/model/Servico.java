@@ -9,14 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="servicos")
+@Table(name = "servicos")
 public class Servico implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +32,8 @@ public class Servico implements Serializable {
 	private Date prazo;
 
 	private double valor;
+
+	private Integer quantidadeEstoque = 10;
 
 	public Long getId() {
 		return id;
@@ -69,6 +69,14 @@ public class Servico implements Serializable {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
 	@Override
@@ -118,7 +126,7 @@ public class Servico implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servico [id=" + id + ", peca=" + peca + ", ordemDeServico=" + ", nome=" + nome
-				+ ", prazo=" + prazo + ", valor=" + valor + "]";
+		return "Servico [id=" + id + ", peca=" + peca + ", ordemDeServico=" + ", nome=" + nome + ", prazo=" + prazo
+				+ ", valor=" + valor + "]";
 	}
 }
