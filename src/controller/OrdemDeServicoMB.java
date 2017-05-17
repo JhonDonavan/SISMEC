@@ -67,14 +67,6 @@ public class OrdemDeServicoMB {
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
 
-	/* VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA */
-	/*
-	 * @SuppressWarnings("unused")
-	 * 
-	 * @PostConstruct public void init() { List<OrdemDeServico>
-	 * listaOrdemDeServicos = new ArrayList<OrdemDeServico>();
-	 * listaOrdemDeServicos = new OrdemDeServicoDAO().listar(); }
-	 */
 	
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {
@@ -115,7 +107,7 @@ public class OrdemDeServicoMB {
 	}
 	
 	public List<Servico> completarServico(String nome){
-		return this.servicos.buscaServicoByNome(nome);
+		return this.ordemDeServicoDAO.buscaServicoByNome(nome);
 	}
 
 	public void detalheOrdemDeServico(OrdemDeServico ordemDeServico) {

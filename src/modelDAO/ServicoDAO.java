@@ -40,9 +40,7 @@ public class ServicoDAO {
 		Query query = em
 				.createQuery("SELECT m FROM Servico m WHERE upper(m.nome) like upper(:nomeServico)");
 		query.setParameter("nomeServico", "%" + nomeServico + "%");
-
 		return query.getResultList();
-
 	}
 
 	public void remove(Servico servico) {
