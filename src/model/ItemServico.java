@@ -1,5 +1,6 @@
 package model;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -115,5 +116,10 @@ public class ItemServico implements Serializable{
 		} else if (!valorUnitario.equals(other.valorUnitario))
 			return false;
 		return true;
+	}
+	
+	@Transient
+	public boolean isServicoAssociado(){
+		return this.getServico() != null && this.getServico().getId() != null;
 	}
 }

@@ -51,7 +51,7 @@ public class OrdemDeServicoMB {
 	private String mensagemCadastroSucesso = "OrdemDeServico cadastrado com sucesso";
 	private List<FormaPagamento> formaPagamento;
 
-	private ItemServico items;
+	private ArrayList<ItemServico> itens = new ArrayList<>();
 
 	private Servico servicoLinhaEditavel;
 	
@@ -103,7 +103,15 @@ public class OrdemDeServicoMB {
 	}
 	
 	public void carregarServicoLinhaEditavel(){
+		System.out.println("Entrou no método carregarLinhaDigitavel");
 		
+		ItemServico itens = this.ordemDeServico.getItemServico().get(0);
+		
+		if(this.servicoLinhaEditavel != null){
+			itens.setServico(this.servicoLinhaEditavel);
+			this.ordemDeServico.adicionarItemVazio();
+			this.servicoLinhaEditavel = null;
+		}
 	}
 	
 	public List<Servico> completarServico(String nome){
@@ -167,12 +175,14 @@ public class OrdemDeServicoMB {
 		this.formaPagamento = formaPagamento;
 	}
 
-	public ItemServico getItems() {
-		return items;
+
+	public ArrayList<ItemServico> getItens() {
+		return itens;
 	}
 
-	public void setItems(ItemServico items) {
-		this.items = items;
+
+	public void setItens(ArrayList<ItemServico> itens) {
+		this.itens = itens;
 	}
 
 

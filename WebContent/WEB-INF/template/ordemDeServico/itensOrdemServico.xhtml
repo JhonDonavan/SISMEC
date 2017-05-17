@@ -16,11 +16,11 @@
 		<p:column headerText="Código" style="text-align: center; width:120px">
 			<h:inputText size="8" />
 		</p:column>
-
+		<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}"/>
 		<p:column headerText="Serviço" style="text-align: right; width:100px">
 			<p:autoComplete styleClass="produto-tabela" value="#{ordemDeServicoMB.servicoLinhaEditavel}"
 			completeMethod="#{ordemDeServicoMB.completarServico}" var="servico" itemLabel="#{servico.nome}" itemValue="servico"
-			forceSelection="true">
+			forceSelection="true" converter="servicoConverter" rendered="#{not item.servicoAssociado}">
 			<p:ajax  event="itemSelect" update="tabelaItens"
 			listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}"/>
 			</p:autoComplete>

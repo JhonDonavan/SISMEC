@@ -24,7 +24,7 @@ public class Servico implements Serializable {
 	@Id
 	@GeneratedValue(generator = "SERVICO_ID", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "SERVICO_ID", sequenceName = "SEQ_SERVICO", allocationSize = 1)
-	private long id;
+	private Long id;
 
 	@OneToMany(mappedBy = "servico", targetEntity = Peca.class, fetch = FetchType.LAZY)
 	private List<Peca> peca;
@@ -35,7 +35,7 @@ public class Servico implements Serializable {
 
 	private double valor;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
