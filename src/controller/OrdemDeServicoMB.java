@@ -41,8 +41,6 @@ public class OrdemDeServicoMB {
 	private VeiculoDAO veiculos;
 	@Autowired
 	private ClienteDAO clientes;
-	@Autowired
-	private ServicoDAO servicos;
 
 	private OrdemDeServicoDAO ordemDeServicoDAO = new OrdemDeServicoDAO();
 
@@ -109,10 +107,13 @@ public class OrdemDeServicoMB {
 		System.out.println("Entrou no método carregarLinhaDigitavel");
 		
 		ItemServico item = this.ordemDeServico.getItemServico().get(0);
-		System.out.println(item.getServico().getNome());
 		
 		if(this.servicoLinhaEditavel != null){
+			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
 			item.setServico(this.servicoLinhaEditavel);
+		
+			System.out.println(item.getServico().getNome());
+			
 			this.ordemDeServico.adicionarItemVazio();
 			this.servicoLinhaEditavel = null;
 		}
