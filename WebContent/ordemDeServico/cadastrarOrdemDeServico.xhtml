@@ -50,7 +50,8 @@
 							converter="mecanicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do Mecanico" />
 
-						<p:outputLabel  value="Forma de pagamento" id="formaPagamentoId" for="formaPagamento" />
+						<p:outputLabel value="Forma de pagamento" id="formaPagamentoId"
+							for="formaPagamento" />
 						<p:selectOneMenu id="formaPagamento" required="true"
 							requiredMessage="Informe a forma de pagamento"
 							value="#{ordemDeServicoMB.ordemDeServico.formaPagamento}">
@@ -59,6 +60,11 @@
 								var="pagamento" itemLabel="#{pagamento}"
 								itemValue="#{pagamento}" />
 						</p:selectOneMenu>
+
+						<p:outputLabel value="Valor de desconto " for="valorDesconto" />
+						<p:inputText id="valorDesconto" size="10" maxlength="10">
+							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
+						</p:inputText>
 
 
 					</h:panelGrid>
