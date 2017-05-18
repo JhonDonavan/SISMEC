@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
@@ -64,14 +65,41 @@ public class OrdemDeServicoMB {
 		ordemDeServico = new OrdemDeServico();
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
-
 	
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {
 			this.ordemDeServico.adicionarItemVazio();
+			
+			if(this.ordemDeServico != null){
+				this.recalculaOrdemDeServico();
+			}
 		}
 	}
 
+	
+	public void recalculaOrdemDeServico(){
+		System.out.println("ENTROU NO METODO RECALCULAR ORDEM DE SERVICO");
+		if(this.ordemDeServico != null){
+			this.ordemDeServico.recalcularValorTotal();
+		}
+	}
+	
+	public void carregarServicoLinhaEditavel(){
+		System.out.println("Entrou no método carregarLinhaDigitavel");
+		
+		ItemServico item = this.ordemDeServico.getItemServico().get(0);
+		
+		if(this.servicoLinhaEditavel != null){
+			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
+			item.setServico(this.servicoLinhaEditavel);
+			
+			System.out.println(item.getServico().getNome());
+			
+			this.ordemDeServico.adicionarItemVazio();
+			this.servicoLinhaEditavel = null;
+		}
+	}
+	
 	public String salvar() {
 		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
 		ordemDeServico = new OrdemDeServico();
@@ -99,28 +127,6 @@ public class OrdemDeServicoMB {
 		this.ordemDeServico = new OrdemDeServico();
 		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
-	
-	
-	
-	
-	public void carregarServicoLinhaEditavel(){
-		System.out.println("Entrou no método carregarLinhaDigitavel");
-		
-		ItemServico item = this.ordemDeServico.getItemServico().get(0);
-		
-		if(this.servicoLinhaEditavel != null){
-			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
-			item.setServico(this.servicoLinhaEditavel);
-		
-			System.out.println(item.getServico().getNome());
-			
-			this.ordemDeServico.adicionarItemVazio();
-			this.servicoLinhaEditavel = null;
-		}
-	}
-	
-	
-	
 	
 	
 	public List<Servico> completarServico(String nome){

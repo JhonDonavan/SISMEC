@@ -118,8 +118,13 @@ public class ItemServico implements Serializable{
 		return true;
 	}
 	
-	@Transient
+	@javax.persistence.Transient
 	public boolean isServicoAssociado(){
 		return this.getServico() != null && this.getServico().getId() != null;
+	}
+
+	@javax.persistence.Transient
+	public BigDecimal getValorTotal() {
+		return this.getValorUnitario().multiply(new BigDecimal(this.getQuantidade()));
 	}
 }

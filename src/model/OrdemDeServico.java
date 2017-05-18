@@ -61,7 +61,7 @@ public class OrdemDeServico implements Serializable {
 	private FormaPagamento formaPagamento;
 
 	private BigDecimal valorTotal = BigDecimal.ZERO;
-	
+
 	private BigDecimal valorDesconto = BigDecimal.ZERO;
 
 	public Integer getId() {
@@ -107,7 +107,6 @@ public class OrdemDeServico implements Serializable {
 	public void setGerente(Gerente gerente) {
 		this.gerente = gerente;
 	}
-
 
 	public Mecanico getMecanico() {
 		return mecanico;
@@ -156,7 +155,6 @@ public class OrdemDeServico implements Serializable {
 	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
 
 	public BigDecimal getValorDesconto() {
 		return valorDesconto;
@@ -165,7 +163,6 @@ public class OrdemDeServico implements Serializable {
 	public void setValorDesconto(BigDecimal valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -273,4 +270,19 @@ public class OrdemDeServico implements Serializable {
 		this.getItemServico().add(0, item);
 	}
 
+	public void recalcularValorTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		BigDecimal desconto = BigDecimal.ZERO;
+
+		desconto = desconto.add(this.getValorDesconto());
+
+		for (ItemServico item : this.getItemServico()) {
+			if (item.getServico() != null && item.getServico().getId() != null) {
+				total = total.add(item.getValorTotal());
+			}
+		}
+		
+		System.out.println(total);
+		this.setValorTotal(total.subtract(desconto));
+	}
 }
