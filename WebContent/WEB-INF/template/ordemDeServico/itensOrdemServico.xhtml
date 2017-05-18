@@ -10,17 +10,16 @@
 }
 </style>
 
-
 	<p:dataTable var="item" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
-		<p:column headerText="Código" style="text-align: center; width:120px">
+		<p:column headerText="Código" style="text-align: center; width:80px">
 			<h:inputText size="8" />
 		</p:column>
 
-		<p:column headerText="Serviço" style="text-align: right; width:100px">
+		<p:column headerText="Serviço" style="text-align: right; width:250px">
 			<h:outputText value="#{item.servico.nome}"
 				rendered="#{item.servicoAssociado}" />
-			<p:autoComplete styleClass="produto-tabela"
+			<p:autoComplete styleClass="produto-tabela" size="65"
 				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
 				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
 				itemLabel="#{servico.nome}" itemValue="#{servico}"
@@ -32,18 +31,18 @@
 		</p:column>
 
 		<p:column headerText="Valor unitário"
-			style="text-align: right; width:100px">
+			style="text-align: right; width:80px">
 			<h:outputText size="8" value="#{item.servico.valor}">
 				<f:convertNumber type="currency" />
 			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Quantidade"
-			style="text-align: right; width:100px">
+			style="text-align: right; width:50px">
 			<h:inputText size="8" value="1" />
 		</p:column>
 
-		<p:column headerText="estoque" style="text-align: right; width:100px">
+		<p:column headerText="estoque" style="text-align: right; width:80px">
 			<h:outputText value="#{item.servico.quantidadeEstoque}" />
 		</p:column>
 

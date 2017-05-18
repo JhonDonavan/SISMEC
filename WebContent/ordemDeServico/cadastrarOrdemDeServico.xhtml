@@ -6,7 +6,8 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<f:metadata>
-		<f:event listener="#{ordemDeServicoMB.inicializar}" type="preRenderView" />
+		<f:event listener="#{ordemDeServicoMB.inicializar}"
+			type="preRenderView" />
 	</f:metadata>
 
 	<ui:define name="conteudo">
@@ -40,16 +41,6 @@
 							converter="veiculoConverter" required="true"
 							requiredMessage="Por favor informe o nome do veiculo" />
 
-						<p:outputLabel value="Atendente: " id="atendente"
-							for="atendenteId" />
-						<p:autoComplete id="atendenteId"
-							value="#{ordemDeServicoMB.ordemDeServico.atendente}"
-							dropdown="true" minQueryLength="3" size="50"
-							completeMethod="#{atendenteMB.listarPorNome}" var="atendente"
-							itemLabel="#{atendente.nome}" itemValue="#{atendente}"
-							converter="atendenteConverter" required="true"
-							requiredMessage="Por favor informe o nome do atendente" />
-
 						<p:outputLabel value="Mecanico: " id="mecanico" for="mecanicoId" />
 						<p:autoComplete id="mecanicoId"
 							value="#{ordemDeServicoMB.ordemDeServico.mecanico}"
@@ -59,12 +50,16 @@
 							converter="mecanicoConverter" required="true"
 							requiredMessage="Por favor informe o nome do Mecanico" />
 
-						<!-- CRIAR METODO PARA PEGAR DATA DE EMISSÃO AO SALVAR O.S -->
-						<!-- <p:outputLabel value="Data de emissão: " id="dataEmissao"
-							for="dataEmissaoId" />
-     					<p:calendar id="dataEmissaoId" required="true"
-							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
-							navigator="true" pattern="dd-MM-yyyy" /> -->
+						<p:outputLabel  value="Forma de pagamento" id="formaPagamentoId" for="formaPagamento" />
+						<p:selectOneMenu id="formaPagamento" required="true"
+							requiredMessage="Informe a forma de pagamento"
+							value="#{ordemDeServicoMB.ordemDeServico.formaPagamento}">
+							<f:selectItem itemLabel="PAGAMENTO" />
+							<f:selectItems value="#{ordemDeServicoMB.formaPagamento}"
+								var="pagamento" itemLabel="#{pagamento}"
+								itemValue="#{pagamento}" />
+						</p:selectOneMenu>
+
 
 					</h:panelGrid>
 

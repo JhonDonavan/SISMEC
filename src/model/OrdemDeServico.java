@@ -49,10 +49,6 @@ public class OrdemDeServico implements Serializable {
 	private Gerente gerente;
 
 	@ManyToOne
-	@JoinColumn(name = "atendente_id")
-	private Atendente atendente;
-
-	@ManyToOne
 	@JoinColumn(name = "mecanico_id")
 	private Mecanico mecanico;
 
@@ -65,6 +61,8 @@ public class OrdemDeServico implements Serializable {
 	private FormaPagamento formaPagamento;
 
 	private BigDecimal valorTotal = BigDecimal.ZERO;
+	
+	private BigDecimal valorDesconto = BigDecimal.ZERO;
 
 	public Integer getId() {
 		return id;
@@ -110,13 +108,6 @@ public class OrdemDeServico implements Serializable {
 		this.gerente = gerente;
 	}
 
-	public Atendente getAtendente() {
-		return atendente;
-	}
-
-	public void setAtendente(Atendente atendente) {
-		this.atendente = atendente;
-	}
 
 	public Mecanico getMecanico() {
 		return mecanico;
@@ -165,12 +156,21 @@ public class OrdemDeServico implements Serializable {
 	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+	
+
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((atendente == null) ? 0 : atendente.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((dataConclusao == null) ? 0 : dataConclusao.hashCode());
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
@@ -181,6 +181,8 @@ public class OrdemDeServico implements Serializable {
 		result = prime * result + ((itemServico == null) ? 0 : itemServico.hashCode());
 		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
 		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
+		result = prime * result + ((valorDesconto == null) ? 0 : valorDesconto.hashCode());
+		result = prime * result + ((valorTotal == null) ? 0 : valorTotal.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
@@ -194,11 +196,6 @@ public class OrdemDeServico implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OrdemDeServico other = (OrdemDeServico) obj;
-		if (atendente == null) {
-			if (other.atendente != null)
-				return false;
-		} else if (!atendente.equals(other.atendente))
-			return false;
 		if (cliente == null) {
 			if (other.cliente != null)
 				return false;
@@ -245,6 +242,16 @@ public class OrdemDeServico implements Serializable {
 			if (other.pagamento != null)
 				return false;
 		} else if (!pagamento.equals(other.pagamento))
+			return false;
+		if (valorDesconto == null) {
+			if (other.valorDesconto != null)
+				return false;
+		} else if (!valorDesconto.equals(other.valorDesconto))
+			return false;
+		if (valorTotal == null) {
+			if (other.valorTotal != null)
+				return false;
+		} else if (!valorTotal.equals(other.valorTotal))
 			return false;
 		if (veiculo == null) {
 			if (other.veiculo != null)
