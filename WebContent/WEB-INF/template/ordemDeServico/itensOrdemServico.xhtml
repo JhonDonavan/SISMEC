@@ -24,7 +24,7 @@
 				itemLabel="#{servico.nome}" itemValue="#{servico}"
 				forceSelection="true" converter="servicoConverter"
 				rendered="#{not item.servicoAssociado}">
-				<p:ajax event="itemSelect" update="tabelaItens"
+				<p:ajax event="itemSelect" update="tabelaItens cadastrarOrdemDeServico:valorTotalDaOS"
 					listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}" />
 			</p:autoComplete>
 		</p:column>

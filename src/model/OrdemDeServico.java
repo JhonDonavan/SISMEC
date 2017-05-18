@@ -260,13 +260,9 @@ public class OrdemDeServico implements Serializable {
 
 	public void adicionarItemVazio() {
 		Servico servico = new Servico();
-
 		ItemServico item = new ItemServico();
-
 		item.setServico(servico);
-
 		item.setOrdemDeServico(this);
-
 		this.getItemServico().add(0, item);
 	}
 
@@ -277,7 +273,9 @@ public class OrdemDeServico implements Serializable {
 		desconto = desconto.add(this.getValorDesconto());
 
 		for (ItemServico item : this.getItemServico()) {
+			
 			if (item.getServico() != null && item.getServico().getId() != null) {
+				System.out.println("entrou no if");
 				total = total.add(item.getValorTotal());
 			}
 		}

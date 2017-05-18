@@ -13,9 +13,6 @@
 	<ui:define name="conteudo">
 
 		<div id="form">
-
-
-
 			<p:panel header="Cadastrar O.S" style="text-align:left; width:99%;">
 				<h:form id="cadastrarOrdemDeServico">
 					<p:messages id="msgs" closable="true" />
@@ -74,8 +71,7 @@
 						<p:outputLabel value="Valor Total" />
 						<p:outputLabel id="valorTotalDaOS"
 							style="font-weigth: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.valorTotal}">
-							<f:convertNumber  type="currency"/>
+							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}">
 						</p:outputLabel>
 
 

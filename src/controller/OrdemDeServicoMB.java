@@ -97,6 +97,8 @@ public class OrdemDeServicoMB {
 			
 			this.ordemDeServico.adicionarItemVazio();
 			this.servicoLinhaEditavel = null;
+			
+			this.ordemDeServico.recalcularValorTotal();
 		}
 	}
 	
