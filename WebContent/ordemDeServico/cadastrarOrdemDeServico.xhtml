@@ -65,6 +65,16 @@
 						<p:inputText id="valorDesconto" size="10" maxlength="10">
 							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
 						</p:inputText>
+						
+						<p:spacer />
+						<p:spacer />
+
+						<p:outputLabel value="Valor Total" />
+						<p:outputLabel id="valorTotal"
+							style="font-weigth: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.valorTotal}">
+							<f:convertNumber  type="currency"/>
+						</p:outputLabel>
 
 
 					</h:panelGrid>

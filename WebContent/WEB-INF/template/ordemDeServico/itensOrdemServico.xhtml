@@ -13,12 +13,11 @@
 	<p:dataTable var="item" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
 		<p:column headerText="Código" style="text-align: center; width:80px">
-			<h:inputText size="8" />
+			<p:inputText size="8" />
 		</p:column>
 
 		<p:column headerText="Serviço" style="text-align: right; width:250px">
-			<h:outputText value="#{item.servico.nome}"
-				rendered="#{item.servicoAssociado}" />
+			<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}" />
 			<p:autoComplete styleClass="produto-tabela" size="65"
 				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
 				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
@@ -39,7 +38,7 @@
 
 		<p:column headerText="Quantidade"
 			style="text-align: right; width:50px">
-			<h:inputText size="8" value="1" />
+			<p:inputText size="8" value="1" />
 		</p:column>
 
 		<p:column headerText="estoque" style="text-align: right; width:80px">
