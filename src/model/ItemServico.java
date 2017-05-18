@@ -125,6 +125,6 @@ public class ItemServico implements Serializable{
 
 	@javax.persistence.Transient
 	public BigDecimal getValorTotal() {
-		return this.getValorUnitario().multiply(new BigDecimal(this.getQuantidade()));
+		return this.getServico().getValor();
 	}
 }

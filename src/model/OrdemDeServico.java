@@ -276,7 +276,9 @@ public class OrdemDeServico implements Serializable {
 			
 			if (item.getServico() != null && item.getServico().getId() != null) {
 				System.out.println("entrou no if");
+				System.out.println(item.getServico().getNome() + " ?? " + item.getServico().getValor());
 				total = total.add(item.getValorTotal());
+				System.out.println(total);
 			}
 		}
 		

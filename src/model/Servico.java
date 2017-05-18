@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Servico implements Serializable {
 
 	private Date prazo;
 
-	private double valor;
+	private BigDecimal valor;
 
 	private Integer quantidadeEstoque = 10;
 
@@ -63,14 +64,11 @@ public class Servico implements Serializable {
 		this.prazo = prazo;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
+	
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
@@ -79,49 +77,9 @@ public class Servico implements Serializable {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((peca == null) ? 0 : peca.hashCode());
-		result = prime * result + ((prazo == null) ? 0 : prazo.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(valor);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Servico other = (Servico) obj;
-		if (id != other.id)
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (peca == null) {
-			if (other.peca != null)
-				return false;
-		} else if (!peca.equals(other.peca))
-			return false;
-		if (prazo == null) {
-			if (other.prazo != null)
-				return false;
-		} else if (!prazo.equals(other.prazo))
-			return false;
-		if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
-			return false;
-		return true;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	@Override
