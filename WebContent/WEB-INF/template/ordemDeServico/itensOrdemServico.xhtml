@@ -16,7 +16,7 @@
 			<p:inputText size="8" />
 		</p:column>
 
-		<p:column headerText="Serviço" style="text-align: right; width:250px">
+		<p:column headerText="Serviço" style="text-align: center; width:250px">
 			<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}" />
 			<p:autoComplete styleClass="produto-tabela" size="65"
 				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
@@ -41,20 +41,26 @@
 			<p:inputText size="8" value="1" />
 		</p:column>
 
-		<p:column headerText="estoque" style="text-align: right; width:80px">
+		<p:column headerText="Estoque" style="text-align: right; width:80px">
 			<h:outputText value="#{item.servico.quantidadeEstoque}" />
 		</p:column>
 
-		<p:column headerText="Valor Total"
-			style="text-align: right; width:100px">
-			<h:outputText size="8" value="R$ 0,00" />
+		<p:column headerText="Valor Total" style="text-align: right; width:100px">
+			<h:outputText value="#{item.valorTotal}">
+				<f:convertNumber type="currency" />
+			</h:outputText>
 		</p:column>
 
 		<p:columnGroup type="footer">
 			<p:row>
-				<p:column colspan="5" footerText="Subtotal"
-					style="text-align: right" />
-				<p:column footerText="R$ 0,00" style="text-align: right" />
+				<p:column colspan="5" footerText="Subtotal" style="text-align: right"/>
+					<p:column style="text-align: right">
+					<f:facet name="footer">
+						<h:outputText value="#{ordemDeServicoMB.ordemDeServico.valorSubtotal}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</f:facet>
+					</p:column>
 			</p:row>
 		</p:columnGroup>
 	</p:dataTable>

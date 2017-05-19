@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "ordemDeServicosMB")
@@ -284,5 +285,10 @@ public class OrdemDeServico implements Serializable {
 		
 		System.out.println(total);
 		this.setValorTotal(total.subtract(desconto));
+	}
+	
+	@Transient
+	public BigDecimal getValorSubtotal(){
+		return this.getValorTotal();
 	}
 }
