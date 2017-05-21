@@ -68,7 +68,6 @@ public class Servico implements Serializable {
 		return valor;
 	}
 
-	
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
