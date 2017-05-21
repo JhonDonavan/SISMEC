@@ -58,8 +58,7 @@ public class OrdemDeServicoMB {
 	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
 	}
-
-
+	
 	public OrdemDeServicoMB() {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
 		ordemDeServico = new OrdemDeServico();
@@ -81,6 +80,18 @@ public class OrdemDeServicoMB {
 		if(this.ordemDeServico != null){
 			this.ordemDeServico.recalcularValorTotal();
 		}
+	}
+	
+	public void atualizarQuantidade(ItemServico item, int linha) {
+		if (item.getQuantidade() < 1) {
+			if (linha == 0) {
+				item.setQuantidade(1);
+			} else {
+				this.getOrdemDeServico().getItemServico().remove(linha);
+			}
+		}
+		
+		this.ordemDeServico.recalcularValorTotal();
 	}
 	
 	public void carregarServicoLinhaEditavel(){
