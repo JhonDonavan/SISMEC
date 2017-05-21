@@ -287,6 +287,14 @@ public class OrdemDeServico implements Serializable {
 		this.setValorTotal(total.subtract(desconto));
 	}
 	
+	public void removerItemVazio(){
+		ItemServico primeiroItem = this.getItemServico().get(0);
+		
+		if(primeiroItem != null && primeiroItem.getServico().getId() == null){
+			this.getItemServico().remove(0);
+		}
+	}
+	
 	@Transient
 	public BigDecimal getValorSubtotal(){
 		return this.getValorTotal();

@@ -76,7 +76,6 @@ public class OrdemDeServicoMB {
 		}
 	}
 
-	
 	public void recalculaOrdemDeServico(){
 		System.out.println("ENTROU NO METODO RECALCULAR ORDEM DE SERVICO");
 		if(this.ordemDeServico != null){
@@ -104,11 +103,12 @@ public class OrdemDeServicoMB {
 	}
 	
 	public String salvar() {
+		this.ordemDeServico.removerItemVazio();
 		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
 		ordemDeServico = new OrdemDeServico();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("OrdemDeServico cadastrado com sucesso!"));
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
-		return "/listarOrdemDeServicos.xhtml?faces-redirect=true";
+		return "listarOrdemDeServicos.xhtml?faces-redirect=true";
 	}
 
 	public String editar(OrdemDeServico ordemDeServico) {
