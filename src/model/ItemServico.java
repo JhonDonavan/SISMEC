@@ -26,6 +26,9 @@ public class ItemServico implements Serializable{
 	private long id;
 	private Integer quantidade = 1;
 	private BigDecimal valorUnitario = BigDecimal.ZERO;
+	
+	@ManyToOne
+	@JoinColumn(name = "servico_id")
 	private Servico servico;
 	
 	@ManyToOne
@@ -54,8 +57,6 @@ public class ItemServico implements Serializable{
 		this.valorUnitario = valorUnitario;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "servico_id", nullable = false)
 	public Servico getServico() {
 		return servico;
 	}
@@ -125,6 +126,6 @@ public class ItemServico implements Serializable{
 
 	@javax.persistence.Transient
 	public BigDecimal getValorTotal() {
-		return this.getServico().getValor();
+		return this.getValorUnitario().multiply(new BigDecimal(this.getQuantidade()));
 	}
 }

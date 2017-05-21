@@ -92,6 +92,7 @@ public class OrdemDeServicoMB {
 		if(this.servicoLinhaEditavel != null){
 			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
 			item.setServico(this.servicoLinhaEditavel);
+			item.setValorUnitario(this.servicoLinhaEditavel.getValor());
 			
 			System.out.println(item.getServico().getNome());
 			
@@ -192,31 +193,19 @@ public class OrdemDeServicoMB {
 		this.formaPagamento = formaPagamento;
 	}
 
-
-	
-
 	public List<Servico> getItens() {
 		return itens;
 	}
-
 
 	public void setItens(List<Servico> itens) {
 		this.itens = itens;
 	}
 
-
 	public Servico getServicoLinhaEditavel() {
 		return servicoLinhaEditavel;
 	}
 
-
 	public void setServicoLinhaEditavel(Servico servicoLinhaEditavel) {
 		this.servicoLinhaEditavel = servicoLinhaEditavel;
 	}
-
-
-	
-	
-	
-
 }
