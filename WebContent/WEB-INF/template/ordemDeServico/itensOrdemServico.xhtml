@@ -10,7 +10,7 @@
 }
 </style>
 
-	<p:dataTable var="item" id="tabelaItens"
+	<p:dataTable var="item" rowIndexVar="linha" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
 		<p:column headerText="Código" style="text-align: center; width:80px">
 			<p:inputText size="8" />
@@ -38,7 +38,11 @@
 
 		<p:column headerText="Quantidade"
 			style="text-align: right; width:50px">
-			<h:inputText size="6" value="#{item.quantidade}" />
+			<h:inputText size="6" value="#{item.quantidade}">
+				<p:ajax event="change" process="@this"
+					update="tabelaItens cadastrarOrdemDeServico:valorTotalDaOS"
+					listener="#{ordemDeServicoMB.atualizarQuantidade(item, linha)}" />
+			</h:inputText>
 		</p:column>
 
 		<p:column headerText="Estoque" style="text-align: right; width:80px">
