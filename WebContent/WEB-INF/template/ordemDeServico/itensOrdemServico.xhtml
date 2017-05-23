@@ -49,9 +49,9 @@
 			<h:outputText value="#{item.servico.quantidadeEstoque}" />
 		</p:column>
 
-		<p:column headerText="Valor Total"
+		<p:column headerText="Valor Total" styleClass="negrito"
 			style="text-align: right; width:100px">
-			<h:outputText size="8" value="#{item.valorTotal}">
+			<h:outputText size="8" value="#{item.valorTotal}" styleClass="negrito">
 				<f:convertNumber type="currency" />
 			</h:outputText>
 		</p:column>
