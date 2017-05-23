@@ -1,0 +1,28 @@
+
+ /* abrange todo o body do sistema */
+body {
+	background-color: #eeeeef;
+	font-size: 12px
+}
+
+ /*codico abaixo evita que o sub-menu fique escondido atrás do parte principal do sistema*/
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+ /*codico acima evita que o sub-menu fique escondido atras do parte principal do sistema*/
+
+ /* Menu Header */
+.menubar-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: none !important;
+}
+
+ /* alinha label de dataTable para esquerda */
+.outputLabel {
+	float: right;
+}
