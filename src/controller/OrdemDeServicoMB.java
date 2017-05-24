@@ -11,7 +11,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
@@ -20,12 +19,12 @@ import model.ItemServico;
 import model.Mecanico;
 import model.OrdemDeServico;
 import model.Servico;
+import model.StatusOrcamento;
 import model.Veiculo;
 import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 import modelDAO.MecanicoDAO;
 import modelDAO.OrdemDeServicoDAO;
-import modelDAO.ServicoDAO;
 import modelDAO.VeiculoDAO;
 import util.jsf.FacesUtil;
 
@@ -49,6 +48,7 @@ public class OrdemDeServicoMB {
 	private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 	private String mensagemCadastroSucesso = "OrdemDeServico cadastrado com sucesso";
 	private List<FormaPagamento> formaPagamento;
+	private List<StatusOrcamento> status;
 
 	private List<Servico> itens = new ArrayList<>();
 
@@ -202,6 +202,14 @@ public class OrdemDeServicoMB {
 
 	public void setFormaPagamento(ArrayList<FormaPagamento> formaPagamento) {
 		this.formaPagamento = formaPagamento;
+	}
+
+	public List<StatusOrcamento> getStatus() {
+		return status;
+	}
+
+	public void setStatus(List<StatusOrcamento> status) {
+		this.status = status;
 	}
 
 	public List<Servico> getItens() {

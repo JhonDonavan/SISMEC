@@ -59,12 +59,22 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Valor de desconto " for="valorDesconto" />
-						<p:inputText id="valorDesconto" size="10" maxlength="10"
+						<p:inputNumber id="valorDesconto" size="10" maxlength="10"
+							required="true" requiredMessage="O valor de desconto não pode ficar vazio. Adicione 0 caso cliente não tenha desconto"
 							value="#{ordemDeServicoMB.ordemDeServico.valorDesconto}">
 							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
 							<p:ajax event="change" process="@this" update="valorTotalDaOS"
 								listener="#{ordemDeServicoMB.recalculaOrdemDeServico}" />
-						</p:inputText>
+						</p:inputNumber>
+
+						<p:outputLabel value="Status" id="statusId" for="Status" />
+						<p:selectOneMenu id="Status" required="true"
+							requiredMessage="Informe o status da ordem de serviço"
+							value="#{ordemDeServicoMB.ordemDeServico.status}">
+							<f:selectItem itemLabel="" itemValue="" />
+							<f:selectItem itemLabel="ORÇAMENTO" itemValue="ORCAMENTO" />
+							<f:selectItem itemLabel="EMITIR" itemValue="EMITIDO" />
+						</p:selectOneMenu>
 
 						<p:spacer />
 						<p:spacer />

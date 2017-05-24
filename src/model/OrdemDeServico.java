@@ -58,6 +58,8 @@ public class OrdemDeServico implements Serializable {
 	private Date dataPrevisto;
 
 	private Date dataConclusao;
+	
+	private StatusOrcamento status;
 
 	private FormaPagamento formaPagamento;
 
@@ -137,6 +139,14 @@ public class OrdemDeServico implements Serializable {
 		return dataConclusao;
 	}
 
+	public StatusOrcamento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusOrcamento status) {
+		this.status = status;
+	}
+
 	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
@@ -179,6 +189,7 @@ public class OrdemDeServico implements Serializable {
 		result = prime * result + ((itemServico == null) ? 0 : itemServico.hashCode());
 		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
 		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((valorDesconto == null) ? 0 : valorDesconto.hashCode());
 		result = prime * result + ((valorTotal == null) ? 0 : valorTotal.hashCode());
 		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
@@ -241,6 +252,8 @@ public class OrdemDeServico implements Serializable {
 				return false;
 		} else if (!pagamento.equals(other.pagamento))
 			return false;
+		if (status != other.status)
+			return false;
 		if (valorDesconto == null) {
 			if (other.valorDesconto != null)
 				return false;
@@ -298,13 +311,12 @@ public class OrdemDeServico implements Serializable {
 	@Transient
 	public BigDecimal getValorSubtotal() {
 		BigDecimal subTotal = BigDecimal.ZERO;
+		
 		for (ItemServico item : this.getItemServico()) {
 
 			if (item.getServico() != null && item.getServico().getId() != null) {
-				System.out.println("entrou no if");
-				System.out.println(item.getServico().getNome() + " ?? " + item.getServico().getValor());
+	
 				subTotal = subTotal.add(item.getValorTotal());
-				System.out.println(subTotal);
 			}
 		}
 		return subTotal;
