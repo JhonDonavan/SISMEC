@@ -58,10 +58,10 @@
 
 		<p:columnGroup type="footer">
 			<p:row>
-				<p:column colspan="5" footerText="Subtotal" style="text-align: right"/>
+				<p:column colspan="5" footerText="Subtotal" style="text-align: right; font-weight: bold; font-size:1.1em"/>
 					<p:column style="text-align: right">
 					<f:facet name="footer">
-						<h:outputText value="#{ordemDeServicoMB.ordemDeServico.valorSubtotal}">
+						<h:outputText value="#{ordemDeServicoMB.ordemDeServico.valorSubtotal}" style="font-weight: bold; font-size:1.1em">
 							<f:convertNumber type="currency" />
 						</h:outputText>
 					</f:facet>

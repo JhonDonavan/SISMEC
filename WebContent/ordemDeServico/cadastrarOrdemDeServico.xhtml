@@ -59,20 +59,22 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Valor de desconto " for="valorDesconto" />
-						<p:inputText id="valorDesconto" size="10" maxlength="10" value="#{ordemDeServicoMB.ordemDeServico.valorDesconto}">
+						<p:inputText id="valorDesconto" size="10" maxlength="10"
+							value="#{ordemDeServicoMB.ordemDeServico.valorDesconto}">
 							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
 							<p:ajax event="change" process="@this" update="valorTotalDaOS"
-							listener="#{ordemDeServicoMB.recalculaOrdemDeServico}"/>
+								listener="#{ordemDeServicoMB.recalculaOrdemDeServico}" />
 						</p:inputText>
-						
+
 						<p:spacer />
 						<p:spacer />
 
-						<p:outputLabel value="Valor Total" />
+						<p:outputLabel value="Valor Total"
+							style="font-weight: bold; font-size:1.1em" />
 						<p:outputLabel id="valorTotalDaOS"
-							style="font-weigth: bold; font-size:1.1em"
-							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}">
-						</p:outputLabel>
+							style="font-weight: bold; font-size:1.1em"
+							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}" />
+
 
 
 					</h:panelGrid>

@@ -274,7 +274,7 @@ public class OrdemDeServico implements Serializable {
 		desconto = desconto.add(this.getValorDesconto());
 
 		for (ItemServico item : this.getItemServico()) {
-			
+
 			if (item.getServico() != null && item.getServico().getId() != null) {
 				System.out.println("entrou no if");
 				System.out.println(item.getServico().getNome() + " ?? " + item.getServico().getValor());
@@ -282,21 +282,31 @@ public class OrdemDeServico implements Serializable {
 				System.out.println(total);
 			}
 		}
-		
+
 		System.out.println(total);
 		this.setValorTotal(total.subtract(desconto));
 	}
-	
-	public void removerItemVazio(){
+
+	public void removerItemVazio() {
 		ItemServico primeiroItem = this.getItemServico().get(0);
-		
-		if(primeiroItem != null && primeiroItem.getServico().getId() == null){
+
+		if (primeiroItem != null && primeiroItem.getServico().getId() == null) {
 			this.getItemServico().remove(0);
 		}
 	}
-	
+
 	@Transient
-	public BigDecimal getValorSubtotal(){
-		return this.getValorTotal();
+	public BigDecimal getValorSubtotal() {
+		BigDecimal subTotal = BigDecimal.ZERO;
+		for (ItemServico item : this.getItemServico()) {
+
+			if (item.getServico() != null && item.getServico().getId() != null) {
+				System.out.println("entrou no if");
+				System.out.println(item.getServico().getNome() + " ?? " + item.getServico().getValor());
+				subTotal = subTotal.add(item.getValorTotal());
+				System.out.println(subTotal);
+			}
+		}
+		return subTotal;
 	}
 }
