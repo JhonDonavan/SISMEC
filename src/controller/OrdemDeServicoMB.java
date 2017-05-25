@@ -53,35 +53,42 @@ public class OrdemDeServicoMB {
 	private List<Servico> itens = new ArrayList<>();
 
 	private Servico servicoLinhaEditavel;
-	
+
 	@PostConstruct
 	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
 	}
-	
+
+	public boolean exbirBotaoCancelarOS() {
+		if (status.equals("EMITIDO") && status.equals("ORCAMENTO"))
+			return true;
+		else
+			return false;
+	}
+
 	public OrdemDeServicoMB() {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
 		ordemDeServico = new OrdemDeServico();
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
-	
+
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {
 			this.ordemDeServico.adicionarItemVazio();
-			
-			if(this.ordemDeServico != null){
+
+			if (this.ordemDeServico != null) {
 				this.recalculaOrdemDeServico();
 			}
 		}
 	}
 
-	public void recalculaOrdemDeServico(){
+	public void recalculaOrdemDeServico() {
 		System.out.println("ENTROU NO METODO RECALCULAR ORDEM DE SERVICO");
-		if(this.ordemDeServico != null){
+		if (this.ordemDeServico != null) {
 			this.ordemDeServico.recalcularValorTotal();
 		}
 	}
-	
+
 	public void atualizarQuantidade(ItemServico item, int linha) {
 		if (item.getQuantidade() < 1) {
 			if (linha == 0) {
@@ -90,29 +97,29 @@ public class OrdemDeServicoMB {
 				this.getOrdemDeServico().getItemServico().remove(linha);
 			}
 		}
-		
+
 		this.ordemDeServico.recalcularValorTotal();
 	}
-	
-	public void carregarServicoLinhaEditavel(){
+
+	public void carregarServicoLinhaEditavel() {
 		System.out.println("Entrou no método carregarLinhaDigitavel");
-		
+
 		ItemServico item = this.ordemDeServico.getItemServico().get(0);
-		
-		if(this.servicoLinhaEditavel != null){
+
+		if (this.servicoLinhaEditavel != null) {
 			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
 			item.setServico(this.servicoLinhaEditavel);
 			item.setValorUnitario(this.servicoLinhaEditavel.getValor());
-			
+
 			System.out.println(item.getServico().getNome());
-			
+
 			this.ordemDeServico.adicionarItemVazio();
 			this.servicoLinhaEditavel = null;
-			
+
 			this.ordemDeServico.recalcularValorTotal();
 		}
 	}
-	
+
 	public String salvar() {
 		this.ordemDeServico.removerItemVazio();
 		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
@@ -141,9 +148,8 @@ public class OrdemDeServicoMB {
 		this.ordemDeServico = new OrdemDeServico();
 		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
-	
-	
-	public List<Servico> completarServico(String nome){
+
+	public List<Servico> completarServico(String nome) {
 		return this.ordemDeServicoDAO.buscaServicoByNome(nome);
 	}
 

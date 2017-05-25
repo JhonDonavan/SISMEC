@@ -67,20 +67,44 @@
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Identificador">
+					<p:column headerText="Identificador" width="100">
 						<h:outputText value="#{OS.id}" />
 					</p:column>
 
-					<p:column headerText="Cliente">
+					<p:column headerText="Cliente" >
 						<h:outputText value="#{OS.cliente.nome}" />
 					</p:column>
 
-					<p:column headerText="Placa do veiculo">
+					<p:column headerText="Placa do veiculo" width="10%"> 
 						<h:outputText value="#{OS.veiculo.placa}" />
 					</p:column>
 
-					<p:column headerText="Forma de pagamento">
+					<p:column headerText="Forma de pagamento" width="160">
 						<h:outputText value="#{OS.formaPagamento}" />
+					</p:column>
+					
+					<p:column headerText="Status" width="160">
+						<h:outputText value="#{OS.status}" />
+					</p:column>
+
+					<p:column style="text-align:center;" exportable="false" width="15%">
+						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+							action="#{pecasMB.detalhePeca(peca)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-pencil" title="Editar"
+							action="#{pecasMB.editar(peca)}">
+						</p:commandButton>
+
+						<p:spacer width="5" />
+
+						<p:commandButton icon="ui-icon-circle-close" title="Cancelar" rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
+							oncomplete="PF('excluirPeca').show()"
+							actionListener="#{Peca.prepararExclusao(peca)}">
+						</p:commandButton>
 					</p:column>
 
 				</p:dataTable>
@@ -124,12 +148,7 @@
 						value="Quantidade de orcamentos: #{Orcamento.orcamento.valorOrcado}" />
 				</p:dialog>
 			</h:form>
-
-
-
-
 		</p:panel>
-
 	</ui:define>
 </ui:decorate>
 
