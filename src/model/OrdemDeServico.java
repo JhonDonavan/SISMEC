@@ -66,6 +66,8 @@ public class OrdemDeServico implements Serializable {
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 
 	private BigDecimal valorDesconto = BigDecimal.ZERO;
+	
+	private String descricao;
 
 	public Integer getId() {
 		return id;
@@ -173,6 +175,14 @@ public class OrdemDeServico implements Serializable {
 
 	public void setValorDesconto(BigDecimal valorDesconto) {
 		this.valorDesconto = valorDesconto;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override

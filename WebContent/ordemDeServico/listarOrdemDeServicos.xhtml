@@ -11,8 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaOrdemDeServico" 
-						style="margin-right: 1600px;"
+						id="novaOrdemDeServico" style="margin-right: 1600px;"
 						action="#{ordemDeServicoMB.limparOrdemDeServico()}" />
 
 					<div class="ui-fluid"
@@ -31,14 +30,43 @@
 					</div>
 				</div>
 
+				<p:panelGrid columns="2" id="painel"
+					style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
+					<p:outputLabel value="Número" />
+					<h:panelGroup>
+						<p:inputText size="10" />
+	    			a
+	    			<p:inputText size="10" />
+					</h:panelGroup>
+					<p:outputLabel value="Data de criação" />
+					<h:panelGroup>
+						<p:calendar size="10" pattern="dd/MM/yyyy" />
+	    			a
+	    			<p:calendar size="10" pattern="dd/MM/yyyy" />
+					</h:panelGroup>
+
+					<p:outputLabel value="Mecanico" />
+					<p:inputText size="40" />
+
+					<p:outputLabel value="Cliente" />
+					<p:inputText size="40" />
+					<p:outputLabel value="Status" />
+					<p:selectManyCheckbox>
+						<f:selectItem itemLabel="Orçamento" />
+						<f:selectItem itemLabel="Emitido" />
+						<f:selectItem itemLabel="Cancelado" />
+						<f:selectItem itemLabel="Concluido" />
+					</p:selectManyCheckbox>
+
+				</p:panelGrid>
 
 				<p:growl />
 				<p:dataTable id="OrdemDeServicosLista" var="OS"
-					value="#{ordemDeServicoMB.ordemDeServicos}" paginator="true" rows="15"
-					rowsPerPageTemplate="5,10,15,20,25,50"
+					value="#{ordemDeServicoMB.ordemDeServicos}" paginator="true"
+					rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
-					
+
 					<p:column headerText="Identificador">
 						<h:outputText value="#{OS.id}" />
 					</p:column>
@@ -50,19 +78,19 @@
 					<p:column headerText="Placa do veiculo">
 						<h:outputText value="#{OS.veiculo.placa}" />
 					</p:column>
-					
+
 					<p:column headerText="Forma de pagamento">
 						<h:outputText value="#{OS.formaPagamento}" />
 					</p:column>
-					
+
 				</p:dataTable>
 
 
 				<!-- Modal para confirmação de exclusão -->
 
 				<p:confirmDialog widgetVar="excluirOrcamento"
-					message="deseja realmente excluir a orcamento?"
-					appendTo="@(body)" header="Excluir Orcamento">
+					message="deseja realmente excluir a orcamento?" appendTo="@(body)"
+					header="Excluir Orcamento">
 					<div style="text-align: center;">
 						<p:commandButton value="Sim" action="#{Orcamento.excluir()}"
 							update="@form" process="@this"
