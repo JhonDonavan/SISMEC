@@ -71,20 +71,26 @@
 						<h:outputText value="#{OS.id}" />
 					</p:column>
 
-					<p:column headerText="Cliente" >
+					<p:column headerText="Cliente">
 						<h:outputText value="#{OS.cliente.nome}" />
 					</p:column>
 
-					<p:column headerText="Placa do veiculo" width="10%"> 
+					<p:column headerText="Placa do veiculo" width="10%">
 						<h:outputText value="#{OS.veiculo.placa}" />
 					</p:column>
 
 					<p:column headerText="Forma de pagamento" width="160">
 						<h:outputText value="#{OS.formaPagamento}" />
 					</p:column>
-					
-					<p:column headerText="Status" width="160">
+
+					<p:column headerText="Status" width="100">
 						<h:outputText value="#{OS.status}" />
+					</p:column>
+
+					<p:column headerText="Valor total" width="100">
+						<h:outputText value="#{OS.valorTotal}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
 					</p:column>
 
 					<p:column style="text-align:center;" exportable="false" width="15%">
@@ -101,7 +107,8 @@
 
 						<p:spacer width="5" />
 
-						<p:commandButton icon="ui-icon-circle-close" title="Cancelar" rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
+						<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
+							rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
 							oncomplete="PF('excluirPeca').show()"
 							actionListener="#{Peca.prepararExclusao(peca)}">
 						</p:commandButton>
