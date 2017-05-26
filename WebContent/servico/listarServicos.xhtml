@@ -43,12 +43,14 @@
 						<h:outputText value="#{servico.nome}" />
 					</p:column>
 
-					<p:column headerText="Prazo do Serviço" sortBy="#{servico.prazo}">
+					<p:column headerText="Prazo do Serviço" sortBy="#{servico.prazo}" width="200">
 						<h:outputText value="#{servico.prazo}" />
 					</p:column>
 
-					<p:column headerText="Valor do Serviço" sortBy="#{servico.valor}">
-						<h:outputText value="#{servico.valor}" />
+					<p:column headerText="Valor do Serviço" sortBy="#{servico.valor}" width="100">
+						<h:outputText value="#{servico.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
 					</p:column>
 
 

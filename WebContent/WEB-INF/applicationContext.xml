@@ -52,8 +52,8 @@
 		<intercept-url pattern="/orcamento/cadastrarOrcamentos.xhtml" access="hasAnyRole('MECANICOS', 'GERENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/pagamento/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/peca/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasRole('MECANICOS')"/>
+		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 	
 		<!-- TRATAR PERMISÃO DAS TELAS DE ORDEM DE SERVIÇO. -->
 		<intercept-url pattern="/ordemDeServico/**" access="isAuthenticated()"/> 

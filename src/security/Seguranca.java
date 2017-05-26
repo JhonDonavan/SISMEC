@@ -25,7 +25,7 @@ public class Seguranca {
 
 	public String getAutorizacao() {
 		String autorizacao = null;
-		
+
 		List<Autorizacao> autorizacaoes = null;
 
 		UsuarioSistema usuariologado = getUsuarioLogado();
@@ -37,7 +37,6 @@ public class Seguranca {
 			autorizacao = user.getNome();
 		}
 		return autorizacao;
-
 	}
 
 	private UsuarioSistema getUsuarioLogado() {
