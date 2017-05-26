@@ -11,8 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaMontadora"
-						style="margin-right: 1600px;"
+						id="novaMontadora" style="margin-right: 1600px;"
 						action="#{Montadora.limparMontadora()}" />
 
 					<div class="ui-fluid"
@@ -32,7 +31,7 @@
 				</div>
 
 
-				<p:growl autoUpdate="true"/>
+				<p:growl autoUpdate="true" />
 				<p:dataTable id="MontadorasLista" var="montadora"
 					value="#{Montadora.montadoras}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
@@ -68,6 +67,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirMontadora').show()"
 							actionListener="#{Montadora.prepararExclusao(montadora)}">
 						</p:commandButton>

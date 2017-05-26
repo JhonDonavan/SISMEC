@@ -10,8 +10,7 @@
 		<p:panel header="Servicos cadastrados">
 			<h:form>
 				<div>
-					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaServico" 
+					<p:commandButton value="Novo" icon="ui-icon-plus" id="novaServico"
 						style="margin-right: 1600px;"
 						action="#{servicoMB.limparServico()}" />
 
@@ -68,6 +67,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirServico').show()"
 							actionListener="#{Servico.prepararExclusao(servico)}">
 						</p:commandButton>
@@ -101,16 +101,13 @@
 					width="650" showEffect="fade" hideEffect="none">
 					<h2>Servico:</h2>
 					<p:separator />
-					<h:outputText
-						value="Nome do serviço: #{Servico.servico.nome}" />
+					<h:outputText value="Nome do serviço: #{Servico.servico.nome}" />
 					<br />
 					<br />
-					<h:outputText
-						value="Prazo do Serviço: #{Servico.servico.prazo}" />
+					<h:outputText value="Prazo do Serviço: #{Servico.servico.prazo}" />
 					<br />
 					<br />
-					<h:outputText
-						value="Valor do Serviço: #{Servico.servico.valor}" />
+					<h:outputText value="Valor do Serviço: #{Servico.servico.valor}" />
 				</p:dialog>
 			</h:form>
 

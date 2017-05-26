@@ -80,6 +80,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							actionListener="#{mecanicoMB.prepararExclusao(mecanicos)}"
 							oncomplete="PF('excluirMecanico').show()">
 						</p:commandButton>

@@ -11,8 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novoModeloDeVeiculo"
-						style="margin-right: 1600px;"
+						id="novoModeloDeVeiculo" style="margin-right: 1600px;"
 						action="#{ModeloVeiculoController.limparModeloVeiculo()}" />
 
 					<div class="ui-fluid"
@@ -32,7 +31,7 @@
 				</div>
 
 				<p:growl />
-				<p:messages/>
+				<p:messages />
 				<p:dataTable id="modeloVeiculosLista" var="modelos"
 					value="#{ModeloVeiculoController.modeloVeiculos}" paginator="true"
 					rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
@@ -77,6 +76,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirModeloVeiculo').show()"
 							actionListener="#{ModeloVeiculoController.prepararExclusao(modelos)}">
 						</p:commandButton>
@@ -138,7 +138,7 @@
 					<h:outputText
 						value="Segundo combustível: #{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
 				</p:fieldset>
-				
+
 				<p:separator />
 
 				<p:fieldset legend="Montadora do modelo" toggleable="true"

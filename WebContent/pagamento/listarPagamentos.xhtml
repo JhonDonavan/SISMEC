@@ -11,8 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaPagamento" 
-						style="margin-right: 1600px;"
+						id="novaPagamento" style="margin-right: 1600px;"
 						action="#{pagamentoMB.limparPagamento()}" />
 
 					<div class="ui-fluid"
@@ -39,16 +38,19 @@
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Observação" sortBy="#{pagamento.formaPagamento}}"
+					<p:column headerText="Observação"
+						sortBy="#{pagamento.formaPagamento}}"
 						filterBy="#{pagamento.formaPagamento}}" filterMatchMode="contains">
 						<h:outputText value="#{pagamento.formaPagamento}" />
 					</p:column>
 
-					<p:column headerText="Data do Orçamento" sortBy="#{pagamento.dataPagamento}">
+					<p:column headerText="Data do Orçamento"
+						sortBy="#{pagamento.dataPagamento}">
 						<h:outputText value="#{pagamento.dataPagamento}" />
 					</p:column>
 
-					<p:column headerText="Valor Orçado" sortBy="#{pagamento.valorTotal}">
+					<p:column headerText="Valor Orçado"
+						sortBy="#{pagamento.valorTotal}">
 						<h:outputText value="#{pagamento.valorTotal}" />
 					</p:column>
 
@@ -68,6 +70,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirPagamento').show()"
 							actionListener="#{Pagamento.prepararExclusao(pagamento)}">
 						</p:commandButton>
@@ -78,8 +81,8 @@
 				<!-- Modal para confirmação de exclusão -->
 
 				<p:confirmDialog widgetVar="excluirPagamento"
-					message="deseja realmente excluir o pagamento?"
-					appendTo="@(body)" header="Excluir Pagamento">
+					message="deseja realmente excluir o pagamento?" appendTo="@(body)"
+					header="Excluir Pagamento">
 					<div style="text-align: center;">
 						<p:commandButton value="Sim" action="#{Pagamento.excluir()}"
 							update="@form" process="@this"

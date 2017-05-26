@@ -11,7 +11,7 @@
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novoFornecedor"	style="margin-right: 1600px;"
+						id="novoFornecedor" style="margin-right: 1600px;"
 						action="#{fornecedorMB.limparFornecedor()}" />
 
 					<div class="ui-fluid"
@@ -38,19 +38,22 @@
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome do Fornecedor" sortBy="#{fornecedor.nome}}"
-						filterBy="#{fornecedor.nome}}" filterMatchMode="contains">
+					<p:column headerText="Nome do Fornecedor"
+						sortBy="#{fornecedor.nome}}" filterBy="#{fornecedor.nome}}"
+						filterMatchMode="contains">
 						<h:outputText value="#{fornecedor.nome}" />
 					</p:column>
 
-					<p:column headerText="Telefone" sortBy="#{fornecedor.telfornecedor}">
+					<p:column headerText="Telefone"
+						sortBy="#{fornecedor.telfornecedor}">
 						<h:outputText value="#{fornecedor.telfornecedor}" />
 					</p:column>
 
-					<p:column headerText="Email do Fornecedor" sortBy="#{fornecedor.email}">
+					<p:column headerText="Email do Fornecedor"
+						sortBy="#{fornecedor.email}">
 						<h:outputText value="#{fornecedor.email}" />
 					</p:column>
-					
+
 					<p:column headerText="CNPJ" sortBy="#{fornecedor.cnpj}">
 						<h:outputText value="#{fornecedor.cnpj}" />
 					</p:column>
@@ -70,6 +73,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirFornecedor').show()"
 							actionListener="#{Fornecedor.prepararExclusao(fornecedor)}">
 						</p:commandButton>
