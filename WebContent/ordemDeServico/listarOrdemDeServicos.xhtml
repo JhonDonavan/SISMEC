@@ -6,6 +6,37 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
+		<p:panel id="basic" header="Pesquisa Personalizada">
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
+				<p:outputLabel value="Número" />
+				<h:panelGroup>
+					<p:inputText size="10" />
+	    			a
+	    			<p:inputText size="10" />
+				</h:panelGroup>
+				<p:outputLabel value="Data de criação" />
+				<h:panelGroup>
+					<p:calendar size="10" pattern="dd/MM/yyyy" />
+	    			a
+	    			<p:calendar size="10" pattern="dd/MM/yyyy" />
+				</h:panelGroup>
+
+				<p:outputLabel value="Mecanico" />
+				<p:inputText size="40" />
+
+				<p:outputLabel value="Cliente" />
+				<p:inputText size="40" />
+				<p:outputLabel value="Status" />
+				<p:selectManyCheckbox>
+					<f:selectItem itemLabel="Orçamento" />
+					<f:selectItem itemLabel="Emitido" />
+					<f:selectItem itemLabel="Cancelado" />
+					<f:selectItem itemLabel="Concluido" />
+				</p:selectManyCheckbox>
+
+			</p:panelGrid>
+		</p:panel>
 
 		<p:panel header="Ordens de serviços emitidos">
 			<h:form>
@@ -29,36 +60,6 @@
 						</h:commandLink>
 					</div>
 				</div>
-
-				<p:panelGrid columns="2" id="painel"
-					style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
-					<p:outputLabel value="Número" />
-					<h:panelGroup>
-						<p:inputText size="10" />
-	    			a
-	    			<p:inputText size="10" />
-					</h:panelGroup>
-					<p:outputLabel value="Data de criação" />
-					<h:panelGroup>
-						<p:calendar size="10" pattern="dd/MM/yyyy" />
-	    			a
-	    			<p:calendar size="10" pattern="dd/MM/yyyy" />
-					</h:panelGroup>
-
-					<p:outputLabel value="Mecanico" />
-					<p:inputText size="40" />
-
-					<p:outputLabel value="Cliente" />
-					<p:inputText size="40" />
-					<p:outputLabel value="Status" />
-					<p:selectManyCheckbox>
-						<f:selectItem itemLabel="Orçamento" />
-						<f:selectItem itemLabel="Emitido" />
-						<f:selectItem itemLabel="Cancelado" />
-						<f:selectItem itemLabel="Concluido" />
-					</p:selectManyCheckbox>
-
-				</p:panelGrid>
 
 				<p:growl />
 				<p:dataTable id="OrdemDeServicosLista" var="OS"
