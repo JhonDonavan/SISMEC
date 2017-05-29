@@ -83,7 +83,6 @@ public class OrdemDeServicoMB {
 	}
 
 	public void recalculaOrdemDeServico() {
-		System.out.println("ENTROU NO METODO RECALCULAR ORDEM DE SERVICO");
 		if (this.ordemDeServico != null) {
 			this.ordemDeServico.recalcularValorTotal();
 		}
@@ -102,22 +101,34 @@ public class OrdemDeServicoMB {
 	}
 
 	public void carregarServicoLinhaEditavel() {
-		System.out.println("Entrou no método carregarLinhaDigitavel");
-
 		ItemServico item = this.ordemDeServico.getItemServico().get(0);
 
 		if (this.servicoLinhaEditavel != null) {
-			System.out.println("entrou no IF dentro do carregarServicoLinhaEditavel");
-			item.setServico(this.servicoLinhaEditavel);
-			item.setValorUnitario(this.servicoLinhaEditavel.getValor());
+			if (this.existeItemComServico(this.servicoLinhaEditavel)){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso!", "Já existe um serviço igual neste item."));
+			} else {
+				item.setServico(this.servicoLinhaEditavel);
+				item.setValorUnitario(this.servicoLinhaEditavel.getValor());
 
-			System.out.println(item.getServico().getNome());
+				this.ordemDeServico.adicionarItemVazio();
+				this.servicoLinhaEditavel = null;
 
-			this.ordemDeServico.adicionarItemVazio();
-			this.servicoLinhaEditavel = null;
-
-			this.ordemDeServico.recalcularValorTotal();
+				this.ordemDeServico.recalcularValorTotal();
+			}
 		}
+	}
+	
+	private boolean existeItemComServico(Servico servico) {
+		boolean existeItem = false;
+		
+		for(ItemServico item : this.getOrdemDeServico().getItemServico()){
+			
+			if(servico.getId() == item.getServico().getId()){
+				existeItem = true;
+				break;
+			}
+		}
+		return existeItem;
 	}
 
 	public String salvar() {
