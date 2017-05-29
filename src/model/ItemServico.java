@@ -119,6 +119,12 @@ public class ItemServico implements Serializable{
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "ItemServico [id=" + id + ", quantidade=" + quantidade + ", valorUnitario=" + valorUnitario
+				+ ", servico=" + servico + ", ordemDeServico=" + ordemDeServico + "]";
+	}
+
 	@javax.persistence.Transient
 	public boolean isServicoAssociado(){
 		return this.getServico() != null && this.getServico().getId() != null;
