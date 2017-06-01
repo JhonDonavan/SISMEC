@@ -3,28 +3,31 @@ package repository;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.EntityManager;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Order;
 
 import filter.OrdemDeServicoFilter;
+import model.OrdemDeServico;
 import modelDAO.JPAUtil;
 
-public class OrdemDeServico implements Serializable{
+public class OrdemDeServicos implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	
-	EntityManager manager = JPAUtil.getEntityManager();
+	@Autowired
+	private EntityManager em = JPAUtil.getEntityManager();
 
 	@SuppressWarnings("unchecked")
 	public List<OrdemDeServico> filtrados(OrdemDeServicoFilter filtro) {
-		Session session = this.manager.unwrap(Session.class);
+		Session session = this.em.unwrap(Session.class);
 		
 		Criteria criteria = session.createCriteria(OrdemDeServico.class)
 				// fazemos uma associação (join) com cliente e nomeamos como "c"

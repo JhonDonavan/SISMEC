@@ -28,7 +28,6 @@ import modelDAO.OrdemDeServicoDAO;
 import modelDAO.VeiculoDAO;
 import util.jsf.FacesUtil;
 
-@Named
 @ManagedBean(name = "ordemDeServicoMB")
 @SessionScoped
 public class OrdemDeServicoMB {

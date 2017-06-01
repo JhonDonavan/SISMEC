@@ -6,30 +6,30 @@ import java.util.Date;
 import model.StatusOrcamento;
 
 public class OrdemDeServicoFilter implements Serializable{
-
+	
 	private static final long serialVersionUID = 1L;
 
-	private Long numeroDe;
-	private Long numeroAte;
+	private Integer numeroDe;
+	private Integer numeroAte;
 	private Date dataCriacaoDe;
 	private Date dataCriacaoAte;
 	private String nomeMecanico;
 	private String nomeCliente;
-	private StatusOrcamento[] statuses	;
+	private StatusOrcamento[] statuses;
 
-	public Long getNumeroDe() {
+	public Integer getNumeroDe() {
 		return numeroDe;
 	}
 
-	public void setNumeroDe(Long numeroDe) {
+	public void setNumeroDe(Integer numeroDe) {
 		this.numeroDe = numeroDe;
 	}
 
-	public Long getNumeroAte() {
+	public Integer getNumeroAte() {
 		return numeroAte;
 	}
 
-	public void setNumeroAte(Long numeroAte) {
+	public void setNumeroAte(Integer numeroAte) {
 		this.numeroAte = numeroAte;
 	}
 
@@ -72,4 +72,5 @@ public class OrdemDeServicoFilter implements Serializable{
 	public void setStatuses(StatusOrcamento[] statuses) {
 		this.statuses = statuses;
 	}
+
 }
