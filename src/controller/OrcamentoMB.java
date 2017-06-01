@@ -21,8 +21,6 @@ public class OrcamentoMB {
 	@Autowired
 	private List<Orcamento> orcamentosSelecionados;
 
-	private OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
-
 	private Orcamento orcamento = new Orcamento();
 	private List<Orcamento> orcamentos = new ArrayList<Orcamento>();
 	private String mensagemCadastroSucesso = "Orcamento cadastrado com sucesso";

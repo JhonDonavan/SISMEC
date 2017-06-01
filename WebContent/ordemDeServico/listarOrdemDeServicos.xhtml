@@ -10,50 +10,55 @@
 			<h:form>
 				<h2>Pesquisa de Ordem de Serviços</h2>
 
-				<div>
-					<p:commandButton value="Pesquisar"
-						action="#{pesquisaOrdemDeServicoMB.pesquisar}" update="@form" />
-
-
-					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novaOrdemDeServico"
-						action="#{ordemDeServicoMB.limparOrdemDeServico()}" />
-				</div>
+				<p:toolbar>
+					<p:toolbarGroup>
+						<p:commandButton value="Pesquisar"
+							action="#{pesquisaMB.pesquisar}" update="@form" />
+					</p:toolbarGroup>
+					<p:toolbarGroup align="right">
+						<p:commandButton value="Novo" icon="ui-icon-plus"
+							id="novaOrdemDeServico"
+							action="#{ordemDeServicoMB.limparOrdemDeServico()}" />
+					</p:toolbarGroup>
+				</p:toolbar>
 				<p:panelGrid columns="2" id="painel"
 					style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
 					<p:outputLabel value="Número" />
 					<h:panelGroup>
 						<p:inputText size="10"
-							value="#{pesquisaOrdemDeServicoMB.filtro.numeroDe}" />
+							value="#{pesquisaMB.filtro.numeroDe}" />
 	    			a
 	    				<p:inputText size="10"
-							value="#{pesquisaOrdemDeServicoMB.filtro.numeroAte}" />
+							value="#{pesquisaMB.filtro.numeroAte}" />
 					</h:panelGroup>
 					<p:outputLabel value="Data de criação" />
 					<h:panelGroup>
 						<p:calendar size="10" pattern="dd/MM/yyyy"
-							value="#{pesquisaOrdemDeServicoMB.filtro.dataCriacaoDe}" />
+							value="#{pesquisaMB.filtro.dataCriacaoDe}" />
 	    			a
 	    				<p:calendar size="10" pattern="dd/MM/yyyy"
-							value="#{pesquisaOrdemDeServicoMB.filtro.dataCriacaoAte}" />
+							value="#{pesquisaMB.filtro.dataCriacaoAte}" />
 					</h:panelGroup>
 
 					<p:outputLabel value="Mecanico" />
-					<p:inputText size="40" value="#{pesquisaOrdemDeServicoMB.filtro.nomeMecanico}"/>
+					<p:inputText size="40"
+						value="#{pesquisaMB.filtro.nomeMecanico}" />
 
 					<p:outputLabel value="Cliente" />
-					<p:inputText size="40" value="#{pesquisaOrdemDeServicoMB.filtro.nomeCliente}"/>
-					
+					<p:inputText size="40"
+						value="#{pesquisaMB.filtro.nomeCliente}" />
+
 					<p:outputLabel value="Status" />
-					<p:selectManyCheckbox value="#{pesquisaOrdemDeServicoMB.filtro.statuses}">
-						<f:selectItems value="#{pesquisaOrdemDeServicoMB.statuses}" var="status"
-							itemValue="#{status}" itemLabel="#{status.label}" />	
+					<p:selectManyCheckbox
+						value="#{pesquisaMB.filtro.statuses}">
+						<f:selectItems value="#{pesquisaMB.statuses}"
+							var="status" itemValue="#{status}" itemLabel="#{status.label}" />
 					</p:selectManyCheckbox>
 
 				</p:panelGrid>
 
 				<p:dataTable id="OrdemDeServicosLista" var="OS"
-					value="#{ordemDeServicoMB.ordemDeServicos}" paginator="true"
+					value="#{pesquisaMB.ordemDeServicosFiltrados}" paginator="true"
 					rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
@@ -64,6 +69,10 @@
 
 					<p:column headerText="Cliente">
 						<h:outputText value="#{OS.cliente.nome}" />
+					</p:column>
+					
+					<p:column headerText="Mecânico">
+						<h:outputText value="#{OS.mecanico.nome}" />
 					</p:column>
 
 					<p:column headerText="Placa do veiculo" width="10%">

@@ -6,23 +6,22 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import filter.OrdemDeServicoFilter;
-import repository.OrdemDeServico;
+import model.OrdemDeServico;
 import model.StatusOrcamento;
+import repository.OrdemDeServicos;
 
-@Named
-@ManagedBean(name = "pesquisaOrdemDeServicoMB")
+@ManagedBean(name = "pesquisaMB")
 @SessionScoped
-public class PesquisaOrdemDeServicoMB implements Serializable {
+public class PesquisaOrdemDeServicoMB implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
-	OrdemDeServico os = new OrdemDeServico();
+	
+	OrdemDeServicos ordemDeServicos = new OrdemDeServicos();
 	
 	private OrdemDeServicoFilter filtro;
 	private List<OrdemDeServico> ordemDeServicosFiltrados;
@@ -33,7 +32,7 @@ public class PesquisaOrdemDeServicoMB implements Serializable {
 	}
 
 	public void pesquisar() {
-		ordemDeServicosFiltrados = os.filtrados(filtro);
+		ordemDeServicosFiltrados = ordemDeServicos.filtrados(filtro);
 	}
 	
 	public StatusOrcamento[] getStatuses() {
