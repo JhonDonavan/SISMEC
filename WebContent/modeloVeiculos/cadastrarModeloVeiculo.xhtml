@@ -85,8 +85,8 @@
 						</p:selectOneRadio>
 
 						<p:outputLabel value="Ano do veiculo " class="outputLabel" />
-						<p:inputNumber id="anoVeiculo"
-							value="#{ModeloVeiculoController.modeloVeiculo.ano}"></p:inputNumber>
+						<p:inputMask id="anoVeiculo"
+							value="#{ModeloVeiculoController.modeloVeiculo.ano}" mask="9999"></p:inputMask>
 
 
 					</h:panelGrid>
