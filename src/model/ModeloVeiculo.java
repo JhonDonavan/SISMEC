@@ -34,6 +34,7 @@ public class ModeloVeiculo implements Serializable {
 	private Integer numPortas;
 	private TipoCombustivel combustivel_1;
 	private TipoCombustivel combustivel_2;
+	private int ano;
 	
 	@ManyToOne
 	@JoinColumn(name="montadora_id")
@@ -117,6 +118,14 @@ public class ModeloVeiculo implements Serializable {
 
 	public void setMontadora(Montadora montadora) {
 		this.montadora = montadora;
+	}
+	
+	public int getAno() {
+		return ano;
+	}
+
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 
 	@Override

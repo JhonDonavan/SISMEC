@@ -6,7 +6,6 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
-		<p:panel header="Ordem de Serviços Cadastradas">
 			<h:form>
 				<h2>Pesquisa de Ordem de Serviços</h2>
 
@@ -56,6 +55,8 @@
 					</p:selectManyCheckbox>
 
 				</p:panelGrid>
+				
+				<br/>
 
 				<p:dataTable id="OrdemDeServicosLista" var="OS"
 					value="#{pesquisaMB.ordemDeServicosFiltrados}" paginator="true"
@@ -134,7 +135,6 @@
 					</div>
 				</p:confirmDialog>
 			</h:form>
-		</p:panel>
 
 		<h:form id="modalDetalhes">
 			<!-- Modal para botao detalhes -->
