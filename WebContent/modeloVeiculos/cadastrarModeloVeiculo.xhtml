@@ -77,9 +77,17 @@
 							required="true" requiredMessage="Informe a montadora do modelo" />
 
 						<p:outputLabel value="Número de portas " class="outputLabel" />
-						<p:inputText id="numPortas" required="true"
-							requiredMessage="Informe o número de portas"
-							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+						<p:selectOneRadio id="numPortas" required="true"
+							requiredMessage="Favor informar o número de portas"
+							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}">
+							<f:selectItem itemLabel="2 Portas" itemValue="2" />
+							<f:selectItem itemLabel="4 Portas" itemValue="4" />
+						</p:selectOneRadio>
+
+						<p:outputLabel value="Ano do veiculo " class="outputLabel" />
+						<p:inputNumber id="anoVeiculo"
+							value="#{ModeloVeiculoController.modeloVeiculo.ano}"></p:inputNumber>
+
 
 					</h:panelGrid>
 
