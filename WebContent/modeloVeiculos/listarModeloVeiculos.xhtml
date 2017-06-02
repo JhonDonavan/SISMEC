@@ -109,7 +109,7 @@
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
-					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
+					 <!-- <p:fieldset legend="Detalhes do modelo" toggleable="true"
 					toggleSpeed="650">
 					<h:outputText
 						value="Nome do modelo: #{ModeloVeiculoController.modeloVeiculo.nome}" />
@@ -127,8 +127,12 @@
 						value="Potência em cavalos: #{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
 					<br />
 					<br />
-					<h:outputText
+					<h:outputText 
 						value="Numeros de porta: #{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+					<br />
+					<br />
+					<h:outputText
+						value="Numeros de porta: #{ModeloVeiculoController.modeloVeiculo.ano}" />
 					<br />
 					<br />
 					<h:outputText
@@ -136,7 +140,56 @@
 					<br />
 					<br />
 					<h:outputText
-						value="Segundo combustível: #{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+						value="Segundo combustível: #{ModeloVeiculoController.modeloVeiculo.combustivel_2}"/>
+				</p:fieldset> -->
+				<p:fieldset legend="Detalhes do modelo" toggleable="true"
+					toggleSpeed="650">
+				<h:panelGrid columns="6" width="100%" cellpadding="3"
+					style="text-align: left">
+
+					<h:outputLabel value="Nome do modelo: " class="outputLabel" />
+					<p:outputLabel id="nomeModelo" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.nome}" />
+
+					<p:outputLabel value="Cilindradas: " class="outputLabel" />
+					<p:outputLabel id="Cilindradas" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.motor}" />
+
+
+					<p:outputLabel id="combustivel_1" for="tipoCombustivel1"
+						value="Combustível 1: " class="outputLabel" />
+					<p:outputLabel id="tipoCombustivel1" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}" />
+
+					<p:outputLabel value="Sigla: " class="outputLabel" />
+					<p:outputLabel id="sigla" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
+
+					<p:outputLabel value="Potência em cavalos: " class="outputLabel" />
+					<p:outputLabel id="cavalos" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+
+					<p:outputLabel id="combustivel_2" for="tipoCombustivel2"
+						value="Combistível 2: " class="outputLabel" />
+					<p:outputLabel id="tipoCombustivel2" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+
+					<p:outputLabel value="Montadora: " class="outputLabel" />
+					<p:outputLabel id="montadoraID" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.montadora.nome}" />
+
+					<p:outputLabel value="Número de portas: " class="outputLabel" />
+					<p:outputLabel id="numPortas" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+						
+
+					<p:outputLabel value="Ano do veiculo: " class="outputLabel" />
+					<p:outputLabel id="anoVeiculo" style="font-weight: bold; font-size:1.1em"
+						value="#{ModeloVeiculoController.modeloVeiculo.ano}" />
+
+
+				</h:panelGrid>
+				
 				</p:fieldset>
 
 				<p:separator />
