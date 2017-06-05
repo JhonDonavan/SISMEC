@@ -62,7 +62,7 @@
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{Servico.editar(servico)}">
+							action="#{servicoMB.editar(servico)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
@@ -79,10 +79,10 @@
 				<!-- Modal para confirmação de exclusão -->
 
 				<p:confirmDialog widgetVar="excluirServico"
-					message="deseja realmente excluir a servico #{Servico.servico.nome}?"
+					message="deseja realmente excluir a servico #{servicoMB.servico.nome}?"
 					appendTo="@(body)" header="Excluir Servico">
 					<div style="text-align: center;">
-						<p:commandButton value="Sim" action="#{Servico.excluir()}"
+						<p:commandButton value="Sim" action="#{servicoMB.excluir()}"
 							update="@form" process="@this"
 							onclick="PF('excluirServico').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
@@ -102,13 +102,13 @@
 					width="650" showEffect="fade" hideEffect="none">
 					<h2>Servico:</h2>
 					<p:separator />
-					<h:outputText value="Nome do serviço: #{Servico.servico.nome}" />
+					<h:outputText value="Nome do serviço: #{servicoMB.servico.nome}" />
 					<br />
 					<br />
-					<h:outputText value="Prazo do Serviço: #{Servico.servico.prazo}" />
+					<h:outputText value="Prazo do Serviço: #{servicoMB.servico.prazo}" />
 					<br />
 					<br />
-					<h:outputText value="Valor do Serviço: #{Servico.servico.valor}" />
+					<h:outputText value="Valor do Serviço: #{servicoMB.servico.valor}" />
 				</p:dialog>
 			</h:form>
 		</p:panel>
