@@ -13,7 +13,8 @@
 	<ui:define name="conteudo">
 
 		<div id="form">
-			<p:panel header="EMITIR ORDENS DE SERVIÇOS" style="text-align:left; width:99%;">
+			<p:panel header="EMITIR ORDENS DE SERVIÇOS"
+				style="text-align:left; width:99%;">
 				<h:form id="cadastrarOrdemDeServico">
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
@@ -26,8 +27,8 @@
 							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
-							converter="clienteConverter" required="true"
-							requiredMessage="Por favor informe o nome do cliente" />
+							converter="clienteConverter" required="true" 
+							requiredMessage="Por favor informe o nome do cliente"/>
 
 						<p:outputLabel value="Veiculo: " id="veiculo" for="veiuloId" />
 						<p:autoComplete id="veiuloId"
@@ -60,7 +61,8 @@
 
 						<p:outputLabel value="Valor de desconto " for="valorDesconto" />
 						<p:inputNumber id="valorDesconto" size="10" maxlength="10"
-							required="true" requiredMessage="O valor de desconto não pode ficar vazio. Adicione 0 caso cliente não tenha desconto"
+							required="true"
+							requiredMessage="O valor de desconto não pode ficar vazio. Adicione 0 caso cliente não tenha desconto"
 							value="#{ordemDeServicoMB.ordemDeServico.valorDesconto}">
 							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
 							<p:ajax event="change" process="@this" update="valorTotalDaOS"
@@ -78,15 +80,11 @@
 							<f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
 						</p:selectOneMenu>
 
-						
-
 						<p:outputLabel value="Valor Total"
 							style="font-weight: bold; font-size:1.1em" />
 						<p:outputLabel id="valorTotalDaOS"
 							style="font-weight: bold; font-size:1.1em"
 							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}" />
-
-
 
 					</h:panelGrid>
 
