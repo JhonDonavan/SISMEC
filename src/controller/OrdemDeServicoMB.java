@@ -141,7 +141,7 @@ public class OrdemDeServicoMB {
 
 	public String editar(OrdemDeServico ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
-		return "cadastrarOrdemDeServicos.xhtml?faces-redirect=true";
+		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
 
 	public void prepararExclusao(OrdemDeServico ordemDeServico) {
