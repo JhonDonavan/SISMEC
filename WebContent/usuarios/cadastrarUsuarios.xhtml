@@ -11,7 +11,7 @@
 
 			<p:panel header="CADASTRAR USUÁRIOS"
 				style="text-align:left; width:99%;">
-				<h:form id="cadastrarAtendente">
+				<h:form id="CadastrarUsuario">
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
@@ -41,9 +41,9 @@
 							converter="montadoraConverter" forceSelection="true"
 							required="true"
 							requiredMessage="Informe o funcionário deste usuário" />
-
-						<p:outputLabel value="Funcionário: " class="outputLabel" />
-						<p:autoComplete id="funcionarioId" dropdown="true"
+						
+						<p:outputLabel value="Papel do usuário: " class="outputLabel" />
+						<p:autoComplete id="papelId" dropdown="true"
 							minQueryLength="3"
 							value="#{usuarioController.usuario.funcionario}" size="30"
 							completeMethod="#{funcionarioMB.listarPorNome}" var="funcionario"
@@ -51,6 +51,7 @@
 							converter="montadoraConverter" forceSelection="true"
 							required="true"
 							requiredMessage="Informe o funcionário deste usuário" />
+
 
 						<br />
 						<br />
