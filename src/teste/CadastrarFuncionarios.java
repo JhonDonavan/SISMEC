@@ -40,13 +40,12 @@ public class CadastrarFuncionarios {
 		f.setNome("JHON OLIVEIRA");
 		f.setCelular("21121221");
 		f.setCpf("65656565");
-		f.setDataNascimento("10/05/2017");
 		f.setEmail("TESTE@TESTE");
 		f.setMatricula(6565);
 		f.setSalario(200);
 		f.setTelefone("98988998");
 		
-		new GenericDAO<Funcionario>(Funcionario.class).salvar(f);
+		
 		
 		/*CRIAR USUÁRIO*/
 		

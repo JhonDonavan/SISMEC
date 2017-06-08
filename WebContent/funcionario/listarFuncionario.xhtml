@@ -7,13 +7,12 @@
 
 	<ui:define name="conteudo">
 
-		<p:panel header="Atendentes cadastrados">
+		<p:panel header="Gerenciamento de funcionarios">
 			<h:form>
 				<div>
 					<p:commandButton value="Novo" icon="ui-icon-plus"
-						id="novoAtendente"
-						style="margin-right: 1600px;"
-						action="#{atendenteMB.limparAtendente()}" />
+						id="novoAtendente" style="margin-right: 1600px;"
+						action="#{funcionarioMB.limparFuncionario()}" />
 
 					<div class="ui-fluid"
 						style="float: right; position: relative; margin-top: -27px;">
@@ -32,71 +31,74 @@
 				</div>
 
 
+
 				<p:growl />
-				<p:dataTable id="AtendenteLista" var="atendentes"
-					value="#{atendenteMB.atendentes}" paginator="true" rows="15"
+				<p:dataTable id="AtendenteLista" var="funcionarios"
+					value="#{funcionarioMB.funcionarios}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome" sortBy="#{atendentes.nome}}"
-						filterBy="#{atendentes.nome}}" filterMatchMode="contains">
-						<h:outputText value="#{atendentes.nome}" />
+					<p:column headerText="Nome" sortBy="#{funcionarios.nome}}"
+						filterBy="#{funcionarios.nome}}" filterMatchMode="contains">
+						<h:outputText value="#{funcionarios.nome}" />
 					</p:column>
 
-					<p:column headerText="Salário" sortBy="#{atendentes.salario}">
-						<h:outputText value="#{atendentes.salario}" />
+					<p:column headerText="Salário" sortBy="#{funcionarios.salario}">
+						<h:outputText value="#{funcionarios.salario}" />
 					</p:column>
 
-					<p:column headerText="CPF" sortBy="#{atendentes.cpf}"
-						filterBy="#{atendentes.cpf}" filterMatchMode="contains">
-						<h:outputText value="#{atendentes.cpf}" />
+					<p:column headerText="CPF" sortBy="#{funcionarios.cpf}"
+						filterBy="#{funcionarios.cpf}" filterMatchMode="contains">
+						<h:outputText value="#{funcionarios.cpf}" />
 					</p:column>
 
-					<p:column headerText="Telefone" sortBy="#{atendentes.telefone}">
-						<h:outputText value="#{atendentes.telefone}" />
+					<p:column headerText="Telefone" sortBy="#{funcionarios.telefone}">
+						<h:outputText value="#{funcionarios.telefone}" />
 					</p:column>
 
-					<p:column headerText="Celular" sortBy="#{atendentes.celular}">
-						<h:outputText value="#{atendentes.celular}" />
+					<p:column headerText="Celular" sortBy="#{funcionarios.celular}">
+						<h:outputText value="#{funcionarios.celular}" />
 					</p:column>
 
-					<p:column headerText="E-Mail" sortBy="#{atendentes.email}"
-						filterBy="#{atendentes.email}" filterMatchMode="contains">
-						<h:outputText value="#{atendentes.email}" />
+					<p:column headerText="E-Mail" sortBy="#{funcionarios.email}"
+						filterBy="#{funcionarios.email}" filterMatchMode="contains">
+						<h:outputText value="#{funcionarios.email}" />
 					</p:column>
 
 
 					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{atendenteMB.detalhesAtendente(atendentes)}">
+							action="#{funcionarioMB.detalhesFuncionario(funcionarios)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{atendenteMB.editar(atendentes)}">
+							action="#{funcionarioMB.editar(funcionarios)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
-						<p:commandButton icon="ui-icon-trash" title="Excluir" rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
-							actionListener="#{atendenteMB.prepararExclusao(atendentes)}"
-							oncomplete="PF('excluirAtendente').show()">
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
+							actionListener="#{funcionarioMB.prepararExclusao(funcionarios)}"
+							oncomplete="PF('excluirFuncionario').show()">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
 
-				<!-- MODAL CONFIRMAÇÃO EXCLUSÃO DE ATENDENTE -->
-				<p:confirmDialog widgetVar="excluirAtendente"
-					message="deseja realmente excluir o atendente #{atendenteMB.atendente.nome}?"
-					appendTo="@(body)" header="Excluir atendente?">
+
+				<!-- MODAL CONFIRMAÇÃO EXCLUSÃO DE FUNCIONARIO -->
+				<p:confirmDialog widgetVar="excluirFuncionario"
+					message="deseja realmente excluir o funcionário #{funcionarioMB.funcionario.nome}?"
+					appendTo="@(body)" header="Excluir funcionário?">
 					<div style="text-align: center;">
 						<p:commandButton value="Sim" process="@this"
-							action="#{atendenteMB.excluir()}"
-							onclick="PF('excluirAtendente').hide()" update="@form"
+							action="#{funcionarioMB.excluir()}"
+							onclick="PF('excluirFuncionario').hide()" update="@form"
 							styleClass="ui-confirmdialog-yes" />
 
 						<p:commandButton value="Não"
@@ -105,6 +107,9 @@
 					</div>
 				</p:confirmDialog>
 
+
+
+
 			</h:form>
 		</p:panel>
 
@@ -112,38 +117,38 @@
 		<!--MODAL PARA BOTAO DETALHES DO CLIENTE  -->
 		<h:form id="modalDetalhes">
 			<p:dialog id="DialogDetahlesAtendente"
-				header="Detalhes do Atendente: #{atendenteMB.atendente.nome}"
+				header="Detalhes do funcionário #{funcionarioMB.funcionario.nome}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
 					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
 					toggleSpeed="650">
 					<h:outputText
-						value="Salário do atendente: #{atendenteMB.atendente.salario}" />
+						value="Salário do atendente: #{funcionarioMB.funcionario.salario}" />
 					<br />
 					<br />
 					<h:outputText
-						value="Nome do atendente: #{atendenteMB.atendente.nome}" />
+						value="Nome do atendente: #{funcionarioMB.funcionario.nome}" />
 					<br />
 					<br />
 					<h:outputText
-						value="CPF do atendente: #{atendenteMB.atendente.cpf} " />
+						value="CPF do atendente: #{funcionarioMB.funcionario.cpf} " />
 					<br />
 					<br />
 					<h:outputText
-						value="Telefone residencial do atendente #{atendenteMB.atendente.telefone} " />
+						value="Telefone residencial do atendente #{funcionarioMB.funcionario.telefone} " />
 					<br />
 					<br />
 					<h:outputText
-						value="Celular do atendente: #{atendenteMB.atendente.celular}" />
+						value="Celular do atendente: #{funcionarioMB.funcionario.celular}" />
 					<br />
 					<br />
 					<h:outputText
-						value="E-Mail do atendente: #{atendenteMB.atendente.email} " />
+						value="E-Mail do atendente: #{funcionarioMB.funcionario.email} " />
 					<br />
 					<br />
 					<h:outputText
-						value="Data de nascimento do atendente:  #{atententeMB.atendente.dataNascimento}" />
+						value="Data de nascimento do atendente:  #{funcionarioMB.funcionario.dataNascimento}" />
 					<br />
 					<br />
 				</p:fieldset>

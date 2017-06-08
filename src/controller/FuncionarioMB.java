@@ -39,7 +39,7 @@ public class FuncionarioMB implements Serializable{
 		funcionario = new Funcionario();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atendente cadastrado com sucesso"));
 		System.out.println("Objeto " + funcionario.getNome() + " cadastrado com sucesso!");
-		return "listarFuncionarios.xhtml?faces-redirect=true";
+		return "listarFuncionario.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Funcionario funcionario){

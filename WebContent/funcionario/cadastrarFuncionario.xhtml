@@ -15,49 +15,49 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel id="salario" mask="9.999,99" value="Salário Atendente: " />
-						<p:inputNumber value="#{atendenteMB.atendente.salario}"
+						<h:outputLabel id="salario" mask="9.999,99" value="Salário do Funcionario " />
+						<p:inputNumber value="#{funcionarioMB.funcionario.salario}"
 							required="true"
-							requiredMessage="Favor informar o salário do atendente.">
+							requiredMessage="Favor informar o salário do funcionario.">
 							<f:validator validatorId="salario-validator" />
 						</p:inputNumber>
 
-						<h:outputLabel value="Nome Atendente: " />
-						<p:inputText value="#{atendenteMB.atendente.nome}" required="true"
-							requiredMessage="Favor informar o nome completo do atendente.">
+						<h:outputLabel value="Nome completo: " />
+						<p:inputText value="#{funcionarioMB.funcionario.nome}" required="true"
+							requiredMessage="Favor informar o nome completo do funcionario.">
 							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
 
 						<p:outputLabel value="CPF: " />
-						<p:inputMask id="cpf" mask="999.999.999-99" value="#{atendenteMB.atendente.cpf}" required="true"
-							requiredMessage="Favor informar o número de CPF do atendente.">
+						<p:inputMask id="cpf" mask="999.999.999-99" value="#{funcionarioMB.funcionario.cpf}" required="true"
+							requiredMessage="Favor informar o número de CPF do funcionario.">
 						</p:inputMask>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputMask id="telefone" mask="(99) 9999-9999" value="#{atendenteMB.atendente.telefone}" />
+						<p:inputMask id="telefone" mask="(99) 9999-9999" value="#{funcionarioMB.funcionario.telefone}" />
 
 						<p:outputLabel value="Celular: " />
-						<p:inputMask  id="celular" mask="(99) 99999-9999" value="#{atendenteMB.atendente.celular}"
+						<p:inputMask  id="celular" mask="(99) 99999-9999" value="#{funcionarioMB.funcionario.celular}"
 							required="true"
-							requiredMessage="Favor informar o telefone celular do atendente." />
+							requiredMessage="Favor informar o telefone celular do funcionario" />
 
 						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{atendenteMB.atendente.email}"
+						<p:inputText value="#{funcionarioMB.funcionario.email}"
 							required="true"
-							requiredMessage="Favor informar o E-Mail do atendente.">
+							requiredMessage="Favor informar o E-Mail do Funcionario">
 							<p:keyFilter regEx="/[a-z0-9_\.\-@]/i" />
 						</p:inputText>
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
 						<p:calendar id="button"
-							value="#{atendenteMB.atendente.dataNascimento}" showOn="button"
+							value="#{funcionarioMB.funcionario.dataNascimento}" showOn="button"
 							required="true"
-							requiredMessage="Favor informar a data de nascimento do atendente." />
+							requiredMessage="Favor informar a data de nascimento do funcionario." />
 
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{atendenteMB.salvar}" update="@form" />
+							action="#{funcionarioMB.salvar()}" update="@form" />
 					</h:panelGrid>
 
 					<!-- Mostra modal da data -->
