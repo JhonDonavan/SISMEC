@@ -40,6 +40,10 @@ public class Orcamento implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="atendente_id")
 	private Atendente atendente;
+	
+	@ManyToOne
+	@JoinColumn(name="funcionario_id")
+	private Funcionario funcionario;
 
 	public Integer getId() {
 		return id;

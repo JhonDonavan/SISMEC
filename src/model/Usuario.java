@@ -41,6 +41,9 @@ public class Usuario implements Serializable {
 
 	@Column(name = "enable", columnDefinition = "BOOLEAN")
 	private boolean enable;
+	
+	@Column(name = "funcionario", nullable = false, unique = true)
+	private Funcionario funcionario;
 
 	/*@ManyToMany
 	@JoinTable(name="autorizacao_usuario",
