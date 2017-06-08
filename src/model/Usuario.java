@@ -148,6 +148,22 @@ public class Usuario implements Serializable {
 	public void setUltimoAcesso(Date ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
 	}
+	
+	
+
+
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+
+
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
 
 
 
@@ -158,12 +174,16 @@ public class Usuario implements Serializable {
 		result = prime * result + ((autorizacoes == null) ? 0 : autorizacoes.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (enable ? 1231 : 1237);
-		result = prime * result + id;
+		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nomeUsuario == null) ? 0 : nomeUsuario.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((ultimoAcesso == null) ? 0 : ultimoAcesso.hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -186,7 +206,15 @@ public class Usuario implements Serializable {
 			return false;
 		if (enable != other.enable)
 			return false;
-		if (id != other.id)
+		if (funcionario == null) {
+			if (other.funcionario != null)
+				return false;
+		} else if (!funcionario.equals(other.funcionario))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (nomeUsuario == null) {
 			if (other.nomeUsuario != null)
@@ -205,6 +233,11 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
+
+
+
+
+	
 
 
 

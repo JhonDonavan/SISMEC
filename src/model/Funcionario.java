@@ -45,7 +45,7 @@ public class Funcionario implements Serializable{
 	
 	private String email;
 	
-	private Date dataNascimento;
+	private String dataNascimento;
 
 	public Integer getId() {
 		return id;
@@ -127,11 +127,11 @@ public class Funcionario implements Serializable{
 		this.email = email;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
