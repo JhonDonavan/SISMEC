@@ -11,17 +11,25 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.Autorizacao;
 import model.Funcionario;
+import modelDAO.AutorizacaoDAO;
 import modelDAO.FuncionarioDAO;
 import modelDAO.GenericDAO;
 
 @SuppressWarnings("serial")
 @ManagedBean(name = "funcionarioMB")
 @SessionScoped
-public class FuncionarioMB implements Serializable{
-	
+public class FuncionarioMB implements Serializable {
+
 	@Autowired
 	private List<Funcionario> funcionariosSelecionados;
+	
+	
+	private List<Autorizacao> autorizacoes = new ArrayList<>();
+	
+	
+	private AutorizacaoDAO autorizacaoDAO = new AutorizacaoDAO();
 	
 	private Funcionario funcionario = new Funcionario();
 	private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
@@ -31,6 +39,7 @@ public class FuncionarioMB implements Serializable{
 		funcionario = new Funcionario();
 		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
 		funcionariosSelecionados = new ArrayList<>();
+		autorizacoes = new ArrayList<>();
 	}
 
 	public String salvar() {
@@ -42,24 +51,25 @@ public class FuncionarioMB implements Serializable{
 		return "listarFuncionario.xhtml?faces-redirect=true";
 	}
 	
-	public String editar(Funcionario funcionario){
+
+	public String editar(Funcionario funcionario) {
 		this.funcionario = funcionario;
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
 	}
-	
-	public void prepararExclusao(Funcionario funcionario){
+
+	public void prepararExclusao(Funcionario funcionario) {
 		this.funcionario = funcionario;
 		System.out.println(" preparar para excluir funcionario: " + funcionario.getNome());
 	}
-	
-	public void excluir(){
+
+	public void excluir() {
 		System.out.println("excluir funcionario: " + funcionario.getNome());
 		new GenericDAO<Funcionario>(Funcionario.class).excluir(funcionario);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionario excluido com sucesso!"));
 		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
 	}
-	
-	public List<Funcionario> listarPorNome(String nomeFuncionario){
+
+	public List<Funcionario> listarPorNome(String nomeFuncionario) {
 		try {
 			funcionariosSelecionados = funcionarioDAO.buscarFuncionarioByNome(nomeFuncionario);
 		} catch (Exception e) {
@@ -67,14 +77,25 @@ public class FuncionarioMB implements Serializable{
 		}
 		return funcionariosSelecionados;
 	}
-	
-	public String limparFuncionario(){
+
+	public String limparFuncionario() {
 		this.funcionario = new Funcionario();
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
 	}
-	
-	public void detalhesFuncionario(Funcionario funcionario){
+
+	public void detalhesFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public List<Autorizacao> listaDePapeis(String nomePapel) {
+		System.out.println("entrou no método listaDePapeis");
+		try {
+			System.out.println("entrou no try listaDePapeis");
+			autorizacoes = autorizacaoDAO.buscarPapeis(nomePapel);
+		} catch (Exception e) {
+			System.out.println("ERROR Exception, " + e);
+		}
+		return autorizacoes;
 	}
 
 	public Funcionario getFuncionario() {

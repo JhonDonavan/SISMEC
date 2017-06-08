@@ -55,5 +55,8 @@ public class Autorizacao implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	
+
 
 }

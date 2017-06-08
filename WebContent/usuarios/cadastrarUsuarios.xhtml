@@ -45,18 +45,17 @@
 						<p:outputLabel value="Papel do usuário: " class="outputLabel" />
 						<p:autoComplete id="papelId" dropdown="true"
 							minQueryLength="3"
-							value="#{usuarioController.usuario.funcionario}" size="30"
-							completeMethod="#{funcionarioMB.listarPorNome}" var="funcionario"
-							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"
-							converter="montadoraConverter" forceSelection="true"
+							value="#{usuarioController.usuario.autorizacoes}" size="30"
+							completeMethod="#{funcionarioMB.listaDePapeis}" var="papeis"
+							itemLabel="#{papeis.nome}" itemValue="#{papeis}"
+							converter="autorizacaoConverter" forceSelection="true"
 							required="true"
-							requiredMessage="Informe o funcionário deste usuário" />
-
-
+							requiredMessage="informe o papel deste funcionário" />
+					
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{atendenteMB.salvar}" update="@form" />
+							action="#{usuarioController.salvar}" update="@form" />
 					</h:panelGrid>
 
 					<!-- Mostra modal da data -->
