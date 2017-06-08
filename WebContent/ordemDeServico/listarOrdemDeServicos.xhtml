@@ -97,21 +97,21 @@
 					<p:column style="text-align:center;" exportable="false" width="15%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{pecasMB.detalhePeca(peca)}">
+							action="#{ordemDeServicoMB.detalheOrdemDeServico(OS)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{pecasMB.editar(peca)}">
+							action="#{ordemDeServicoMB.editar(OS)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
 							rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
-							oncomplete="PF('excluirPeca').show()"
-							actionListener="#{Peca.prepararExclusao(peca)}">
+							actionListener="#{ordemDeServicoMB.prepararExclusao(OS)}"
+							oncomplete="PF('excluirOrdemDeServico').show()">
 						</p:commandButton>
 					</p:column>
 
@@ -120,17 +120,17 @@
 
 				<!-- Modal para confirmação de exclusão -->
 
-				<p:confirmDialog widgetVar="excluirOrcamento"
-					message="deseja realmente excluir a orcamento?" appendTo="@(body)"
-					header="Excluir Orcamento">
+				<p:confirmDialog widgetVar="excluirOrdemDeServico"
+					message="Deseja realmente excluir a O.S?" appendTo="@(body)"
+					header="Excluir O.S">
 					<div style="text-align: center;">
-						<p:commandButton value="Sim" action="#{Orcamento.excluir()}"
+						<p:commandButton value="Sim" action="#{ordemDeServicoMB.excluir()}"
 							update="@form" process="@this"
-							onclick="PF('excluirOrcamento').hide()"
+							onclick="PF('excluirOrdemDeServico').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
 
 						<p:commandButton value="Não"
-							oncomplete="PF('excluirOrcamento').hide()"
+							oncomplete="PF('excluirOrdemDeServico').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
