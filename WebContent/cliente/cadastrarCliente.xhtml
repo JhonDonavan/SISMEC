@@ -27,6 +27,30 @@
 							value="#{clienteMB.cliente.cpf}" required="true"
 							requiredMessage="Favor informar o CPF do cliente">
 						</p:inputMask>
+						
+						<p:outputLabel value="E-Mail: " />
+						<p:inputText value="#{clienteMB.cliente.email}" />
+						
+						<p:outputLabel value="CEP: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.cep}" />
+						
+						<p:outputLabel value="Endereço: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.logradouro}" />
+						
+						<p:outputLabel value="numero: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.numero}" />
+						
+						<p:outputLabel value="complemento: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.complemento}" />
+						
+						<p:outputLabel value="Bairro: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.bairro}" />
+						
+						<p:outputLabel value="Cidade: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.cidade}" />
+						
+						<p:outputLabel value="UF: " />
+						<p:inputText value="#{clienteMB.cliente.endereco.uf}" />
 
 						<p:outputLabel value="Telefone: " />
 						<p:inputMask id="telefone" mask="(99) 9999-9999"
