@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:decorate template="../layout/layoutPadrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<div id="form">
+
+			<p:panel header="CADASTRAR USUÁRIOS"
+				style="text-align:left; width:99%;">
+				<h:form id="cadastrarAtendente">
+					<p:messages id="msgs" closable="true" />
+					<p:growl />
+					<h:panelGrid columns="2" cellpadding="3">
+						<h:outputLabel id="salario" mask="9.999,99" value="lOGIN: " />
+						<p:inputNumber value="#{usuarioController.usuario.nomeUsuario}"
+							required="true"
+							requiredMessage="Favor informar o login do usuário">
+						</p:inputNumber>
+
+						<h:outputLabel value="senha: " />
+						<p:password value="#{usuarioController.usuario.senha}"
+							required="true"
+							requiredMessage="Favor informar a senha do usuário." />
+
+						<p:outputLabel value="e-mail do usuário:  " />
+						<p:inputMask id="cpf" mask="999.999.999-99"
+							value="#{usuarioController.usuario.email}" required="true"
+							requiredMessage="Favor informar o número de CPF do atendente.">
+						</p:inputMask>
+
+						<p:outputLabel value="Funcionário: " class="outputLabel" />
+						<p:autoComplete id="funcionarioId" dropdown="true"
+							minQueryLength="3"
+							value="#{usuarioController.usuario.funcionario}" size="30"
+							completeMethod="#{funcionarioMB.listarPorNome}" var="funcionario"
+							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"
+							converter="montadoraConverter" forceSelection="true"
+							required="true"
+							requiredMessage="Informe o funcionário deste usuário" />
+
+						<p:outputLabel value="Funcionário: " class="outputLabel" />
+						<p:autoComplete id="funcionarioId" dropdown="true"
+							minQueryLength="3"
+							value="#{usuarioController.usuario.funcionario}" size="30"
+							completeMethod="#{funcionarioMB.listarPorNome}" var="funcionario"
+							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"
+							converter="montadoraConverter" forceSelection="true"
+							required="true"
+							requiredMessage="Informe o funcionário deste usuário" />
+
+						<br />
+						<br />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+							action="#{atendenteMB.salvar}" update="@form" />
+					</h:panelGrid>
+
+					<!-- Mostra modal da data -->
+					<p:dialog modal="true" resizable="false" header="Values"
+						widgetVar="data" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+						</p:panelGrid>
+					</p:dialog>
+				</h:form>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:decorate>
+</html>

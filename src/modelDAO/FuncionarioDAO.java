@@ -12,7 +12,7 @@ public class FuncionarioDAO {
 	@SuppressWarnings("unchecked")
 	public List<Funcionario> buscarFuncionarioByNome(String nomeFuncionario) {
 		EntityManager em = JPAUtil.getEntityManager();
-		Query query = em.createQuery("SELECT c FROM Funcionario c WHERE upper(c.nome) like upper(:nomeFuncionario)");
+		Query query = em.createQuery("SELECT f FROM Funcionario f WHERE upper(f.nome) like upper(:nomeFuncionario)");
 		query.setParameter("nomeFuncionario", "%" + nomeFuncionario + "%");
 		return query.getResultList();
 	}

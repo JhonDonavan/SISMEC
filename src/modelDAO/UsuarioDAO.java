@@ -1,22 +1,21 @@
 package modelDAO;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import model.Usuario;
 
-public interface UsuarioDAO extends JpaRepository<Usuario, Integer>{
+public class UsuarioDAO {
 
-	
-	//public Usuario usuarioPorEmail(String usuario) {
-		
-	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> buscaUsuarioByNome(String nomeUsuario) {
+		System.out.println("entrou no metodo buscarUsuarioByNome no UsuarioDAO: " + nomeUsuario);
+		EntityManager em = JPAUtil.getEntityManager();
+		Query query = em.createQuery("SELECT u FROM Usuarios u WHERE upper(u.nome) like upper(:nomeUsuario)");
+		query.setParameter("nomeUsuario", "%" + nomeUsuario + "%");
+		return query.getResultList();
+	}
+
 }
-
-
-
-//seguir para login
-//http://www.devmedia.com.br/java-web-criando-uma-tela-de-login-com-jpa-jsf-primefaces-e-mysql/32456

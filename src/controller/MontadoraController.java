@@ -33,14 +33,6 @@ public class MontadoraController {
 		montadorasSelecionados = new ArrayList<>();
 	}
 
-	/* VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA */
-	/*
-	 * @SuppressWarnings("unused")
-	 * 
-	 * @PostConstruct public void init() { List<Montadora> listaMontadoras = new
-	 * ArrayList<Montadora>(); listaMontadoras = new MontadoraDAO().listar(); }
-	 */
-
 	public String salvar() {
 		new GenericDAO<Montadora>(Montadora.class).salvar(montadora);
 		montadora = new Montadora();
