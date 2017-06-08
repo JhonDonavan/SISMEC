@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Funcionario")
+@Table(name="Funcionarios")
 public class Funcionario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
