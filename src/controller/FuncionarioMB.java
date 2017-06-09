@@ -49,7 +49,7 @@ public class FuncionarioMB implements Serializable {
 		funcionariosSelecionados = new ArrayList<>();
 		autorizacoes = new ArrayList<>();
 		usuario = new Usuario();
-		usuarios = new ArrayList<>();
+		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 	}
 
 	public String salvar() {
@@ -66,6 +66,8 @@ public class FuncionarioMB implements Serializable {
 		list_auxiliarParaSalvarEmLista.add(auxiliarParaSalvarEmLista);
 		
 		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
+		
+		usuarios.get(0);
 		
 		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
@@ -105,6 +107,11 @@ public class FuncionarioMB implements Serializable {
 	public String limparFuncionario() {
 		this.funcionario = new Funcionario();
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
+	}
+	
+	public String limparUsuario() {
+		this.usuario = new Usuario();
+		return "cadastrarUsuario.xhtml?faces-redirect=true";
 	}
 
 	public void detalhesFuncionario(Funcionario funcionario) {
