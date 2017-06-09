@@ -44,7 +44,7 @@
 						<p:autoComplete id="papelId" dropdown="true" minQueryLength="3"
 							value="#{funcionarioMB.auxiliarParaSalvarEmLista}" size="30"
 							completeMethod="#{funcionarioMB.listaDePapeis}" var="papeis"
-							itemLabel="#{papeis.nome}" itemValue="#{papeis}"
+							itemLabel="#{papeis.nome}" itemValue="#{papeis}" required="true" requiredMessage="Favor informar o papel do usuário"
 							converter="autorizacaoConverter" forceSelection="true"
 							 />
 

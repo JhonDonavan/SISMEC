@@ -30,7 +30,6 @@
 					</div>
 				</div>
 
-
 				<p:growl />
 				<p:dataTable id="usuariosLista" var="usuarios"
 					value="#{funcionarioMB.usuarios}" paginator="true" rows="15"
@@ -43,57 +42,56 @@
 						filterBy="#{usuarios.nomeUsuario}" filterMatchMode="contains">
 						<h:outputText value="#{usuarios.nomeUsuario}" />
 					</p:column>
+					
+					<p:column headerText="Funcionario" sortBy="#{usuarios.funcionario.getNome()}"
+						filterBy="#{usuarios.funcionario.getNome()}" filterMatchMode="contains">
+						<h:outputText value="#{usuarios.funcionario.getNome()}" />
+					</p:column>
 
 					<p:column headerText="E-mail" sortBy="#{usuarios.email}"
 						filterBy="#{usuarios.nomeUsuario}" filterMatchMode="contains">
 						<h:outputText value="#{usuarios.email}" />
 					</p:column>
 
-					<p:column headerText="Papel de usuário" sortBy="#{usuarios.autorizacaoes}"
-						filterBy="#{usuarios.autorizacaoes}" filterMatchMode="contains">
-						<h:outputText value="#{usuarios.autorizacoes.get(0)}" />
+					<p:column headerText="Papel de usuário" sortBy="#{usuarios.getAutorizacoes().get(0).getNome()}"
+						filterBy="#{usuarios.getAutorizacoes().get(0).getNome()}" filterMatchMode="contains">
+						<h:outputText value="#{usuarios.getAutorizacoes().get(0).getNome()}" />
 					</p:column>
-
-					<p:column headerText="Senha">
-						<h:outputText value="#{usuarios.senha}" />
-					</p:column>
-
 
 					<p:column style="text-align:center;" exportable="false">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{atendenteMB.detalhesAtendente(atendentes)}">
+							action="#{funcionarioMB.detalhesUsuario(usuarios)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{atendenteMB.editar(atendentes)}">
+							action="#{funcionarioMB.editarUsuario(usuarios)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
 
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
-							actionListener="#{atendenteMB.prepararExclusao(atendentes)}"
-							oncomplete="PF('excluirAtendente').show()">
+							actionListener="#{funcionarioMB.prepararExclusaoUsuario(usuarios)}"
+							oncomplete="PF('excluirUsuario').show()">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
 
-
 				<!-- MODAL CONFIRMAÇÃO EXCLUSÃO DE ATENDENTE -->
-				<p:confirmDialog widgetVar="excluirAtendente"
-					message="deseja realmente excluir o atendente #{atendenteMB.atendente.nome}?"
-					appendTo="@(body)" header="Excluir atendente?">
+				<p:confirmDialog widgetVar="excluirUsuario"
+					message="deseja realmente excluir o atendente #{funcionarioMB.usuario.nomeUsuario}?"
+					appendTo="@(body)" header="Excluir usuário?">
 					<div style="text-align: center;">
 						<p:commandButton value="Sim" process="@this"
-							action="#{atendenteMB.excluir()}"
-							onclick="PF('excluirAtendente').hide()" update="@form"
+							action="#{funcionarioMB.excluir()}"
+							onclick="PF('excluirUsuario').hide()" update="@form"
 							styleClass="ui-confirmdialog-yes" />
 
 						<p:commandButton value="Não"
-							oncomplete="PF('excluirAtendente').hide()"
+							oncomplete="PF('excluirUsuario').hide()"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 					</div>
 				</p:confirmDialog>
@@ -101,51 +99,35 @@
 			</h:form>
 		</p:panel>
 
-
 		<!--MODAL PARA BOTAO DETALHES DO CLIENTE  -->
 		<h:form id="modalDetalhes">
 			<p:dialog id="DialogDetahlesAtendente"
-				header="Detalhes do Atendente: #{atendenteMB.atendente.nome}"
+				header="Detalhes do Usuário: #{funcionarioMB.usuario.nomeUsuario}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
 					 <p:fieldset legend="Detalhes do modelo" toggleable="true"
 					toggleSpeed="650">
 					<h:outputText
-						value="Salário do atendente: #{atendenteMB.atendente.salario}" />
+						value="Login do usuário: #{funcionarioMB.usuario.nomeUsuario}" />
 					<br />
 					<br />
 					<h:outputText
-						value="Nome do atendente: #{atendenteMB.atendente.nome}" />
+						value="Nome do funcionário: #{funcionarioMB.usuario.funcionario.nome}" />
 					<br />
 					<br />
 					<h:outputText
-						value="CPF do atendente: #{atendenteMB.atendente.cpf} " />
+						value="E-Mail: #{funcionarioMB.usuario.email}" />
 					<br />
 					<br />
 					<h:outputText
-						value="Telefone residencial do atendente #{atendenteMB.atendente.telefone} " />
-					<br />
-					<br />
-					<h:outputText
-						value="Celular do atendente: #{atendenteMB.atendente.celular}" />
-					<br />
-					<br />
-					<h:outputText
-						value="E-Mail do atendente: #{atendenteMB.atendente.email} " />
-					<br />
-					<br />
-					<h:outputText
-						value="Data de nascimento do atendente:  #{atententeMB.atendente.dataNascimento}" />
+						value="Senha do usuário: #{funcionarioMB.usuario.senha} " />
 					<br />
 					<br />
 				</p:fieldset>
 				<p:separator />
 			</p:dialog>
 		</h:form>
-
 	</ui:define>
 </ui:decorate>
-
-
 </html>

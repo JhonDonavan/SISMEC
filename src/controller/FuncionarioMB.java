@@ -50,6 +50,8 @@ public class FuncionarioMB implements Serializable {
 		autorizacoes = new ArrayList<>();
 		usuario = new Usuario();
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
+		
+		usuarios.get(0).getAutorizacoes().get(0).getNome();
 	}
 
 	public String salvar() {
@@ -67,8 +69,6 @@ public class FuncionarioMB implements Serializable {
 		
 		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
 		
-		usuarios.get(0);
-		
 		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 		usuario = new Usuario();
@@ -82,17 +82,27 @@ public class FuncionarioMB implements Serializable {
 		this.funcionario = funcionario;
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
 	}
+	
+	public String editarUsuario(Usuario usuario) {
+		this.usuario = usuario;
+		return "cadastrarUsuarios.xhtml?faces-redirect=true";
+	}
 
 	public void prepararExclusao(Funcionario funcionario) {
 		this.funcionario = funcionario;
 		System.out.println(" preparar para excluir funcionario: " + funcionario.getNome());
 	}
+	
+	public void prepararExclusaoUsuario(Usuario usuario) {
+		this.usuario = usuario;
+		System.out.println(" preparar para excluir usuário: " + usuario.getNomeUsuario());
+	}
 
 	public void excluir() {
-		System.out.println("excluir funcionario: " + funcionario.getNome());
-		new GenericDAO<Funcionario>(Funcionario.class).excluir(funcionario);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionario excluido com sucesso!"));
-		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
+		System.out.println("excluir usuário: " + usuario.getNomeUsuario());
+		new GenericDAO<Usuario>(Usuario.class).excluir(usuario);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário excluido com sucesso!"));
+		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 	}
 
 	public List<Funcionario> listarPorNome(String nomeFuncionario) {
@@ -111,11 +121,15 @@ public class FuncionarioMB implements Serializable {
 	
 	public String limparUsuario() {
 		this.usuario = new Usuario();
-		return "cadastrarUsuario.xhtml?faces-redirect=true";
+		return "cadastrarUsuarios.xhtml?faces-redirect=true";
 	}
 
 	public void detalhesFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+	
+	public void detalhesUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public List<Autorizacao> listaDePapeis(String nomePapel) {
