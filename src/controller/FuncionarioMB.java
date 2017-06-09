@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Autorizacao;
 import model.Funcionario;
+import model.Usuario;
 import modelDAO.AutorizacaoDAO;
 import modelDAO.FuncionarioDAO;
 import modelDAO.GenericDAO;
@@ -28,8 +29,15 @@ public class FuncionarioMB implements Serializable {
 	
 	private List<Autorizacao> autorizacoes = new ArrayList<>();
 	
-	
 	private AutorizacaoDAO autorizacaoDAO = new AutorizacaoDAO();
+	
+	private Usuario usuario = new Usuario();
+	
+	private List<Usuario> usuarios = new ArrayList<>();
+	
+	private Autorizacao auxiliarParaSalvarEmLista = new Autorizacao();
+	
+	private List<Autorizacao> list_auxiliarParaSalvarEmLista = new ArrayList<>();
 	
 	private Funcionario funcionario = new Funcionario();
 	private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
@@ -40,6 +48,8 @@ public class FuncionarioMB implements Serializable {
 		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
 		funcionariosSelecionados = new ArrayList<>();
 		autorizacoes = new ArrayList<>();
+		usuario = new Usuario();
+		usuarios = new ArrayList<>();
 	}
 
 	public String salvar() {
@@ -49,6 +59,20 @@ public class FuncionarioMB implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atendente cadastrado com sucesso"));
 		System.out.println("Objeto " + funcionario.getNome() + " cadastrado com sucesso!");
 		return "listarFuncionario.xhtml?faces-redirect=true";
+	}
+	
+	public String salvarUsuario() {
+		
+		list_auxiliarParaSalvarEmLista.add(auxiliarParaSalvarEmLista);
+		
+		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
+		
+		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
+		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
+		usuario = new Usuario();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso"));
+		System.out.println("Objeto " + usuario.getNomeUsuario() + " cadastrado com sucesso!");
+		return "cadastrarUsuarios.xhtml?faces-redirect=true";
 	}
 	
 
@@ -113,5 +137,38 @@ public class FuncionarioMB implements Serializable {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public Autorizacao getAuxiliarParaSalvarEmLista() {
+		return auxiliarParaSalvarEmLista;
+	}
+
+	public void setAuxiliarParaSalvarEmLista(Autorizacao auxiliarParaSalvarEmLista) {
+		this.auxiliarParaSalvarEmLista = auxiliarParaSalvarEmLista;
+	}
+
+	public List<Autorizacao> getList_auxiliarParaSalvarEmLista() {
+		return list_auxiliarParaSalvarEmLista;
+	}
+
+	public void setList_auxiliarParaSalvarEmLista(List<Autorizacao> list_auxiliarParaSalvarEmLista) {
+		this.list_auxiliarParaSalvarEmLista = list_auxiliarParaSalvarEmLista;
+	}
+	
 
 }

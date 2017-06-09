@@ -15,47 +15,43 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel id="salario" mask="9.999,99" value="lOGIN: " />
-						<p:inputNumber value="#{usuarioController.usuario.nomeUsuario}"
+						<h:outputLabel id="salario" value="lOGIN: " />
+						<p:inputText value="#{funcionarioMB.usuario.nomeUsuario}"
 							required="true"
 							requiredMessage="Favor informar o login do usuário">
-						</p:inputNumber>
+						</p:inputText>
 
 						<h:outputLabel value="senha: " />
-						<p:password value="#{usuarioController.usuario.senha}"
-							required="true"
+						<p:password value="#{funcionarioMB.usuario.senha}" required="true"
 							requiredMessage="Favor informar a senha do usuário." />
 
 						<p:outputLabel value="e-mail do usuário:  " />
-						<p:inputMask id="cpf" mask="999.999.999-99"
-							value="#{usuarioController.usuario.email}" required="true"
+						<p:inputText id="e-mail" value="#{funcionarioMB.usuario.email}"
+							required="true"
 							requiredMessage="Favor informar o número de CPF do atendente.">
-						</p:inputMask>
+						</p:inputText>
 
 						<p:outputLabel value="Funcionário: " class="outputLabel" />
 						<p:autoComplete id="funcionarioId" dropdown="true"
-							minQueryLength="3"
-							value="#{usuarioController.usuario.funcionario}" size="30"
-							completeMethod="#{funcionarioMB.listarPorNome}" var="funcionario"
-							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"
-							converter="montadoraConverter" forceSelection="true"
-							required="true"
+							minQueryLength="3" value="#{funcionarioMB.usuario.funcionario}"
+							size="30" completeMethod="#{funcionarioMB.listarPorNome}"
+							var="funcionario" itemLabel="#{funcionario.nome}"
+							itemValue="#{funcionario}" converter="funcionarioConverter"
+							forceSelection="true" required="true"
 							requiredMessage="Informe o funcionário deste usuário" />
-						
+
 						<p:outputLabel value="Papel do usuário: " class="outputLabel" />
-						<p:autoComplete id="papelId" dropdown="true"
-							minQueryLength="3"
-							value="#{usuarioController.usuario.autorizacoes}" size="30"
+						<p:autoComplete id="papelId" dropdown="true" minQueryLength="3"
+							value="#{funcionarioMB.auxiliarParaSalvarEmLista}" size="30"
 							completeMethod="#{funcionarioMB.listaDePapeis}" var="papeis"
 							itemLabel="#{papeis.nome}" itemValue="#{papeis}"
 							converter="autorizacaoConverter" forceSelection="true"
-							required="true"
-							requiredMessage="informe o papel deste funcionário" />
-					
+							 />
+
 						<br />
 						<br />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{usuarioController.salvar}" update="@form" />
+							action="#{funcionarioMB.salvarUsuario}" update="@form" />
 					</h:panelGrid>
 
 					<!-- Mostra modal da data -->

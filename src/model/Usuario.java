@@ -47,10 +47,7 @@ public class Usuario implements Serializable {
 	@OneToOne(optional=true,cascade=CascadeType.ALL)
 	private Funcionario funcionario;
 
-	/*@ManyToMany
-	@JoinTable(name="autorizacao_usuario",
-			joinColumns = @JoinColumn(name="usuario_id"),
-			inverseJoinColumns = @JoinColumn(name="autorizacao_id"))*/
+	
 	@ManyToMany
 	@NotEmpty(message = "Favor selecionar os papeis do usuário.")
 	@JoinTable(name="autorizacao_usuario")
