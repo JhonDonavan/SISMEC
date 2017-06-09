@@ -74,7 +74,7 @@ public class FuncionarioMB implements Serializable {
 		usuario = new Usuario();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso"));
 		System.out.println("Objeto " + usuario.getNomeUsuario() + " cadastrado com sucesso!");
-		return "cadastrarUsuarios.xhtml?faces-redirect=true";
+		return "listarUsuarios.xhtml?faces-redirect=true";
 	}
 	
 
