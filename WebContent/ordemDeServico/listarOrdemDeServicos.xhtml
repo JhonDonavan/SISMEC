@@ -6,153 +6,273 @@
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
-			<h:form>
-				<h2>Pesquisa de Ordem de Serviços</h2>
+		<h:form>
+			<h2>Pesquisa de Ordem de Serviços</h2>
 
-				<p:toolbar>
-					<p:toolbarGroup>
-						<p:commandButton value="Pesquisar"
-							action="#{pesquisaMB.pesquisar}" update="@form" />
-					</p:toolbarGroup>
-					<p:toolbarGroup align="right">
-						<p:commandButton value="Novo" icon="ui-icon-plus"
-							id="novaOrdemDeServico"
-							action="#{ordemDeServicoMB.limparOrdemDeServico()}" />
-					</p:toolbarGroup>
-				</p:toolbar>
-				<p:panelGrid columns="2" id="painel"
-					style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
-					<p:outputLabel value="Número" />
-					<h:panelGroup>
-						<p:inputText size="10"
-							value="#{pesquisaMB.filtro.numeroDe}" />
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton value="Pesquisar" action="#{pesquisaMB.pesquisar}"
+						update="@form" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Novo" icon="ui-icon-plus"
+						id="novaOrdemDeServico"
+						action="#{ordemDeServicoMB.limparOrdemDeServico()}" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 5px;" columnClasses="rotulo, campo">
+				<p:outputLabel value="Número" />
+				<h:panelGroup>
+					<p:inputText size="10" value="#{pesquisaMB.filtro.numeroDe}" />
 	    			a
-	    				<p:inputText size="10"
-							value="#{pesquisaMB.filtro.numeroAte}" />
-					</h:panelGroup>
-					<p:outputLabel value="Data de criação" />
-					<h:panelGroup>
-						<p:calendar size="10" pattern="dd/MM/yyyy"
-							value="#{pesquisaMB.filtro.dataCriacaoDe}" />
+	    				<p:inputText size="10" value="#{pesquisaMB.filtro.numeroAte}" />
+				</h:panelGroup>
+				<p:outputLabel value="Data de criação" />
+				<h:panelGroup>
+					<p:calendar size="10" pattern="dd/MM/yyyy"
+						value="#{pesquisaMB.filtro.dataCriacaoDe}" />
 	    			a
 	    				<p:calendar size="10" pattern="dd/MM/yyyy"
-							value="#{pesquisaMB.filtro.dataCriacaoAte}" />
-					</h:panelGroup>
+						value="#{pesquisaMB.filtro.dataCriacaoAte}" />
+				</h:panelGroup>
 
-					<p:outputLabel value="Mecanico" />
-					<p:inputText size="40"
-						value="#{pesquisaMB.filtro.nomeMecanico}" />
+				<p:outputLabel value="Mecanico" />
+				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeMecanico}" />
 
-					<p:outputLabel value="Cliente" />
-					<p:inputText size="40"
-						value="#{pesquisaMB.filtro.nomeCliente}" />
+				<p:outputLabel value="Cliente" />
+				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeCliente}" />
 
-					<p:outputLabel value="Status" />
-					<p:selectManyCheckbox
-						value="#{pesquisaMB.filtro.statuses}">
-						<f:selectItems value="#{pesquisaMB.statuses}"
-							var="status" itemValue="#{status}" itemLabel="#{status.label}" />
-					</p:selectManyCheckbox>
+				<p:outputLabel value="Status" />
+				<p:selectManyCheckbox value="#{pesquisaMB.filtro.statuses}">
+					<f:selectItems value="#{pesquisaMB.statuses}" var="status"
+						itemValue="#{status}" itemLabel="#{status.label}" />
+				</p:selectManyCheckbox>
 
-				</p:panelGrid>
-				
-				<br/>
+			</p:panelGrid>
 
-				<p:dataTable id="OrdemDeServicosLista" var="OS"
-					value="#{pesquisaMB.ordemDeServicosFiltrados}" paginator="true"
-					rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					style="margin-top:7px;">
+			<br />
 
-					<p:column headerText="Identificador" width="100">
-						<h:outputText value="#{OS.id}" />
-					</p:column>
+			<p:dataTable id="OrdemDeServicosLista" var="OS"
+				value="#{pesquisaMB.ordemDeServicosFiltrados}" paginator="true"
+				rows="15" rowsPerPageTemplate="5,10,15,20,25,50"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				style="margin-top:7px;">
 
-					<p:column headerText="Cliente">
-						<h:outputText value="#{OS.cliente.nome}" />
-					</p:column>
-					
-					<p:column headerText="Mecânico">
-						<h:outputText value="#{OS.mecanico.nome}" />
-					</p:column>
+				<p:column headerText="Identificador" width="100">
+					<h:outputText value="#{OS.id}" />
+				</p:column>
 
-					<p:column headerText="Placa do veiculo" width="10%">
-						<h:outputText value="#{OS.veiculo.placa}" />
-					</p:column>
+				<p:column headerText="Cliente">
+					<h:outputText value="#{OS.cliente.nome}" />
+				</p:column>
 
-					<p:column headerText="Forma de pagamento" width="160">
-						<h:outputText value="#{OS.formaPagamento}" />
-					</p:column>
+				<p:column headerText="Mecânico">
+					<h:outputText value="#{OS.mecanico.nome}" />
+				</p:column>
 
-					<p:column headerText="Status" width="100">
-						<h:outputText value="#{OS.status}" />
-					</p:column>
+				<p:column headerText="Placa do veiculo" width="10%">
+					<h:outputText value="#{OS.veiculo.placa}" />
+				</p:column>
 
-					<p:column headerText="Valor total" width="100">
-						<h:outputText value="#{OS.valorTotal}">
-							<f:convertNumber type="currency" />
-						</h:outputText>
-					</p:column>
+				<p:column headerText="Forma de pagamento" width="160">
+					<h:outputText value="#{OS.formaPagamento}" />
+				</p:column>
 
-					<p:column style="text-align:center;" exportable="false" width="15%">
-						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
-							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{ordemDeServicoMB.detalheOrdemDeServico(OS)}">
-						</p:commandButton>
+				<p:column headerText="Status" width="100">
+					<h:outputText value="#{OS.status}" />
+				</p:column>
 
-						<p:spacer width="5" />
+				<p:column headerText="Valor total" width="100">
+					<h:outputText value="#{OS.valorTotal}">
+						<f:convertNumber type="currency" />
+					</h:outputText>
+				</p:column>
 
-						<p:commandButton icon="ui-icon-pencil" title="Editar"
-							action="#{ordemDeServicoMB.editar(OS)}">
-						</p:commandButton>
+				<p:column style="text-align:center;" exportable="false" width="15%">
+					<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
+						oncomplete="PF('detalhes').show();" update=":modalDetalhes"
+						action="#{ordemDeServicoMB.detalheOrdemDeServico(OS)}">
+					</p:commandButton>
 
-						<p:spacer width="5" />
+					<p:spacer width="5" />
 
-						<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
-							rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
-							actionListener="#{ordemDeServicoMB.prepararExclusao(OS)}"
-							oncomplete="PF('excluirOrdemDeServico').show()">
-						</p:commandButton>
-					</p:column>
+					<p:commandButton icon="ui-icon-pencil" title="Editar"
+						action="#{ordemDeServicoMB.editar(OS)}">
+					</p:commandButton>
 
-				</p:dataTable>
+					<p:spacer width="5" />
+
+					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
+						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
+						actionListener="#{ordemDeServicoMB.prepararExclusao(OS)}"
+						oncomplete="PF('excluirOrdemDeServico').show()">
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
 
 
-				<!-- Modal para confirmação de exclusão -->
+			<!-- Modal para confirmação de exclusão -->
 
-				<p:confirmDialog widgetVar="excluirOrdemDeServico"
-					message="Deseja realmente excluir a O.S?" appendTo="@(body)"
-					header="Excluir O.S">
-					<div style="text-align: center;">
-						<p:commandButton value="Sim" action="#{ordemDeServicoMB.excluir()}"
-							update="@form" process="@this"
-							onclick="PF('excluirOrdemDeServico').hide()"
-							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:confirmDialog widgetVar="excluirOrdemDeServico"
+				message="Deseja realmente excluir a O.S?" appendTo="@(body)"
+				header="Excluir O.S">
+				<div style="text-align: center;">
+					<p:commandButton value="Sim" process="@this"
+						action="#{ordemDeServicoMB.excluir()}"
+						onclick="PF('excluirOrdemDeServico').hide()" update="@form"
+						styleClass="ui-confirmdialog-yes" />
 
-						<p:commandButton value="Não"
-							oncomplete="PF('excluirOrdemDeServico').hide()"
-							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-					</div>
-				</p:confirmDialog>
-			</h:form>
+					<p:commandButton value="Não"
+						oncomplete="PF('excluirOrdemDeServico').hide()"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</div>
+			</p:confirmDialog>
+		</h:form>
 
 		<h:form id="modalDetalhes">
 			<!-- Modal para botao detalhes -->
-			<p:dialog header="Detalhes de orcamentos" widgetVar="detalhes"
+			
+			<p:dialog header="Status: #{ordemDeServicoMB.ordemDeServico.status}" widgetVar="detalhes"
 				appendTo="@(body)" minimizable="true" maximizable="true" width="650"
 				showEffect="fade" hideEffect="none">
-				<h2>Orcamento:</h2>
 				<p:separator />
-				<h:outputText
-					value="Nome da orcamento: #{Orcamento.orcamento.observacao}" />
-				<br />
-				<br />
-				<h:outputText
-					value="Numeração da orcamento: #{Orcamento.orcamento.data}" />
-				<br />
-				<br />
-				<h:outputText
-					value="Quantidade de orcamentos: #{Orcamento.orcamento.valorOrcado}" />
+				<p:fieldset legend="Detalhes do Cliente" toggleable="true"
+					toggleSpeed="650">
+					<h:panelGrid columns="6" width="100%" cellpadding="3"
+						style="text-align: left">
+
+						<h:outputLabel value="Nome do Cliente: " class="outputLabel" />
+						<p:outputLabel id="nomeCliente"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente.nome}" />
+
+						<h:outputLabel value="CPF: " class="outputLabel" />
+						<p:outputLabel id="cpfCliente"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente.cpf}" />
+
+						<h:outputLabel value="Telefone do Cliente: " class="outputLabel" />
+						<p:outputLabel id="telefoneCliente"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente.telefone}" />
+
+						<h:outputLabel value="Celular do cliente: " class="outputLabel" />
+						<p:outputLabel id="celularCliente"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente.celular}" />
+
+						<h:outputLabel value="E-Mail do cliente: " class="outputLabel" />
+						<p:outputLabel id="emailCliente"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.cliente.email}" />
+
+
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset legend="Detalhes do Mecânico" toggleable="true"
+					toggleSpeed="650">
+					<h:panelGrid columns="6" width="100%" cellpadding="3"
+						style="text-align: left">
+
+						<h:outputLabel value="Nome do Mecânico: " class="outputLabel" />
+						<p:outputLabel id="nomeMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.nome}" />
+
+						<h:outputLabel value="Salário do Mecânico: " class="outputLabel" />
+						<p:outputLabel id="salarioMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.salario}" />
+
+						<h:outputLabel value="CPF: " class="outputLabel" />
+						<p:outputLabel id="cpfMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.cpf}" />
+
+						<h:outputLabel value="Telefone residencial do mecânico: "
+							class="outputLabel" />
+						<p:outputLabel id="telefoneMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.telefone}" />
+
+						<h:outputLabel value="Celular do mecânico: " class="outputLabel" />
+						<p:outputLabel id="celularMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.celular}" />
+
+						<h:outputLabel value="E-Mail do mecânico: " class="outputLabel" />
+						<p:outputLabel id="emailMecanico"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ordemDeServicoMB.ordemDeServico.mecanico.email}" />
+
+					</h:panelGrid>
+				</p:fieldset>
+				<p:separator />
+				<p:fieldset legend="Detalhes do Veículo" toggleable="true"
+					toggleSpeed="650">
+					<h:panelGrid columns="6" width="100%" cellpadding="3"
+						style="text-align: left">
+
+						<h:outputLabel value="Nome do modelo: " class="outputLabel" />
+						<p:outputLabel id="nomeModelo"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.nome}" />
+
+						<p:outputLabel value="Cilindradas: " class="outputLabel" />
+						<p:outputLabel id="Cilindradas"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.motor}" />
+
+
+						<p:outputLabel id="combustivel_1" for="tipoCombustivel1"
+							value="Combustível 1: " class="outputLabel" />
+						<p:outputLabel id="tipoCombustivel1"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}" />
+
+						<p:outputLabel value="Sigla: " class="outputLabel" />
+						<p:outputLabel id="sigla"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
+
+						<p:outputLabel value="Potência em cavalos: " class="outputLabel" />
+						<p:outputLabel id="cavalos"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+
+						<p:outputLabel id="combustivel_2" for="tipoCombustivel2"
+							value="Combistível 2: " class="outputLabel" />
+						<p:outputLabel id="tipoCombustivel2"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+
+						<p:outputLabel value="Montadora: " class="outputLabel" />
+						<p:outputLabel id="montadoraID"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.montadora.nome}" />
+
+						<p:outputLabel value="Número de portas: " class="outputLabel" />
+						<p:outputLabel id="numPortas"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+
+
+						<p:outputLabel value="Ano do veiculo: " class="outputLabel" />
+						<p:outputLabel id="anoVeiculo"
+							style="font-weight: bold; font-size:1.1em"
+							value="#{ModeloVeiculoController.modeloVeiculo.ano}" />
+
+
+					</h:panelGrid>
+
+				</p:fieldset>
+
+				<p:separator />
+
+
 			</p:dialog>
 		</h:form>
 
