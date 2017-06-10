@@ -41,7 +41,7 @@
 
 						<p:outputLabel value="Mecanico: " id="mecanico" for="mecanicoId" />
 						<p:autoComplete id="mecanicoId"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico}"
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico}"
 							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{mecanicoMB.listarPorNome}" var="funcionario"
 							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"

@@ -33,7 +33,7 @@ public class OrdemDeServicos implements Serializable{
 				// fazemos uma associação (join) com cliente e nomeamos como "c"
 				.createAlias("cliente", "c")
 				// fazemos uma associação (join) com mecanico e nomeamos como "v"
-				.createAlias("mecanico", "v");
+				.createAlias("funcionario", "f");
 		
 		if (filtro.getNumeroDe() != null) {
 			// id deve ser maior ou igual (ge = greater or equals) a filtro.numeroDe
@@ -58,9 +58,9 @@ public class OrdemDeServicos implements Serializable{
 			criteria.add(Restrictions.ilike("c.nome", filtro.getNomeCliente(), MatchMode.ANYWHERE));
 		}
 		
-		if (StringUtils.isNotBlank(filtro.getNomeMecanico())) {
-			// acessamos o nome do mecanico associado ao ordemDeServico pelo alias "v", criado anteriormente
-			criteria.add(Restrictions.ilike("v.nome", filtro.getNomeMecanico(), MatchMode.ANYWHERE));
+		if (StringUtils.isNotBlank(filtro.getNomeFuncionarioMecanico())) {
+			// acessamos o nome do funcionario associado ao ordemDeServico pelo alias "f", criado anteriormente
+			criteria.add(Restrictions.ilike("f.nome", filtro.getNomeFuncionarioMecanico(), MatchMode.ANYWHERE));
 		}
 		
 		if (filtro.getStatuses() != null && filtro.getStatuses().length > 0) {

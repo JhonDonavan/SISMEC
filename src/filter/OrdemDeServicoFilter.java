@@ -13,7 +13,7 @@ public class OrdemDeServicoFilter implements Serializable{
 	private Integer numeroAte;
 	private Date dataCriacaoDe;
 	private Date dataCriacaoAte;
-	private String nomeMecanico;
+	private String nomeFuncionarioMecanico;
 	private String nomeCliente;
 	private StatusOrcamento[] statuses;
 
@@ -48,13 +48,13 @@ public class OrdemDeServicoFilter implements Serializable{
 	public void setDataCriacaoAte(Date dataCriacaoAte) {
 		this.dataCriacaoAte = dataCriacaoAte;
 	}
-
-	public String getNomeMecanico() {
-		return nomeMecanico;
+	
+	public String getNomeFuncionarioMecanico() {
+		return nomeFuncionarioMecanico;
 	}
 
-	public void setNomeMecanico(String nomeMecanico) {
-		this.nomeMecanico = nomeMecanico;
+	public void setNomeFuncionarioMecanico(String nomeFuncionarioMecanico) {
+		this.nomeFuncionarioMecanico = nomeFuncionarioMecanico;
 	}
 
 	public String getNomeCliente() {

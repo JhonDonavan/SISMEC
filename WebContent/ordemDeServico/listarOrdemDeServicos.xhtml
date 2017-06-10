@@ -37,8 +37,8 @@
 						value="#{pesquisaMB.filtro.dataCriacaoAte}" />
 				</h:panelGroup>
 
-				<p:outputLabel value="Mecanico" />
-				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeMecanico}" />
+				<p:outputLabel value="Mecânico" />
+				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeFuncionarioMecanico}" />
 
 				<p:outputLabel value="Cliente" />
 				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeCliente}" />
@@ -68,7 +68,7 @@
 				</p:column>
 
 				<p:column headerText="Mecânico">
-					<h:outputText value="#{OS.mecanico.nome}" />
+					<h:outputText value="#{OS.nomeFuncionarioMecanico.nome}" />
 				</p:column>
 
 				<p:column headerText="Placa do veiculo" width="10%">
@@ -168,7 +168,6 @@
 							style="font-weight: bold; font-size:1.1em"
 							value="#{ordemDeServicoMB.ordemDeServico.cliente.email}" />
 
-
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
@@ -180,33 +179,33 @@
 						<h:outputLabel value="Nome do Mecânico: " class="outputLabel" />
 						<p:outputLabel id="nomeMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.nome}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.nome}" />
 
 						<h:outputLabel value="Salário do Mecânico: " class="outputLabel" />
 						<p:outputLabel id="salarioMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.salario}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.salario}" />
 
 						<h:outputLabel value="CPF: " class="outputLabel" />
 						<p:outputLabel id="cpfMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.cpf}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.cpf}" />
 
 						<h:outputLabel value="Telefone residencial do mecânico: "
 							class="outputLabel" />
 						<p:outputLabel id="telefoneMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.telefone}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.telefone}" />
 
 						<h:outputLabel value="Celular do mecânico: " class="outputLabel" />
 						<p:outputLabel id="celularMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.celular}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.celular}" />
 
 						<h:outputLabel value="E-Mail do mecânico: " class="outputLabel" />
 						<p:outputLabel id="emailMecanico"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ordemDeServicoMB.ordemDeServico.mecanico.email}" />
+							value="#{ordemDeServicoMB.ordemDeServico.funcionario_mecanico.email}" />
 
 					</h:panelGrid>
 				</p:fieldset>

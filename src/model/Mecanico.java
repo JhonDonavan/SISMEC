@@ -25,8 +25,8 @@ public class Mecanico implements Serializable{
 	@SequenceGenerator(name = "MECANICO_ID", sequenceName = "SEQ_MECANICO", allocationSize = 1)
 	private Integer id;
 	
-	@OneToMany(mappedBy = "mecanico", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
-	private List<OrdemDeServico> ordemDeSerivco;
+	/*@OneToMany(mappedBy = "mecanico", targetEntity = OrdemDeServico.class, fetch = FetchType.LAZY)
+	private List<OrdemDeServico> ordemDeSerivco;*/
 	
 	@OneToMany(mappedBy = "mecanico", targetEntity = Orcamento.class, fetch = FetchType.LAZY)
 	private List<Orcamento> orcamento;
@@ -60,13 +60,13 @@ public class Mecanico implements Serializable{
 		return id;
 	}
 
-	public List<OrdemDeServico> getOrdemDeSerivco() {
+	/*public List<OrdemDeServico> getOrdemDeSerivco() {
 		return ordemDeSerivco;
 	}
 
 	public void setOrdemDeSerivco(List<OrdemDeServico> ordemDeSerivco) {
 		this.ordemDeSerivco = ordemDeSerivco;
-	}
+	}*/
 
 	public List<Orcamento> getOrcamento() {
 		return orcamento;
@@ -191,7 +191,6 @@ public class Mecanico implements Serializable{
 		result = prime * result + matricula;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((orcamento == null) ? 0 : orcamento.hashCode());
-		result = prime * result + ((ordemDeSerivco == null) ? 0 : ordemDeSerivco.hashCode());
 		temp = Double.doubleToLongBits(salario);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
@@ -257,11 +256,6 @@ public class Mecanico implements Serializable{
 				return false;
 		} else if (!orcamento.equals(other.orcamento))
 			return false;
-		if (ordemDeSerivco == null) {
-			if (other.ordemDeSerivco != null)
-				return false;
-		} else if (!ordemDeSerivco.equals(other.ordemDeSerivco))
-			return false;
 		if (Double.doubleToLongBits(salario) != Double.doubleToLongBits(other.salario))
 			return false;
 		if (senha == null) {
@@ -279,9 +273,13 @@ public class Mecanico implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Mecanico [id=" + id + ", ordemDeSerivco=" + ordemDeSerivco + ", orcamento=" + orcamento + ", endereco="
-				+ endereco + ", nome=" + nome + ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario
-				+ ", comissao=" + comissao + ", telefone=" + telefone + ", celular=" + celular + ", email=" + email
-				+ ", login=" + login + ", senha=" + senha + ", dataNascimento=" + dataNascimento + "]";
+		return "Mecanico [id=" + id + ", orcamento=" + orcamento + ", endereco=" + endereco + ", nome=" + nome
+				+ ", matricula=" + matricula + ", cpf=" + cpf + ", salario=" + salario + ", comissao=" + comissao
+				+ ", telefone=" + telefone + ", celular=" + celular + ", email=" + email + ", login=" + login
+				+ ", senha=" + senha + ", dataNascimento=" + dataNascimento + "]";
 	}
+	
+	
+
+	
 }

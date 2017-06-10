@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.bean.SessionScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,8 +50,8 @@ public class OrdemDeServico implements Serializable {
 	private Gerente gerente;
 
 	@ManyToOne
-	@JoinColumn(name = "mecanico_id")
-	private Mecanico mecanico;
+	@JoinColumn(name = "funcionarioMecanico_id")
+	private Funcionario funcionario_mecanico;
 
 	private Date dataInicio;
 
@@ -113,13 +112,13 @@ public class OrdemDeServico implements Serializable {
 	public void setGerente(Gerente gerente) {
 		this.gerente = gerente;
 	}
-
-	public Mecanico getMecanico() {
-		return mecanico;
+	
+	public Funcionario getFuncionario_mecanico() {
+		return funcionario_mecanico;
 	}
 
-	public void setMecanico(Mecanico mecanico) {
-		this.mecanico = mecanico;
+	public void setFuncionario_mecanico(Funcionario funcionario_mecanico) {
+		this.funcionario_mecanico = funcionario_mecanico;
 	}
 
 	public Date getDataInicio() {
@@ -186,6 +185,7 @@ public class OrdemDeServico implements Serializable {
 		this.descricao = descricao;
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -194,11 +194,12 @@ public class OrdemDeServico implements Serializable {
 		result = prime * result + ((dataConclusao == null) ? 0 : dataConclusao.hashCode());
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + ((dataPrevisto == null) ? 0 : dataPrevisto.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((formaPagamento == null) ? 0 : formaPagamento.hashCode());
+		result = prime * result + ((funcionario_mecanico == null) ? 0 : funcionario_mecanico.hashCode());
 		result = prime * result + ((gerente == null) ? 0 : gerente.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((itemServico == null) ? 0 : itemServico.hashCode());
-		result = prime * result + ((mecanico == null) ? 0 : mecanico.hashCode());
 		result = prime * result + ((pagamento == null) ? 0 : pagamento.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((valorDesconto == null) ? 0 : valorDesconto.hashCode());
@@ -236,7 +237,17 @@ public class OrdemDeServico implements Serializable {
 				return false;
 		} else if (!dataPrevisto.equals(other.dataPrevisto))
 			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
 		if (formaPagamento != other.formaPagamento)
+			return false;
+		if (funcionario_mecanico == null) {
+			if (other.funcionario_mecanico != null)
+				return false;
+		} else if (!funcionario_mecanico.equals(other.funcionario_mecanico))
 			return false;
 		if (gerente == null) {
 			if (other.gerente != null)
@@ -252,11 +263,6 @@ public class OrdemDeServico implements Serializable {
 			if (other.itemServico != null)
 				return false;
 		} else if (!itemServico.equals(other.itemServico))
-			return false;
-		if (mecanico == null) {
-			if (other.mecanico != null)
-				return false;
-		} else if (!mecanico.equals(other.mecanico))
 			return false;
 		if (pagamento == null) {
 			if (other.pagamento != null)
