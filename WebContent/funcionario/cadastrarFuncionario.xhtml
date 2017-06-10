@@ -27,6 +27,17 @@
 							requiredMessage="Favor informar o nome completo do funcionario.">
 							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
+						
+						<p:outputLabel value="Cargo" id="cargoId" for="cargo" />
+						<p:selectOneMenu id="cargo" required="true"
+							requiredMessage="Informe o cargo do funcionário"
+							value="#{funcionarioMB.funcionario.cargo}">
+							<f:selectItem itemLabel="Informe o cargo do funcionário" itemValue="" />
+							<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
+							<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
+							<f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
+							<f:selectItem itemLabel="Mecânico" itemValue="MECANICO" />
+						</p:selectOneMenu>
 
 						<p:outputLabel value="CPF: " />
 						<p:inputMask id="cpf" mask="999.999.999-99" value="#{funcionarioMB.funcionario.cpf}" required="true"

@@ -39,13 +39,18 @@
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
 
-					<p:column headerText="Nome" sortBy="#{funcionarios.nome}}"
+					<p:column headerText="Nome" sortBy="#{funcionarios.nome}"
 						filterBy="#{funcionarios.nome}}" filterMatchMode="contains">
 						<h:outputText value="#{funcionarios.nome}" />
 					</p:column>
 
 					<p:column headerText="Salário" sortBy="#{funcionarios.salario}">
 						<h:outputText value="#{funcionarios.salario}" />
+					</p:column>
+
+					<p:column headerText="Cargo" sortBy="#{funcionarios.cargo}"
+						filterBy="#{funcionarios.cargo}" filterMatchMode="contains">
+						<h:outputText value="#{funcionarios.cargo}" />
 					</p:column>
 
 					<p:column headerText="CPF" sortBy="#{funcionarios.cpf}"

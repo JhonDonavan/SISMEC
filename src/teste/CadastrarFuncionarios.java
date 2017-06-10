@@ -39,6 +39,7 @@ public class CadastrarFuncionarios {
 		
 		f.setNome("JHON OLIVEIRA");
 		f.setCelular("21121221");
+		f.setCargo("GERENTE");
 		f.setCpf("65656565");
 		f.setEmail("TESTE@TESTE");
 		f.setMatricula(6565);

@@ -46,6 +46,8 @@ public class Funcionario implements Serializable{
 	private String email;
 	
 	private Date dataNascimento;
+	
+	private String cargo;
 
 	public Integer getId() {
 		return id;
@@ -138,11 +140,22 @@ public class Funcionario implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
 		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
@@ -168,6 +181,11 @@ public class Funcionario implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
+		if (cargo == null) {
+			if (other.cargo != null)
+				return false;
+		} else if (!cargo.equals(other.cargo))
+			return false;
 		if (celular == null) {
 			if (other.celular != null)
 				return false;
@@ -219,6 +237,8 @@ public class Funcionario implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 	
 	
 
