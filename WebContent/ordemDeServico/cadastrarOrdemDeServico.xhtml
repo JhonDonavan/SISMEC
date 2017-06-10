@@ -43,10 +43,10 @@
 						<p:autoComplete id="mecanicoId"
 							value="#{ordemDeServicoMB.ordemDeServico.mecanico}"
 							dropdown="true" minQueryLength="3" size="50"
-							completeMethod="#{mecanicoMB.listarPorNome}" var="mecanico"
-							itemLabel="#{mecanico.nome}" itemValue="#{mecanico}"
-							converter="mecanicoConverter" required="true"
-							requiredMessage="Por favor informe o nome do Mecanico" />
+							completeMethod="#{mecanicoMB.listarPorNome}" var="funcionario"
+							itemLabel="#{funcionario.nome}" itemValue="#{funcionario}"
+							converter="funcionarioConverter" required="true"
+							requiredMessage="Por favor informe o nome do Mecânico" />
 
 						<p:outputLabel value="Forma de pagamento" id="formaPagamentoId"
 							for="formaPagamento" />

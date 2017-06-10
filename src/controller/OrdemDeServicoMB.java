@@ -9,14 +9,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import model.Cliente;
 import model.FormaPagamento;
+import model.Funcionario;
 import model.ItemServico;
-import model.Mecanico;
 import model.OrdemDeServico;
 import model.Servico;
 import model.StatusOrcamento;
@@ -167,7 +166,7 @@ public class OrdemDeServicoMB {
 		this.ordemDeServico = ordemDeServico;
 	}
 
-	public List<Mecanico> completarMecanico(String nomeMecanico) {
+	public List<Funcionario> completarMecanico(String nomeMecanico) {
 		return this.mecanicos.buscarMecanicoByNome(nomeMecanico);
 	}
 
@@ -243,4 +242,6 @@ public class OrdemDeServicoMB {
 	public void setServicoLinhaEditavel(Servico servicoLinhaEditavel) {
 		this.servicoLinhaEditavel = servicoLinhaEditavel;
 	}
+	
+	
 }

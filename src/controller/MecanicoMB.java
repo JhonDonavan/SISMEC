@@ -10,9 +10,10 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.Funcionario;
 import model.Mecanico;
-import modelDAO.MecanicoDAO;
 import modelDAO.GenericDAO;
+import modelDAO.MecanicoDAO;
 
 @ManagedBean(name = "mecanicoMB")
 @SessionScoped
@@ -20,6 +21,9 @@ public class MecanicoMB {
 	
 	@Autowired
 	private List<Mecanico> mecanicosSelecionados;
+	
+	@Autowired
+	private List<Funcionario> funcionariosMecanicosSelecionado;
 	
 	private Mecanico mecanico = new Mecanico();
 	private List<Mecanico> mecanicos = new ArrayList<Mecanico>();
@@ -29,6 +33,7 @@ public class MecanicoMB {
 		mecanico = new Mecanico();
 		mecanicos = new GenericDAO<Mecanico>(Mecanico.class).listarTodos();
 		mecanicosSelecionados = new ArrayList<>();
+		funcionariosMecanicosSelecionado = new ArrayList<>();
 	}
 
 	public String salvar() {
@@ -58,17 +63,19 @@ public class MecanicoMB {
 		mecanicos = new GenericDAO<Mecanico>(Mecanico.class).listarTodos();
 	}
 	
-	public List<Mecanico> listarPorNome(String nomeMecanico){
+	/*ESTE MÉTODO DEVE SER ALOCADO NO CONTROLADOR FuncionarioMB
+	 * POR FALTA DE TEMPO ESTÁ ALOCADO AQUI*/
+	public List<Funcionario> listarPorNome(String nomeFuncionario){
 		try {
-			mecanicosSelecionados = mecanicoDAO.buscarMecanicoByNome(nomeMecanico);
+			funcionariosMecanicosSelecionado = mecanicoDAO.buscarMecanicoByNome(nomeFuncionario);
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e);
 		}
 		
-		for(Mecanico aux : mecanicosSelecionados){
+		for(Funcionario aux : funcionariosMecanicosSelecionado){
 			System.out.println(aux.getNome());
 		}
-		return mecanicosSelecionados;
+		return funcionariosMecanicosSelecionado;
 	}
 	
 	public String limparMecanico(){
@@ -95,5 +102,15 @@ public class MecanicoMB {
 	public void setMecanicos(List<Mecanico> mecanicos) {
 		this.mecanicos = mecanicos;
 	}
+
+	public List<Funcionario> getFuncionariosMecanicosSelecionado() {
+		return funcionariosMecanicosSelecionado;
+	}
+
+	public void setFuncionariosMecanicosSelecionado(List<Funcionario> funcionariosMecanicosSelecionado) {
+		this.funcionariosMecanicosSelecionado = funcionariosMecanicosSelecionado;
+	}
+	
+	
 
 }
