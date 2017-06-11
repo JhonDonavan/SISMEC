@@ -70,13 +70,19 @@ public class OrdemDeServicoMB {
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
 	
-	public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
+	/*public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
 		if(this.ordemDeServico.getStatus().equals("EMITIDO")){
 			System.out.println("STATUS DO OBJETO È 'EMITIDO' " + this.ordemDeServico.getStatus());
 		}
+	}*/
+	
+	public void cancelarStatus(OrdemDeServico ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
+		this.ordemDeServico.setStatus(StatusOrcamento.CANCELADO);
+		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
 	}
-
+	
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {
 			this.ordemDeServico.adicionarItemVazio();

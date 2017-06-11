@@ -108,7 +108,7 @@
 						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
 						update="@form">
 						<p:ajax event="click"
-							listener="#{ordemDeServicoMB.alterarStatusEmitido(OS)}"></p:ajax>
+							listener="#{ordemDeServicoMB.cancelarStatus(OS)}"></p:ajax>
 					</p:commandButton>
 				</p:column>
 
@@ -117,20 +117,13 @@
 
 			<!-- Modal para confirmação de exclusão -->
 
-			<p:confirmDialog widgetVar="excluirOrdemDeServico"
-				message="Deseja realmente excluir a O.S?" appendTo="@(body)"
-				header="Excluir O.S">
-				<div style="text-align: center;">
-					<p:commandButton value="Sim" process="@this"
-						action="#{ordemDeServicoMB.excluir()}"
-						onclick="PF('excluirOrdemDeServico').hide()" update="@form"
-						styleClass="ui-confirmdialog-yes" />
+			<p:ajaxStatus onstart="PF('statusDialog').show()"
+				onsuccess="PF('statusDialog').hide()" />
 
-					<p:commandButton value="Não"
-						oncomplete="PF('excluirOrdemDeServico').hide()"
-						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-				</div>
-			</p:confirmDialog>
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<p:graphicImage name="/ajax-loader.gif" />
+			</p:dialog>
 		</h:form>
 
 		<h:form id="modalDetalhes">
