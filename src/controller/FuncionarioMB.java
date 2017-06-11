@@ -26,6 +26,9 @@ public class FuncionarioMB implements Serializable {
 	@Autowired
 	private List<Funcionario> funcionariosSelecionados;
 	
+	@Autowired
+	private List<Funcionario> funcionariosSelecionadosSemLogin;
+	
 	
 	private List<Autorizacao> autorizacoes = new ArrayList<>();
 	
@@ -47,6 +50,7 @@ public class FuncionarioMB implements Serializable {
 		funcionario = new Funcionario();
 		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
 		funcionariosSelecionados = new ArrayList<>();
+		funcionariosSelecionadosSemLogin = new ArrayList<>();
 		autorizacoes = new ArrayList<>();
 		usuario = new Usuario();
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
@@ -112,6 +116,16 @@ public class FuncionarioMB implements Serializable {
 			System.out.println("ERROR: " + e);
 		}
 		return funcionariosSelecionados;
+	}
+	
+	public List<Funcionario> listarPorNomeSemLogin(String nomeFuncionario) {
+		try {
+			funcionariosSelecionadosSemLogin = funcionarioDAO.buscarFuncionarioByNomeSemLogin(nomeFuncionario);
+		} catch (Exception e) {
+			System.out.println("ERROR: " + e);
+		}
+		
+		return funcionariosSelecionadosSemLogin;
 	}
 
 	public String limparFuncionario() {
@@ -190,6 +204,16 @@ public class FuncionarioMB implements Serializable {
 	public void setList_auxiliarParaSalvarEmLista(List<Autorizacao> list_auxiliarParaSalvarEmLista) {
 		this.list_auxiliarParaSalvarEmLista = list_auxiliarParaSalvarEmLista;
 	}
+
+	public List<Funcionario> getFuncionariosSelecionadosSemLogin() {
+		return funcionariosSelecionadosSemLogin;
+	}
+
+	public void setFuncionariosSelecionadosSemLogin(List<Funcionario> funcionariosSelecionadosSemLogin) {
+		this.funcionariosSelecionadosSemLogin = funcionariosSelecionadosSemLogin;
+	}
+	
+	
 	
 
 }

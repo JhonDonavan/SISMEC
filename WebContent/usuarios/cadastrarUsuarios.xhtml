@@ -34,7 +34,7 @@
 						<p:outputLabel value="Funcionário: " class="outputLabel" />
 						<p:autoComplete id="funcionarioId" dropdown="true"
 							minQueryLength="3" value="#{funcionarioMB.usuario.funcionario}"
-							size="30" completeMethod="#{funcionarioMB.listarPorNome}"
+							size="30" completeMethod="#{funcionarioMB.listarPorNomeSemLogin}"
 							var="funcionario" itemLabel="#{funcionario.nome}"
 							itemValue="#{funcionario}" converter="funcionarioConverter"
 							forceSelection="true" required="true"
