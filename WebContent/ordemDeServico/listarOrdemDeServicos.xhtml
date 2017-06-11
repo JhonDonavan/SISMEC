@@ -38,7 +38,8 @@
 				</h:panelGroup>
 
 				<p:outputLabel value="Mecânico" />
-				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeFuncionarioMecanico}" />
+				<p:inputText size="40"
+					value="#{pesquisaMB.filtro.nomeFuncionarioMecanico}" />
 
 				<p:outputLabel value="Cliente" />
 				<p:inputText size="40" value="#{pesquisaMB.filtro.nomeCliente}" />
@@ -104,8 +105,10 @@
 					<p:spacer width="5" />
 
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
-						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}" update="@form">
-						<p:ajax event="click" listener="#{ordemDeServicoMB.alterarStatusEmitido(OS)}"></p:ajax>
+						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
+						update="@form">
+						<p:ajax event="click"
+							listener="#{ordemDeServicoMB.alterarStatusEmitido(OS)}"></p:ajax>
 					</p:commandButton>
 				</p:column>
 
@@ -217,57 +220,56 @@
 						<h:outputLabel value="Nome do modelo: " class="outputLabel" />
 						<p:outputLabel id="nomeModelo"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.nome}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.nome}" />
 
 						<p:outputLabel value="Cilindradas: " class="outputLabel" />
 						<p:outputLabel id="Cilindradas"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.motor}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.motor}" />
 
 
 						<p:outputLabel id="combustivel_1" for="tipoCombustivel1"
 							value="Combustível 1: " class="outputLabel" />
 						<p:outputLabel id="tipoCombustivel1"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_1}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.combustivel_1}" />
 
 						<p:outputLabel value="Sigla: " class="outputLabel" />
 						<p:outputLabel id="sigla"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.sigla}" />
 
 						<p:outputLabel value="Potência em cavalos: " class="outputLabel" />
 						<p:outputLabel id="cavalos"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.potenciaCavalos}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.potenciaCavalos}" />
 
 						<p:outputLabel id="combustivel_2" for="tipoCombustivel2"
 							value="Combistível 2: " class="outputLabel" />
 						<p:outputLabel id="tipoCombustivel2"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.combustivel_2}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.combustivel_2}" />
 
 						<p:outputLabel value="Montadora: " class="outputLabel" />
 						<p:outputLabel id="montadoraID"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.montadora.nome}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.montadora.nome}" />
 
 						<p:outputLabel value="Número de portas: " class="outputLabel" />
 						<p:outputLabel id="numPortas"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.numPortas}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.numPortas}" />
 
 
 						<p:outputLabel value="Ano do veiculo: " class="outputLabel" />
 						<p:outputLabel id="anoVeiculo"
 							style="font-weight: bold; font-size:1.1em"
-							value="#{ModeloVeiculoController.modeloVeiculo.ano}" />
+							value="#{ordemDeServicoMB.ordemDeServico.veiculo.modelo.ano}" />
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
 
-				<p:fieldset legend="Serviços:" toggleable="true"
-					toggleSpeed="650">
+				<p:fieldset legend="Serviços:" toggleable="true" toggleSpeed="650">
 					<h:panelGrid columns="6" width="100%" cellpadding="3"
 						style="text-align: left">
 						<p:dataTable var="item" rowIndexVar="linha" id="tabelaItens"
@@ -307,7 +309,7 @@
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
-				
+
 				<p:fieldset legend="Informações de Pagamento" toggleable="true"
 					toggleSpeed="650">
 					<h:panelGrid columns="6" width="100%" cellpadding="3"
@@ -320,7 +322,7 @@
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
-				
+
 				<p:fieldset legend="Observações Gerais" toggleable="true"
 					toggleSpeed="650">
 					<h:panelGrid columns="6" width="100%" cellpadding="3"
