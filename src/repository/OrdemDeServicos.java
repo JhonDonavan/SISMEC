@@ -33,7 +33,7 @@ public class OrdemDeServicos implements Serializable{
 				// fazemos uma associação (join) com cliente e nomeamos como "c"
 				.createAlias("cliente", "c")
 				// fazemos uma associação (join) com mecanico e nomeamos como "v"
-				.createAlias("funcionario", "f");
+				.createAlias("funcionario_mecanico", "f");
 		
 		if (filtro.getNumeroDe() != null) {
 			// id deve ser maior ou igual (ge = greater or equals) a filtro.numeroDe

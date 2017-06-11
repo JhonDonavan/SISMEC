@@ -69,6 +69,13 @@ public class OrdemDeServicoMB {
 		ordemDeServico = new OrdemDeServico();
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
+	
+	public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
+		if(this.ordemDeServico.getStatus().equals("EMITIDO")){
+			System.out.println("STATUS DO OBJETO È 'EMITIDO' " + this.ordemDeServico.getStatus());
+		}
+	}
 
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {

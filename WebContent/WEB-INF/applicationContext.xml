@@ -14,7 +14,7 @@
 	</b:bean>
 
 	<b:bean id="jsfAccessDeniedHandler" class="security.JsfAccessDeniedHandler">
-		<b:property name="loginPath" value="/acessoNegado.xhtml" />
+		<b:property name="loginPath" value="/AcessoNegado.xhtml" />
 		<b:property name="contextRelative" value="true" />
 	</b:bean>
 
@@ -43,19 +43,17 @@
 		<intercept-url pattern="/atendente/listarAtendentes.xhtml" access="hasAnyRole('ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/cliente/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS')"/>
-		<intercept-url pattern="/fornecedor/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/fornecedor/listarFornecedores.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/mecanico/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/mecanico/listarMecanicos.xhtml" access="hasAnyRole('MECANICOS', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/modeloVeiculos/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/orcamento/cadastrarOrcamentos.xhtml" access="hasAnyRole('MECANICOS', 'GERENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/pagamento/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/peca/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasRole('MECANICOS')"/>
+		
 	
 		<!-- TRATAR PERMISÃO DAS TELAS DE ORDEM DE SERVIÇO. -->
 		<intercept-url pattern="/ordemDeServico/**" access="isAuthenticated()"/> 
+		
+		
 		
 		<form-login login-page="/login.xhtml" default-target-url="/" authentication-failure-url="/login.xhtml?invalid=true" always-use-default-target="true"/>
 		<logout logout-url="/j_spring_security_logout" invalidate-session="true"  />

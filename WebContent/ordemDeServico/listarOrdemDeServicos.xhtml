@@ -68,7 +68,7 @@
 				</p:column>
 
 				<p:column headerText="Mecânico">
-					<h:outputText value="#{OS.nomeFuncionarioMecanico.nome}" />
+					<h:outputText value="#{OS.funcionario_mecanico.nome}" />
 				</p:column>
 
 				<p:column headerText="Placa do veiculo" width="10%">
@@ -104,9 +104,8 @@
 					<p:spacer width="5" />
 
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
-						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
-						actionListener="#{ordemDeServicoMB.prepararExclusao(OS)}"
-						oncomplete="PF('excluirOrdemDeServico').show()">
+						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}" update="@form">
+						<p:ajax event="click" listener="#{ordemDeServicoMB.alterarStatusEmitido(OS)}"></p:ajax>
 					</p:commandButton>
 				</p:column>
 
