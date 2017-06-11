@@ -38,6 +38,8 @@ public class FuncionarioMB implements Serializable {
 	
 	private List<Usuario> usuarios = new ArrayList<>();
 	
+	/*Está variável esta sendo utilizada no metodo salvar usuario, pois o spring security recebe uma lista de obejetos com papeis,
+	 * Em nosso sistema estamos enviando um objeto, entao essa variável é inserida em uma lista e adc a objeto lista de autorização do usuario*/
 	private Autorizacao auxiliarParaSalvarEmLista = new Autorizacao();
 	
 	private List<Autorizacao> list_auxiliarParaSalvarEmLista = new ArrayList<>();
@@ -124,7 +126,6 @@ public class FuncionarioMB implements Serializable {
 		} catch (Exception e) {
 			System.out.println("ERROR: " + e);
 		}
-		
 		return funcionariosSelecionadosSemLogin;
 	}
 

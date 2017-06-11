@@ -28,10 +28,10 @@
 						<p:outputLabel value="e-mail do usuário:  " />
 						<p:inputText id="e-mail" value="#{funcionarioMB.usuario.email}"
 							required="true"
-							requiredMessage="Favor informar o número de CPF do atendente.">
+							requiredMessage="Favor informar o E-mail do usuário.">
 						</p:inputText>
 
-						<p:outputLabel value="Funcionário: " class="outputLabel" />
+						<p:outputLabel value="Funcionário: "  for="funcionarioId" class="outputLabel" />
 						<p:autoComplete id="funcionarioId" dropdown="true"
 							minQueryLength="3" value="#{funcionarioMB.usuario.funcionario}"
 							size="30" completeMethod="#{funcionarioMB.listarPorNomeSemLogin}"
