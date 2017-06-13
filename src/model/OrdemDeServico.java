@@ -21,7 +21,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "ordemDeServicosMB")
+@Table(name = "ordemDeServicos")
 public class OrdemDeServico implements Serializable {
 
 	private static final long serialVersionUID = 1L;

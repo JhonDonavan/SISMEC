@@ -43,7 +43,7 @@ public class MontadoraController {
 	}
 	
 	public String cancelar(){
-		return "listarMontadoras?faces-redirect=true";
+		return "/monstadora/listarMontadoras?faces-redirect=true";
 	}
 
 	public String editar(Montadora montadora) {
@@ -62,17 +62,12 @@ public class MontadoraController {
 	}
 
 	public List<Montadora> listarPorNome(String nomeMontadora) {
-		System.out.println("Entrou no metodo listarPorNome: " + nomeMontadora);
 		try {
-			System.out.println("ENTROU NO TRY");
 			montadorasSelecionados = montadoraDAO.buscaMontadoraByNome(nomeMontadora);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}
 		System.out.println("Entrou no metodo listarPorNome: " + nomeMontadora + " E " + nomeMontadora);
-		for (Montadora m : montadorasSelecionados) {
-			System.out.println("Montadora: " + m.getNome());
-		}
 		return montadorasSelecionados;
 	}
 

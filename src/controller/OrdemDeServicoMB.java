@@ -1,7 +1,9 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -56,12 +58,23 @@ public class OrdemDeServicoMB {
 	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
 	}
+	
+	/*DATA ATUAL*/
+	String atual = dataAtual();
 
 	public boolean exbirBotaoCancelarOS() {
 		if (status.equals("EMITIDO") && status.equals("ORCAMENTO"))
 			return true;
 		else
 			return false;
+	}
+
+	private String dataAtual() {
+		Date data = new Date(System.currentTimeMillis());  
+		SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy"); 
+		return (formatarDate.format(data));
+
+		
 	}
 
 	public OrdemDeServicoMB() {
@@ -150,6 +163,7 @@ public class OrdemDeServicoMB {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
 		return "listarOrdemDeServicos.xhtml?faces-redirect=true";
 	}
+
 
 	public String editar(OrdemDeServico ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
@@ -255,6 +269,16 @@ public class OrdemDeServicoMB {
 	public void setServicoLinhaEditavel(Servico servicoLinhaEditavel) {
 		this.servicoLinhaEditavel = servicoLinhaEditavel;
 	}
+
+	public String getAtual() {
+		return atual;
+	}
+
+	public void setAtual(String atual) {
+		this.atual = atual;
+	}
+	
+	
 	
 	
 }

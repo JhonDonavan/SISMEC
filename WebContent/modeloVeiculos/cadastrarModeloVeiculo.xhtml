@@ -71,7 +71,7 @@
 						<p:autoComplete id="montadoraID" dropdown="true"
 							minQueryLength="3"
 							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
-							size="30" completeMethod="#{Montadora.listarPorNome}"
+							size="30" completeMethod="#{montadoraMB.listarPorNome}"
 							var="modelo" itemLabel="#{modelo.nome}" itemValue="#{modelo}"
 							converter="montadoraConverter" forceSelection="true"
 							required="true" requiredMessage="Informe a montadora do modelo" />

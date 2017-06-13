@@ -22,28 +22,28 @@
 
 						<h:outputLabel value="Nome da montadora:" />
 						<p:inputText id="nomeMontadora"
-							value="#{Montadora.montadora.nome}" required="true" requiredMessage="Por favor informe o Nome da montadora">
+							value="#{montadoraMB.montadora.nome}" required="true" requiredMessage="Por favor informe o Nome da montadora">
 						</p:inputText>
 
 						<p:outputLabel value="Pais origem:" />
 						<p:inputText id="paisMontadora"
-							value="#{Montadora.montadora.pais}" required="true"
+							value="#{montadoraMB.montadora.pais}" required="true"
 							requiredMessage="Informe o pais de origem da montadora">
 						</p:inputText>
 
 						<p:outputLabel value="WEB SITE:" />
 						<p:inputText id="webSiteMontadora"
-							value="#{Montadora.montadora.site}" required="true"
+							value="#{montadoraMB.montadora.site}" required="true"
 							requiredMessage="Por favor preencha o WEB SITE da montadora" />
 
 						<br />
 						<br />
 						
 						<p:commandButton value="Cancelar" icon="ui-icon-arrowreturnthick-1-w"
-							action="#{montadoMB.cancelar}" update="@form" />
+							action="#{montadoraMB.cancelar}" />
 							
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{Montadora.salvar}" update="@form" />
+							action="#{montadoraMB.salvar}" update="@form" />
 					</h:panelGrid>
 
 				</h:form>

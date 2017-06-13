@@ -27,8 +27,8 @@
 							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
-							converter="clienteConverter" required="true" 
-							requiredMessage="Por favor informe o nome do cliente"/>
+							converter="clienteConverter" required="true"
+							requiredMessage="Por favor informe o nome do cliente" />
 
 						<p:outputLabel value="Veiculo: " id="veiculo" for="veiuloId" />
 						<p:autoComplete id="veiuloId"
@@ -83,6 +83,14 @@
 						<p:outputLabel id="valorTotalDaOS"
 							style="font-weight: bold; font-size:1.1em"
 							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}" />
+
+						<p:outputLabel value="Data de registro: " for="button" />
+						<p:calendar id="button"
+							value="#{ordemDeServicoMB.ordemDeServico.dataInicio}"
+							showOn="button" required="true" locale="pt" navigator="true"
+							pattern="dd-MM-yyyy"
+							requiredMessage="Favor informar a data de registro da O.S.">
+						</p:calendar>
 					</h:panelGrid>
 
 					<p:separator />
@@ -111,6 +119,22 @@
 
 				</h:form>
 			</p:panel>
+
+			 
+			<p:dialog modal="true" resizable="false" header="Values"
+				widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="2"
+					columnClasses="label,value">
+           
+ 
+            <h:outputText value="German:" />
+            <h:outputText value="#{calendarView.date5}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+ 
+            </p:panelGrid>
+ 
+    </p:dialog>
 		</div>
 	</ui:define>
 </ui:decorate>
