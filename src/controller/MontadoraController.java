@@ -14,7 +14,7 @@ import model.Montadora;
 import modelDAO.GenericDAO;
 import modelDAO.MontadoraDAO;
 
-@ManagedBean(name = "Montadora")
+@ManagedBean(name = "montadoraMB")
 @SessionScoped
 public class MontadoraController {
 
@@ -39,6 +39,10 @@ public class MontadoraController {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora cadastrada com sucesso!"));
 		
 		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
+		return "listarMontadoras?faces-redirect=true";
+	}
+	
+	public String cancelar(){
 		return "listarMontadoras?faces-redirect=true";
 	}
 

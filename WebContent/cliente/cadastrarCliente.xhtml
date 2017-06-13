@@ -72,8 +72,9 @@
 							required="true"
 							requiredMessage="Favor informar Data de nascimento" />
 
-						<br />
-						<br />
+						<p:commandButton value="Cancelar" icon="ui-icon-arrowreturnthick-1-w"
+							action="#{clienteMB.cancelar}" />
+							
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{clienteMB.salvar}" update="@form" />
 					</h:panelGrid>

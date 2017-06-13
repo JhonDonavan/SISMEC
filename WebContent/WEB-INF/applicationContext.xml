@@ -41,7 +41,7 @@
 		<intercept-url pattern="/acessoNegado.xhtml"   access="isAuthenticated()" />
 		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES','GERENTES')"/>
+		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES','GERENTES','ADMINISTRADORES')"/>
 		<intercept-url pattern="/cliente/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/modeloVeiculos/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>

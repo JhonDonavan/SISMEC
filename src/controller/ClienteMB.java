@@ -40,6 +40,10 @@ public class ClienteMB {
 		return "listarClientes?faces-redirect=true";
 	}
 	
+	public String cancelar(){
+		return "listarClientes?faces-redirect=true";
+	}
+	
 	public String editar(Cliente cliente){
 		this.cliente = cliente;
 		return "cadastrarCliente.xhtml?faces-redirect=true";
