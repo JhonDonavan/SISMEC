@@ -109,22 +109,23 @@
 						update="@form">
 						<p:ajax event="click"
 							listener="#{ordemDeServicoMB.cancelarStatus(OS)}"></p:ajax>
+						<p:ajaxStatus onstart="PF('statusDialog').show()"
+							onsuccess="PF('statusDialog').hide()" />
 					</p:commandButton>
+
 				</p:column>
 
 			</p:dataTable>
 
-
-			<!-- Modal para confirmação de exclusão -->
-
-			<p:ajaxStatus onstart="PF('statusDialog').show()"
-				onsuccess="PF('statusDialog').hide()" />
-
-			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
-				closable="false" resizable="false" showHeader="false">
-				<p:graphicImage name="/ajax-loader.gif" />
-			</p:dialog>
 		</h:form>
+
+		<!-- Modal para confirmação de exclusão -->
+		<p:ajaxStatus onstart="PF('statusDialog').show()"
+			onsuccess="PF('statusDialog').hide()" />
+		<p:dialog widgetVar="statusDialog" modal="false" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage value="/image/ajax-loader.gif" />
+		</p:dialog>
 
 		<h:form id="modalDetalhes">
 			<!-- Modal para botao detalhes -->
