@@ -41,11 +41,11 @@
 		<intercept-url pattern="/acessoNegado.xhtml"   access="isAuthenticated()" />
 		<intercept-url pattern="/veiculo/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/montadora/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES')"/>
+		<intercept-url pattern="/cliente/listarClientes.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES','GERENTES')"/>
 		<intercept-url pattern="/cliente/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
 		<intercept-url pattern="/modeloVeiculos/**" access="hasAnyRole('MECANICOS', 'GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
-		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES')"/>
 		<intercept-url pattern="/servico/**" access="hasAnyRole('GERENTES', 'ATENDENTES', 'ADMINISTRADORES')"/>
+		<intercept-url pattern="/servico/listarServicos.xhtml" access="hasAnyRole('MECANICOS','ATENDENTES')"/>
 		<intercept-url pattern="/usuarios/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES','ATENDENTES')"/>
 		<intercept-url pattern="/funcionario/**" access="hasAnyRole('GERENTES', 'ADMINISTRADORES')"/>
 	
