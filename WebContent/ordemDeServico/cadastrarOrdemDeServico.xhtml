@@ -55,7 +55,7 @@
 							value="#{ordemDeServicoMB.ordemDeServico.formaPagamento}">
 							<f:selectItem itemLabel="PAGAMENTO" />
 							<f:selectItems value="#{ordemDeServicoMB.formaPagamento}"
-								var="pagamento" itemLabel="#{pagamento}"
+								var="pagamento" itemLabel="#{pagamento.descricao}"
 								itemValue="#{pagamento}" />
 						</p:selectOneMenu>
 
@@ -76,8 +76,6 @@
 							<f:selectItem itemLabel="" itemValue="" />
 							<f:selectItem itemLabel="ORÇAMENTO" itemValue="ORCAMENTO" />
 							<f:selectItem itemLabel="EMITIR" itemValue="EMITIDO" />
-							<f:selectItem itemLabel="CANCELADO" itemValue="CANCELADO" />
-							<f:selectItem itemLabel="FINALIZADO" itemValue="FINALIZADO" />
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Valor Total"
@@ -85,7 +83,6 @@
 						<p:outputLabel id="valorTotalDaOS"
 							style="font-weight: bold; font-size:1.1em"
 							value="R$ #{ordemDeServicoMB.ordemDeServico.valorTotal}" />
-
 					</h:panelGrid>
 
 					<p:separator />

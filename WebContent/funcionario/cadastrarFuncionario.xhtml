@@ -15,7 +15,8 @@
 					<p:messages id="msgs" closable="true" />
 					<p:growl />
 					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel id="salario" mask="9.999,99" value="Salário do Funcionario " />
+						<h:outputLabel id="salario" mask="9.999,99"
+							value="Salário do Funcionario " />
 						<p:inputNumber value="#{funcionarioMB.funcionario.salario}"
 							required="true"
 							requiredMessage="Favor informar o salário do funcionario.">
@@ -23,16 +24,18 @@
 						</p:inputNumber>
 
 						<h:outputLabel value="Nome completo: " />
-						<p:inputText value="#{funcionarioMB.funcionario.nome}" required="true"
+						<p:inputText value="#{funcionarioMB.funcionario.nome}"
+							required="true"
 							requiredMessage="Favor informar o nome completo do funcionario.">
 							<f:validator validatorId="nome-validador"></f:validator>
 						</p:inputText>
-						
+
 						<p:outputLabel value="Cargo" id="cargoId" for="cargo" />
 						<p:selectOneMenu id="cargo" required="true"
 							requiredMessage="Informe o cargo do funcionário"
 							value="#{funcionarioMB.funcionario.cargo}">
-							<f:selectItem itemLabel="Informe o cargo do funcionário" itemValue="" />
+							<f:selectItem itemLabel="Informe o cargo do funcionário"
+								itemValue="" />
 							<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
 							<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
 							<f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
@@ -40,16 +43,18 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel value="CPF: " />
-						<p:inputMask id="cpf" mask="999.999.999-99" value="#{funcionarioMB.funcionario.cpf}" required="true"
+						<p:inputMask id="cpf" mask="999.999.999-99"
+							value="#{funcionarioMB.funcionario.cpf}" required="true"
 							requiredMessage="Favor informar o número de CPF do funcionario.">
 						</p:inputMask>
 
 						<p:outputLabel value="Telefone: " />
-						<p:inputMask id="telefone" mask="(99) 9999-9999" value="#{funcionarioMB.funcionario.telefone}" />
+						<p:inputMask id="telefone" mask="(99) 9999-9999"
+							value="#{funcionarioMB.funcionario.telefone}" />
 
 						<p:outputLabel value="Celular: " />
-						<p:inputMask  id="celular" mask="(99) 99999-9999" value="#{funcionarioMB.funcionario.celular}"
-							required="true"
+						<p:inputMask id="celular" mask="(99) 99999-9999"
+							value="#{funcionarioMB.funcionario.celular}" required="true"
 							requiredMessage="Favor informar o telefone celular do funcionario" />
 
 						<p:outputLabel value="E-Mail: " />
@@ -61,9 +66,11 @@
 
 						<p:outputLabel value="Data de nascimento: " for="button" />
 						<p:calendar id="button"
-							value="#{funcionarioMB.funcionario.dataNascimento}" showOn="button"
-							required="true"
-							requiredMessage="Favor informar a data de nascimento do funcionario." />
+							value="#{funcionarioMB.funcionario.dataNascimento}"
+							showOn="button" required="true" locale="pt" navigator="true" pattern="dd-MM-yyyy"
+							requiredMessage="Favor informar a data de nascimento do funcionario.">
+							
+						</p:calendar>
 
 						<br />
 						<br />
