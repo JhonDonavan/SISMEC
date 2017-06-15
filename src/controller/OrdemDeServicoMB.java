@@ -58,8 +58,8 @@ public class OrdemDeServicoMB {
 	public void init() {
 		formaPagamento = Arrays.asList(FormaPagamento.values());
 	}
-	
-	/*DATA ATUAL*/
+
+	/* DATA ATUAL */
 	String atual = dataAtual();
 
 	public boolean exbirBotaoCancelarOS() {
@@ -70,11 +70,10 @@ public class OrdemDeServicoMB {
 	}
 
 	private String dataAtual() {
-		Date data = new Date(System.currentTimeMillis());  
-		SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy"); 
+		Date data = new Date(System.currentTimeMillis());
+		SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy");
 		return (formatarDate.format(data));
 
-		
 	}
 
 	public OrdemDeServicoMB() {
@@ -82,20 +81,35 @@ public class OrdemDeServicoMB {
 		ordemDeServico = new OrdemDeServico();
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
-	
-	/*public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
-		this.ordemDeServico = ordemDeServico;
-		if(this.ordemDeServico.getStatus().equals("EMITIDO")){
-			System.out.println("STATUS DO OBJETO È 'EMITIDO' " + this.ordemDeServico.getStatus());
-		}
-	}*/
-	
+
+	/*
+	 * public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
+	 * this.ordemDeServico = ordemDeServico;
+	 * if(this.ordemDeServico.getStatus().equals("EMITIDO")){
+	 * System.out.println("STATUS DO OBJETO È 'EMITIDO' " +
+	 * this.ordemDeServico.getStatus()); } }
+	 */
+
 	public void cancelarStatus(OrdemDeServico ordemDeServico) {
-		this.ordemDeServico = ordemDeServico;
-		this.ordemDeServico.setStatus(StatusOrcamento.CANCELADO);
-		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
+		try {
+			this.ordemDeServico = ordemDeServico;
+			this.ordemDeServico.setStatus(StatusOrcamento.CANCELADO);
+			new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Ordem De Servico cancelada com sucesso!"));
+		} catch (Exception e) {
+
+		}
 	}
-	
+
+	public void finalizarStatus(OrdemDeServico ordemDeServico) {
+		this.ordemDeServico = ordemDeServico;
+		this.ordemDeServico.setStatus(StatusOrcamento.FINALIZADO);
+		new GenericDAO<OrdemDeServico>(OrdemDeServico.class).salvar(ordemDeServico);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("Ordem De Servico finalizada com sucesso!"));
+	}
+
 	public void inicializar() {
 		if (FacesUtil.isNotPostback()) {
 			this.ordemDeServico.adicionarItemVazio();
@@ -128,26 +142,30 @@ public class OrdemDeServicoMB {
 		ItemServico item = this.ordemDeServico.getItemServico().get(0);
 
 		if (this.servicoLinhaEditavel != null) {
-			if (this.existeItemComServico(this.servicoLinhaEditavel)){
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso!", "Já existe um serviço igual neste item."));
-			} else {
-				item.setServico(this.servicoLinhaEditavel);
-				item.setValorUnitario(this.servicoLinhaEditavel.getValor());
+			try {
+				if (this.existeItemComServico(this.servicoLinhaEditavel)) {
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Aviso!", "Já existe um serviço igual neste item."));
+				} else {
+					item.setServico(this.servicoLinhaEditavel);
+					item.setValorUnitario(this.servicoLinhaEditavel.getValor());
 
-				this.ordemDeServico.adicionarItemVazio();
-				this.servicoLinhaEditavel = null;
+					this.ordemDeServico.adicionarItemVazio();
+					this.servicoLinhaEditavel = null;
 
-				this.ordemDeServico.recalcularValorTotal();
+					this.ordemDeServico.recalcularValorTotal();
+				}
+			} catch (Exception e) {
 			}
 		}
 	}
-	
+
 	private boolean existeItemComServico(Servico servico) {
 		boolean existeItem = false;
-		
-		for(ItemServico item : this.getOrdemDeServico().getItemServico()){
-			
-			if(servico.getId() == item.getServico().getId()){
+
+		for (ItemServico item : this.getOrdemDeServico().getItemServico()) {
+
+			if (servico.getId() == item.getServico().getId()) {
 				existeItem = true;
 				break;
 			}
@@ -163,7 +181,6 @@ public class OrdemDeServicoMB {
 		ordemDeServicos = new GenericDAO<OrdemDeServico>(OrdemDeServico.class).listarTodos();
 		return "listarOrdemDeServicos.xhtml?faces-redirect=true";
 	}
-
 
 	public String editar(OrdemDeServico ordemDeServico) {
 		this.ordemDeServico = ordemDeServico;
@@ -277,8 +294,5 @@ public class OrdemDeServicoMB {
 	public void setAtual(String atual) {
 		this.atual = atual;
 	}
-	
-	
-	
-	
+
 }

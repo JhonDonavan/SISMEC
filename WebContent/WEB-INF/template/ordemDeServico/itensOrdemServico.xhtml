@@ -12,13 +12,13 @@
 
 	<p:dataTable var="item" rowIndexVar="linha" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
-		<p:column headerText="Código" style="text-align: center; width:80px">
+		<p:column headerText="ID" style="text-align: center; width:80px">
 			<p:outputLabel value="#{item.servico.id}" />
 		</p:column>
 
-		<p:column headerText="Serviço" style="text-align: center; width:750px">
+		<p:column headerText="Serviço" style="text-align: center; width:350px">
 			<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}" />
-			<p:autoComplete styleClass="produto-tabela" size="92"
+			<p:autoComplete styleClass="produto-tabela" size="50"
 				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
 				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
 				itemLabel="#{servico.nome}" itemValue="#{servico}"
@@ -30,15 +30,15 @@
 		</p:column>
 
 		<p:column headerText="Valor unitário"
-			style="text-align: right; width:150px">
+			style="text-align: right; width:120px">
 			<h:outputText size="10" value="#{item.valorUnitario}">
 				<f:convertNumber type="currency" />
 			</h:outputText>
 		</p:column>
 
 		<p:column headerText="Quantidade"
-			style="text-align: right; width:150px">
-			<h:inputText size="10" value="#{item.quantidade}">
+			style="text-align: right; width:120px">
+			<h:inputText size="2" value="#{item.quantidade}">
 				<p:ajax event="change" process="@this"
 					update="tabelaItens cadastrarOrdemDeServico:valorTotalDaOS"
 					listener="#{ordemDeServicoMB.atualizarQuantidade(item, linha)}" />
@@ -46,7 +46,7 @@
 		</p:column>
 		
 		<p:column headerText=""
-			style="text-align: right; width:150px">
+			style="text-align: right; width:0px">
 			<h:outputText size="10"/>
 			
 		</p:column>
