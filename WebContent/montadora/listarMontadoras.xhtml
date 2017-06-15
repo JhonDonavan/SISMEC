@@ -33,7 +33,7 @@
 
 				<p:growl autoUpdate="true" />
 				<p:dataTable id="MontadorasLista" var="montadora"
-					value="#{montadoraMB.montadoras}" paginator="true" rows="15"
+					value="#{montadoraMB.montadoraMB}" paginator="true" rows="15"
 					rowsPerPageTemplate="5,10,15,20,25,50"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					style="margin-top:7px;">
@@ -55,7 +55,7 @@
 					<p:column style="text-align:center;" exportable="false" width="15%">
 						<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 							oncomplete="PF('detalhes').show();" update=":modalDetalhes"
-							action="#{Montadora.detalheMontadora(montadora)}">
+							action="#{montadoraMB.detalheMontadora(montadora)}">
 						</p:commandButton>
 
 						<p:spacer width="5" />
@@ -69,7 +69,7 @@
 						<p:commandButton icon="ui-icon-trash" title="Excluir"
 							rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}"
 							oncomplete="PF('excluirMontadora').show()"
-							actionListener="#{Montadora.prepararExclusao(montadora)}">
+							actionListener="#{montadoraMB.prepararExclusao(montadora)}">
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
@@ -96,7 +96,7 @@
 
 			<h:form id="modalDetalhes">
 				<!-- Modal para botao detalhes -->
-				<p:dialog header="Detalhes de montadoras" widgetVar="detalhes"
+				<p:dialog header="Detalhes de montadoraMB" widgetVar="detalhes"
 					appendTo="@(body)" minimizable="true" maximizable="true"
 					width="650" showEffect="fade" hideEffect="none">
 					<p:separator />
