@@ -69,10 +69,12 @@ public class FuncionarioMB implements Serializable {
 		return "listarFuncionario.xhtml?faces-redirect=true";
 	}
 	
+	
+	
 	public String salvarUsuario() {
 		
 		list_auxiliarParaSalvarEmLista.add(auxiliarParaSalvarEmLista);
-		
+		System.out.println(auxiliarParaSalvarEmLista.getNome());
 		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
 		
 		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
@@ -106,9 +108,14 @@ public class FuncionarioMB implements Serializable {
 
 	public void excluir() {
 		System.out.println("excluir usuário: " + usuario.getNomeUsuario());
-		new GenericDAO<Usuario>(Usuario.class).excluir(usuario);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário excluido com sucesso!"));
-		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
+		try {
+			new GenericDAO<Usuario>(Usuario.class).excluir(usuario);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário excluido com sucesso!"));
+			usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Você não pode excluir um funcionario com um usuário relacionado","Você não pode excluir um funcionario com um usuário relacionado"));
+		}
 	}
 
 	public List<Funcionario> listarPorNome(String nomeFuncionario) {
