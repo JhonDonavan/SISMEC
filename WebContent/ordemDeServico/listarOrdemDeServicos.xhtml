@@ -119,7 +119,7 @@
 					<p:spacer width="5" />
 
 					<p:commandButton icon="ui-icon-circle-check" title="Finalizar"
-						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
+						rendered="#{(OS.status eq 'EMITIDO')}"
 						update="@form">
 						<p:ajax event="click"
 							listener="#{ordemDeServicoMB.finalizarStatus(OS)}"></p:ajax>
@@ -146,7 +146,7 @@
 		<h:form id="modalDetalhes">
 			<!-- Modal para botao detalhes -->
 
-			<p:dialog header="Status: #{ordemDeServicoMB.ordemDeServico.status}"
+			<p:dialog header="Status: #{ordemDeServicoMB.ordemDeServico.status} Valor Total: #{ordemDeServicoMB.ordemDeServico.valorTotal}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 				<p:separator />
@@ -293,7 +293,6 @@
 							<p:column headerText="Serviço"
 								style="text-align: center; width:40%">
 								<h:outputText value="#{item.servico.nome}" />
-
 							</p:column>
 
 							<p:column headerText="Valor unitário"

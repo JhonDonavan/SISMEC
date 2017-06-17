@@ -82,14 +82,6 @@ public class OrdemDeServicoMB {
 		ordemDeServicosSelecionados = new ArrayList<>();
 	}
 
-	/*
-	 * public void alterarStatusEmitido(OrdemDeServico ordemDeServico) {
-	 * this.ordemDeServico = ordemDeServico;
-	 * if(this.ordemDeServico.getStatus().equals("EMITIDO")){
-	 * System.out.println("STATUS DO OBJETO È 'EMITIDO' " +
-	 * this.ordemDeServico.getStatus()); } }
-	 */
-
 	public void cancelarStatus(OrdemDeServico ordemDeServico) {
 		try {
 			this.ordemDeServico = ordemDeServico;
@@ -154,6 +146,8 @@ public class OrdemDeServicoMB {
 					this.servicoLinhaEditavel = null;
 
 					this.ordemDeServico.recalcularValorTotal();
+					
+					
 				}
 			} catch (Exception e) {
 			}
