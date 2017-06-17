@@ -37,14 +37,14 @@ public class CadastrarFuncionarios {
 		/*CRIAR FUNCIONARIO*/
 		Funcionario f = new Funcionario();
 		
-		f.setNome("JHON OLIVEIRA");
-		f.setCelular("21121221");
-		f.setCargo("GERENTE");
-		f.setCpf("65656565");
-		f.setEmail("TESTE@TESTE");
+		f.setNome("AMIN");
+		f.setCelular("99999999999");
+		f.setCargo("AMIN");
+		f.setCpf("11111111111");
+		f.setEmail("ADMIN@GMAIL.COM");
 		f.setMatricula(6565);
-		f.setSalario(200);
-		f.setTelefone("98988998");
+		f.setSalario(6000);
+		f.setTelefone("99999999999");
 		
 		
 		
