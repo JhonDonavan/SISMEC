@@ -149,7 +149,9 @@
 			<p:dialog header="Status: #{ordemDeServicoMB.ordemDeServico.status}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
+
 				<p:separator />
+
 				<p:fieldset legend="Detalhes do Cliente" toggleable="true"
 					toggleSpeed="650">
 					<h:panelGrid columns="6" width="100%" cellpadding="3"
@@ -285,8 +287,7 @@
 						<p:dataTable var="item" rowIndexVar="linha" id="tabelaItens"
 							value="#{ordemDeServicoMB.ordemDeServico.itemServico}"
 							width="100%">
-							<p:column headerText="ID"
-								style="text-align: center; width:15%">
+							<p:column headerText="ID" style="text-align: center; width:15%">
 								<h:outputText size="8" value="#{item.servico.id}" />
 							</p:column>
 
@@ -322,13 +323,20 @@
 
 				<p:fieldset legend="Informações de Pagamento" toggleable="true"
 					toggleSpeed="650">
-					<h:panelGrid columns="6" width="100%" cellpadding="3"
+					<h:panelGrid columns="4" width="100%" cellpadding="3"
 						style="text-align: left">
 
 						<h:outputLabel value="Forma de Pagamento: " class="outputLabel" />
 						<p:outputLabel id="formaPagamento"
 							style="font-weight: bold; font-size:1.1em"
 							value="#{ordemDeServicoMB.ordemDeServico.formaPagamento}" />
+						<h:outputLabel value="Valor Total da Nota: " class="outputLabel" />
+						<p:outputLabel id="valorTotal"
+							style="font-weight: bold; font-size:1.5em"
+							value="#{ordemDeServicoMB.ordemDeServico.valorTotal}">
+							<f:convertNumber type="currency" />
+						</p:outputLabel>
+						
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
