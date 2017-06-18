@@ -13,15 +13,28 @@
 		<ui:insert name="menu">
 			<h:form>
 				<p:menu style="width: 100%; border: none">
-						<p:menuitem value="SAIR" icon="ui-icon-key" url="/j_spring_security_logout" />
-						<p:menuitem value="Veiculos" url="/veiculo/listarVeiculos.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Montadoras" url="/montadora/listarMontadoras.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Modelos de Veiculo" url="/modeloVeiculos/listarModeloVeiculos.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Clientes" url="/cliente/listarClientes.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Servico" url="/servico/listarServicos.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Ordem de serviços" url="/ordemDeServico/listarOrdemDeServicos.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Gerir funcionarios" url="/funcionario/listarFuncionario.xhtml" icon="ui-icon-flag" />
-						<p:menuitem value="Gerir usuários" url="/usuarios/listarUsuarios.xhtml" icon="ui-icon-flag" />
+					<p:menuitem value="SAIR" icon="ui-icon-key"
+						url="/j_spring_security_logout" />
+					<p:menuitem value="Veiculos" url="/veiculo/listarVeiculos.xhtml"
+						icon="ui-icon-flag" />
+					<p:menuitem value="Montadoras"
+						url="/montadora/listarMontadoras.xhtml" icon="ui-icon-flag" />
+					<p:menuitem value="Modelos de Veiculo"
+						url="/modeloVeiculos/listarModeloVeiculos.xhtml"
+						icon="ui-icon-flag" />
+					<p:menuitem value="Clientes" url="/cliente/listarClientes.xhtml"
+						icon="ui-icon-flag" />
+					<p:menuitem value="Servico" url="/servico/listarServicos.xhtml"
+						icon="ui-icon-flag" />
+					<p:menuitem value="Ordem de serviços"
+						url="/ordemDeServico/listarOrdemDeServicos.xhtml"
+						icon="ui-icon-flag" />
+					<p:menuitem value="Gerir funcionarios"
+						url="/funcionario/listarFuncionario.xhtml" icon="ui-icon-flag"
+						rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}" />
+					<p:menuitem value="Gerir usuários"
+						url="/usuarios/listarUsuarios.xhtml" icon="ui-icon-flag"
+						rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}" />
 				</p:menu>
 			</h:form>
 		</ui:insert>
