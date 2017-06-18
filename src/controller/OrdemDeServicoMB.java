@@ -166,6 +166,15 @@ public class OrdemDeServicoMB {
 		}
 		return existeItem;
 	}
+	
+	public List<Veiculo> carregarVeiculos(String cliente){
+		List<Veiculo> veiculosCliente = ClienteDAO.buscaVeiculoCliente(cliente);
+		for(Veiculo aux : veiculosCliente){
+			System.out.println(aux.getPlaca());
+		}
+		
+		return veiculosCliente;
+	}
 
 	public String salvar() {
 		this.ordemDeServico.removerItemVazio();

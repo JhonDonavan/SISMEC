@@ -28,16 +28,21 @@
 							completeMethod="#{clienteMB.listarPorNome}" var="cliente"
 							itemLabel="#{cliente.nome}" itemValue="#{cliente}"
 							converter="clienteConverter" required="true"
-							requiredMessage="Por favor informe o nome do cliente" />
-
-						<p:outputLabel value="Veiculo: " id="veiculo" for="veiuloId" />
-						<p:autoComplete id="veiuloId"
+							requiredMessage="Por favor informe o nome do cliente">
+							<p:ajax event="itemSelect"
+								update="cadastrarOrdemDeServico cadastrarOrdemDeServico:veiculo"
+								listener="#{ordemDeServicoMB.carregarVeiculos(cliente)}" />
+						</p:autoComplete>
+						
+						<p:outputLabel value="Veiculo: " id="veiculo" for="veiculoId" />
+						<p:autoComplete id="veiculoId"
 							value="#{ordemDeServicoMB.ordemDeServico.veiculo}"
 							dropdown="true" minQueryLength="3" size="50"
 							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
 							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
 							converter="veiculoConverter" required="true"
 							requiredMessage="Por favor informe o nome do veiculo" />
+
 
 						<p:outputLabel value="Mecanico: " id="mecanico" for="mecanicoId" />
 						<p:autoComplete id="mecanicoId"
@@ -62,7 +67,7 @@
 						<p:outputLabel value="Valor de desconto " for="valorDesconto" />
 						<p:inputNumber id="valorDesconto" size="10" maxlength="10"
 							required="true"
-							requiredMessage="O valor de desconto não pode ficar vazio. Adicione 0 caso cliente não tenha desconto"
+							requiredMessage="O valor de desconto não pode ficar vazio. Adicione 0 caso o cliente não tenha desconto"
 							value="#{ordemDeServicoMB.ordemDeServico.valorDesconto}">
 							<f:convertNumber maxFractionDigits="2" minIntegerDigits="2" />
 							<p:ajax event="change" process="@this" update="valorTotalDaOS"
