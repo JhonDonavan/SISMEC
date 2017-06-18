@@ -31,14 +31,14 @@
 							requiredMessage="Por favor informe o nome do cliente">
 							<p:ajax event="itemSelect"
 								update="cadastrarOrdemDeServico cadastrarOrdemDeServico:veiculo"
-								listener="#{ordemDeServicoMB.carregarVeiculos(cliente)}" />
+								listener="#{ordemDeServicoMB.carregarVeiculos()}" />
 						</p:autoComplete>
 						
 						<p:outputLabel value="Veiculo: " id="veiculo" for="veiculoId" />
 						<p:autoComplete id="veiculoId"
 							value="#{ordemDeServicoMB.ordemDeServico.veiculo}"
 							dropdown="true" minQueryLength="3" size="50"
-							completeMethod="#{Veiculo.listarPorPlaca}" var="veiculo"
+							completeMethod="#{ordemDeServicoMB.listarPorPlaca}" var="veiculo"
 							itemLabel="#{veiculo.placa}" itemValue="#{veiculo}"
 							converter="veiculoConverter" required="true"
 							requiredMessage="Por favor informe o nome do veiculo" />

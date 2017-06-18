@@ -72,7 +72,7 @@ public class VeiculoController {
 		System.out.println("Entrou no metodo listarPorPlaca: " + placa);
 		try {
 			System.out.println("ENTROU NO TRY");
-			placas = VeiculoDAO.buscaVeiculoByPlaca(placa);
+			placas = VeiculoDAO.buscaVeiculoByPlaca(placa, null);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}

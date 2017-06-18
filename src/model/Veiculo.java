@@ -58,6 +58,12 @@ public class Veiculo implements Serializable {
 	public Integer getId() {
 		return Id;
 	}
+	
+	
+
+	public void setId(Integer id) {
+		Id = id;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
