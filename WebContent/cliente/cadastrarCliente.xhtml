@@ -2,93 +2,262 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Cadastro de Clientes</title>
+
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="custom.css" />
+	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
+
+</h:head>
+
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
 
-		<div id="form">
+		<h:form class="form-horizontal">
+			<p:fieldset>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cadastro de Cliente</div>
 
-			<p:panel header="Cadastrar Cliente"
-				style="text-align:left; width:99%;">
-				<h:form id="cadastrarCliente">
-					<p:messages id="msgs" closable="true" />
-					<p:growl />
+					<div class="panel-body">
+						<div class="form-group">
+							<!--
+<div class="form-group">   
+<div class="col-md-4 control-label">
+    <img id="logo" src="http://blogdoporao.com.br/wp-content/uploads/2016/12/Faculdade-pitagoras.png"/>
+</div>
+<div class="col-md-4 control-label">
+    <h1>Cadastro de Cliente</h1>
+    
+</div>
+</div>
+    -->
+							<div class="col-md-11 control-label">
+								<p class="help-block">
+									<h11>*</h11>
+									Campo Obrigatório
+								</p>
+							</div>
+						</div>
 
-					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel value="Nome Cliente: " />
-						<p:inputText value="#{clienteMB.cliente.nome}" required="true"
-							requiredMessage="Favor informar o nome completo do cliente">
-							<f:validator validatorId="nome-validador"></f:validator>
-						</p:inputText>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
+							<div class="col-md-8">
+								<p:inputText value="#{clienteMB.cliente.nome}" required="true"
+									requiredMessage="Favor informar o nome completo do cliente"
+									placeholder="Digite o nome completo"
+									class="form-control input-md" type="text">
+									<f:validator validatorId="nome-validador"></f:validator>
+								</p:inputText>
+							</div>
+						</div>
 
-						<p:outputLabel value="CPF: " />
-						<p:inputMask id="cpf" mask="999.999.999-99"
-							value="#{clienteMB.cliente.cpf}" required="true"
-							requiredMessage="Favor informar o CPF do cliente">
-						</p:inputMask>
-						
-						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{clienteMB.cliente.email}" />
-						
-						<p:outputLabel value="CEP: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.cep}" />
-						
-						<p:outputLabel value="Endereço: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.logradouro}" />
-						
-						<p:outputLabel value="numero: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.numero}" />
-						
-						<p:outputLabel value="complemento: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.complemento}" />
-						
-						<p:outputLabel value="Bairro: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.bairro}" />
-						
-						<p:outputLabel value="Cidade: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.cidade}" />
-						
-						<p:outputLabel value="UF: " />
-						<p:inputText value="#{clienteMB.cliente.endereco.uf}" />
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Nome">CPF <h11>*</h11></label>
+							<div class="col-md-2">
+								<p:inputMask id="cpf" mask="999.999.999-99"
+									value="#{clienteMB.cliente.cpf}" required="true"
+									requiredMessage="Favor informar o CPF do cliente"
+									placeholder="Apenas números" class="form-control input-md"
+									type="text" maxlength="11" pattern="[0-9]+$">
+								</p:inputMask>
+							</div>
 
-						<p:outputLabel value="Telefone: " />
-						<p:inputMask id="telefone" mask="(99) 9999-9999"
-							value="#{clienteMB.cliente.telefone}" required="true"
-							requiredMessage="Favor informarmar um telefone de contato">
-						</p:inputMask>
+							<label class="col-md-1 control-label" for="Nome">Nascimento
+								<h11>*</h11>
+							</label>
+							<div class="col-md-2">
+								<p:calendar id="button"
+									value="#{clienteMB.cliente.dataNascimento}" showOn="button"
+									required="true" size="10"
+									requiredMessage="Favor informar Data de nascimento"
+									placeholder="DD/MM/AAAA" />
+							</div>
 
-						<p:outputLabel value="Celular: " />
-						<p:inputMask id="celular" mask="(99) 99999-9999"
-							value="#{clienteMB.cliente.celular}">
-						</p:inputMask>
+							<!-- Multiple Radios (inline) -->
 
-						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{clienteMB.cliente.email}" />
+							<label class="col-md-1 control-label" for="radios">Sexo <h11>*</h11></label>
+							<div class="col-md-4">
+								<label class="radio-inline" for="radios-0"> <input
+									name="sexo" id="sexo" value="feminino" type="radio" />
+									Feminino
+								</label> <label class="radio-inline" for="radios-1"> <input
+									name="sexo" id="sexo" value="masculino" type="radio" />
+									Masculino
+								</label>
+							</div>
+						</div>
 
-						<p:outputLabel value="Data de nascimento: " for="button" />
-						<p:calendar id="button"
-							value="#{clienteMB.cliente.dataNascimento}" showOn="button"
-							required="true"
-							requiredMessage="Favor informar Data de nascimento" />
+						<!-- Prepended text-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="prependedtext">Telefone
+								<h11>*</h11>
+							</label>
+							<div class="col-md-2">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<p:inputMask id="telefone" mask="(99) 9999-9999"
+										value="#{clienteMB.cliente.telefone}" required="true"
+										requiredMessage="Favor informarmar um telefone de contato"
+										class="form-control" placeholder="xx xxxx-xxxx" type="text"
+										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
+								</div>
+							</div>
 
-						<p:commandButton value="Cancelar" icon="ui-icon-arrowreturnthick-1-w"
-							action="#{clienteMB.cancelar}" />
-							
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{clienteMB.salvar}" update="@form" />
-					</h:panelGrid>
+							<label class="col-md-1 control-label" for="prependedtext">Telefone</label>
+							<div class="col-md-2">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<p:inputMask id="celular" mask="(99) 9999-9999"
+										value="#{clienteMB.cliente.celular}" required="true"
+										requiredMessage="Favor informarmar um telefone de contato"
+										class="form-control" placeholder="xx xxxx-xxxxx" type="text"
+										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
+								</div>
+							</div>
+						</div>
 
-					<!-- Mostra modal da data -->
-					<p:dialog modal="true" resizable="false" header="Values"
-						widgetVar="data" showEffect="fold">
-						<p:panelGrid id="display" columns="2" columnClasses="label,value">
-						</p:panelGrid>
-					</p:dialog>
+						<!-- Prepended text-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="prependedtext">Email
+								<h11>*</h11>
+							</label>
+							<div class="col-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-envelope"></i></span>
+									<p:inputText value="#{clienteMB.cliente.email}"
+										id="prependedtext" name="prependedtext" class="form-control"
+										placeholder="email@email.com" type="text"
+										pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+								</div>
+							</div>
+						</div>
 
-				</h:form>
-			</p:panel>
-		</div>
+
+						<!-- Search input-->
+						<h:panelGroup id="panelEndereco">
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+								<div class="col-md-2">
+									<h:inputText id="txtCep" value="#{CEPBean.cep}"
+										placeholder="Apenas números" class="form-control input-md"
+										maxlength="10" pattern="[0-9]+$" />
+								</div>
+								<div class="col-md-2">
+									<h:commandButton value="Consultar"
+										styleClass="btn btn-primary btn-lg">
+										<f:ajax event="click" render="panelEndereco"
+											execute="@this txtCep"
+											listener="#{CEPBean.carregarEndereco()}" />
+									</h:commandButton>
+								</div>
+							</div>
+
+							<!-- Prepended text-->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="prependedtext">Endereço
+									<h11>*</h11>
+								</label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Rua</span>
+										<h:outputText id="rua" value="#{CEPBean.cliente.endereco.logradouro}"
+											name="rua" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+								<div class="col-md-2">
+									<div class="input-group">
+										<span class="input-group-addon">Nº <h11>*</h11></span>
+										<h:inputText value="#{CEPBean.cliente.endereco.numero}" id="numero"
+											name="numero" class="form-control" placeholder="" type="text" />
+									</div>
+
+								</div>
+
+								<div class="col-md-3">
+									<div class="input-group">
+										<span class="input-group-addon">Bairro</span>
+										<h:outputText value="#{CEPBean.cliente.endereco.bairro}" id="bairro"
+											name="bairro" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="prependedtext"></label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Cidade</span>
+										<h:outputText value="#{CEPBean.cliente.endereco.localidade}"
+											id="cidade" name="cidade" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+
+								<div class="col-md-2">
+									<div class="input-group">
+										<span class="input-group-addon">Estado</span>
+										<h:outputText value="#{CEPBean.cliente.endereco.uf}" id="estado"
+											name="estado" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+			
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Complemento</span>
+										<h:outputText value="#{CEPBean.cliente.endereco.complemento}"
+											id="complemento" name="complemento" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+							</div>
+						</h:panelGroup>
+
+						<!-- Button (Double) -->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Cadastrar"></label>
+							<div class="col-md-8">
+								<p:commandButton value="Salvar" icon="ui-icon-disk"
+									action="#{clienteMB.salvar}" update="@form" />
+
+								<p:spacer width="10" />
+
+								<p:commandButton value="Cancelar"
+									icon="ui-icon-arrowreturnthick-1-w"
+									action="#{clienteMB.cancelar}" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</p:fieldset>
+		</h:form>
 	</ui:define>
 </ui:decorate>
+
 </html>
