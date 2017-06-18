@@ -48,8 +48,7 @@
 						</p:selectOneMenu>
 
 						<p:outputLabel value="Sigla " class="outputLabel" />
-						<p:inputText id="sigla" required="true"
-							requiredMessage="Informe a sigla do modelo"
+						<p:inputText id="sigla"
 							value="#{ModeloVeiculoController.modeloVeiculo.sigla}" />
 
 						<p:outputLabel value="Potência em cavalos " class="outputLabel" />
@@ -72,9 +71,10 @@
 							minQueryLength="3"
 							value="#{ModeloVeiculoController.modeloVeiculo.montadora}"
 							size="30" completeMethod="#{montadoraMB.listarPorNome}"
-							var="montadora" itemLabel="#{montadora.nome}" itemValue="#{montadora}"
-							converter="montadoraConverter" forceSelection="true"
-							required="true" requiredMessage="Informe a montadora do modelo" />
+							var="montadora" itemLabel="#{montadora.nome}"
+							itemValue="#{montadora}" converter="montadoraConverter"
+							forceSelection="true" required="true"
+							requiredMessage="Informe a montadora do modelo" />
 
 						<p:outputLabel value="Número de portas " class="outputLabel" />
 						<p:selectOneRadio id="numPortas" required="true"
@@ -140,7 +140,7 @@
 							<p:commandButton id="cancelarSalvarMontadora" value="Cancelar"
 								icon="ui-icon-disk" oncomplete="PF('cadastrarMontadora').hide()" />
 
-						</h:panelGrid>	
+						</h:panelGrid>
 						<p:separator />
 
 					</h:form>
