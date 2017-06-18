@@ -174,12 +174,6 @@ public class OrdemDeServicoMB {
 	public void carregarVeiculos(){
 		ClienteParaPlaca = ordemDeServico.getCliente();
 		System.out.println("chegou aqui" + ClienteParaPlaca.getNome());
-		/*List<Veiculo> veiculosCliente = ordemDeServicoDAO.buscaVeiculoCliente(c);
-		for(Veiculo aux : veiculosCliente){
-			System.out.println(aux.getPlaca());
-		}
-		
-		return veiculosCliente;*/
 	}
 	
 	public List<Veiculo> listarPorPlaca(String placa) {
@@ -193,7 +187,7 @@ public class OrdemDeServicoMB {
 		}
 		System.out.println("Entrou no metodo listarPorNome: " + placa + " E " + placa);
 		for (Veiculo v : placas) {
-			System.out.println("Montadora: " + v.getPlaca());
+			System.out.println("Veiculo: " + v.getPlaca());
 		}
 		return placas;
 	}
