@@ -90,7 +90,8 @@
 					</h:outputText>
 				</p:column>
 
-				<p:column style="text-align:center;" exportable="false" width="10%">
+				<p:column headerText="Detalhes / Editar" style="text-align:center;"
+					exportable="false" width="13%">
 					<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 						oncomplete="PF('detalhes').show();" update=":modalDetalhes"
 						action="#{ordemDeServicoMB.detalheOrdemDeServico(OS)}">
@@ -105,8 +106,8 @@
 					<p:spacer width="5" />
 				</p:column>
 
-				<p:column headerText="Cancelar/Finalizar" style="text-align:center;"
-					exportable="false" width="15%">
+				<p:column headerText="Cancelar / Finalizar" style="text-align:center;"
+					exportable="false" width="13%">
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
 						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
 						update="@form">
@@ -135,9 +136,7 @@
 
 		</h:form>
 
-		<!-- Modal para confirmação de exclusão -->
-		<p:ajaxStatus onstart="PF('statusDialog').show()"
-			onsuccess="PF('statusDialog').hide()" />
+		<!-- Modal carregamento -->
 		<p:dialog widgetVar="statusDialog" modal="false" draggable="false"
 			closable="false" resizable="false" showHeader="false">
 			<p:graphicImage value="/image/ajax-loader.gif" />
@@ -336,7 +335,7 @@
 							value="#{ordemDeServicoMB.ordemDeServico.valorTotal}">
 							<f:convertNumber type="currency" />
 						</p:outputLabel>
-						
+
 					</h:panelGrid>
 				</p:fieldset>
 				<p:separator />
