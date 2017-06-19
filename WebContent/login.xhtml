@@ -7,18 +7,20 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-	<title>SISMEC</title>
-</h:head>
+	<f:facet name="first">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
 
-<style>
-.login {
-	position: absolute;
-	top: 30%;
-	left: 40%;
-	margin-top: -50px;
-	margin-left: -50px;
-}
-</style>
+	<title>SISMEC</title>
+
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="login.css" />
+	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
+</h:head>
 
 <h:body>
 
@@ -26,27 +28,32 @@
 		<f:event listener="#{loginMB.preRender}" type="preRenderView"></f:event>
 	</f:metadata>
 
-	<div id="login" class="login">
-		<h1>Login</h1>
-		<h:form id="frm" prependId="false">
+	<div class="container">
+		<div class="card card-container">
+			<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+			<img id="profile-img" class="profile-img-card"
+				src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+			<p id="profile-name" class="profile-name-card"></p>
+			<h:form class="form-signin" id="frm" prependId="false">
+
 				<p:messages id="messages" autoUpdate="true" closable="true" />
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel value="Usuário:" />
-					<p:inputText id="j_username" value="#{loginMB.userName}"
-						required="true" requiredMessage="Favor informar nome de usuário"
-						size="30" />
+				<p:inputText id="j_username" value="#{loginMB.userName}"
+					class="form-control" placeholder="Usuario" required="true"
+					requiredMessage="Favor informar nome de usuário" size="30" />
 
-					<h:outputLabel for="password" value="Password:" />
-					<p:password id="j_password" required="true"
-						requiredMessage="Favor informar senha do usuário" size="30" />
+				<p:password id="j_password" required="true" class="form-control"
+					placeholder="Password"
+					requiredMessage="Favor informar senha do usuário" size="30" />
 
-					<f:facet name="footer">
-						<p:commandButton value="Login" actionListener="#{loginMB.login}"
-							ajax="false" />
-					</f:facet>
-				</h:panelGrid>
-		</h:form>
+				<p:commandButton value="Iniciar" actionListener="#{loginMB.login}"
+					ajax="false" class="btn btn-lg btn-success btn-block btn-signin" />
+
+			</h:form>
+			<!-- /form -->
+		</div>
+		<!-- /card-container -->
 	</div>
+	<!-- /container -->
 </h:body>
 </html>
