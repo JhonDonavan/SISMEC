@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +16,7 @@ import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 
 @ManagedBean(name = "clienteMB")
-@SessionScoped
+@ViewScoped
 public class ClienteMB {
 
 	@Autowired
