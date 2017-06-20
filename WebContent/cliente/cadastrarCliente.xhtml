@@ -119,12 +119,12 @@
 								</div>
 							</div>
 
-							<label class="col-md-1 control-label" for="prependedtext">Telefone</label>
+							<label class="col-md-1 control-label" for="prependedtext">Celular</label>
 							<div class="col-md-2">
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span>
-									<p:inputMask id="celular" mask="(99) 9999-9999"
+									<p:inputMask id="celular" mask="(99) 99999-9999"
 										value="#{clienteMB.cliente.celular}" required="true"
 										requiredMessage="Favor informarmar um telefone de contato"
 										class="form-control" placeholder="xx xxxx-xxxxx" type="text"
@@ -156,7 +156,7 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
 								<div class="col-md-2">
-									<h:inputText id="txtCep" value="#{CEPBean.cep}"
+									<h:inputText id="txtCep" value="#{clienteMB.cliente.endereco.cep}"
 										placeholder="Apenas números" class="form-control input-md"
 										maxlength="10" pattern="[0-9]+$" />
 								</div>
@@ -165,7 +165,7 @@
 										styleClass="btn btn-primary btn-lg">
 										<f:ajax event="click" render="panelEndereco"
 											execute="@this txtCep"
-											listener="#{CEPBean.carregarEndereco()}" />
+											listener="#{clienteMB.receberEndereco}" />
 									</h:commandButton>
 								</div>
 							</div>
@@ -178,7 +178,7 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Rua</span>
-										<h:outputText id="rua" value="#{CEPBean.cliente.endereco.logradouro}"
+										<h:inputText id="rua" value="#{clienteMB.cliente.endereco.logradouro}"
 											name="rua" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
@@ -187,7 +187,7 @@
 								<div class="col-md-2">
 									<div class="input-group">
 										<span class="input-group-addon">Nº <h11>*</h11></span>
-										<h:inputText value="#{CEPBean.cliente.endereco.numero}" id="numero"
+										<h:inputText value="#{clienteMB.cliente.endereco.numero}" id="numero"
 											name="numero" class="form-control" placeholder="" type="text" />
 									</div>
 
@@ -196,7 +196,7 @@
 								<div class="col-md-3">
 									<div class="input-group">
 										<span class="input-group-addon">Bairro</span>
-										<h:inputText value="#{CEPBean.cliente.endereco.bairro}" id="bairro"
+										<h:inputText value="#{clienteMB.cliente.endereco.bairro}" id="bairro"
 											name="bairro" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
@@ -209,7 +209,7 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Cidade</span>
-										<h:inputText value="#{CEPBean.cliente.endereco.localidade}"
+										<h:inputText value="#{clienteMB.cliente.endereco.localidade}"
 											id="cidade" name="cidade" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
@@ -219,7 +219,7 @@
 								<div class="col-md-2">
 									<div class="input-group">
 										<span class="input-group-addon">Estado</span>
-										<h:inputText value="#{CEPBean.cliente.endereco.uf}" id="estado"
+										<h:inputText value="#{clienteMB.cliente.endereco.uf}" id="estado"
 											name="estado" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
@@ -229,7 +229,7 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Complemento</span>
-										<h:inputText value="#{CEPBean.cliente.endereco.complemento}"
+										<h:inputText value="#{clienteMB.cliente.endereco.complemento}"
 											id="complemento" name="complemento" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>

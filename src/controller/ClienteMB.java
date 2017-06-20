@@ -22,6 +22,8 @@ public class ClienteMB {
 	@Autowired
 	private List<Cliente> clientesSelecionados;
 	
+	private ControladorCEPBean enderecoCliente = new ControladorCEPBean();
+	
 	private Cliente cliente = new Cliente();
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	private ClienteDAO clienteDAO = new ClienteDAO();
@@ -39,6 +41,10 @@ public class ClienteMB {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente cadastrado com sucesso"));
 		System.out.println("Objeto " + cliente.getNome() + " cadastrado com sucesso!");
 		return "listarClientes?faces-redirect=true";
+	}
+	
+	public void receberEndereco(){
+		this.cliente.setEndereco(enderecoCliente.carregarEndereco(this.cliente.getEndereco().getCep()));
 	}
 	
 	public String cancelar(){
