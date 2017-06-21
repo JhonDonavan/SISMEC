@@ -176,16 +176,17 @@ public class OrdemDeServicoMB {
 		System.out.println("chegou aqui" + ClienteParaPlaca.getNome());
 	}
 	
-	public List<Veiculo> listarPorPlaca(String placa) {
-		System.out.println("Entrou no metodo listarPorPlaca: " + placa);
+	public List<Veiculo> listarPorPlaca() {
+		System.out.println("Entrou no metodo listarPorPlaca: " + ClienteParaPlaca.getNome());
 		System.out.println(ClienteParaPlaca.getNome());
 		try {
 			System.out.println("ENTROU NO TRY");
-			placas = VeiculoDAO.buscaVeiculoByPlaca(placa, ClienteParaPlaca);
+			placas = VeiculoDAO.buscaVeiculoByPlaca(ClienteParaPlaca);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}
-		System.out.println("Entrou no metodo listarPorNome: " + placa + " E " + placa);
+		System.out.println("Entrou no metodo listarPorPlaca: " + ClienteParaPlaca.getNome() + " E " + ClienteParaPlaca.getNome());
+		
 		for (Veiculo v : placas) {
 			System.out.println("Veiculo: " + v.getPlaca());
 		}

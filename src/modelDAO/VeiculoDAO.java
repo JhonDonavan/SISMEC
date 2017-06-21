@@ -48,12 +48,15 @@ public class VeiculoDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<Veiculo> buscaVeiculoByPlaca(String placa, Cliente cliente) {
-		System.out.println("entrou no metodo buscaVeiculoByPlaca no VeiculoDAO: " + placa);
+	public static List<Veiculo> buscaVeiculoByPlaca(Cliente cliente) {
+		System.out.println("entrou no metodo buscaVeiculoByPlaca no VeiculoDAO: " + cliente.getNome());
 		EntityManager em = JPAUtil.getEntityManager();
-		Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.nome like upper(:nomeCliente)");
-    	query.setParameter("nomeCliente", "%" + cliente.getNome() + "%");
+		Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.id = :idCliente");
+    	query.setParameter("idCliente", cliente.getId());
 		return query.getResultList();
+		
+		/*Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.nome like upper(:nomeCliente)");
+    	query.setParameter("nomeCliente", "%" + cliente.getNome() + "%");*/
 	}
 
 	@SuppressWarnings("unchecked")
@@ -62,6 +65,7 @@ public class VeiculoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT v FROM Veiculo v WHERE upper(v.placa) like upper(:placa)");
 		query.setParameter("placa", "%" + placa + "%");
+		
 		return query.getResultList();
 	}
 
