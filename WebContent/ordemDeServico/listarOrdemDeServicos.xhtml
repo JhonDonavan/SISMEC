@@ -91,7 +91,7 @@
 				</p:column>
 
 				<p:column headerText="Detalhes / Editar" style="text-align:center;"
-					exportable="false" width="13%">
+					exportable="false" width="10%">
 					<p:commandButton icon="ui-icon-zoomin" title="Mais detalhes"
 						oncomplete="PF('detalhes').show();" update=":modalDetalhes"
 						action="#{ordemDeServicoMB.detalheOrdemDeServico(OS)}">
@@ -106,8 +106,20 @@
 					<p:spacer width="5" />
 				</p:column>
 
-				<p:column headerText="Cancelar / Finalizar" style="text-align:center;"
-					exportable="false" width="13%">
+				<p:column headerText="Finalizar" style="text-align:center;"
+					exportable="false" width="5%">
+
+					<p:commandButton icon="ui-icon-circle-check" title="Finalizar"
+						rendered="#{(OS.status eq 'EMITIDO')}" update="@form">
+						<p:ajax event="click"
+							listener="#{ordemDeServicoMB.finalizarStatus(OS)}"></p:ajax>
+						<p:ajaxStatus onstart="PF('statusDialog').show()"
+							onsuccess="PF('statusDialog').hide()" />
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="Cancelar" style="text-align:center;"
+					exportable="false" width="5%">
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
 						rendered="#{(OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')}"
 						update="@form">
@@ -117,20 +129,8 @@
 							onsuccess="PF('statusDialog').hide()" />
 					</p:commandButton>
 
-					<p:spacer width="5" />
-
-					<p:commandButton icon="ui-icon-circle-check" title="Finalizar"
-						rendered="#{(OS.status eq 'EMITIDO')}"
-						update="@form">
-						<p:ajax event="click"
-							listener="#{ordemDeServicoMB.finalizarStatus(OS)}"></p:ajax>
-						<p:ajaxStatus onstart="PF('statusDialog').show()"
-							onsuccess="PF('statusDialog').hide()" />
-					</p:commandButton>
-
-					<p:spacer width="5" />
-
 				</p:column>
+
 
 			</p:dataTable>
 
@@ -145,7 +145,8 @@
 		<h:form id="modalDetalhes">
 			<!-- Modal para botao detalhes -->
 
-			<p:dialog header="Status: #{ordemDeServicoMB.ordemDeServico.status} Valor Total: #{ordemDeServicoMB.ordemDeServico.valorTotal}"
+			<p:dialog
+				header="Status: #{ordemDeServicoMB.ordemDeServico.status} Valor Total: #{ordemDeServicoMB.ordemDeServico.valorTotal}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
 				maximizable="true" width="650" showEffect="fade" hideEffect="none">
 
