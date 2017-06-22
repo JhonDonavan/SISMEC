@@ -61,7 +61,9 @@ public class MontadoraController {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
 			montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
 		} catch (Exception e) {
- 			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Você não pode excluir uma montadora com veiculos relacionados, favor consultar o administrador do sistema",
+					"Você não pode excluir uma montadora com veiculos relacionados, favor consultar o administrador do sistema"));
 		}
 	}
 
