@@ -112,5 +112,4 @@ public class VeiculoController {
 	public void setModelosSelecionados(List<ModeloVeiculo> modelosSelecionados) {
 		this.modelosSelecionados = modelosSelecionados;
 	}
-
 }
