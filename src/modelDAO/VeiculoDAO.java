@@ -60,7 +60,7 @@ public class VeiculoDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Veiculo> buscaVeiculoByPlaca(String placa) {
+	public static List<Veiculo> buscaVeiculoByPlaca(String placa) {
 		System.out.println("entrou no metodo buscaVeiculoByPlaca no VeiculoDAO: " + placa);
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT v FROM Veiculo v WHERE upper(v.placa) like upper(:placa)");

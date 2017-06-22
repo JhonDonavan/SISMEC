@@ -114,7 +114,8 @@ public class FuncionarioMB implements Serializable {
 			usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Você não pode excluir um funcionario com um usuário relacionado","Você não pode excluir um funcionario com um usuário relacionado"));
+					"Você não pode excluir um funcionario com um usuário relacionado, favor consultar o administrador do sistema",
+					"Você não pode excluir um funcionario com um usuário relacionado"));
 		}
 	}
 

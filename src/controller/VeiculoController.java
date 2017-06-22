@@ -20,35 +20,25 @@ import modelDAO.VeiculoDAO;
 @SessionScoped
 public class VeiculoController {
 
-	
 	@Autowired
 	private List<ModeloVeiculo> modelosSelecionados;
-	
+
 	private List<Veiculo> placas;
 	private Veiculo veiculo = new Veiculo();
 	private List<Veiculo> veiculos = new ArrayList<Veiculo>();
 	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
-	
-		
+
 	public VeiculoController() {
 		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 		veiculo = new Veiculo();
 		modelosSelecionados = new ArrayList<>();
 	}
-	
-	/*VERIFICAR COMO FAZER PARA LISTA CARREGAR AO INICIAR O SISTEMA*/
-	/*@SuppressWarnings("unused")
-	@PostConstruct
-	public void init(){
-		List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
-		listaVeiculos = new VeiculoDAO().listar();
-	}
-*/
+
 	public String salvar() {
 		new GenericDAO<Veiculo>(Veiculo.class).salvar(veiculo);
 		veiculo = new Veiculo();
 		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
-		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Veiculo salvo com sucesso!"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo salvo com sucesso!"));
 		return "listarVeiculos?faces-redirect=true";
 	}
 
@@ -61,18 +51,25 @@ public class VeiculoController {
 		this.veiculo = veiculo;
 	}
 
-	public void excluir(Veiculo veiculo) {
-		new GenericDAO<Veiculo>(Veiculo.class).excluir(veiculo);
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Veiculo excluido com sucesso"));
-		veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
+	public void excluir() {
+		try {
+			new GenericDAO<Veiculo>(Veiculo.class).excluir(veiculo);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso"));
+			veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"A exclusão deste registro pode ocasionar em perdas ou danos nos registros do sistema, favor consultar o administrador do sistema",
+							"A exclusão deste registro pode ocasionar em perdas ou danos nos registros do sistema, favor consultar o administrador do sistema"));
+			e.printStackTrace();
+		}
 	}
-	
+
 	public List<Veiculo> listarPorPlaca(String placa) {
 		System.out.println("Entrou no metodo listarPorPlaca: " + placa);
 		try {
 			System.out.println("ENTROU NO TRY");
-			placas = VeiculoDAO.buscaVeiculoByPlaca(placa, null);
+			placas = VeiculoDAO.buscaVeiculoByPlaca(placa);
 		} catch (Exception e) {
 			System.out.println("ERROR Exception: " + e);
 		}
@@ -82,13 +79,13 @@ public class VeiculoController {
 		}
 		return placas;
 	}
-	
-	public String limparVeiculo(){
+
+	public String limparVeiculo() {
 		this.veiculo = new Veiculo();
 		return "cadastroVeiculo.xhtml?faces-redirect=true";
 	}
-	
-	public void detalhesVeiculo(Veiculo veiculo){
+
+	public void detalhesVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
 
@@ -115,7 +112,5 @@ public class VeiculoController {
 	public void setModelosSelecionados(List<ModeloVeiculo> modelosSelecionados) {
 		this.modelosSelecionados = modelosSelecionados;
 	}
-	
-	
 
 }

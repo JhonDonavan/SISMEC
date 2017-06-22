@@ -91,7 +91,7 @@
 					appendTo="@(body)" header="excluir veivulo?">
 					<div style="text-align: center;">
 
-						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir()}"
+						<p:commandButton value="Sim" actionListener="#{Veiculo.excluir}"
 							update="@form" process="@this"
 							oncomplete="PF('excluirVeiculo').hide()"
 							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

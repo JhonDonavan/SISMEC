@@ -56,9 +56,13 @@ public class MontadoraController {
 	}
 
 	public void excluir() {
-		new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
-		montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
+		try {
+			new GenericDAO<Montadora>(Montadora.class).excluir(montadora);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
+			montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public List<Montadora> listarPorNome(String nomeMontadora) {
