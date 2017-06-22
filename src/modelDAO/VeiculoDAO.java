@@ -29,6 +29,8 @@ public class VeiculoDAO {
 
 		Query query = entityManager.createQuery("from Veiculo");
 
+		entityManager.close();
+		
 		return query.getResultList();
 	}
 
@@ -53,6 +55,7 @@ public class VeiculoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.id = :idCliente");
     	query.setParameter("idCliente", cliente.getId());
+    	em.close();
 		return query.getResultList();
 		
 		/*Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.nome like upper(:nomeCliente)");
@@ -65,7 +68,7 @@ public class VeiculoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT v FROM Veiculo v WHERE upper(v.placa) like upper(:placa)");
 		query.setParameter("placa", "%" + placa + "%");
-		
+		em.close();
 		return query.getResultList();
 	}
 

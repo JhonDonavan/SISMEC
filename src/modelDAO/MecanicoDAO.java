@@ -18,6 +18,7 @@ public class MecanicoDAO {
 		Query query = em.createQuery("SELECT f FROM Funcionario f WHERE upper(f.nome) like upper(:nomeFuncionario) and f.cargo like :cargo");
 		query.setParameter("nomeFuncionario", "%" + nomeFuncionario + "%");
 		query.setParameter("cargo", "MECANICO");
+		em.close();
 		return query.getResultList();
 	}
 

@@ -26,6 +26,7 @@ public class ModeloVeiculoDAO {
 
 		Query query = entityManager.createQuery("from ModeloVeiculo");
 
+		entityManager.close();
 		return query.getResultList();
 	}
 
@@ -65,6 +66,7 @@ public class ModeloVeiculoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT mv FROM ModeloVeiculo mv WHERE upper(mv.nome) like upper(:nomeModelo)");
 		query.setParameter("nomeModelo", "%" + nomeModelo + "%");
+		em.close();
 		return query.getResultList();
 	}
 

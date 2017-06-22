@@ -28,6 +28,7 @@ public class PagamentoDAO {
 
 		Query query = entityManager.createQuery("from Pagamento");
 
+		entityManager.close();
 		return query.getResultList();
 	}
 

@@ -61,7 +61,7 @@ public class MontadoraController {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Montadora excluido com sucesso"));
 			montadoras = new GenericDAO<Montadora>(Montadora.class).listarTodos();
 		} catch (Exception e) {
-			e.printStackTrace();
+ 			e.printStackTrace();
 		}
 	}
 

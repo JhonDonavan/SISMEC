@@ -29,6 +29,8 @@ public class ServicoDAO {
 
 		Query query = entityManager.createQuery("from Servico");
 
+		entityManager.close();
+		
 		return query.getResultList();
 	}
 

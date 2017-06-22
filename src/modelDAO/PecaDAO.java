@@ -29,6 +29,8 @@ public class PecaDAO {
 
 		Query query = entityManager.createQuery("from Peca");
 
+		entityManager.close();
+		
 		return query.getResultList();
 	}
 
@@ -40,7 +42,9 @@ public class PecaDAO {
 		Query query = em
 				.createQuery("SELECT m FROM Peca m WHERE upper(m.nome) like upper(:nomePeca)");
 		query.setParameter("nomePeca", "%" + nomePeca + "%");
-
+		
+		em.close();
+		
 		return query.getResultList();
 
 	}
