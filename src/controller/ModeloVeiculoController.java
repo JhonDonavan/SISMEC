@@ -21,20 +21,18 @@ import modelDAO.ModeloVeiculoDAO;
 @SessionScoped
 public class ModeloVeiculoController {
 
-	
 	@Autowired
 	private List<ModeloVeiculo> modelosSelecionados;
-	
+
 	private ModeloVeiculo modeloVeiculo = new ModeloVeiculo();
 	private List<ModeloVeiculo> modeloVeiculos = new ArrayList<ModeloVeiculo>();
 	private ModeloVeiculoDAO modeloVeiculoDAO = new ModeloVeiculoDAO();
 	private List<TipoCombustivel> combustivel;
-	
+
 	@PostConstruct
-	public void init(){
+	public void init() {
 		combustivel = Arrays.asList(TipoCombustivel.values());
 	}
-	
 
 	public ModeloVeiculoController() {
 		modeloVeiculo = new ModeloVeiculo();
@@ -50,22 +48,29 @@ public class ModeloVeiculoController {
 		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
 		return "listarModeloVeiculos?faces-redirect=true";
 	}
-	
-	public String editar(ModeloVeiculo modelo){
+
+	public String editar(ModeloVeiculo modelo) {
 		this.modeloVeiculo = modelo;
 		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
 	}
-	
-	public void prepararExclusao(ModeloVeiculo modeloVeiculo){
+
+	public void prepararExclusao(ModeloVeiculo modeloVeiculo) {
 		this.modeloVeiculo = modeloVeiculo;
 		System.out.println(" preparar para excluir modelo veiculo: " + modeloVeiculo.getNome());
 	}
-	
-	public void excluir(){
-		new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modeloVeiculo);
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Modelo de Veiculo excluido com sucesso"));
-		modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
+
+	public void excluir() {
+		try {
+			new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).excluir(modeloVeiculo);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Modelo de Veiculo excluido com sucesso"));
+			modeloVeiculos = new GenericDAO<ModeloVeiculo>(ModeloVeiculo.class).listarTodos();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Não é possivel excluir esta informação, favor consultar o administrador do sistema.",
+							"Não é possivel excluir esta informação, favor consultar o administrador do sistema."));
+		}
 	}
 
 	public List<ModeloVeiculo> listarPorNome(String nomeModelo) {
@@ -79,16 +84,16 @@ public class ModeloVeiculoController {
 		}
 		return modelosSelecionados;
 	}
-	
-	public String limparModeloVeiculo(){
+
+	public String limparModeloVeiculo() {
 		this.modeloVeiculo = new ModeloVeiculo();
 		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
 	}
-	
-	public void detalheModeloVeiculo(ModeloVeiculo modeloVeiculo){
+
+	public void detalheModeloVeiculo(ModeloVeiculo modeloVeiculo) {
 		this.modeloVeiculo = modeloVeiculo;
 	}
-	
+
 	public ModeloVeiculo getModeloVeiculo() {
 		return modeloVeiculo;
 	}
@@ -108,5 +113,5 @@ public class ModeloVeiculoController {
 	public List<TipoCombustivel> getCombustivel() {
 		return combustivel;
 	}
-	
+
 }
