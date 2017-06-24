@@ -14,7 +14,6 @@ public class FornecedorDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT c FROM Fornecedor c WHERE upper(c.nome) like upper(:nomeFornecedor)");
 		query.setParameter("nomeFornecedor", "%" + nomeFornecedor + "%");
-		em.close();
 		return query.getResultList();
 	}
 

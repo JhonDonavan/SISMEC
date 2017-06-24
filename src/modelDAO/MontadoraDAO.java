@@ -40,7 +40,6 @@ public class MontadoraDAO {
 		Query query = em
 				.createQuery("SELECT m FROM Montadora m WHERE upper(m.nome) like upper(:nomeMontadora)");
 		query.setParameter("nomeMontadora", "%" + nomeMontadora + "%");
-		em.close();
 		return query.getResultList();
 
 	}

@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -53,6 +55,7 @@ public class OrdemDeServico implements Serializable {
 	@JoinColumn(name = "funcionarioMecanico_id")
 	private Funcionario funcionario_mecanico;
 
+	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
 
 	private Date dataPrevisto;

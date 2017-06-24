@@ -54,7 +54,6 @@ public class OrdemDeServicoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT m FROM Servico m WHERE upper(m.nome) like upper(:nomeServico)");
 		query.setParameter("nomeServico", "%" + nomeServico + "%");
-		em.close();
 		return query.getResultList();
 	}
 
@@ -64,7 +63,6 @@ public class OrdemDeServicoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("select v from Veiculo v inner join Cliente c on c.id = v.cliente where c.nome like upper(:nomeCliente)");
     	query.setParameter("nomeCliente", "%" + cliente.getNome() + "%");
-    	em.close();
 		return query.getResultList();
 		
 	}

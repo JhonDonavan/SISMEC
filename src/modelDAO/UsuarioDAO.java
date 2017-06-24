@@ -15,7 +15,6 @@ public class UsuarioDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT u FROM Usuarios u WHERE upper(u.nome) like upper(:nomeUsuario)");
 		query.setParameter("nomeUsuario", "%" + nomeUsuario + "%");
-		em.close();
 		return query.getResultList();
 	}
 

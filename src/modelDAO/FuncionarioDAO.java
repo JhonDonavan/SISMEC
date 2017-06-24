@@ -14,7 +14,6 @@ public class FuncionarioDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT f FROM Funcionario f WHERE upper(f.nome) like upper(:nomeFuncionario)");
 		query.setParameter("nomeFuncionario", "%" + nomeFuncionario + "%");
-		em.close();
 		return query.getResultList();
 	}
 

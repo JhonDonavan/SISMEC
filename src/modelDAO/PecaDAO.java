@@ -43,7 +43,6 @@ public class PecaDAO {
 				.createQuery("SELECT m FROM Peca m WHERE upper(m.nome) like upper(:nomePeca)");
 		query.setParameter("nomePeca", "%" + nomePeca + "%");
 		
-		em.close();
 		
 		return query.getResultList();
 
