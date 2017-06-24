@@ -121,7 +121,7 @@
 				<p:column headerText="Cancelar" style="text-align:center;"
 					exportable="false" width="5%">
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
-						rendered="#{((OS.status eq 'EMITIDO') or (OS.status eq 'ORCAMENTO')) and ((seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES'))}"
+						rendered="#{((OS.status eq 'EMITIDO')) and ((seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES'))}"
 						update="@form">
 						<p:ajax event="click"
 							listener="#{ordemDeServicoMB.cancelarStatus(OS)}"></p:ajax>
