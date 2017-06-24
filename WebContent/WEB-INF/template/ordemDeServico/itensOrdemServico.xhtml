@@ -21,8 +21,8 @@
 			<p:autoComplete styleClass="produto-tabela" size="50"
 				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
 				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
-				itemLabel="#{servico.nome}" itemValue="#{servico}"
-				forceSelection="true" converter="servicoConverter"
+				itemLabel="#{servico.nome}" itemValue="#{servico}" required="true" requiredMessage="Favor selecionar o(s) item(s) de serviço(s)."
+ 				forceSelection="true" converter="servicoConverter"
 				rendered="#{not item.servicoAssociado}">
 				<p:ajax event="itemSelect" update="tabelaItens cadastrarOrdemDeServico:valorTotalDaOS"
 					listener="#{ordemDeServicoMB.carregarServicoLinhaEditavel}" />
