@@ -3,16 +3,15 @@ package repository;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.EntityManager;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import filter.OrdemDeServicoFilter;
 import model.OrdemDeServico;
@@ -46,11 +45,11 @@ public class OrdemDeServicos implements Serializable{
 		}
 
 		if (filtro.getDataCriacaoDe() != null) {
-			criteria.add(Restrictions.ge("dataCriacao", filtro.getDataCriacaoDe()));
+			criteria.add(Restrictions.ge("dataInicio", filtro.getDataCriacaoDe()));
 		}
 		
 		if (filtro.getDataCriacaoAte() != null) {
-			criteria.add(Restrictions.le("dataCriacao", filtro.getDataCriacaoAte()));
+			criteria.add(Restrictions.le("dataInicio", filtro.getDataCriacaoAte()));
 		}
 		
 		if (StringUtils.isNotBlank(filtro.getNomeCliente())) {
