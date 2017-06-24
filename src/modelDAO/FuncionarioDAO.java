@@ -21,9 +21,7 @@ public class FuncionarioDAO {
 	@SuppressWarnings("unchecked")
 	public List<Funcionario> buscarFuncionarioByNomeSemLogin(String nomeFuncionario) {
 		EntityManager em = JPAUtil.getEntityManager();
-		Query query = em
-				.createQuery("SELECT f FROM Funcionario f WHERE f.id not in (select u.funcionario from Usuario u)");
-		em.close();
+		Query query = em.createQuery("SELECT f FROM Funcionario f WHERE f.id not in (select u.funcionario from Usuario u)");
 		return query.getResultList();
 	}
 

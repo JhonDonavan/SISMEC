@@ -54,7 +54,7 @@ public class VeiculoController {
 	public void excluir() {
 		try {
 			new GenericDAO<Veiculo>(Veiculo.class).excluir(veiculo);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veiculo excluido com sucesso"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Veículo excluído com sucesso"));
 			veiculos = new GenericDAO<Veiculo>(Veiculo.class).listarTodos();
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,

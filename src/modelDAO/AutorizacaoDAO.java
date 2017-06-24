@@ -14,7 +14,6 @@ public class AutorizacaoDAO {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query query = em.createQuery("SELECT a FROM Autorizacao a WHERE upper(a.nome) like upper(:nomePapel)");
 		query.setParameter("nomePapel", "%" + nomePapel + "%");
-		em.close();
 		return query.getResultList();
 	}
 }
