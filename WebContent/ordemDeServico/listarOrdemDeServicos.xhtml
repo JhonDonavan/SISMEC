@@ -81,7 +81,10 @@
 				</p:column>
 
 				<p:column headerText="Status" width="100">
-					<h:outputText value="#{OS.status}" />
+					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'CANCELADO'}" style="color: red" />
+					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'EMITIDO'}" style="color: blue" />
+					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'FINALIZADO'}" style="color: #006400" />
+					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'ORCAMENTO'}" style="color: #FFA500" />
 				</p:column>
 
 				<p:column headerText="Valor total" width="100">
