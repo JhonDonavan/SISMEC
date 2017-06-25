@@ -43,16 +43,15 @@
 		</span>
 		<h:form style="display: inline-block">
 			<p:menubar styleClass="menubar-sistema">
-				<p:submenu label="Cadastros">
-					<p:menuitem value="Clientes" />
-					<p:menuitem value="Usuários" />
+				<p:submenu label="principais cadastros">
+					<p:menuitem value="Clientes" outcome="/cliente/cadastrarCliente.xhtml" />
+					<p:menuitem value="Veiculos" outcome="/veiculo/cadastroVeiculo.xhtml" />
 					<p:separator />
-					<p:menuitem value="Categorias" />
-					<p:menuitem value="Produtos" />
+					<p:menuitem value="Serviços" outcome="/servico/cadastrarServicos.xhtml" />
 				</p:submenu>
-				<p:submenu label="Pedidos">
-					<p:menuitem value="Novo pedido" />
-					<p:menuitem value="Serviços finalizados" />
+				<p:submenu label="Ordem de serviços">
+					<p:menuitem value=" Cadastrar novo" outcome="/ordemDeServico/cadastrarOrdemDeServico.xhtml"/>
+					<p:menuitem value="Listar todos" outcome="/ordemDeServico/listarOrdemDeServicos.xhtml" />
 				</p:submenu>
 				<p:menuitem value="Sair" icon="ui-icon-key" url="/j_spring_security_logout"/>
 			</p:menubar>

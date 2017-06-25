@@ -12,7 +12,74 @@
 	<p:layoutUnit position="west" size="220" class="ui-fluid">
 		<ui:insert name="menu">
 			<h:form>
-				<p:menu style="width: 100%; border: none">
+
+
+				<p:panelMenu style="width:300px">
+					<p:submenu label="Montadoras">
+						<p:menuitem value="Cadastrar"
+							outcome="/montadora/cadastrarMontadoras.xhtml"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Listar"
+							outcome="/montadora/listarMontadoras.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Modelos de veiculos">
+						<p:menuitem value="Cadastrar"
+							outcome="/modeloVeiculos/cadastrarModeloVeiculo.xhtml"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Listar"
+							outcome="/modeloVeiculos/listarModeloVeiculos.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Veiculos">
+						<p:menuitem value="Cadastrar"
+							outcome="/veiculo/cadastroVeiculo.xhtml" icon="ui-icon-disk" />
+						<p:menuitem value="Listar" outcome="/veiculo/listarVeiculos.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Clientes">
+						<p:menuitem value="Cadastrar"
+							outcome="/cliente/cadastrarCliente.xhtml" icon="ui-icon-disk" />
+						<p:menuitem value="Listar" outcome="/cliente/listarClientes.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Serviços">
+						<p:menuitem value="Cadastrar"
+							outcome="/servico/cadastrarServicos.xhtml" icon="ui-icon-disk" />
+						<p:menuitem value="Listar" outcome="/servico/listarServicos.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Funcionarios"
+						rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}">
+						<p:menuitem value="Cadastrar"
+							outcome="/funcionario/cadastrarFuncionario.xhtml"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Listar"
+							outcome="/funcionario/listarFuncionario.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Usuários"
+						rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}">
+						<p:menuitem value="Cadastrar"
+							outcome="/usuarios/cadastrarUsuarios.xhtml" icon="ui-icon-disk" />
+						<p:menuitem value="Listar"
+							outcome="/usuarios/listarUsuarios.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+					<p:submenu label="Ordem de serviços">
+						<p:menuitem value="Cadastrar"
+							outcome="/ordemDeServico/cadastrarOrdemDeServico.xhtml"
+							icon="ui-icon-disk" />
+						<p:menuitem value="Listar"
+							outcome="/ordemDeServico/listarOrdemDeServicos.xhtml"
+							icon="ui-icon-arrowrefresh-1-w" />
+					</p:submenu>
+
+				</p:panelMenu>
+
+
+
+				<!-- <p:menu style="width: 100%; border: none">
 					<p:menuitem value="SAIR" icon="ui-icon-key"
 						url="/j_spring_security_logout" />
 					<p:menuitem value="Veiculos" url="/veiculo/listarVeiculos.xhtml"
@@ -35,7 +102,7 @@
 					<p:menuitem value="Gerir usuários"
 						url="/usuarios/listarUsuarios.xhtml" icon="ui-icon-flag"
 						rendered="#{(seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES')}" />
-				</p:menu>
+				</p:menu> -->
 			</h:form>
 		</ui:insert>
 	</p:layoutUnit>
