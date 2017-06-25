@@ -16,7 +16,7 @@ import modelDAO.ClienteDAO;
 import modelDAO.GenericDAO;
 
 @ManagedBean(name = "clienteMB")
-@ViewScoped
+@SessionScoped
 public class ClienteMB {
 
 	@Autowired
@@ -48,6 +48,7 @@ public class ClienteMB {
 	}
 	
 	public String cancelar(){
+		this.cliente = new Cliente();
 		return "listarClientes?faces-redirect=true";
 	}
 	

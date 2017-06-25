@@ -2,90 +2,333 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Cadastro de Funcionários</title>
+
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="custom.css" />
+	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
+
+</h:head>
+
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
 
-		<div id="form">
+		<h:form class="form-horizontal">
+			<p:fieldset>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cadastro de Funcionário</div>
 
-			<p:panel header="CADASTRAR FUNCIONARIO"
-				style="text-align:left; width:99%;">
-				<h:form id="cadastrarAtendente">
-					<p:messages id="msgs" closable="true" />
-					<p:growl />
-					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel id="salario" mask="9.999,99"
-							value="Salário do Funcionario " />
-						<p:inputNumber value="#{funcionarioMB.funcionario.salario}"
-							required="true"
-							requiredMessage="Favor informar o salário do funcionario.">
-							<f:validator validatorId="salario-validator" />
-						</p:inputNumber>
+					<div class="panel-body">
+						<p:messages id="msgs" closable="true" />
+						<div class="form-group">
+							<!--
+<div class="form-group">   
+<div class="col-md-4 control-label">
+    <img id="logo" src="http://blogdoporao.com.br/wp-content/uploads/2016/12/Faculdade-pitagoras.png"/>
+</div>
+<div class="col-md-4 control-label">
+    <h1>Cadastro de Cliente</h1>
+    
+</div>
+</div>
+    -->
+							<div class="col-md-11 control-label">
+								<p class="help-block">
+									<h11>*</h11>
+									Campo Obrigatório
+								</p>
+							</div>
+						</div>
 
-						<h:outputLabel value="Nome completo: " />
-						<p:inputText value="#{funcionarioMB.funcionario.nome}"
-							required="true"
-							requiredMessage="Favor informar o nome completo do funcionario.">
-							<f:validator validatorId="nome-validador"></f:validator>
-						</p:inputText>
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Salário">Salário
+								<h11>*</h11>
+							</label>
+							<div class="col-md-2">
+								<p:inputNumber value="#{funcionarioMB.funcionario.salario}"
+									required="true" id="salario"
+									requiredMessage="Favor informar o salário do funcionario.">
+									<f:validator validatorId="salario-validator" />
+									<p:message for="salario" display="tooltip" />
+								</p:inputNumber>
+							</div>
 
-						<p:outputLabel value="Cargo" id="cargoId" for="cargo" />
-						<p:selectOneMenu id="cargo" required="true"
-							requiredMessage="Informe o cargo do funcionário"
-							value="#{funcionarioMB.funcionario.cargo}">
-							<f:selectItem itemLabel="Informe o cargo do funcionário"
-								itemValue="" />
-							<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
-							<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
-							<f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
-							<f:selectItem itemLabel="Mecânico" itemValue="MECANICO" />
-						</p:selectOneMenu>
+							<label class="col-md-2 control-label" for="Salário">Função
+								<h11>*</h11>
+							</label>
+							<div class="col-md-2">
+								<p:selectOneMenu id="cargo" required="true"
+									requiredMessage="Informe o cargo do funcionário"
+									value="#{funcionarioMB.funcionario.cargo}">
+									<f:selectItem itemLabel="Informe o cargo do funcionário"
+										itemValue="" />
+									<f:selectItem itemLabel="ADMIN" itemValue="ADMIN" />
+									<f:selectItem itemLabel="Atendente" itemValue="ATENDENTE" />
+									<f:selectItem itemLabel="Gerente" itemValue="GERENTE" />
+									<f:selectItem itemLabel="Mecânico" itemValue="MECANICO" />
+								</p:selectOneMenu>
+							</div>
+						</div>
 
-						<p:outputLabel value="CPF: " />
-						<p:inputMask id="cpf" mask="999.999.999-99"
-							value="#{funcionarioMB.funcionario.cpf}" required="true"
-							requiredMessage="Favor informar o número de CPF do funcionario.">
-						</p:inputMask>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
+							<div class="col-md-8">
+								<p:inputText value="#{funcionarioMB.funcionario.nome}"
+									required="true" id="nome"
+									requiredMessage="Favor informar o nome completo do funcionário"
+									placeholder="Digite o nome completo"
+									class="form-control input-md" type="text">
+									<f:validator validatorId="nome-validador"></f:validator>
+									<p:message for="nome" display="tooltip" />
+								</p:inputText>
+							</div>
+						</div>
 
-						<p:outputLabel value="Telefone: " />
-						<p:inputMask id="telefone" mask="(99) 9999-9999"
-							value="#{funcionarioMB.funcionario.telefone}" />
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Nome">CPF <h11>*</h11></label>
+							<div class="col-md-2">
+								<p:inputMask id="cpf" mask="999.999.999-99"
+									value="#{funcionarioMB.funcionario.cpf}" required="true"
+									requiredMessage="Favor informar o CPF"
+									placeholder="Apenas números" class="form-control input-md"
+									type="text" maxlength="11" pattern="[0-9]+$">
+									<p:message for="cpf" display="tooltip" />
+								</p:inputMask>
+							</div>
 
-						<p:outputLabel value="Celular: " />
-						<p:inputMask id="celular" mask="(99) 99999-9999"
-							value="#{funcionarioMB.funcionario.celular}" required="true"
-							requiredMessage="Favor informar o telefone celular do funcionario" />
+							<label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11>
+							</label>
+							<div class="col-md-2">
+								<p:calendar id="button" size="11"
+									value="#{funcionarioMB.funcionario.dataNascimento}"
+									showOn="button" required="true" locale="pt" navigator="true"
+									pattern="dd-MM-yyyy"
+									requiredMessage="Favor informar a data de nascimento">
+									<p:message for="button" display="tooltip" />
+								</p:calendar>
+							</div>
 
-						<p:outputLabel value="E-Mail: " />
-						<p:inputText value="#{funcionarioMB.funcionario.email}"
-							required="true"
-							requiredMessage="Favor informar o E-Mail do Funcionario">
-							<p:keyFilter regEx="/[a-z0-9_\.\-@]/i" />
-						</p:inputText>
+							<!-- Multiple Radios (inline) -->
 
-						<p:outputLabel value="Data de nascimento: " for="button" />
-						<p:calendar id="button"
-							value="#{funcionarioMB.funcionario.dataNascimento}"
-							showOn="button" required="true" locale="pt" navigator="true" pattern="dd-MM-yyyy"
-							requiredMessage="Favor informar a data de nascimento do funcionario.">
-						</p:calendar>
+							<label class="col-md-1 control-label" for="radios">Sexo <h11>*</h11></label>
+							<div class="col-md-4">
+								<label class="radio-inline" for="radios-0"> <input
+									name="sexo" id="sexo" value="feminino" type="radio" />
+									Feminino
+								</label> <label class="radio-inline" for="radios-1"> <input
+									name="sexo" id="sexo" value="masculino" type="radio" />
+									Masculino
+								</label>
+							</div>
+						</div>
 
-						<br />
-						<br />
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{funcionarioMB.salvar()}" update="@form" />
-					</h:panelGrid>
+						<!-- Prepended text-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="prependedtext">Telefone
+							</label>
+							<div class="col-md-2">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<p:inputMask id="telefone" mask="(99) 9999-9999"
+										value="#{funcionarioMB.funcionario.telefone}"
+										class="form-control" placeholder="xx xxxx-xxxx" type="text"
+										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$">
+										<p:message for="telefone" display="tooltip" />
+									</p:inputMask>
+								</div>
+							</div>
 
-					<!-- Mostra modal da data -->
-					<p:dialog modal="true" resizable="false" header="Values"
-						widgetVar="data" showEffect="fold">
-						<p:panelGrid id="display" columns="2" columnClasses="label,value">
-						</p:panelGrid>
-					</p:dialog>
-				</h:form>
-			</p:panel>
-		</div>
+							<label class="col-md-1 control-label" for="prependedtext">Celular</label>
+							<div class="col-md-2">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-earphone"></i></span>
+									<p:inputMask id="celular" mask="(99) 99999-9999"
+										value="#{funcionarioMB.funcionario.celular}"
+										class="form-control" placeholder="xx xxxx-xxxxx" type="text"
+										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
+								</div>
+							</div>
+						</div>
+
+						<!-- Prepended text-->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="prependedtext">Email
+								<h11>*</h11>
+							</label>
+							<div class="col-md-5">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="glyphicon glyphicon-envelope"></i></span>
+									<p:inputText value="#{funcionarioMB.funcionario.email}"
+										id="prependedtext" name="prependedtext" class="form-control"
+										requiredMessage="Favor informar um email" required="true"
+										placeholder="email@email.com" type="text"
+										pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+									<p:message for="prependedtext" display="tooltip" />
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Search input-->
+						<h:panelGroup id="panelEndereco">
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+								<div class="col-md-2">
+									<h:inputText id="txtCep"
+										value="#{funcionarioMB.funcionario.endereco.cep}"
+										requiredMessage="Favor informar o CEP" required="true"
+										placeholder="Apenas números" class="form-control input-md"
+										maxlength="10" pattern="[0-9]+$" />
+									<p:message for="prependedtext" display="tooltip" />
+								</div>
+
+								<div class="col-md-2">
+									<h:commandButton value="Consultar"
+										styleClass="btn btn-success">
+										<f:ajax event="click" render="panelEndereco"
+											execute="@this txtCep"
+											listener="#{funcionarioMB.receberEndereco}" />
+										<p:ajaxStatus onstart="PF('statusDialog').show()"
+											onsuccess="PF('statusDialog').hide()" />
+									</h:commandButton>
+								</div>
+
+								<div class="col-md-2">
+									<h:commandButton value="Limpar Endereço"
+										styleClass="btn btn-info">
+										<f:ajax event="click" render="panelEndereco"
+											execute="@this txtCep"
+											listener="#{funcionarioMB.limparEndereco}" />
+									</h:commandButton>
+								</div>
+
+							</div>
+
+							<!-- Prepended text-->
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="prependedtext">Endereço
+									<h11>*</h11>
+								</label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Rua</span>
+										<h:inputText id="rua"
+											value="#{funcionarioMB.funcionario.endereco.logradouro}"
+											name="rua" class="form-control" placeholder=""
+											requiredMessage="Favor informar o logradouro" required="true"
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+								<div class="col-md-2">
+									<div class="input-group">
+										<span class="input-group-addon">Nº <h11>*</h11></span>
+										<h:inputText
+											value="#{funcionarioMB.funcionario.endereco.numero}"
+											requiredMessage="Favor informar o Nº" required="true"
+											id="numero" name="numero" class="form-control" placeholder=""
+											type="text" />
+									</div>
+
+								</div>
+
+								<div class="col-md-3">
+									<div class="input-group">
+										<span class="input-group-addon">Bairro</span>
+										<h:inputText
+											value="#{funcionarioMB.funcionario.endereco.bairro}"
+											requiredMessage="Favor informar o bairro	 " required="true"
+											id="bairro" name="bairro" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="prependedtext"></label>
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Cidade</span>
+										<h:inputText
+											value="#{funcionarioMB.funcionario.endereco.localidade}"
+											requiredMessage="Favor informar a cidade" required="true"
+											id="cidade" name="cidade" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+
+								<div class="col-md-2">
+									<div class="input-group">
+										<span class="input-group-addon">Estado</span>
+										<h:inputText value="#{funcionarioMB.funcionario.endereco.uf}"
+											requiredMessage="Favor informar o estado" required="true"
+											id="estado" name="estado" class="form-control" placeholder=""
+											readonly="readonly" type="text" />
+									</div>
+
+								</div>
+
+								<div class="col-md-4">
+									<div class="input-group">
+										<span class="input-group-addon">Complemento</span>
+										<h:inputText
+											value="#{funcionarioMB.funcionario.endereco.complemento}"
+											id="complemento" name="complemento" class="form-control"
+											placeholder="" readonly="readonly" type="text" />
+									</div>
+
+								</div>
+							</div>
+						</h:panelGroup>
+
+						<!-- Button (Double) -->
+						<div class="form-group">
+							<label class="col-md-2 control-label" for="Cadastrar"></label>
+							<div class="col-md-8">
+								<h:commandButton value="Salvar" icon="ui-icon-disk"
+									action="#{funcionarioMB.salvar}" update="@form"
+									styleClass="btn btn-primary btn-lg" />
+
+								<p:spacer width="10" />
+
+								<h:commandButton value="Cancelar" icon="ui-icon-disk"
+									action="#{funcionarioMB.cancelar}"
+									styleClass="btn btn-danger btn-lg" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</p:fieldset>
+		</h:form>
+
+		<!-- Modal carregamento -->
+		<p:dialog widgetVar="statusDialog" modal="false" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage value="/image/ajax-loader.gif" />
+		</p:dialog>
+
 	</ui:define>
 </ui:decorate>
+
 </html>

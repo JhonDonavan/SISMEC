@@ -53,7 +53,7 @@ public class ControladorCEPBean implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public void limpar() {
-		this.endereco = new Endereco();
+	public Endereco limparEndereco() {
+		return this.endereco = new Endereco();
 	}
 }

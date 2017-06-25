@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</f:facet>
 
-	<title>Cadastro de Clientes</title>
+	<title>Cadastro de Funcionários</title>
 
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 	<h:outputStylesheet library="css" name="custom.css" />
@@ -29,9 +29,10 @@
 		<h:form class="form-horizontal">
 			<p:fieldset>
 				<div class="panel panel-primary">
-					<div class="panel-heading">Cadastro de Cliente</div>
+					<div class="panel-heading">Cadastro de Funcionário</div>
 
 					<div class="panel-body">
+						<p:messages id="msgs" closable="true" />
 						<div class="form-group">
 							<!--
 <div class="form-group">   
@@ -56,11 +57,13 @@
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
 							<div class="col-md-8">
-								<p:inputText value="#{clienteMB.cliente.nome}" required="true"
+								<p:inputText value="#{clienteMB.cliente.nome}"
+									required="true" id="nome"
 									requiredMessage="Favor informar o nome completo do cliente"
 									placeholder="Digite o nome completo"
 									class="form-control input-md" type="text">
 									<f:validator validatorId="nome-validador"></f:validator>
+									<p:message for="nome" display="tooltip" />
 								</p:inputText>
 							</div>
 						</div>
@@ -74,18 +77,20 @@
 									requiredMessage="Favor informar o CPF do cliente"
 									placeholder="Apenas números" class="form-control input-md"
 									type="text" maxlength="11" pattern="[0-9]+$">
+									<p:message for="cpf" display="tooltip" />
 								</p:inputMask>
 							</div>
 
-							<label class="col-md-1 control-label" for="Nome">Nascimento
-								<h11>*</h11>
+							<label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11>
 							</label>
 							<div class="col-md-2">
-								<p:calendar id="button"
-									value="#{clienteMB.cliente.dataNascimento}" showOn="button"
-									required="true" size="10"
-									requiredMessage="Favor informar Data de nascimento"
-									placeholder="DD/MM/AAAA" />
+								<p:calendar id="button" size="11"
+									value="#{clienteMB.cliente.dataNascimento}"
+									showOn="button" required="true" locale="pt" navigator="true"
+									pattern="dd-MM-yyyy"
+									requiredMessage="Favor informar a data de nascimento">
+									<p:message for="button" display="tooltip" />
+								</p:calendar>
 							</div>
 
 							<!-- Multiple Radios (inline) -->
@@ -105,17 +110,17 @@
 						<!-- Prepended text-->
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="prependedtext">Telefone
-								<h11>*</h11>
 							</label>
 							<div class="col-md-2">
 								<div class="input-group">
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span>
 									<p:inputMask id="telefone" mask="(99) 9999-9999"
-										value="#{clienteMB.cliente.telefone}" required="true"
-										requiredMessage="Favor informarmar um telefone de contato"
+										value="#{clienteMB.cliente.telefone}"
 										class="form-control" placeholder="xx xxxx-xxxx" type="text"
-										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
+										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$">
+										<p:message for="telefone" display="tooltip" />
+									</p:inputMask>
 								</div>
 							</div>
 
@@ -125,8 +130,7 @@
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span>
 									<p:inputMask id="celular" mask="(99) 99999-9999"
-										value="#{clienteMB.cliente.celular}" required="true"
-										requiredMessage="Favor informarmar um telefone de contato"
+										value="#{clienteMB.cliente.celular}"
 										class="form-control" placeholder="xx xxxx-xxxxx" type="text"
 										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
 								</div>
@@ -144,8 +148,10 @@
 										class="glyphicon glyphicon-envelope"></i></span>
 									<p:inputText value="#{clienteMB.cliente.email}"
 										id="prependedtext" name="prependedtext" class="form-control"
+										requiredMessage="Favor informar um email" required="true"
 										placeholder="email@email.com" type="text"
 										pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
+									<p:message for="prependedtext" display="tooltip" />
 								</div>
 							</div>
 						</div>
@@ -156,18 +162,34 @@
 							<div class="form-group">
 								<label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
 								<div class="col-md-2">
-									<h:inputText id="txtCep" value="#{clienteMB.cliente.endereco.cep}"
+									<h:inputText id="txtCep"
+										value="#{clienteMB.cliente.endereco.cep}"
+										requiredMessage="Favor informar o CEP" required="true"
 										placeholder="Apenas números" class="form-control input-md"
 										maxlength="10" pattern="[0-9]+$" />
+									<p:message for="prependedtext" display="tooltip" />
 								</div>
+
 								<div class="col-md-2">
 									<h:commandButton value="Consultar"
-										styleClass="btn btn-primary btn-lg">
+										styleClass="btn btn-success">
 										<f:ajax event="click" render="panelEndereco"
 											execute="@this txtCep"
 											listener="#{clienteMB.receberEndereco}" />
+										<p:ajaxStatus onstart="PF('statusDialog').show()"
+											onsuccess="PF('statusDialog').hide()" />
 									</h:commandButton>
 								</div>
+
+								<div class="col-md-2">
+									<h:commandButton value="Limpar Endereço"
+										styleClass="btn btn-info">
+										<f:ajax event="click" render="panelEndereco"
+											execute="@this txtCep"
+											listener="#{clienteMB.limparEndereco}" />
+									</h:commandButton>
+								</div>
+
 							</div>
 
 							<!-- Prepended text-->
@@ -178,8 +200,10 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Rua</span>
-										<h:inputText id="rua" value="#{clienteMB.cliente.endereco.logradouro}"
+										<h:inputText id="rua"
+											value="#{clienteMB.cliente.endereco.logradouro}"
 											name="rua" class="form-control" placeholder=""
+											requiredMessage="Favor informar o logradouro" required="true"
 											readonly="readonly" type="text" />
 									</div>
 
@@ -187,8 +211,11 @@
 								<div class="col-md-2">
 									<div class="input-group">
 										<span class="input-group-addon">Nº <h11>*</h11></span>
-										<h:inputText value="#{clienteMB.cliente.endereco.numero}" id="numero"
-											name="numero" class="form-control" placeholder="" type="text" />
+										<h:inputText
+											value="#{clienteMB.cliente.endereco.numero}"
+											requiredMessage="Favor informar o Nº" required="true"
+											id="numero" name="numero" class="form-control" placeholder=""
+											type="text" />
 									</div>
 
 								</div>
@@ -196,8 +223,10 @@
 								<div class="col-md-3">
 									<div class="input-group">
 										<span class="input-group-addon">Bairro</span>
-										<h:inputText value="#{clienteMB.cliente.endereco.bairro}" id="bairro"
-											name="bairro" class="form-control" placeholder=""
+										<h:inputText
+											value="#{clienteMB.cliente.endereco.bairro}"
+											requiredMessage="Favor informar o bairro	 " required="true"
+											id="bairro" name="bairro" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
 
@@ -209,7 +238,9 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Cidade</span>
-										<h:inputText value="#{clienteMB.cliente.endereco.localidade}"
+										<h:inputText
+											value="#{clienteMB.cliente.endereco.localidade}"
+											requiredMessage="Favor informar a cidade" required="true"
 											id="cidade" name="cidade" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
@@ -219,19 +250,21 @@
 								<div class="col-md-2">
 									<div class="input-group">
 										<span class="input-group-addon">Estado</span>
-										<h:inputText value="#{clienteMB.cliente.endereco.uf}" id="estado"
-											name="estado" class="form-control" placeholder=""
+										<h:inputText value="#{clienteMB.cliente.endereco.uf}"
+											requiredMessage="Favor informar o estado" required="true"
+											id="estado" name="estado" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
 									</div>
 
 								</div>
-			
+
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Complemento</span>
-										<h:inputText value="#{clienteMB.cliente.endereco.complemento}"
-											id="complemento" name="complemento" class="form-control" placeholder=""
-											readonly="readonly" type="text" />
+										<h:inputText
+											value="#{clienteMB.cliente.endereco.complemento}"
+											id="complemento" name="complemento" class="form-control"
+											placeholder="" readonly="readonly" type="text" />
 									</div>
 
 								</div>
@@ -242,14 +275,15 @@
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="Cadastrar"></label>
 							<div class="col-md-8">
-								<p:commandButton value="Salvar" icon="ui-icon-disk"
-									action="#{clienteMB.salvar}" update="@form" />
+								<h:commandButton value="Salvar" icon="ui-icon-disk"
+									action="#{clienteMB.salvar}" update="@form"
+									styleClass="btn btn-primary btn-lg" />
 
 								<p:spacer width="10" />
 
-								<p:commandButton value="Cancelar"
-									icon="ui-icon-arrowreturnthick-1-w"
-									action="#{clienteMB.cancelar}" />
+								<h:commandButton value="Cancelar" icon="ui-icon-disk"
+									action="#{clienteMB.cancelar}"
+									styleClass="btn btn-danger btn-lg" />
 							</div>
 						</div>
 
@@ -257,6 +291,13 @@
 				</div>
 			</p:fieldset>
 		</h:form>
+
+		<!-- Modal carregamento -->
+		<p:dialog widgetVar="statusDialog" modal="false" draggable="false"
+			closable="false" resizable="false" showHeader="false">
+			<p:graphicImage value="/image/ajax-loader.gif" />
+		</p:dialog>
+
 	</ui:define>
 </ui:decorate>
 
