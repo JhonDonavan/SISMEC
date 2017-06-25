@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -89,6 +91,7 @@ public class FuncionarioMB implements Serializable {
 		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
 
 		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
+		this.usuario = null;
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 		usuario = new Usuario();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário cadastrado com sucesso"));
@@ -159,7 +162,8 @@ public class FuncionarioMB implements Serializable {
 	}
 
 	public String limparUsuario() {
-		this.usuario = new Usuario();
+		this.setUsuario(null);
+		this.setUsuario(new Usuario());
 		return "cadastrarUsuarios.xhtml?faces-redirect=true";
 	}
 

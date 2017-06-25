@@ -14,8 +14,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</f:facet>
 
-	<title>Cadastro de Funcionários</title>
+	<title>Cadastro de Clientes</title>
 
+	<h:outputStylesheet library="css" name="customFormCadastro.css" />
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
 
@@ -28,7 +29,7 @@
 		<h:form class="form-horizontal">
 			<p:fieldset>
 				<div class="panel panel-primary">
-					<div class="panel-heading">Cadastro de Funcionário</div>
+					<div class="panel-heading">Cadastro de Cliente</div>
 
 					<div class="panel-body">
 						<p:messages id="msgs" closable="true" />
@@ -56,8 +57,8 @@
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
 							<div class="col-md-8">
-								<p:inputText value="#{clienteMB.cliente.nome}"
-									required="true" id="nome"
+								<p:inputText value="#{clienteMB.cliente.nome}" required="true"
+									id="nome"
 									requiredMessage="Favor informar o nome completo do cliente"
 									placeholder="Digite o nome completo"
 									class="form-control input-md" type="text">
@@ -84,8 +85,8 @@
 							</label>
 							<div class="col-md-2">
 								<p:calendar id="button" size="11"
-									value="#{clienteMB.cliente.dataNascimento}"
-									showOn="button" required="true" locale="pt" navigator="true"
+									value="#{clienteMB.cliente.dataNascimento}" showOn="button"
+									required="true" locale="pt" navigator="true"
 									pattern="dd-MM-yyyy"
 									requiredMessage="Favor informar a data de nascimento">
 									<p:message for="button" display="tooltip" />
@@ -115,9 +116,9 @@
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span>
 									<p:inputMask id="telefone" mask="(99) 9999-9999"
-										value="#{clienteMB.cliente.telefone}"
-										class="form-control" placeholder="xx xxxx-xxxx" type="text"
-										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$">
+										value="#{clienteMB.cliente.telefone}" class="form-control"
+										placeholder="xx xxxx-xxxx" type="text" maxlength="13"
+										pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$">
 										<p:message for="telefone" display="tooltip" />
 									</p:inputMask>
 								</div>
@@ -129,9 +130,9 @@
 									<span class="input-group-addon"><i
 										class="glyphicon glyphicon-earphone"></i></span>
 									<p:inputMask id="celular" mask="(99) 99999-9999"
-										value="#{clienteMB.cliente.celular}"
-										class="form-control" placeholder="xx xxxx-xxxxx" type="text"
-										maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
+										value="#{clienteMB.cliente.celular}" class="form-control"
+										placeholder="xx xxxx-xxxxx" type="text" maxlength="13"
+										pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" />
 								</div>
 							</div>
 						</div>
@@ -170,8 +171,7 @@
 								</div>
 
 								<div class="col-md-2">
-									<h:commandButton value="Consultar"
-										styleClass="btn btn-success">
+									<h:commandButton value="Consultar" styleClass="btn btn-success">
 										<f:ajax event="click" render="panelEndereco"
 											execute="@this txtCep"
 											listener="#{clienteMB.receberEndereco}" />
@@ -184,8 +184,7 @@
 									<h:commandButton value="Limpar Endereço"
 										styleClass="btn btn-info">
 										<f:ajax event="click" render="panelEndereco"
-											execute="@this txtCep"
-											listener="#{clienteMB.limparEndereco}" />
+											execute="@this txtCep" listener="#{clienteMB.limparEndereco}" />
 									</h:commandButton>
 								</div>
 
@@ -200,8 +199,8 @@
 									<div class="input-group">
 										<span class="input-group-addon">Rua</span>
 										<h:inputText id="rua"
-											value="#{clienteMB.cliente.endereco.logradouro}"
-											name="rua" class="form-control" placeholder=""
+											value="#{clienteMB.cliente.endereco.logradouro}" name="rua"
+											class="form-control" placeholder=""
 											requiredMessage="Favor informar o logradouro" required="true"
 											readonly="readonly" type="text" />
 									</div>
@@ -210,8 +209,7 @@
 								<div class="col-md-2">
 									<div class="input-group">
 										<span class="input-group-addon">Nº <h11>*</h11></span>
-										<h:inputText
-											value="#{clienteMB.cliente.endereco.numero}"
+										<h:inputText value="#{clienteMB.cliente.endereco.numero}"
 											requiredMessage="Favor informar o Nº" required="true"
 											id="numero" name="numero" class="form-control" placeholder=""
 											type="text" />
@@ -222,8 +220,7 @@
 								<div class="col-md-3">
 									<div class="input-group">
 										<span class="input-group-addon">Bairro</span>
-										<h:inputText
-											value="#{clienteMB.cliente.endereco.bairro}"
+										<h:inputText value="#{clienteMB.cliente.endereco.bairro}"
 											requiredMessage="Favor informar o bairro	 " required="true"
 											id="bairro" name="bairro" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
@@ -237,8 +234,7 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Cidade</span>
-										<h:inputText
-											value="#{clienteMB.cliente.endereco.localidade}"
+										<h:inputText value="#{clienteMB.cliente.endereco.localidade}"
 											requiredMessage="Favor informar a cidade" required="true"
 											id="cidade" name="cidade" class="form-control" placeholder=""
 											readonly="readonly" type="text" />
@@ -260,8 +256,7 @@
 								<div class="col-md-4">
 									<div class="input-group">
 										<span class="input-group-addon">Complemento</span>
-										<h:inputText
-											value="#{clienteMB.cliente.endereco.complemento}"
+										<h:inputText value="#{clienteMB.cliente.endereco.complemento}"
 											id="complemento" name="complemento" class="form-control"
 											placeholder="" readonly="readonly" type="text" />
 									</div>
