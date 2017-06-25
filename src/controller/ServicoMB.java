@@ -81,7 +81,7 @@ public class ServicoMB {
 
 	public String limparServico() {
 		this.servico = new Servico();
-		return "cadastrarServicos.xhtml?faces-redirect=true";
+		return "/servico/cadastrarServicos.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheServico(Servico servico){

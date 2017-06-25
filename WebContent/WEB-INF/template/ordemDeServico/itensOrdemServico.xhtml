@@ -12,14 +12,14 @@
 
 	<p:dataTable var="item" rowIndexVar="linha" id="tabelaItens"
 		value="#{ordemDeServicoMB.ordemDeServico.itemServico}" width="100%">
-		<p:column headerText="ID" style="text-align: center; width:80px">
+		<p:column headerText="ID" style="text-align: center; width:40px">
 			<p:outputLabel value="#{item.servico.id}" />
 		</p:column>
 
 		<p:column headerText="Serviço" style="text-align: center; width:350px">
 			<h:outputText value="#{item.servico.nome}" rendered="#{item.servicoAssociado}" />
-			<p:autoComplete styleClass="produto-tabela" size="50"
-				value="#{ordemDeServicoMB.servicoLinhaEditavel}"
+			<p:autoComplete styleClass="produto-tabela" size="80"
+				value="#{ordemDeServicoMB.servicoLinhaEditavel}" dropdown="true"
 				completeMethod="#{ordemDeServicoMB.completarServico}" var="servico"
 				itemLabel="#{servico.nome}" itemValue="#{servico}" 
  				forceSelection="true" converter="servicoConverter"

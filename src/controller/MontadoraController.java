@@ -79,7 +79,7 @@ public class MontadoraController {
 
 	public String limparMontadora() {
 		this.montadora = new Montadora();
-		return "cadastrarMontadoras.xhtml?faces-redirect=true";
+		return "/montadora/cadastrarMontadoras.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheMontadora(Montadora montadora){

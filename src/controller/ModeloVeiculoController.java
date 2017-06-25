@@ -87,7 +87,7 @@ public class ModeloVeiculoController {
 
 	public String limparModeloVeiculo() {
 		this.modeloVeiculo = new ModeloVeiculo();
-		return "cadastrarModeloVeiculo.xhtml?faces-redirect=true";
+		return "/modeloVeiculos/cadastrarModeloVeiculo.xhtml?faces-redirect=true";
 	}
 
 	public void detalheModeloVeiculo(ModeloVeiculo modeloVeiculo) {

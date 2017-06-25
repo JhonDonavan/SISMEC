@@ -80,7 +80,7 @@ public class ClienteMB {
 	
 	public String limparCliente(){
 		this.cliente = new Cliente();
-		return "cadastrarCliente.xhtml?faces-redirect=true";
+		return "/cliente/cadastrarCliente.xhtml?faces-redirect=true";
 	}
 	
 	public void detalheCliente(Cliente cliente){

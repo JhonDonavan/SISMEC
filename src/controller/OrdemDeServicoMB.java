@@ -219,7 +219,7 @@ public class OrdemDeServicoMB {
 
 	public String limparOrdemDeServico() {
 		this.ordemDeServico = new OrdemDeServico();
-		return "cadastrarOrdemDeServico.xhtml?faces-redirect=true";
+		return "/ordemDeServico/cadastrarOrdemDeServico.xhtml?faces-redirect=true";
 	}
 
 	public List<Servico> completarServico(String nome) {

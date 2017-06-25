@@ -82,7 +82,7 @@ public class VeiculoController {
 
 	public String limparVeiculo() {
 		this.veiculo = new Veiculo();
-		return "cadastroVeiculo.xhtml?faces-redirect=true";
+		return "/veiculo/cadastroVeiculo.xhtml?faces-redirect=true";
 	}
 
 	public void detalhesVeiculo(Veiculo veiculo) {

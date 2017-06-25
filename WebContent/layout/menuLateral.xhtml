@@ -17,7 +17,7 @@
 				<p:panelMenu style="width:300px">
 					<p:submenu label="Montadoras">
 						<p:menuitem value="Cadastrar"
-							outcome="/montadora/cadastrarMontadoras.xhtml"
+							action="#{montadoraMB.limparMontadora()}"
 							icon="ui-icon-disk" />
 						<p:menuitem value="Listar"
 							outcome="/montadora/listarMontadoras.xhtml"
@@ -25,7 +25,7 @@
 					</p:submenu>
 					<p:submenu label="Modelos de veiculos">
 						<p:menuitem value="Cadastrar"
-							outcome="/modeloVeiculos/cadastrarModeloVeiculo.xhtml"
+							action="#{ModeloVeiculoController.limparModeloVeiculo()}"
 							icon="ui-icon-disk" />
 						<p:menuitem value="Listar"
 							outcome="/modeloVeiculos/listarModeloVeiculos.xhtml"
@@ -33,19 +33,19 @@
 					</p:submenu>
 					<p:submenu label="Veiculos">
 						<p:menuitem value="Cadastrar"
-							outcome="/veiculo/cadastroVeiculo.xhtml" icon="ui-icon-disk" />
+							action="#{Veiculo.limparVeiculo()}" icon="ui-icon-disk" />
 						<p:menuitem value="Listar" outcome="/veiculo/listarVeiculos.xhtml"
 							icon="ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
 					<p:submenu label="Clientes">
 						<p:menuitem value="Cadastrar"
-							outcome="/cliente/cadastrarCliente.xhtml" icon="ui-icon-disk" />
+							action="#{clienteMB.limparCliente()}" icon="ui-icon-disk" />
 						<p:menuitem value="Listar" outcome="/cliente/listarClientes.xhtml"
 							icon="ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
 					<p:submenu label="Serviços">
 						<p:menuitem value="Cadastrar"
-							outcome="/servico/cadastrarServicos.xhtml" icon="ui-icon-disk" />
+							action="#{servicoMB.limparServico()}" icon="ui-icon-disk" />
 						<p:menuitem value="Listar" outcome="/servico/listarServicos.xhtml"
 							icon="ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
@@ -68,7 +68,7 @@
 					</p:submenu>
 					<p:submenu label="Ordem de serviços">
 						<p:menuitem value="Cadastrar"
-							outcome="/ordemDeServico/cadastrarOrdemDeServico.xhtml"
+							action="#{ordemDeServicoMB.limparOrdemDeServico()}"
 							icon="ui-icon-disk" />
 						<p:menuitem value="Listar"
 							outcome="/ordemDeServico/listarOrdemDeServicos.xhtml"
