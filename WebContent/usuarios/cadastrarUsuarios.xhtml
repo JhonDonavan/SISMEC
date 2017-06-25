@@ -2,67 +2,120 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Meta, title, CSS, favicons, etc. -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Cadastro de Funcionários</title>
+
+	<h:outputStylesheet library="css" name="customFormCadastro.css" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputScript target="body" library="js" name="bootstrap.min.js" />
+
+</h:head>
 <ui:decorate template="../layout/layoutPadrao.xhtml">
 
 	<ui:define name="conteudo">
 
-		<div id="form">
+		<h:form class="form-horizontal">
+			<p:fieldset>
 
-			<p:panel header="CADASTRAR USUÁRIOS"
-				style="text-align:left; width:99%;">
-				<h:form id="CadastrarUsuario">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cadastro de Funcionário</div>
+
+					<br></br>
 					<p:messages id="msgs" closable="true" />
-					<p:growl />
-					<h:panelGrid columns="2" cellpadding="3">
-						<h:outputLabel id="salario" value="lOGIN: " />
-						<p:inputText value="#{funcionarioMB.usuario.nomeUsuario}"
-							required="true"
-							requiredMessage="Favor informar o login do usuário">
-						</p:inputText>
+					<br></br>
 
-						<h:outputLabel value="senha: " />
-						<p:password value="#{funcionarioMB.usuario.senha}" required="true"
-							requiredMessage="Favor informar a senha do usuário." />
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idNome">Nome</label>
+						<div class="col-md-4">
+							<p:inputText value="#{funcionarioMB.usuario.nomeUsuario}"
+								required="true"
+								requiredMessage="Favor informar o nome do usuário"
+								placeholder="Digite um nome" type="text"
+								class="form-control input-md">
+							</p:inputText>
+						</div>
+					</div>
 
-						<p:outputLabel value="e-mail do usuário:  " />
-						<p:inputText id="e-mail" value="#{funcionarioMB.usuario.email}"
-							required="true"
-							requiredMessage="Favor informar o E-mail do usuário.">
-						</p:inputText>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idDepto">Senha</label>
+						<div class="col-md-2">
+							<p:password value="#{funcionarioMB.usuario.senha}"
+								required="true"
+								requiredMessage="Favor informar a senha do usuário."
+								placeholder="Digite uma senha" class="form-control input-md" />
+						</div>
+					</div>
 
-						<p:outputLabel value="Funcionário: "  for="funcionarioId" class="outputLabel" />
-						<p:autoComplete id="funcionarioId" dropdown="true"
-							value="#{funcionarioMB.usuario.funcionario}"
-							size="30" completeMethod="#{funcionarioMB.listarPorNomeSemLogin}"
-							var="funcionario" itemLabel="#{funcionario.nome}"
-							itemValue="#{funcionario}" converter="funcionarioConverter"
-							forceSelection="true" required="true"
-							requiredMessage="Informe o funcionário deste usuário" />
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idUsuario">Email</label>
+						<div class="col-md-4">
+							<p:inputText value="#{funcionarioMB.usuario.email}"
+								required="true" type="text"
+								requiredMessage="Favor informar o Email do usuário."
+								placeholder="Digite um email" class="form-control input-md">
+							</p:inputText>
 
-						<p:outputLabel value="Papel do usuário: " class="outputLabel" />
-						<p:autoComplete id="papelId" dropdown="true"
-							value="#{funcionarioMB.auxiliarParaSalvarEmLista}" size="30"
-							completeMethod="#{funcionarioMB.listaDePapeis}" var="papeis"
-							itemLabel="#{papeis.nome}" itemValue="#{papeis}" required="true" requiredMessage="Favor informar o papel do usuário"
-							converter="autorizacaoConverter" forceSelection="true"
-							 />
+						</div>
+					</div>
 
-						<br />
-						<br />
-						<p:commandButton value="Salvar" icon="ui-icon-disk"
-							action="#{funcionarioMB.salvarUsuario}" update="@form" />
-					</h:panelGrid>
+					<!-- Password input-->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idSenha">Funcionário</label>
+						<div class="col-md-4">
+							<p:autoComplete id="funcionarioId" dropdown="true"
+								value="#{funcionarioMB.usuario.funcionario}" size="30"
+								completeMethod="#{funcionarioMB.listarPorNomeSemLogin}"
+								var="funcionario" itemLabel="#{funcionario.nome}"
+								itemValue="#{funcionario}" converter="funcionarioConverter"
+								forceSelection="true" required="true"
+								placeholder="Funcionário relacionado"
+								requiredMessage="Informe o funcionário deste usuário" />
+						</div>
+					</div>
 
-					<!-- Mostra modal da data -->
-					<p:dialog modal="true" resizable="false" header="Values"
-						widgetVar="data" showEffect="fold">
-						<p:panelGrid id="display" columns="2" columnClasses="label,value">
-						</p:panelGrid>
-					</p:dialog>
-				</h:form>
-			</p:panel>
-		</div>
+					<!-- Select Basic -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idAdmin">Nível</label>
+						<div class="col-md-4">
+							<p:autoComplete id="papelId" dropdown="true"
+								value="#{funcionarioMB.auxiliarParaSalvarEmLista}" size="30"
+								completeMethod="#{funcionarioMB.listaDePapeis}" var="papeis"
+								itemLabel="#{papeis.nome}" itemValue="#{papeis}" required="true"
+								requiredMessage="Favor informar o nível do usuário"
+								placeholder="Nível do usuário" converter="autorizacaoConverter"
+								forceSelection="true" />
+						</div>
+					</div>
+
+					<!-- Button (Double) -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="idConfirmar"></label>
+						<div class="col-md-4">
+							<h:commandButton value="Salvar" icon="ui-icon-disk"
+								action="#{funcionarioMB.salvarUsuario}" update="@form"
+								class="btn btn-primary" />
+
+							<button id="idCancelar" name="idCancelar" class="btn btn-danger">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</p:fieldset>
+		</h:form>
+
 	</ui:define>
 </ui:decorate>
 </html>
