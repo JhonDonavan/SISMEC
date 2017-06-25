@@ -66,6 +66,8 @@ public class Funcionario implements Serializable{
 	}
 
 	public Endereco getEndereco() {
+		if (endereco == null)
+			endereco = new Endereco();
 		return endereco;
 	}
 

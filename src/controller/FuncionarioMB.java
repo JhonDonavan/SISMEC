@@ -25,25 +25,30 @@ public class FuncionarioMB implements Serializable {
 
 	@Autowired
 	private List<Funcionario> funcionariosSelecionados;
-	
+
 	@Autowired
 	private List<Funcionario> funcionariosSelecionadosSemLogin;
-	
-	
+
+	private ControladorCEPBean enderecoFuncionario = new ControladorCEPBean();
+
 	private List<Autorizacao> autorizacoes = new ArrayList<>();
-	
+
 	private AutorizacaoDAO autorizacaoDAO = new AutorizacaoDAO();
-	
+
 	private Usuario usuario = new Usuario();
-	
+
 	private List<Usuario> usuarios = new ArrayList<>();
-	
-	/*Está variável esta sendo utilizada no metodo salvar usuario, pois o spring security recebe uma lista de obejetos com papeis,
-	 * Em nosso sistema estamos enviando um objeto, entao essa variável é inserida em uma lista e adc a objeto lista de autorização do usuario*/
+
+	/*
+	 * Está variável esta sendo utilizada no metodo salvar usuario, pois o
+	 * spring security recebe uma lista de obejetos com papeis, Em nosso sistema
+	 * estamos enviando um objeto, entao essa variável é inserida em uma lista e
+	 * adc a objeto lista de autorização do usuario
+	 */
 	private Autorizacao auxiliarParaSalvarEmLista = new Autorizacao();
-	
+
 	private List<Autorizacao> list_auxiliarParaSalvarEmLista = new ArrayList<>();
-	
+
 	private Funcionario funcionario = new Funcionario();
 	private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -56,27 +61,33 @@ public class FuncionarioMB implements Serializable {
 		autorizacoes = new ArrayList<>();
 		usuario = new Usuario();
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
-		
+
 		usuarios.get(0).getAutorizacoes().get(0).getNome();
 	}
 
 	public String salvar() {
 		new GenericDAO<Funcionario>(Funcionario.class).salvar(funcionario);
+		System.out.println("Objeto " + funcionario.getNome() + " cadastrado com sucesso!");
 		funcionarios = new GenericDAO<Funcionario>(Funcionario.class).listarTodos();
 		funcionario = new Funcionario();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atendente cadastrado com sucesso"));
-		System.out.println("Objeto " + funcionario.getNome() + " cadastrado com sucesso!");
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Funcionário cadastrado com sucesso"));
 		return "listarFuncionario.xhtml?faces-redirect=true";
 	}
-	
-	
-	
+
+	public void receberEndereco() {
+		this.funcionario.setEndereco(enderecoFuncionario.carregarEndereco(this.funcionario.getEndereco().getCep()));
+	}
+
+	public void limparEndereco() {
+		this.funcionario.setEndereco(enderecoFuncionario.limparEndereco());
+	}
+
 	public String salvarUsuario() {
-		
+
 		list_auxiliarParaSalvarEmLista.add(auxiliarParaSalvarEmLista);
 		System.out.println(auxiliarParaSalvarEmLista.getNome());
 		usuario.setAutorizacoes(list_auxiliarParaSalvarEmLista);
-		
+
 		new GenericDAO<Usuario>(Usuario.class).salvar(usuario);
 		usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 		usuario = new Usuario();
@@ -84,13 +95,12 @@ public class FuncionarioMB implements Serializable {
 		System.out.println("Objeto " + usuario.getNomeUsuario() + " cadastrado com sucesso!");
 		return "listarUsuarios.xhtml?faces-redirect=true";
 	}
-	
 
 	public String editar(Funcionario funcionario) {
 		this.funcionario = funcionario;
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
 	}
-	
+
 	public String editarUsuario(Usuario usuario) {
 		this.usuario = usuario;
 		return "cadastrarUsuarios.xhtml?faces-redirect=true";
@@ -100,7 +110,7 @@ public class FuncionarioMB implements Serializable {
 		this.funcionario = funcionario;
 		System.out.println(" preparar para excluir funcionario: " + funcionario.getNome());
 	}
-	
+
 	public void prepararExclusaoUsuario(Usuario usuario) {
 		this.usuario = usuario;
 		System.out.println(" preparar para excluir usuário: " + usuario.getNomeUsuario());
@@ -113,9 +123,10 @@ public class FuncionarioMB implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuário excluido com sucesso!"));
 			usuarios = new GenericDAO<Usuario>(Usuario.class).listarTodos();
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Você não pode excluir um funcionario com um usuário relacionado, favor consultar o administrador do sistema",
-					"Você não pode excluir um funcionario com um usuário relacionado"));
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Você não pode excluir um funcionario com um usuário relacionado, favor consultar o administrador do sistema",
+							"Você não pode excluir um funcionario com um usuário relacionado"));
 		}
 	}
 
@@ -127,7 +138,7 @@ public class FuncionarioMB implements Serializable {
 		}
 		return funcionariosSelecionados;
 	}
-	
+
 	public List<Funcionario> listarPorNomeSemLogin(String nomeFuncionario) {
 		try {
 			funcionariosSelecionadosSemLogin = funcionarioDAO.buscarFuncionarioByNomeSemLogin(nomeFuncionario);
@@ -141,7 +152,12 @@ public class FuncionarioMB implements Serializable {
 		this.funcionario = new Funcionario();
 		return "cadastrarFuncionario.xhtml?faces-redirect=true";
 	}
-	
+
+	public String cancelar() {
+		this.funcionario = new Funcionario();
+		return "listarFuncionario.xhtml?faces-redirect=true";
+	}
+
 	public String limparUsuario() {
 		this.usuario = new Usuario();
 		return "cadastrarUsuarios.xhtml?faces-redirect=true";
@@ -150,7 +166,7 @@ public class FuncionarioMB implements Serializable {
 	public void detalhesFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-	
+
 	public void detalhesUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
@@ -221,8 +237,12 @@ public class FuncionarioMB implements Serializable {
 	public void setFuncionariosSelecionadosSemLogin(List<Funcionario> funcionariosSelecionadosSemLogin) {
 		this.funcionariosSelecionadosSemLogin = funcionariosSelecionadosSemLogin;
 	}
-	
-	
-	
 
+	public ControladorCEPBean getEnderecoFuncionario() {
+		return enderecoFuncionario;
+	}
+
+	public void setEnderecoFuncionario(ControladorCEPBean enderecoFuncionario) {
+		this.enderecoFuncionario = enderecoFuncionario;
+	}
 }
