@@ -149,10 +149,10 @@
 			<!-- Modal para botao detalhes -->
 
 			<p:dialog
-				header="Status: #{ordemDeServicoMB.ordemDeServico.status} Valor Total: #{ordemDeServicoMB.ordemDeServico.valorTotal}"
+				header="Status: #{ordemDeServicoMB.ordemDeServico.status}"
 				widgetVar="detalhes" appendTo="@(body)" minimizable="true"
-				maximizable="true" width="650" showEffect="fade" hideEffect="none">
-
+				maximizable="true" width="1000" height="600" showEffect="fade" hideEffect="none">
+				<h3>Registrado em: #{ordemDeServicoMB.ordemDeServico.dataInicio}</h3>
 				<p:separator />
 
 				<p:fieldset legend="Detalhes do Cliente" toggleable="true"
