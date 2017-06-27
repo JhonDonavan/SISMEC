@@ -60,7 +60,7 @@
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				style="margin-top:7px;">
 
-				<p:column headerText="Identificador" width="100">
+				<p:column headerText="ID" width="50">
 					<h:outputText value="#{OS.id}" />
 				</p:column>
 
@@ -68,11 +68,11 @@
 					<h:outputText value="#{OS.cliente.nome}" />
 				</p:column>
 
-				<p:column headerText="Mecânico">
+				<p:column headerText="Mecânico" width="275" >
 					<h:outputText value="#{OS.funcionario_mecanico.nome}" />
 				</p:column>
 
-				<p:column headerText="Placa do veiculo" width="10%">
+				<p:column headerText="Placa" width="100">
 					<h:outputText value="#{OS.veiculo.placa}" />
 				</p:column>
 
@@ -87,7 +87,7 @@
 					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'ORCAMENTO'}" style="color: #FFA500" />
 				</p:column>
 
-				<p:column headerText="Valor total" width="100">
+				<p:column headerText="Valor total" width="85">
 					<h:outputText value="#{OS.valorTotal}">
 						<f:convertNumber type="currency" />
 					</h:outputText>
