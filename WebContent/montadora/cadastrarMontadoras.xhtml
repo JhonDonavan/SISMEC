@@ -36,11 +36,10 @@
 							value="#{montadoraMB.montadora.site}" required="true"
 							requiredMessage="Por favor preencha o WEB SITE da montadora" />
 
-						<br />
-						<br />
+						
 						
 						<p:commandButton value="Cancelar" icon="ui-icon-arrowreturnthick-1-w"
-							action="#{montadoraMB.cancelar}" />
+							url="/montadora/listarMontadoras" />
 							
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
 							action="#{montadoraMB.salvar}" update="@form" />
