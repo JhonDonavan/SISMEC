@@ -60,15 +60,15 @@
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				style="margin-top:7px;">
 
-				<p:column headerText="ID" width="50">
+				<p:column headerText="ID" width="40">
 					<h:outputText value="#{OS.id}" />
 				</p:column>
 
-				<p:column headerText="Cliente" width="300">
+				<p:column headerText="Cliente" width="100">
 					<h:outputText value="#{OS.cliente.nome}" />
 				</p:column>
 
-				<p:column headerText="Mecânico" width="275" >
+				<p:column headerText="Mecânico" width="100" >
 					<h:outputText value="#{OS.funcionario_mecanico.nome}" />
 				</p:column>
 
@@ -76,11 +76,11 @@
 					<h:outputText value="#{OS.veiculo.placa}" />
 				</p:column>
 
-				<p:column headerText="Forma de pagamento" width="135">
+				<p:column headerText="Forma de pagamento" width="130">
 					<h:outputText value="#{OS.formaPagamento}" />
 				</p:column>
 
-				<p:column headerText="Status" width="100">
+				<p:column headerText="Status" width="80">
 					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'CANCELADO'}" style="color: red" />
 					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'EMITIDO'}" style="color: blue" />
 					<h:outputText value="#{OS.status}" rendered="#{OS.status eq 'FINALIZADO'}" style="color: #006400" />
@@ -110,7 +110,7 @@
 				</p:column>
 
 				<p:column headerText="Finalizar" style="text-align:center;"
-					exportable="false" width="5%">
+					exportable="false" width="7%">
 
 					<p:commandButton icon="ui-icon-circle-check" title="Finalizar"
 						rendered="#{(OS.status eq 'EMITIDO')}" update="@form">
@@ -122,7 +122,7 @@
 				</p:column>
 
 				<p:column headerText="Cancelar" style="text-align:center;"
-					exportable="false" width="5%">
+					exportable="false" width="7%">
 					<p:commandButton icon="ui-icon-circle-close" title="Cancelar"
 						rendered="#{((OS.status eq 'EMITIDO')) and ((seguranca.autorizacao eq 'ADMINISTRADORES') or (seguranca.autorizacao eq 'GERENTES'))}"
 						update="@form">
